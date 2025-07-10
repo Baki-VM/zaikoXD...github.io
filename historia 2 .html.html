@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Presentación: Historia de la Computadora</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --main-color: #1abc9c;
+      --dark-bg: #2c3e50;
+      --light-bg: #ecf0f1;
+      --highlight: #f39c12;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ecf0f1, #dff9fb);
+    }
+
+    header {
+      background: linear-gradient(to right, #16a085, #1abc9c);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      user-select: none;
+    }
+
+    nav {
+      background-color: var(--dark-bg);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      user-select: none;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s, transform 0.3s;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      background-color: var(--highlight);
+      transform: scale(1.1);
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section {
+      background-color: white;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      animation: fadeIn 0.8s ease-in-out;
+      position: relative;
+    }
+
+    section:hover {
+      transform: scale(1.01);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: var(--main-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #bbb;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: block;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .toggle {
+      background-color: var(--main-color);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      user-select: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .toggle:hover {
+      background-color: #159d8a;
+    }
+
+    .content {
+      display: none;
+      margin-top: 40px;
+    }
+
+    ul.check {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.check li::before {
+      content: "✅ ";
+      margin-right: 5px;
+    }
+
+    .external-link {
+      display: inline-block;
+      background: var(--highlight);
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      margin-top: 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .external-link:hover {
+      background: #e67e22;
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      user-select: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💻 Historia y Evolución de la Computadora</h1>
+    <p>Trabajo para la materia de Hardware y Software — UPDS Santa Cruz</p>
+  </header>
+
+  <nav>
+    <a href="#historia">1.1 Historia</a>
+    <a href="#generaciones">1.2 Generaciones</a>
+    <a href="#elementos">1.3 Elementos</a>
+    <a href="#unidades">1.4 Unidades</a>
+    <a href="#componentes">1.5 Componentes</a>
+    <a href="#hardware">1.6 Hardware Ext.</a>
+    <a href="#es">1.7 Entrada/Salida</a>
+    <a href="#perifericos">1.8 Periféricos</a>
+    <a href="#arquitectura">1.9 Arquitectura</a>
+    <a href="#curiosidades">1.10 Curiosidades</a>
+  </nav>
+
+  <main>
+    <section id="historia">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.1 Historia y evolución de la computadora</h2>
+        <p>Desde el ábaco hasta la inteligencia artificial, la computadora ha revolucionado nuestra forma de vivir. Inició con herramientas mecánicas y hoy nos permite explorar el universo digital.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/ENIAC.jpg" alt="ENIAC" />
+        <a class="external-link" href="https://es.wikipedia.org/wiki/Generaciones_de_las_computadoras" target="_blank" rel="noopener noreferrer">Ver más detalles</a>
+        <a href="historia">Ir a la página de contacto</a>
+
+      </div>
+    </section>
+
+    <section id="generaciones">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.2 Generaciones de Computadoras</h2>
+        <table>
+          <thead>
+            <tr><th>Generación</th><th>Tecnología</th><th>Ejemplo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1ª</td><td>Válvulas de vacío</td><td>ENIAC</td></tr>
+            <tr><td>2ª</td><td>Transistores</td><td>IBM 1401</td></tr>
+            <tr><td>3ª</td><td>Circuitos integrados</td><td>IBM 360</td></tr>
+            <tr><td>4ª</td><td>Microprocesadores</td><td>Intel 4004</td></tr>
+            <tr><td>5ª</td><td>IA y paralelismo</td><td>Sistemas Expertos</td></tr>
+          </tbody>
+        </table>
+        <a class="external-link" href="https://es.wikipedia.org/wiki/Generaciones_de_las_computadoras" target="_blank" rel="noopener noreferrer">Ver más detalles</a>
+      </div>
+    </section>
+
+    <section id="elementos">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.3 Elementos principales del computador</h2>
+        <ul class="check">
+          <li>CPU (Unidad Central de Procesamiento): el cerebro de la computadora.</li>
+          <li>Memoria RAM: almacenamiento temporal para procesos activos.</li>
+          <li>Almacenamiento: HDD, SSD para guardar datos.</li>
+          <li>Tarjeta gráfica (GPU): procesamiento visual.</li>
+          <li>Placa base: conecta todos los componentes.</li>
+          <li>Fuente de poder: suministra energía.</li>
+        </ul>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Computer_Processor_Icon.svg" alt="CPU" />
+      </div>
+    </section>
+
+    <section id="unidades">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.4 Unidades para medir almacenamiento, procesamiento y transmisión</h2>
+        <ul class="check">
+          <li>Bit y Byte: unidades básicas de información.</li>
+          <li>KB, MB, GB, TB: unidades de almacenamiento.</li>
+          <li>Hertz (Hz): velocidad de procesamiento.</li>
+          <li>bps (bits por segundo): velocidad de transmisión.</li>
+        </ul>
+        <table>
+          <thead>
+            <tr><th>Unidad</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Bit</td><td>Unidad mínima de información</td></tr>
+            <tr><td>Byte</td><td>8 bits</td></tr>
+            <tr><td>KB</td><td>1024 Bytes</td></tr>
+            <tr><td>GHz</td><td>Mil millones de ciclos por segundo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="componentes">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.5 Componentes digitales, eléctricos, electrónicos, electromecánicos y mecánicos</h2>
+        <ul class="check">
+          <li>Digitales: microprocesadores, memorias RAM.</li>
+          <li>Eléctricos: cables, fuentes de alimentación.</li>
+          <li>Electrónicos: transistores, diodos.</li>
+          <li>Electromecánicos: discos duros HDD.</li>
+          <li>Mecánicos: ventiladores, conectores.</li>
+        </ul>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Computer_Hardware_Icons.svg" alt="Componentes" />
+      </div>
+    </section>
+
+    <section id="hardware">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.6 Hardware externo</h2>
+        <ul class="check">
+          <li>Monitor</li>
+          <li>Teclado</li>
+          <li>Ratón</li>
+          <li>Impresora</li>
+          <li>Escáner</li>
+        </ul>
+        <p>Puedes agregar imágenes o tablas para explicar cada uno.</p>
+      </div>
+    </section>
+
+    <section id="es">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.7 Componentes de Entrada / Salida</h2>
+        <p>Los componentes de Entrada permiten introducir datos (teclado, mouse), mientras que los de Salida muestran resultados (monitor, impresora).</p>
+        <table>
+          <thead>
+            <tr><th>Tipo</th><th>Ejemplos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Entrada</td><td>Teclado, Mouse, Escáner</td></tr>
+            <tr><td>Salida</td><td>Monitor, Impresora, Altavoces</td></tr>
+            <tr><td>Entrada/Salida</td><td>Pantallas táctiles, Modems</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="perifericos">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.8 Periféricos de almacenamiento internos y externos</h2>
+        <ul class="check">
+          <li>Internos: HDD, SSD, memorias RAM.</li>
+          <li>Externos: discos duros USB, memorias flash, tarjetas SD.</li>
+        </ul>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/External_Hard_Drive_Icon.svg" alt="Disco duro externo" />
+      </div>
+    </section>
+
+    <section id="arquitectura">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.9 Arquitectura del computador</h2>
+        <p>Arquitectura básica:</p>
+        <ul class="check">
+          <li>Unidad Central de Procesamiento (CPU)</li>
+          <li>Memoria principal (RAM)</li>
+          <li>Dispositivos de Entrada y Salida</li>
+          <li>Bus de datos y control</li>
+        </ul>
+        <p>Puedes agregar diagramas, imágenes o tablas explicativas.</p>
+      </div>
+    </section>
+
+    <section id="curiosidades">
+      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
+      <div class="content">
+        <h2>1.10 Curiosidades sobre la computadora</h2>
+        <ul class="check">
+          <li>El primer bug fue literalmente un insecto (una polilla) dentro de un computador Harvard Mark II.</li>
+          <li>El ENIAC ocupaba una habitación y consumía tanta energía como una pequeña ciudad.</li>
+          <li>Los primeros computadores usaban tarjetas perforadas para la entrada de datos.</li>
+          <li>Hoy en día, la potencia de un smartphone supera con creces a la de las primeras computadoras.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Reinaldo — UPDS Santa Cruz</p>
+  </footer>
+
+  <script>
+    function toggleContent(button) {
+      const content = button.nextElementSibling;
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+        button.textContent = 'Mostrar/Ocultar Contenido';
+      } else {
+        content.style.display = 'block';
+        button.textContent = 'Ocultar Contenido';
+      }
+    }
+  </script>
+</body>
+</html>
