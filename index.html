@@ -29,31 +29,6 @@
       user-select: none;
     }
 
-    nav {
-      background-color: var(--dark-bg);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 5px;
-      user-select: none;
-    }
-
-    nav a {
-      color: white;
-      padding: 15px 24px;
-      text-decoration: none;
-      display: block;
-      transition: background 0.3s, transform 0.3s;
-      border-radius: 6px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    nav a:hover {
-      background-color: var(--highlight);
-      transform: scale(1.1);
-    }
-
     main {
       padding: 20px;
       max-width: 1000px;
@@ -197,25 +172,15 @@
 </head>
 <body>
   <header>
-    <h1>💻 Historia y Evolución de la Computadora</h1>
+    <h1>💻 Hardware I </h1>
     <p>Trabajo para la materia de Hardware y Software — UPDS Santa Cruz</p>
   </header>
 
-  <nav>
-    <a href="#historia">1.1 Historia y Evolución</a>
-    <a href="#generaciones">1.2 Generaciones de Computadoras</a>
-    <a href="#elementos">1.3 Elementos Principales del Computador</a>
-    <a href="#unidades">1.4 Unidades de Medición (Almacenamiento, Procesamiento y Transmisión)</a>
-    <a href="#componentes">1.5 Componentes Digitales, Eléctricos, Electrónicos, Electromecánicos y Mecánicos</a>
-    <a href="#hardware">1.6 Hardware Externo</a>
-    <a href="#es">1.7 Componentes de Entrada y Salida</a>
-    <a href="#perifericos">1.8 Periféricos de Almacenamiento Internos y Externos</a>
-    <a href="#arquitectura">1.9 Arquitectura del Computador</a>
-    <a href="#curiosidades">1.10 Curiosidades</a>
-  </nav>
+  <!-- ACÁ SE QUITÓ el <nav> -->
 
   <main>
-    <section id="historia">
+    <!-- TODO EL CONTENIDO SIGUE IGUAL -->
+      <section id="historia">
       <div class="section-title">1.1 Historia y Evolución</div>
       <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
       <div class="content">
@@ -392,6 +357,7 @@
         </ul>
       </div>
     </section>
+    <!-- Pegá aquí tus <section> como ya están en tu código -->
   </main>
 
   <footer>
@@ -412,3 +378,4 @@
   </script>
 </body>
 </html>
+
