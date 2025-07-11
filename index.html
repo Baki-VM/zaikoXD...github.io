@@ -37,13 +37,13 @@
       animation: fadeIn 1.2s ease-in-out;
     }
 
-    /* Aquí el flex para la cabecera */
     .header {
       display: flex;
-      align-items: center; /* centra vertical */
-      justify-content: center; /* centra horizontalmente */
+      align-items: center;
+      justify-content: center;
       gap: 30px;
       margin-bottom: 40px;
+      flex-wrap: wrap;
     }
 
     .header img {
@@ -63,7 +63,7 @@
       color: #00e3ae;
       text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
       margin: 0;
-      white-space: nowrap; /* para que no se parta el texto */
+      white-space: nowrap;
     }
 
     .container h2 {
@@ -129,6 +129,37 @@
         transform: translateY(0);
       }
     }
+
+    /* RESPONSIVE: para celulares */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .header img {
+        width: 60%;
+        height: auto;
+      }
+
+      .header h1 {
+        font-size: 2.2rem;
+        white-space: normal;
+      }
+
+      .container h2 {
+        font-size: 1.2rem;
+      }
+
+      .menu-btn {
+        padding: 25px 10px;
+        font-size: 1.1rem;
+      }
+
+      .menu-btn i {
+        font-size: 2.2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -166,4 +197,3 @@
   </div>
 </body>
 </html>
-
