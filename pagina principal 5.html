@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carátula Interactiva - Hardware y Software</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 60px 40px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      width: 95%;
+      max-width: 1200px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .container h1 {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      color: #00e3ae;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+    }
+
+    .container h2 {
+      font-size: 1.6rem;
+      margin-bottom: 50px;
+      color: #dff9fb;
+      font-weight: 300;
+    }
+
+    .university-logos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .university-logos img {
+      height: 90px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.4);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .university-logos img:hover {
+      transform: scale(1.08);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .menu-btn {
+      background: linear-gradient(145deg, #e44d26, #f16529);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 40px 20px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: perspective(600px) rotateX(0deg);
+    }
+
+    .menu-btn:hover {
+      background: linear-gradient(145deg, #00c6ff, #0072ff);
+      transform: translateY(-8px) scale(1.05) rotateX(4deg);
+    }
+
+    .menu-btn i {
+      font-size: 2.6rem;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .menu-btn:hover i {
+      transform: scale(1.2) rotate(12deg);
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="university-logos">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/UPDS_Santa_Cruz.jpg" alt="Logo UPDS Izquierdo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/UPDS_Santa_Cruz.jpg" alt="Logo UPDS Derecho">
+    </div>
+
+    <h1>Trabajo de Investigación</h1>
+    <h2>Hardware y Software — Ingeniería en Sistemas</h2>
+
+    <div class="menu-grid">
+      <a class="menu-btn" href="hardware1.html">
+        <i class="fas fa-microchip"></i>
+        Hardware 1
+      </a>
+      <a class="menu-btn" href="hardware2.html">
+        <i class="fas fa-memory"></i>
+        Hardware 2
+      </a>
+      <a class="menu-btn" href="software1.html">
+        <i class="fas fa-laptop-code"></i>
+        Software 1
+      </a>
+      <a class="menu-btn" href="software2.html">
+        <i class="fas fa-cogs"></i>
+        Software 2
+      </a>
+    </div>
+
+    <footer>
+      UPDS Santa Cruz — Reinaldo — 2025
+    </footer>
+  </div>
+</body>
+</html>
