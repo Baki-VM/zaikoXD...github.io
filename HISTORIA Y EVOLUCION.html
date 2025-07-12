@@ -271,12 +271,89 @@
     </article>
 
     <article class="accordion-item">
-      <h3>🤖 Hacia la Inteligencia Artificial y la Computación del Futuro <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
-      <div class="content">
-        <p>Hoy en día, la evolución continúa con la inteligencia artificial, la computación cuántica, y la interconexión global. Las máquinas ya no solo procesan datos, sino que aprenden, predicen y colaboran con humanos en diversas tareas.</p>
-        <p>Los smartphones, las redes neuronales y la automatización están transformando la sociedad y abren nuevas preguntas sobre el rol de la tecnología en nuestras vidas.</p>
-      </div>
-    </article>
+  <h3>🤖 Hacia la Inteligencia Artificial y la Computación del Futuro <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+  <div class="content">
+
+    <p>La Inteligencia Artificial (IA) no es ciencia ficción, es la vanguardia de la ingeniería en sistemas, el motor que está transformando industrias y nuestra vida diaria a una velocidad que asusta. Desde el aprendizaje automático hasta la computación cuántica, la tecnología apunta hacia un futuro disruptivo y fascinante.</p>
+
+    <h4>🔍 ¿Qué es la Inteligencia Artificial?</h4>
+    <p>Es la capacidad de una máquina para imitar procesos cognitivos humanos: aprender, razonar, reconocer patrones y tomar decisiones. La IA se divide en:</p>
+    <ul>
+      <li><strong>IA débil:</strong> enfocada en tareas específicas (reconocimiento facial, asistentes virtuales).</li>
+      <li><strong>IA fuerte:</strong> capaz de inteligencia general como la humana, aún en desarrollo.</li>
+    </ul>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Artificial_Intelligence_Conceptual_Illustration.png" alt="Inteligencia Artificial Conceptual" style="margin:15px 0; max-width:100%; border-radius:10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+
+    <h4>🚀 Avances clave y tendencias</h4>
+    <ul>
+      <li><strong>Machine Learning y Deep Learning:</strong> algoritmos que aprenden de datos para mejorar sus resultados sin ser programados explícitamente.</li>
+      <li><strong>Procesamiento de lenguaje natural (NLP):</strong> permite entender y generar lenguaje humano, base de chatbots y asistentes.</li>
+      <li><strong>Computación Cuántica:</strong> utiliza principios de la mecánica cuántica para resolver problemas complejos en segundos.</li>
+      <li><strong>Edge Computing:</strong> procesamiento local para reducir latencia y dependencia de la nube.</li>
+    </ul>
+
+    <h4>📊 Datos de impacto de la IA en la industria</h4>
+    <canvas id="impactChart" style="max-width: 100%; height: 150px;"></canvas>
+    <p>Esta gráfica muestra el crecimiento en inversión global en IA y su impacto esperado en sectores clave hasta 2030.</p>
+
+    <h4>🧠 Computación Cuántica: el futuro que ya se asoma</h4>
+    <p>La computación cuántica podría revolucionar la informática al usar <em>qubits</em> que procesan múltiples estados simultáneamente. Grandes empresas como IBM, Google y Microsoft ya lideran proyectos que prometen romper barreras en criptografía, medicina y simulación.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Quantum_circuit_circuit_qc.png/440px-Quantum_circuit_circuit_qc.png" alt="Circuito de computación cuántica" style="margin:15px 0; max-width:100%; border-radius:10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+
+    <h4>🌐 Ética y retos de la IA</h4>
+    <p>Los algoritmos pueden reproducir sesgos humanos, generar decisiones opacas y afectar privacidad. Es clave desarrollar una IA responsable con marcos legales claros y enfoque en equidad.</p>
+
+    <h4>💡 ¿Por qué debe importarte como futuro ingeniero en sistemas?</h4>
+    <p>Dominar IA y computación avanzada no es opcional, es la llave para destacar en cualquier campo tecnológico. Prepararte ahora es prepararte para liderar la innovación.</p>
+
+  </div>
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('impactChart').getContext('2d');
+  const impactChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['2023', '2025', '2027', '2030'],
+      datasets: [
+        {
+          label: 'Inversión en IA (billones USD)',
+          data: [50, 120, 230, 500],
+          backgroundColor: 'rgba(12, 60, 145, 0.7)',
+          borderRadius: 6,
+          barPercentage: 0.6
+        },
+        {
+          label: 'Impacto económico estimado (billones USD)',
+          data: [100, 250, 450, 1000],
+          backgroundColor: 'rgba(220, 53, 69, 0.7)',
+          borderRadius: 6,
+          barPercentage: 0.6
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: { font: { size: 14, weight: 'bold' } }
+        },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: 'Billones de dólares (USD)' }
+        }
+      }
+    }
+  });
+</script>
+
+
 
   </section>
 
