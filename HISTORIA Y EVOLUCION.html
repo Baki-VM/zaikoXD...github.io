@@ -8,56 +8,75 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f2f5;
+      background: #e9f1fc;
       color: #222;
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 0 20px 40px 20px;
-      line-height: 1.6;
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 30px 50px 30px;
+      line-height: 1.8;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
     }
     h1, h2 {
-      color: #1a237e;
-      margin-bottom: 0.5em;
+      color: #0c3c91;
+      margin-bottom: 0.6em;
       text-align: center;
-      font-weight: 700;
-      letter-spacing: 1.2px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
     h3 {
-      color: #283593;
+      color: #174ea6;
       cursor: pointer;
-      margin: 10px 0 5px 0;
-      padding: 10px 15px;
-      background: #c5cae9;
-      border-radius: 6px;
+      margin: 20px 0 10px 0;
+      padding: 16px 22px;
+      background: #d0e4fc;
+      border-radius: 10px;
       user-select: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.3s;
+      font-size: 1.18rem;
+      transition: background 0.35s ease, box-shadow 0.3s ease;
+      border-left: 6px solid #0c3c91;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
     }
     h3:hover {
-      background: #9fa8da;
+      background: #a7c5f8;
+      box-shadow: 0 4px 12px rgba(12,60,145,0.3);
     }
     .content {
-      padding: 0 20px 20px 20px;
-      background: #e8eaf6;
-      border-radius: 0 0 6px 6px;
-      margin-bottom: 15px;
+      padding: 22px 30px;
+      background: #f9fbff;
+      border-radius: 0 0 10px 10px;
+      margin-bottom: 22px;
       display: none;
-      font-size: 1rem;
+      font-size: 1.06rem;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+      color: #2b2b2b;
+      line-height: 1.9;
+      transition: opacity 0.4s ease;
     }
     .active .content {
       display: block;
+      animation: fadeInContent 0.45s ease forwards;
+    }
+    @keyframes fadeInContent {
+      from {opacity: 0; transform: translateY(-8px);}
+      to {opacity: 1; transform: translateY(0);}
     }
     .accordion-icon {
-      font-size: 1.2rem;
-      transition: transform 0.3s ease;
+      font-size: 1.35rem;
+      transition: transform 0.35s ease;
+      color: #0c3c91;
     }
     .active h3 .accordion-icon {
       transform: rotate(90deg);
+      color: #0a2a6f;
     }
     a {
-      color: #1a237e;
+      color: #0c3c91;
       text-decoration: none;
       font-weight: 600;
     }
@@ -66,18 +85,58 @@
     }
     blockquote {
       font-style: italic;
-      border-left: 4px solid #283593;
-      margin: 15px 0;
-      padding-left: 15px;
+      border-left: 5px solid #0c3c91;
+      margin: 20px 0;
+      padding-left: 22px;
       color: #444;
-      background: #d1d9ff;
-      border-radius: 4px;
+      background: #e5f0ff;
+      border-radius: 8px;
+      box-shadow: 1px 1px 5px rgba(12,60,145,0.15);
     }
     footer {
       text-align: center;
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #666;
+      margin-top: 52px;
+      font-size: 0.96rem;
+      color: #555;
+      font-style: normal;
+      letter-spacing: 0.02em;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 15px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 1rem;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    table thead tr {
+      background: #0c3c91;
+      color: #fff;
+      text-align: left;
+      font-weight: 700;
+    }
+    table th, table td {
+      padding: 14px 18px;
+    }
+    table tbody tr {
+      border-bottom: 1px solid #ddd;
+      background: #f9fbff;
+      transition: background 0.3s ease;
+    }
+    table tbody tr:hover {
+      background: #d0e4fc;
+    }
+    .chart-container {
+      margin: 30px auto;
+      max-width: 700px;
     }
   </style>
 </head>
@@ -92,14 +151,11 @@
       <h3>📜 Orígenes Antiguos y Conceptos Fundamentales <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
       <div class="content">
         <p>Desde la antigüedad, el ser humano ha buscado facilitar los cálculos y la gestión de información. El <strong>ábaco</strong>, inventado en Mesopotamia alrededor del <em>3000 a.C.</em>, fue el primer instrumento para realizar operaciones aritméticas simples con mayor rapidez que el conteo manual.</p>
-        <img src="imagenes/ABACO.jpg" alt="ABACO">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Abacus_3D_render.png/440px-Abacus_3D_render.png" alt="Ábaco antiguo" />
         <p>Más adelante, en el siglo XVII, <strong>Blaise Pascal</strong> desarrolló la <em>Pascalina</em> (1642), la primera calculadora mecánica capaz de sumar y restar, un paso decisivo que marcó el inicio de la automatización.</p>
-        <img src="imagenes/BLAISEN PASCAL.jpg" alt="Blaise_Pascal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Pascaline-1787.jpg/440px-Pascaline-1787.jpg" alt="Pascalina" />
         <p>Joseph Marie Jacquard, en 1801, inventó el telar programable usando <strong>tarjetas perforadas</strong>, un sistema que influiría directamente en la idea de programación y control secuencial de máquinas.</p>
-        <img src="imagenes/targetas perforadoras.jpg" alt="targetas perforadoras">
-        <p><strong>La ley de Moore</strong> establece que el número de transistores en un circuito integrado (chip) se duplica aproximadamente cada dos años, lo que lleva a un aumento exponencial de la potencia de procesamiento y una disminución en el costo por transistor. Esta observación, hecha por Gordon Moore en 1965, ha guiado la industria de los semiconductores durante décadas y ha impulsado el desarrollo de la tecnología informática. </p>
-        <img src="imagenes/ley de moore.jpg" alt="ley de moore">
-      
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Jacquard_loom_detail_01.JPG/440px-Jacquard_loom_detail_01.JPG" alt="Telar de Jacquard" />
       </div>
     </article>
 
@@ -107,10 +163,10 @@
       <h3>💡 La Máquina Analítica y el Nacimiento de la Computación Moderna <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
       <div class="content">
         <p>En 1837, <strong>Charles Babbage</strong> diseñó la <em>Máquina Analítica</em>, un dispositivo mecánico con todos los elementos que definen a una computadora moderna: unidad de entrada, memoria, procesamiento y salida. Este invento conceptual fue revolucionario pero nunca llegó a construirse completamente.</p>
-        <img src="imagenes/charles baddaye.jpg" alt="maquina analitica">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Babbage_Analytical_Engine_plan_1840.jpg/440px-Babbage_Analytical_Engine_plan_1840.jpg" alt="Máquina Analítica de Babbage" />
         <p>Su colaboradora, <strong>Ada Lovelace</strong>, escribió el primer algoritmo destinado a ser procesado por una máquina, anticipando la idea de la programación informática.</p>
         <blockquote>“Ada Lovelace es considerada la primera programadora de la historia.”</blockquote>
-
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/250px-Ada_Lovelace_portrait.jpg" alt="Ada Lovelace" />
       </div>
     </article>
 
@@ -119,18 +175,16 @@
       <div class="content">
         <p>En 1936, <strong>Alan Turing</strong> propuso la <em>Máquina de Turing</em>, un modelo abstracto capaz de simular cualquier algoritmo computacional. Este concepto sentó las bases para la informática teórica y la construcción de computadoras digitales.</p>
         <blockquote>“La Máquina de Turing define los límites de lo que una máquina puede computar.”</blockquote>
-        <img src="imagenes/maquina turing.jpg" alt="maquina turing">
-
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Turing_machine_illustration.svg/440px-Turing_machine_illustration.svg.png" alt="Máquina de Turing" />
       </div>
     </article>
 
     <article class="accordion-item">
-      <h3>⚙️ Primera Computadoras Electrónicas: La Era de las Válvulas <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+      <h3>⚙️ Primeras Computadoras Electrónicas: La Era de las Válvulas <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
       <div class="content">
         <p>Durante la Segunda Guerra Mundial y la posguerra, aparecieron computadoras como la <strong>Z3</strong> (1941) de Konrad Zuse y la <strong>ENIAC</strong> (1946), la primera computadora electrónica de propósito general. Usaban válvulas de vacío que consumían mucha energía y generaban calor.</p>
         <p>Estas máquinas eran gigantescas, costosas y difíciles de programar, pero marcaron el comienzo de la era electrónica.</p>
-        <img src="imagenes/ENIAC.webp" alt="ENIAC">
-
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/ENIAC_photo_1.jpg/440px-ENIAC_photo_1.jpg" alt="ENIAC" />
       </div>
     </article>
 
@@ -139,8 +193,7 @@
       <div class="content">
         <p>En 1947, el <strong>transistor</strong> fue inventado en los Laboratorios Bell. Este reemplazó a las válvulas de vacío, siendo más pequeño, eficiente y confiable. Este avance permitió construir computadoras más compactas y con menor consumo energético.</p>
         <p>Esta miniaturización aceleró el desarrollo de las computadoras y preparó el terreno para los circuitos integrados.</p>
-        <img src="imagenes/transcitor 1948.jpg" alt="transcitor">
-       
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Transistor-2N2222-with-scale.jpg/440px-Transistor-2N2222-with-scale.jpg" alt="Transistor" />
       </div>
     </article>
 
@@ -149,8 +202,71 @@
       <div class="content">
         <p>Los circuitos integrados (inventados a fines de los 50s) integran múltiples transistores en un solo chip, aumentando la velocidad y reduciendo costos. En 1971, Intel lanzó el <strong>4004</strong>, el primer microprocesador, condensando toda la CPU en un solo chip.</p>
         <p>Este avance impulsó la era de las computadoras personales y más tarde los dispositivos móviles y la computación en la nube.</p>
-        <img src="imagenes/circuito integrado.jpg" alt="circuito">
-    
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Intel_4004_and_Binder.jpg/440px-Intel_4004_and_Binder.jpg" alt="Intel 4004" />
+      </div>
+    </article>
+
+    <article class="accordion-item">
+      <h3>📊 Gráfica: Evolución del Tamaño y Potencia de Computadoras <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+      <div class="content">
+        <div class="chart-container">
+          <canvas id="evolucionChart" width="700" height="400"></canvas>
+        </div>
+        <p>Esta gráfica muestra cómo la potencia de las computadoras ha aumentado mientras su tamaño físico ha disminuido dramáticamente a lo largo de la historia.</p>
+      </div>
+    </article>
+
+    <article class="accordion-item">
+      <h3>📋 Tabla: Datos Clave de Computadoras Históricas <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Computadora</th>
+              <th>Año</th>
+              <th>Tamaño</th>
+              <th>Componentes clave</th>
+              <th>Innovación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ábaco</td>
+              <td>~3000 a.C.</td>
+              <td>Manual, pequeño</td>
+              <td>Perlas en varillas</td>
+              <td>Primer herramienta de cálculo</td>
+            </tr>
+            <tr>
+              <td>Pascalina</td>
+              <td>1642</td>
+              <td>30 cm aprox.</td>
+              <td>Engranajes mecánicos</td>
+              <td>Automatización básica</td>
+            </tr>
+            <tr>
+              <td>Máquina Analítica</td>
+              <td>1837</td>
+              <td>Grande, mecánica</td>
+              <td>Memoria, unidad aritmética</td>
+              <td>Concepto de computadora moderna</td>
+            </tr>
+            <tr>
+              <td>ENIAC</td>
+              <td>1946</td>
+              <td>167 m²</td>
+              <td>Válvulas de vacío</td>
+              <td>Primera computadora electrónica</td>
+            </tr>
+            <tr>
+              <td>Intel 4004</td>
+              <td>1971</td>
+              <td>Chip (1 cm²)</td>
+              <td>Microprocesador</td>
+              <td>CPU en un solo chip</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </article>
 
@@ -159,26 +275,117 @@
       <div class="content">
         <p>Hoy en día, la evolución continúa con la inteligencia artificial, la computación cuántica, y la interconexión global. Las máquinas ya no solo procesan datos, sino que aprenden, predicen y colaboran con humanos en diversas tareas.</p>
         <p>Los smartphones, las redes neuronales y la automatización están transformando la sociedad y abren nuevas preguntas sobre el rol de la tecnología en nuestras vidas.</p>
-
       </div>
     </article>
 
   </section>
 
   <footer>
-    <p>Fuentes: Wikipedia, libros de historia de la computación, artículos científicos y documentación académica.</p>
+    <p>Fuentes: <a href="https://es.wikipedia.org/wiki/Historia_de_la_computadora" target="_blank" rel="noopener noreferrer">Wikipedia</a>, <a href="https://computerhistory.org" target="_blank" rel="noopener noreferrer">Computer History Museum</a>, libros de historia de la computación, artículos científicos y documentación académica.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Código para funcionalidad acordeón
-    const items = document.querySelectorAll('.accordion-item');
-    items.forEach(item => {
-      const header = item.querySelector('h3');
-      header.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        items.forEach(i => i.classList.remove('active'));
-        if (!isActive) {
-          item.classList.add('active');
+    // Asegurarse que el DOM esté cargado antes de agregar eventos
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.accordion-item');
+      items.forEach(item => {
+        const header = item.querySelector('h3');
+        header.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          items.forEach(i => i.classList.remove('active'));
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // Configuración gráfica con Chart.js
+      const ctx = document.getElementById('evolucionChart').getContext('2d');
+      const evolucionChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['3000 a.C.', '1642', '1837', '1946', '1971', '2025'],
+          datasets: [
+            {
+              label: 'Tamaño (m² o equivalente)',
+              data: [0.001, 0.0001, 10, 167, 0.000001, 0.0000001],
+              borderColor: 'rgba(12, 60, 145, 0.8)',
+              backgroundColor: 'rgba(12, 60, 145, 0.3)',
+              fill: true,
+              yAxisID: 'y1',
+              tension: 0.4,
+              pointRadius: 6,
+            },
+                        {
+              label: 'Potencia (escala arbitraria)',
+              data: [1, 5, 10, 50, 200, 1000],
+              borderColor: 'rgba(220, 53, 69, 0.8)',
+              backgroundColor: 'rgba(220, 53, 69, 0.3)',
+              fill: true,
+              yAxisID: 'y2',
+              tension: 0.4,
+              pointRadius: 6,
+            }
+          ]
+        },
+        options: {
+          scales: {
+            y1: {
+              type: 'logarithmic',
+              position: 'left',
+              title: {
+                display: true,
+                text: 'Tamaño (m²)'
+              },
+              min: 0.00000001,
+              max: 200,
+              ticks: {
+                callback: function(value) {
+                  return value.toExponential();
+                }
+              }
+            },
+            y2: {
+              type: 'logarithmic',
+              position: 'right',
+              title: {
+                display: true,
+                text: 'Potencia (arbitraria)'
+              },
+              min: 1,
+              max: 1200,
+              grid: {
+                drawOnChartArea: false,
+              },
+              ticks: {
+                callback: function(value) {
+                  return value;
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                font: {
+                  size: 14,
+                  weight: 'bold'
+                }
+              }
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+            }
+          },
+          responsive: true,
+          interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false
+          }
         }
       });
     });
@@ -186,3 +393,4 @@
 
 </body>
 </html>
+
