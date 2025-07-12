@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f4f8;
+      background: linear-gradient(to right, #e3f2fd, #fce4ec);
       margin: 0;
       padding: 20px;
       color: #212121;
@@ -20,17 +20,29 @@
       background-color: #ffffff;
       margin: 20px 0;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .generacion:hover {
+      transform: scale(1.02);
+      background-color: #f3f9ff;
     }
     .generacion img {
       max-width: 100%;
       height: auto;
-      margin: 10px 0;
-      border-radius: 5px;
+      margin: 15px auto 0 auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: block;
     }
     .generacion h3 {
       color: #1e88e5;
+      font-size: 1.5em;
+    }
+    .generacion p {
+      font-size: 1.08em;
+      line-height: 1.8;
     }
     footer {
       margin-top: 40px;
@@ -38,49 +50,86 @@
       font-size: 0.9em;
       color: #555;
     }
+    .timeline {
+      margin: 30px 0;
+      padding-left: 20px;
+      border-left: 4px solid #90caf9;
+    }
+    .timeline p {
+      margin: 10px 0;
+      position: relative;
+    }
+    .timeline p::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background-color: #1976d2;
+      border-radius: 50%;
+    }
   </style>
 </head>
 <body>
   <h1>1.2 Generaciones de la Computadora</h1>
-  <p>La evolución tecnológica de las computadoras se ha clasificado en generaciones, cada una marcada por avances clave en hardware y software. A continuación, se presentan las cinco generaciones principales.</p>
+  <p>La historia de la computación es una epopeya tecnológica que refleja el avance del ingenio humano. Desde el calor de las válvulas hasta el frío silencio de los qubits, cada generación fue un salto de fe hacia lo imposible.</p>
+
+  <div class="timeline">
+    <p><strong>1940s:</strong> Computadoras con válvulas que cabían en una habitación completa.</p>
+    <p><strong>1950s-60s:</strong> Transistores y mayor fiabilidad, dando paso a los lenguajes de programación.</p>
+    <p><strong>1970s-80s:</strong> Microprocesadores y nacimiento de la computación personal.</p>
+    <p><strong>2000s-2020s:</strong> Inteligencia Artificial, computación en la nube, dispositivos móviles.</p>
+    <p><strong>Futuro:</strong> Qubits, interfaces cerebro-máquina, conciencia computacional.</p>
+  </div>
 
   <div class="generacion">
     <h3>Primera Generación (1940–1956): Válvulas de vacío</h3>
+    <p>En plena Segunda Guerra Mundial, surgieron máquinas colosales como el ENIAC, que procesaban operaciones matemáticas a velocidades inéditas para su época.</p>
+    <p><strong>Características:</strong> Uso de tubos de vacío, lenguaje máquina, tarjetas perforadas.</p>
+    <p><strong>Ejemplos:</strong> ENIAC, UNIVAC I.</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/ENIAC.jpg" alt="Primera Generación - ENIAC">
-    <p>Utilizaban tubos de vacío para procesar información. Eran grandes, lentas, consumían mucha energía y generaban mucho calor. Se programaban en lenguaje máquina.</p>
-    <p><strong>Ejemplo:</strong> ENIAC, UNIVAC I.</p>
   </div>
 
   <div class="generacion">
     <h3>Segunda Generación (1956–1963): Transistores</h3>
+    <p>Con la invención del transistor, se redujo el tamaño y costo de las computadoras. Fue la era del software estructurado y la programación científica.</p>
+    <p><strong>Ejemplos:</strong> IBM 1401, UNIVAC II.</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/IBM1401.JPG" alt="Segunda Generación - IBM 1401">
-    <p>Reemplazaron los tubos de vacío con transistores, que eran más pequeños, rápidos y eficientes. Surgieron los primeros lenguajes de alto nivel como COBOL y FORTRAN.</p>
-    <p><strong>Ejemplo:</strong> IBM 1401.</p>
   </div>
 
   <div class="generacion">
     <h3>Tercera Generación (1964–1971): Circuitos Integrados</h3>
+    <p>La miniaturización llegó con los circuitos integrados. Aumentaron la velocidad de proceso y nacieron los primeros sistemas operativos.</p>
+    <p><strong>Ejemplos:</strong> CDC 6600, IBM System/360.</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Control_Data_CDC_6600.jpg" alt="Tercera Generación - CDC 6600">
-    <p>Introdujeron los circuitos integrados, que aumentaron la velocidad de procesamiento y redujeron costos. Permitieron la multiprogramación y surgieron los sistemas operativos.</p>
-    <p><strong>Ejemplo:</strong> CDC 6600, IBM System/360.</p>
   </div>
 
   <div class="generacion">
     <h3>Cuarta Generación (1971–actualidad): Microprocesadores</h3>
+    <p>El microprocesador permitió integrar toda la lógica de una computadora en un solo chip. Las PC y laptops nacieron, acercando la informática a los hogares.</p>
+    <p><strong>Ejemplos:</strong> Intel 4004, Apple II, IBM PC.</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Intel_4004.jpg" alt="Cuarta Generación - Intel 4004">
-    <p>Con la invención del microprocesador, se integró toda la CPU en un solo chip. Esto hizo posible las computadoras personales. Aparecieron las primeras interfaces gráficas y el uso del ratón.</p>
-    <p><strong>Ejemplo:</strong> Apple II, IBM PC, Intel 4004.</p>
   </div>
 
   <div class="generacion">
-    <h3>Quinta Generación (Presente y Futuro): Inteligencia Artificial</h3>
+    <h3>Quinta Generación (Presente): Inteligencia Artificial</h3>
+    <p>Vivimos la era de la información y la automatización. Algoritmos inteligentes analizan datos, aprenden y predicen. Es la revolución del software inteligente.</p>
+    <p><strong>Ejemplos:</strong> Siri, Google Assistant, redes neuronales, visión por computadora.</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/AI_robot_concept.jpg" alt="Quinta Generación - IA">
-    <p>Basada en IA, redes neuronales, big data y computación cuántica. Las máquinas pueden aprender y tomar decisiones. Asistentes virtuales, autos autónomos y sistemas expertos son parte de esta generación.</p>
-    <p><strong>Ejemplo:</strong> Siri, Alexa, Google Assistant, procesadores con IA.</p>
+  </div>
+
+  <div class="generacion">
+    <h3>Sexta Generación (Futuro Próximo): Computación Cuántica e Interfaces Cerebrales</h3>
+    <p>Más allá del silicio, entramos al mundo de lo cuántico: superposición, entrelazamiento y paralelismo extremo. Los límites del conocimiento están redefiniéndose.</p>
+    <p>Las interfaces cerebrales buscan fusionar mente y máquina para alcanzar niveles inéditos de interacción humano-digital.</p>
+    <p><strong>Ejemplos:</strong> IBM Quantum, Google Sycamore, Neuralink, DeepMind Gato.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Quantum_computer_icon.svg/640px-Quantum_computer_icon.svg.png" alt="Sexta Generación - Computadora Cuántica">
   </div>
 
   <footer>
-    Fuentes: Wikipedia, IBM Archives, Intel Museum, Historia de la Computación.
+    Fuentes: Wikipedia, IBM Archives, Intel Museum, Historia de la Computación, Google AI, IBM Quantum.
   </footer>
 </body>
 </html>
+
