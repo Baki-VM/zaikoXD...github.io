@@ -1,94 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.7 Componentes de Entrada y Salida</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.6 Hardware Externo - Investigación Detallada</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f1f4f8;
-      color: #2c3e50;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #ECEFF1;
       padding: 20px;
       max-width: 1100px;
       margin: auto;
     }
     h1 {
       text-align: center;
-      color: #0d47a1;
+      color: #00bcd4;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     }
-    .componente {
-      background-color: #fff;
+    .bloque {
+      background: rgba(255, 255, 255, 0.05);
       margin: 30px 0;
       padding: 20px;
-      border-left: 6px solid #1565c0;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 6px solid #00bcd4;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s, background-color 0.3s;
     }
-    .componente h2 {
-      color: #1565c0;
+    .bloque:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255,255,255,0.1);
     }
-    .componente img {
-      width: 100%;
-      max-width: 400px;
+    .bloque h2 {
+      color: #4fc3f7;
+    }
+    .bloque img {
+      max-width: 100%;
       display: block;
       margin: 15px auto;
-      border-radius: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .bloque img:hover {
+      transform: scale(1.05);
     }
     ul {
       margin-left: 20px;
     }
+    ul li {
+      margin-bottom: 10px;
+    }
     footer {
       text-align: center;
-      margin-top: 40px;
       font-size: 0.9em;
-      color: #555;
+      color: #B0BEC5;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <h1>1.7 Componentes de Entrada y Salida (E/S)</h1>
+  <h1>1.6 Hardware Externo - Investigación Detallada</h1>
 
-  <p>Los componentes de entrada y salida son fundamentales en cualquier sistema computacional. Permiten la interacción entre el usuario y la computadora. A través de estos dispositivos, se envían y reciben datos que permiten operar el equipo, manipular información y ejecutar acciones concretas.</p>
+  <p>El hardware externo comprende todos los dispositivos que se encuentran fuera del gabinete principal de un ordenador, permitiendo la interacción con el usuario, la comunicación de datos y la expansión de capacidades. Estos dispositivos son fundamentales para el funcionamiento integral de cualquier sistema informático moderno.</p>
 
-  <div class="componente">
-    <h2>🖱️ Dispositivos de Entrada</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Computer_Input_Devices.jpg" alt="Dispositivos de Entrada">
-    <p>Los dispositivos de entrada permiten al usuario ingresar datos o comandos a la computadora. Sin ellos, no podríamos indicarle al sistema qué debe hacer.</p>
+  <div class="bloque">
+    <h2>🖥️ Dispositivos Periféricos de Entrada</h2>
+    <p>Estos dispositivos permiten al usuario ingresar información, comandos o datos al sistema computacional. Sin ellos, la comunicación directa con la máquina sería imposible.</p>
     <ul>
-      <li><strong>Teclado:</strong> Permite escribir texto y ejecutar comandos mediante teclas alfanuméricas y de función.</li>
-      <li><strong>Mouse:</strong> Dispositivo apuntador que permite interactuar con los elementos gráficos en pantalla.</li>
-      <li><strong>Micrófono:</strong> Transforma la voz u otros sonidos en señales digitales.</li>
-      <li><strong>Escáner:</strong> Convierte documentos físicos en archivos digitales.</li>
-      <li><strong>Cámara web:</strong> Captura imágenes o video en tiempo real.</li>
+      <li><strong>Teclado:</strong> Herramienta básica para introducir texto, números y comandos. Existen teclados mecánicos, de membrana, ergonómicos y retroiluminados.</li>
+      <li><strong>Ratón (Mouse):</strong> Permite el control del puntero en la pantalla con clics y desplazamientos. Puede ser óptico, láser, con cable o inalámbrico.</li>
+      <li><strong>Escáner:</strong> Transforma documentos físicos en imágenes digitales, esenciales en oficinas y estudios gráficos.</li>
+      <li><strong>Micrófono:</strong> Convierte sonidos en señales digitales. Usado en videoconferencias, grabaciones y comandos por voz.</li>
+      <li><strong>Cámara Web:</strong> Captura imágenes y video en tiempo real para videollamadas, streaming o seguridad.</li>
+      <li><strong>Tabletas digitalizadoras:</strong> Permiten dibujar directamente en formato digital, utilizadas por diseñadores gráficos y artistas.</li>
     </ul>
   </div>
 
-  <div class="componente">
-    <h2>🖥️ Dispositivos de Salida</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Computer_output_devices.jpg" alt="Dispositivos de Salida">
-    <p>Estos dispositivos permiten que el usuario reciba información desde la computadora, ya sea en forma visual, sonora o física.</p>
+  <div class="bloque">
+    <h2>🖨️ Dispositivos Periféricos de Salida</h2>
+    <p>Estos dispositivos presentan al usuario el resultado de los procesos realizados por la computadora, ya sea en forma visual, sonora o impresa.</p>
     <ul>
-      <li><strong>Monitor:</strong> Muestra la información de manera gráfica o textual. Puede ser LCD, LED o táctil.</li>
-      <li><strong>Impresora:</strong> Transforma la información digital en copias físicas (papel).</li>
-      <li><strong>Parlantes:</strong> Emiten sonido procesado por la computadora.</li>
-      <li><strong>Proyector:</strong> Muestra imágenes en una superficie externa para presentaciones.</li>
+      <li><strong>Monitor:</strong> Pantalla que muestra información visual como textos, gráficos y videos. Pueden ser LCD, LED, OLED o monitores curvos de alta resolución.</li>
+      <li><strong>Impresora:</strong> Reproduce información digital en papel. Existen impresoras láser, de inyección de tinta, 3D y térmicas.</li>
+      <li><strong>Parlantes:</strong> Emiten sonidos, música, efectos o alertas del sistema.</li>
+      <li><strong>Auriculares:</strong> Dispositivo personal para escuchar audio sin molestar al entorno, con variantes con cancelación de ruido.</li>
+      <li><strong>Proyectores:</strong> Amplían la visualización de contenido en grandes superficies para presentaciones o cine en casa.</li>
     </ul>
   </div>
 
-  <div class="componente">
-    <h2>🔄 Dispositivos Mixtos (Entrada/Salida)</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Touchscreen_device.jpg" alt="Dispositivo de Entrada y Salida">
-    <p>Son dispositivos que pueden tanto enviar como recibir información del sistema.</p>
+  <div class="bloque">
+    <h2>🔄 Dispositivos Periféricos Mixtos (Entrada y Salida)</h2>
+    <p>Permiten tanto la entrada como la salida de información, facilitando una interacción más rica entre el usuario y la computadora.</p>
     <ul>
-      <li><strong>Pantallas táctiles:</strong> Permiten ver la información y al mismo tiempo interactuar con ella mediante el tacto.</li>
-      <li><strong>Memorias USB:</strong> Pueden recibir datos (entrada) y también transmitirlos a otros dispositivos (salida).</li>
-      <li><strong>Discos duros externos:</strong> Almacenan datos del sistema y permiten transferirlos o recuperarlos.</li>
+      <li><strong>Pantalla táctil:</strong> Funciona como monitor y como método de entrada mediante el tacto.</li>
+      <li><strong>Multifuncionales:</strong> Dispositivos que integran impresora, escáner, fotocopiadora y fax en uno solo.</li>
+      <li><strong>Unidades de almacenamiento externas:</strong> Discos duros externos, memorias USB y SSD portátiles para transferir, respaldar y transportar información.</li>
+      <li><strong>Consolas de videojuegos:</strong> Combinan entrada de comandos mediante controladores y salida visual y sonora.</li>
+      <li><strong>Realidad Virtual (VR):</strong> Combina gafas con sensores y controladores para una experiencia inmersiva en entornos virtuales.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <h2>🔌 Otros Accesorios Externos y Complementarios</h2>
+    <p>Además de los periféricos tradicionales, existe una gama de accesorios que amplían y optimizan la experiencia de usuario en distintos contextos.</p>
+    <ul>
+      <li><strong>Adaptadores USB y hubs:</strong> Permiten ampliar la cantidad de puertos disponibles para conectar más dispositivos simultáneamente.</li>
+      <li><strong>Tarjetas gráficas externas:</strong> Mejoran el rendimiento gráfico en laptops o PCs sin capacidad gráfica dedicada.</li>
+      <li><strong>Dispositivos de streaming:</strong> Como Chromecast o Fire Stick para transmitir contenido multimedia a televisores.</li>
+      <li><strong>Controladores de videojuegos:</strong> Incluyen joysticks, volantes, pedales y gamepads especializados para cada género de juego.</li>
+      <li><strong>Estaciones de acoplamiento:</strong> Conectan múltiples dispositivos a una laptop con un solo cable, ideal para estaciones de trabajo.</li>
+      <li><strong>Dispositivos biométricos:</strong> Lectores de huellas digitales y escáneres de retina para seguridad y autenticación.</li>
     </ul>
   </div>
 
   <footer>
-    Fuentes: Manual de Hardware y Periféricos, HP Tech Support, Curso Básico de Informática (Ed. Alfaomega).
+    Fuentes: HP Learning Hub, Microsoft Hardware Guide, Wikipedia, Intel Education, Logitech, Creative Labs.
   </footer>
 </body>
 </html>
