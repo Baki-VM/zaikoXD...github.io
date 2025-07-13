@@ -169,7 +169,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 🔧 ESTILOS RESPONSIVOS 🔧 */
     @media (max-width: 768px) {
       header {
         padding: 20px 10px;
@@ -181,6 +180,7 @@
 
       .section-title {
         font-size: 1rem;
+        margin-right: 0;
       }
 
       section h2 {
@@ -206,8 +206,13 @@
       }
 
       .toggle {
+        position: static;
+        display: block;
+        width: 100%;
+        margin-top: 10px;
         font-size: 0.9rem;
-        padding: 8px 12px;
+        padding: 10px;
+        text-align: center;
       }
 
       .boton-enlace, .external-link {
@@ -217,9 +222,8 @@
     }
   </style>
 </head>
-
 <body>
-  <header>
+     <header>
     <h1>💻 Hardware I </h1>
     <p>Trabajo para la materia de Hardware y Software — UPDS Santa Cruz</p>
   </header>
@@ -423,5 +427,6 @@
       }
     }
   </script>
+  
 </body>
 </html>
