@@ -1,117 +1,319 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1.5 Componentes de la Computadora</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9fafc;
-      color: #2c3e50;
-      padding: 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-      color: #0d47a1;
-    }
-    .componente {
-      background-color: #fff;
-      margin: 30px 0;
-      padding: 20px;
-      border-left: 6px solid #0077c2;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .componente h2 {
-      color: #1565c0;
-    }
-    .componente p {
-      margin-bottom: 10px;
-    }
-    .componente img {
-      width: 100%;
-      max-width: 400px;
-      display: block;
-      margin: 10px auto 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Componentes Detallados de una Computadora</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #d1c4e9, #b39ddb);
+    color: #2e003e;
+    margin: 0; padding: 30px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 5px #311b92;
+  }
+  .accordion-item {
+    background: #f3e5f5;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    overflow: hidden;
+    border: 2px solid #7e57c2;
+  }
+  .accordion-header {
+    padding: 18px 28px;
+    font-size: 1.3em;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #4a148c;
+    user-select: none;
+    transition: background 0.3s ease;
+  }
+  .accordion-header:hover {
+    background: #ede7f6;
+  }
+  .accordion-content {
+    padding: 20px 28px 30px 28px;
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+  }
+  .accordion-item.active .accordion-content {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  img {
+    max-width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(75,0,130,0.3);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.95em;
+  }
+  th, td {
+    padding: 14px;
+    border: 1px solid #7e57c2;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background-color: #9575cd;
+    color: #fff;
+  }
+  .icon {
+    font-size: 1.4em;
+    margin-left: 10px;
+  }
+</style>
 </head>
 <body>
-  <h1>1.5 Componentes Digitales, Eléctricos, Electrónicos, Electromecánicos y Mecánicos</h1>
 
-  <p>La computadora está compuesta por distintos tipos de componentes que trabajan en conjunto para permitir el funcionamiento del sistema. Esta clasificación ayuda a entender mejor qué función cumple cada parte dentro del equipo, desde el procesamiento de información hasta la interacción física y la energía necesaria para operar.</p>
+<h1>🔍 Componentes Detallados de una Computadora</h1>
 
-  <div class="componente">
-    <h2>🔢 Componentes Digitales</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Intel_CPU_Core_i7.jpg" alt="Microprocesador">
-    <p>Los componentes digitales trabajan con datos binarios (0 y 1). Se encargan del procesamiento lógico de la información mediante circuitos digitales.</p>
-    <ul>
-      <li><strong>Microprocesador (CPU):</strong> Ejecuta instrucciones y coordina todas las operaciones del sistema.</li>
-      <li><strong>Memoria RAM:</strong> Almacena datos temporalmente mientras el equipo está encendido.</li>
-      <li><strong>Memoria ROM:</strong> Contiene datos permanentes como el firmware del sistema.</li>
-      <li><strong>BIOS:</strong> Programa básico que inicia y prueba los componentes del sistema al encenderlo.</li>
-    </ul>
+<!-- Componentes Digitales -->
+<div class="accordion-item">
+  <div class="accordion-header">🔢 Componentes Digitales <span class="icon">▼</span></div>
+  <div class="accordion-content">
+    <p>Los componentes digitales son la base lógica que procesa la información en formato binario (bits 0 y 1). Controlan el flujo de datos y las operaciones fundamentales del sistema.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Función Detallada</th>
+          <th>Cómo Funciona</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Microprocesador (CPU)</td>
+          <td>Ejecuta instrucciones, procesa datos y controla el funcionamiento general del sistema.</td>
+          <td>Está compuesto por la Unidad Aritmético Lógica (ALU), Unidad de Control y registros que manejan operaciones lógicas, aritméticas y flujo de datos.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Intel_CPU_Core_i7.jpg" alt="CPU Intel Core i7" /></td>
+        </tr>
+        <tr>
+          <td>Memoria RAM</td>
+          <td>Almacena temporalmente datos e instrucciones que la CPU usa mientras el sistema está encendido.</td>
+          <td>Funciona como memoria volátil, permitiendo acceso ultra rápido para lectura/escritura, facilitando la ejecución fluida de programas.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/RAM_Memory.jpg" alt="Memoria RAM" /></td>
+        </tr>
+        <tr>
+          <td>Memoria ROM</td>
+          <td>Almacena datos e instrucciones permanentes, como el firmware que arranca la computadora.</td>
+          <td>Es memoria no volátil, contiene programas esenciales que no cambian y que la CPU usa para inicializar el sistema.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/EPROM_-_Extreme_closeup_3_-_2007-05-07.jpg" alt="Memoria ROM EPROM" /></td>
+        </tr>
+        <tr>
+          <td>Tarjeta Madre (Motherboard)</td>
+          <td>Conecta y permite la comunicación entre todos los componentes del sistema.</td>
+          <td>Contiene circuitos impresos que unen CPU, memoria, buses, ranuras de expansión y periféricos en un solo sistema integral.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Motherboard_ASRock_H61M_Ultra.JPG" alt="Placa Madre" /></td>
+        </tr>
+        <tr>
+          <td>Chipset</td>
+          <td>Coordina las comunicaciones entre CPU, memoria y periféricos.</td>
+          <td>Actúa como puente, controlando flujos de datos y facilitando el acceso eficiente a recursos internos y externos.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Intel_82865G_chipset_1.jpg" alt="Chipset Intel" /></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <div class="componente">
-    <h2>⚡ Componentes Eléctricos</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Computer_Power_Supply.jpg" alt="Fuente de Poder">
-    <p>Estos componentes permiten la distribución de la energía eléctrica necesaria para el funcionamiento de todo el sistema.</p>
-    <ul>
-      <li><strong>Fuente de poder (PSU):</strong> Convierte la corriente alterna en corriente continua para alimentar los componentes internos.</li>
-      <li><strong>Cables de alimentación:</strong> Distribuyen la electricidad desde la fuente hacia la placa madre, discos, GPU, etc.</li>
-      <li><strong>Interruptor de encendido:</strong> Permite iniciar o apagar el sistema mediante el flujo de corriente.</li>
-    </ul>
+<!-- Componentes Eléctricos -->
+<div class="accordion-item">
+  <div class="accordion-header">⚡ Componentes Eléctricos <span class="icon">▼</span></div>
+  <div class="accordion-content">
+    <p>Distribuyen y transforman la energía eléctrica necesaria para que todos los componentes funcionen correctamente.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Función Detallada</th>
+          <th>Cómo Funciona</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fuente de Poder (PSU)</td>
+          <td>Convierte la corriente alterna (AC) de la red eléctrica en corriente continua (DC) estable para alimentar todos los componentes.</td>
+          <td>Incluye transformadores, rectificadores y reguladores que estabilizan voltajes a +12V, +5V, +3.3V y otros, asegurando energía limpia y segura.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Computer_power_supply.jpg" alt="Fuente de Poder" /></td>
+        </tr>
+        <tr>
+          <td>Cables de Poder</td>
+          <td>Transportan la energía desde la fuente a cada componente, garantizando correcta alimentación y seguridad.</td>
+          <td>Conectan mediante conectores específicos (Molex, SATA, ATX) suministrando el voltaje y corriente necesaria.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/AC_power_cord.jpg" alt="Cables de Poder" /></td>
+        </tr>
+        <tr>
+          <td>Reguladores de Voltaje</td>
+          <td>Aseguran que los componentes reciban un voltaje constante, evitando daños por picos eléctricos.</td>
+          <td>Filtran y estabilizan la corriente eléctrica a niveles seguros para la operación de circuitos delicados.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Voltage_Regulator_3-Terminal.JPG" alt="Regulador de Voltaje" /></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <div class="componente">
-    <h2>🔌 Componentes Electrónicos</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Motherboard.jpg" alt="Placa Madre">
-    <p>Utilizan semiconductores para gestionar y controlar el flujo de corriente y señales eléctricas. Son claves para que los dispositivos digitales funcionen correctamente.</p>
-    <ul>
-      <li><strong>Placa madre:</strong> Conecta y coordina todos los componentes internos, permitiendo su comunicación.</li>
-      <li><strong>Transistores:</strong> Actúan como interruptores o amplificadores de señales eléctricas.</li>
-      <li><strong>Capacitores:</strong> Almacenan carga eléctrica temporalmente.</li>
-      <li><strong>Chips integrados:</strong> Paquetes que contienen múltiples componentes electrónicos en un solo circuito.</li>
-    </ul>
+<!-- Componentes Electrónicos -->
+<div class="accordion-item">
+  <div class="accordion-header">📡 Componentes Electrónicos <span class="icon">▼</span></div>
+  <div class="accordion-content">
+    <p>Manipulan señales eléctricas para procesar, amplificar y controlar la información dentro de los circuitos.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Función Detallada</th>
+          <th>Cómo Funciona</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Transistores</td>
+          <td>Actúan como interruptores o amplificadores en circuitos electrónicos.</td>
+          <td>Controlan el flujo de corriente eléctrica, permitiendo encender/apagar señales o amplificar señales débiles.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Electronic_components.jpg" alt="Transistores" /></td>
+        </tr>
+        <tr>
+          <td>Circuitos Integrados (Chips)</td>
+          <td>Integran miles/millones de componentes electrónicos en un solo chip para realizar funciones complejas.</td>
+          <td>Concentran transistores, resistencias y condensadores miniaturizados para procesar datos y señales.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Intel_8742.jpg" alt="Circuito Integrado" /></td>
+        </tr>
+        <tr>
+          <td>Condensadores</td>
+          <td>Almacenan y liberan energía eléctrica, ayudando a estabilizar voltajes en circuitos.</td>
+          <td>Retienen carga eléctrica temporalmente para filtrar ruidos o estabilizar alimentación.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Electrolytic_Capacitor.jpg" alt="Condensador" /></td>
+        </tr>
+        <tr>
+          <td>Resistencias</td>
+          <td>Limitan el flujo de corriente eléctrica para proteger circuitos y ajustar señales.</td>
+          <td>Disipan energía eléctrica en forma de calor para controlar intensidad de corriente.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Resistors.jpg" alt="Resistencias" /></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <div class="componente">
-    <h2>⚙️ Componentes Electromecánicos</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Hard_drive.jpg" alt="Disco Duro Mecánico">
-    <p>Transforman energía eléctrica en movimiento mecánico, o viceversa. Se encuentran principalmente en dispositivos de almacenamiento y refrigeración.</p>
-    <ul>
-      <li><strong>Discos duros (HDD):</strong> Usan partes móviles para leer y escribir datos en platos magnéticos.</li>
-      <li><strong>Unidades ópticas:</strong> Leen y graban datos mediante láser en discos CD o DVD.</li>
-      <li><strong>Ventiladores:</strong> Expulsan el calor generado por los componentes y evitan el sobrecalentamiento.</li>
-    </ul>
+<!-- Componentes Electromecánicos -->
+<div class="accordion-item">
+  <div class="accordion-header">⚙️ Componentes Electromecánicos <span class="icon">▼</span></div>
+  <div class="accordion-content">
+    <p>Transforman la energía eléctrica en movimiento físico o viceversa para realizar tareas mecánicas controladas electrónicamente.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Función Detallada</th>
+          <th>Cómo Funciona</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ventiladores</td>
+          <td>Refrigeran componentes críticos como CPU y GPU para evitar sobrecalentamiento.</td>
+          <td>Funcionan con un motor eléctrico que hace girar aspas para mover aire fresco hacia componentes calientes.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/CPU_Cooler_with_Fan.jpg" alt="Ventilador CPU" /></td>
+        </tr>
+        <tr>
+          <td>Disco Duro Mecánico (HDD)</td>
+          <td>Almacena grandes cantidades de datos de forma magnética en platos giratorios.</td>
+          <td>Utiliza un cabezal móvil que lee y escribe datos magnéticos en discos giratorios a alta velocidad.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Hard_drive_internal_components.jpg" alt="Disco Duro" /></td>
+        </tr>
+        <tr>
+          <td>Unidad de DVD/CD</td>
+          <td>Lee y escribe datos en discos ópticos mediante un láser.</td>
+          <td>El láser detecta reflejos para interpretar datos digitales almacenados en discos.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/HP_DVD-Writer.jpg" alt="Unidad DVD/CD" /></td>
+        </tr>
+        <tr>
+          <td>Relés</td>
+          <td>Interruptores electromecánicos usados para controlar circuitos de alta potencia mediante señales eléctricas pequeñas.</td>
+          <td>Utilizan un electroimán para abrir o cerrar contactos eléctricos físicamente.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Relay.jpg" alt="Relé electromecánico" /></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <div class="componente">
-    <h2>🔩 Componentes Mecánicos</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Computer_case_open.jpg" alt="Chasis Computadora">
-    <p>Son los elementos estructurales y móviles que permiten el soporte físico del sistema y su funcionamiento físico.</p>
-    <ul>
-      <li><strong>Chasis o carcasa:</strong> Protege y sostiene todos los componentes internos.</li>
-      <li><strong>Disipadores de calor:</strong> Absorben y dispersan el calor de los chips para evitar daños.</li>
-      <li><strong>Bisagras:</strong> Permiten el movimiento en computadoras portátiles (como la pantalla).</li>
-      <li><strong>Tornillos y anclajes:</strong> Mantienen todas las piezas firmemente unidas.</li>
-    </ul>
+<!-- Componentes Mecánicos -->
+<div class="accordion-item">
+  <div class="accordion-header">🔩 Componentes Mecánicos <span class="icon">▼</span></div>
+  <div class="accordion-content">
+    <p>Proveen soporte estructural y protección física a los demás componentes del sistema.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Función Detallada</th>
+          <th>Cómo Funciona</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Chasis (Caja)</td>
+          <td>Aloja y protege todos los componentes internos, facilitando ventilación y accesibilidad.</td>
+          <td>Está fabricado en materiales metálicos o plásticos resistentes que soportan impactos y disipación térmica.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Computer_case_with_components.jpg" alt="Chasis de computadora" /></td>
+        </tr>
+        <tr>
+          <td>Soportes y Tornillos</td>
+          <td>Fijan de forma segura componentes como placas, discos y ventiladores dentro del chasis.</td>
+          <td>Permiten ensamblaje modular y mantenimiento sin daños físicos a piezas delicadas.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Computer_screw_set.jpg" alt="Tornillos para computadora" /></td>
+        </tr>
+        <tr>
+          <td>Paneles Laterales</td>
+          <td>Proveen acceso y protección adicional, algunos con filtros para polvo o ventanas transparentes.</td>
+          <td>Se colocan y aseguran con tornillos o mecanismos deslizantes para facilitar mantenimiento y estética.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/PC_case_side_panel.JPG" alt="Panel lateral" /></td>
+        </tr>
+        <tr>
+          <td>Refrigeración Pasiva (Disipadores)</td>
+          <td>Disipan calor sin usar partes móviles, protegiendo componentes de temperaturas dañinas.</td>
+          <td>Usan aletas metálicas que aumentan superficie para transferir calor al aire ambiente.</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/CPU_heatsink_and_fan.jpg" alt="Disipador de CPU" /></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <footer>
-    Fuentes: Manual de Ensamblaje de PCs, Electrónica Básica, Arquitectura de Computadoras - Tanenbaum, Intel Learning Center, Wikipedia.
-  </footer>
+<script>
+  const items = document.querySelectorAll('.accordion-item');
+  items.forEach(item => {
+    item.querySelector('.accordion-header').addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      items.forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+</script>
+
 </body>
 </html>
