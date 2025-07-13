@@ -7,90 +7,149 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f3f6f9;
+      background: linear-gradient(to right, #e3f2fd, #fce4ec);
       margin: 0;
       padding: 20px;
-      color: #333;
+      color: #212121;
     }
-    h1 {
+    h1, h2 {
       color: #0d47a1;
       text-align: center;
     }
-    .elemento {
+    .generacion {
       background-color: #ffffff;
       margin: 20px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
-    .elemento summary {
-      padding: 15px 20px;
-      background-color: #e3f2fd;
+    .generacion:hover {
+      transform: scale(1.02);
+      background-color: #f3f9ff;
+    }
+    .generacion h3 {
+      color: #1e88e5;
+      font-size: 1.5em;
       cursor: pointer;
-      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+    .generacion h3:hover {
+      color: #0d47a1;
+    }
+    .generacion details {
+      margin-top: 10px;
+    }
+    .generacion summary {
+      background: #e3f2fd;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
       font-weight: bold;
     }
-    .elemento p {
-      padding: 15px 20px;
-      margin: 0;
-      background-color: #ffffff;
+    .generacion p {
+      font-size: 1.08em;
+      line-height: 1.8;
     }
-    .elemento img {
+    .generacion img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    table {
       width: 100%;
-      max-height: 300px;
-      object-fit: contain;
-      display: block;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #0d47a1;
+      color: white;
+    }
+    td {
+      background-color: #f3f9ff;
     }
     footer {
-      text-align: center;
       margin-top: 40px;
+      text-align: center;
       font-size: 0.9em;
-      color: #666;
+      color: #555;
     }
   </style>
 </head>
 <body>
   <h1>1.3 Elementos Principales del Computador</h1>
-  <p>Los computadores están formados por diversos elementos que trabajan de manera conjunta para ejecutar tareas complejas. Estos elementos pueden clasificarse en hardware y software, aunque en este apartado nos enfocaremos en los elementos físicos esenciales.</p>
+  <p>Los componentes de un computador trabajan en conjunto para ejecutar y procesar información. Cada uno tiene un rol único y esencial que permite el funcionamiento integral del sistema. A continuación, te mostramos los principales con descripciones detalladas.</p>
 
-  <details class="elemento">
-    <summary>🧠 Unidad Central de Procesamiento (CPU)</summary>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Intel_CPU_Core_i7.jpg" alt="Imagen CPU">
-    <p>La CPU es el cerebro de la computadora. Ejecuta instrucciones, coordina los procesos y toma decisiones lógicas. Se compone del ALU (unidad aritmético-lógica), la unidad de control y los registros.</p>
-  </details>
-
-  <details class="elemento">
-    <summary>💾 Memoria RAM</summary>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/RAM_Memory.jpg" alt="Imagen RAM">
-    <p>La memoria RAM almacena temporalmente los datos que la CPU necesita procesar. Es volátil, lo que significa que su contenido se pierde al apagar el computador.</p>
-  </details>
-
-  <details class="elemento">
-    <summary>💽 Disco Duro / SSD</summary>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Solid_State_Drive.jpg" alt="Imagen Disco Duro SSD">
-    <p>Son dispositivos de almacenamiento permanente. Los discos duros mecánicos (HDD) y las unidades de estado sólido (SSD) guardan el sistema operativo, programas y archivos.</p>
-  </details>
-
-  <details class="elemento">
-    <summary>🖥️ Monitor</summary>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/LCD_monitor.jpg" alt="Imagen Monitor">
-    <p>Dispositivo de salida visual que muestra la interfaz del sistema y los resultados de las operaciones realizadas por el computador.</p>
-  </details>
-
-  <details class="elemento">
-    <summary>⌨️ Teclado</summary>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Computer_keyboard.jpg" alt="Imagen Teclado">
-    <p>Permite al usuario introducir datos y comandos mediante teclas alfanuméricas y de función.</p>
-  </details>
-
-  <details class="elemento">
-    <summary>🖱️ Mouse</summary>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Computer_mouse.jpg" alt="Imagen Mouse">
-    <p>Dispositivo apuntador que permite interactuar con la interfaz gráfica de la computadora moviendo un cursor en la pantalla.</p>
-  </details>
+  <div class="generacion">
+    <h3>Componentes Fundamentales de un Computador</h3>
+    <details>
+      <summary>🧠 CPU (Unidad Central de Procesamiento)</summary>
+      <p>La CPU es la mente del computador. Ejecuta instrucciones del sistema operativo y los programas. Coordina procesos internos y realiza operaciones lógicas y matemáticas. Incluye la ALU (Unidad Aritmético-Lógica), la unidad de control y registros de trabajo.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/CPU_Pentium_4.jpg" alt="CPU Pentium 4">
+    </details>
+    <details>
+      <summary>⚡ Memoria RAM</summary>
+      <p>La RAM almacena temporalmente los datos en uso para que el procesador acceda rápidamente a ellos. Es fundamental para el rendimiento. Cuando se apaga el sistema, se borra su contenido.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/DDR4_RAM.jpg" alt="Memoria RAM DDR4">
+    </details>
+    <details>
+      <summary>💽 Almacenamiento (HDD / SSD)</summary>
+      <p>Es donde se guardan de forma permanente el sistema operativo, software y archivos. Los HDD usan discos magnéticos giratorios, mientras que los SSD ofrecen mayor velocidad al no tener partes móviles.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/SSD_and_HDD.jpg" alt="SSD y HDD">
+    </details>
+    <details>
+      <summary>📀 ROM (Memoria de Solo Lectura)</summary>
+      <p>Contiene instrucciones esenciales que permiten iniciar el computador, como el firmware y BIOS. No es volátil: sus datos se mantienen incluso sin energía.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/EPROM_Chip.jpg" alt="ROM - EPROM Chip">
+    </details>
+    <details>
+      <summary>🎮 GPU (Tarjeta Gráfica)</summary>
+      <p>Procesa gráficos, imágenes y video. Es vital para videojuegos, diseño gráfico, edición multimedia y tareas de inteligencia artificial. Las GPU modernas pueden ser integradas o dedicadas con gran poder de cómputo paralelo.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/GeforceRTX3080.jpg" alt="GPU NVIDIA RTX 3080">
+    </details>
+    <details>
+      <summary>🧩 Placa Base (Motherboard)</summary>
+      <p>Interconecta todos los componentes mediante buses, zócalos y puertos. Permite que la CPU se comunique con la RAM, GPU, discos y periféricos. También incluye el chipset y la BIOS/UEFI.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Motherboard.jpg" alt="Placa base">
+    </details>
+    <details>
+      <summary>🔌 Fuente de poder</summary>
+      <p>Convierte la energía eléctrica de la red en corriente continua, repartida por distintos voltajes. Proporciona la potencia necesaria para cada componente. Aquí una tabla de colores y funciones:</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/ATX_PS_unit.jpg" alt="Fuente de poder ATX">
+      <table>
+        <thead>
+          <tr>
+            <th>Color del Cable</th>
+            <th>Voltaje</th>
+            <th>Función</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Rojo</td><td>+5V</td><td>Alimentación para la lógica y placas</td></tr>
+          <tr><td>Amarillo</td><td>+12V</td><td>CPU, GPU, ventiladores, discos</td></tr>
+          <tr><td>Naranja</td><td>+3.3V</td><td>Chipset y módulos de memoria</td></tr>
+          <tr><td>Negro</td><td>0V</td><td>Conexión a tierra (GND)</td></tr>
+          <tr><td>Azul</td><td>-12V</td><td>Componentes antiguos, señales RS-232</td></tr>
+          <tr><td>Blanco</td><td>-5V</td><td>Obsoleto, tarjetas ISA</td></tr>
+          <tr><td>Morado</td><td>+5VSB</td><td>Modo espera, arranque remoto</td></tr>
+          <tr><td>Verde</td><td>PS_ON</td><td>Activa la fuente desde la placa</td></tr>
+          <tr><td>Gris</td><td>Power Good</td><td>Señal de voltaje correcto</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
 
   <footer>
-    Fuentes: Wikipedia, Intel, Kingston, Crucial, Historia de la Computación.
+    Fuentes: Wikipedia, Intel, IBM, Crucial, NVIDIA, Historia de la Computación.
   </footer>
 </body>
 </html>
