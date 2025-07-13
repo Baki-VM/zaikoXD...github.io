@@ -78,11 +78,50 @@
     font-size: 1.4em;
     margin-left: 10px;
   }
+
+  /* 🔧 ESTILO RESPONSIVE 🔧 */
+  @media (max-width: 768px) {
+    body {
+      padding: 15px;
+    }
+    h1 {
+      font-size: 1.6em;
+    }
+    .accordion-header {
+      font-size: 1.1em;
+      padding: 14px 20px;
+    }
+    .accordion-content {
+      padding: 16px 20px;
+    }
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: none;
+    }
+    table thead {
+      display: table;
+      width: 100%;
+    }
+    table tbody {
+      display: table;
+      width: 100%;
+    }
+    table th, table td {
+      white-space: nowrap;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+    img {
+      max-height: 200px;
+      object-fit: contain;
+    }
+  }
 </style>
 </head>
 <body>
-
-<h1>🔍 Componentes Detallados de una Computadora</h1>
+  <h1>🔍 Componentes Detallados de una Computadora</h1>
 
 <!-- Componentes Digitales -->
 <div class="accordion-item">
@@ -317,3 +356,4 @@
 
 </body>
 </html>
+
