@@ -168,18 +168,65 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* 🔧 ESTILOS RESPONSIVOS 🔧 */
+    @media (max-width: 768px) {
+      header {
+        padding: 20px 10px;
+      }
+
+      main {
+        padding: 10px;
+      }
+
+      .section-title {
+        font-size: 1rem;
+      }
+
+      section h2 {
+        font-size: 1.1rem;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: none;
+      }
+
+      th, td {
+        white-space: nowrap;
+        font-size: 0.9rem;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .toggle {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+
+      .boton-enlace, .external-link {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <header>
     <h1>💻 Hardware I </h1>
     <p>Trabajo para la materia de Hardware y Software — UPDS Santa Cruz</p>
   </header>
 
-  <!-- ACÁ SE QUITÓ el <nav> -->
 
   <main>
-    <!-- TODO EL CONTENIDO SIGUE IGUAL -->
+  
       <section id="historia">
       <div class="section-title">1.1 Historia y Evolución</div>
       <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
@@ -357,13 +404,13 @@
         </ul>
       </div>
     </section>
-    <!-- Pegá aquí tus <section> como ya están en tu código -->
+
   </main>
 
   <footer>
     <p>&copy; 2025 Reinaldo — UPDS Santa Cruz</p>
   </footer>
-
+ 
   <script>
     function toggleContent(button) {
       const content = button.nextElementSibling;
