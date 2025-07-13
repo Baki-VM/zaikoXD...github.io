@@ -1,55 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>1.9 Arquitectura del Computador - Historia y Evolución</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.9 Arquitectura del Computador</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f8fafc;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
       color: #2c3e50;
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 20px;
-      line-height: 1.6;
+      margin: 0;
+      padding: 0;
     }
-    h1, h2 {
-      color: #1565c0;
+    header {
       text-align: center;
-      margin-bottom: 20px;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      color: white;
+      padding: 25px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    section {
-      background: #fff;
-      margin: 25px 0;
-      padding: 25px 30px;
-      border-left: 8px solid #1976d2;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    .container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    .accordion {
+      background-color: #ff9800;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .accordion:hover, .active {
+      background-color: #e65100;
+    }
+    .panel {
+      display: none;
+      background: #fff3e0;
+      padding: 15px;
+      border-left: 6px solid #ff9800;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+    h2, h3 {
+      color: #ff5722;
     }
     img {
-      display: block;
       max-width: 100%;
-      margin: 15px auto 30px;
-      border-radius: 10px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
-    }
-    p {
-      margin-bottom: 18px;
+      border-radius: 12px;
+      display: block;
+      margin: 15px auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
     ul {
-      margin-left: 20px;
-      margin-bottom: 20px;
+      list-style: square inside;
     }
     footer {
       text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 50px;
-      font-style: italic;
+      background-color: #212121;
+      color: #fff;
+      padding: 15px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
     }
     a {
-      color: #1565c0;
+      color: #ffcc80;
       text-decoration: none;
     }
     a:hover {
@@ -58,51 +83,80 @@
   </style>
 </head>
 <body>
+  <header>
+    <h1>1.9 Arquitectura del Computador</h1>
+    <p>Explora la evolución, modelos, retos y avances en la arquitectura de computadoras.</p>
+  </header>
 
-  <h1>1.9 Arquitectura del Computador</h1>
+  <div class="container">
+    <button class="accordion">¿Qué es la Arquitectura del Computador?</button>
+    <div class="panel">
+      <h2>Definición</h2>
+      <p>La arquitectura del computador define el diseño conceptual y la estructura de operación que permite a un sistema computacional procesar información. Coordina cómo interactúan la CPU, la memoria y los dispositivos de entrada/salida. Engloba el hardware, microarquitectura, arquitectura del conjunto de instrucciones (ISA) y software del sistema. Además, es el conjunto de técnicas que permiten construir máquinas lógicas generales programables en forma práctica.</p>
+    </div>
 
-  <section>
-    <h2>Historia de la Arquitectura del Computador</h2>
-    <p>La arquitectura del computador es el diseño conceptual y la estructura operacional fundamental que define cómo los componentes de hardware y software interactúan para procesar información. Desde sus inicios en la década de 1940, la arquitectura ha evolucionado de simples máquinas electromecánicas a sistemas complejos y multifuncionales.</p>
-    <p>El primer gran avance en arquitectura fue la creación de la <strong>Máquina de Turing</strong> (1936), que estableció el concepto teórico de computación. Sin embargo, la arquitectura práctica comenzó con la <strong>ENIAC</strong> (1945), una computadora electrónica que usaba tubos de vacío para realizar cálculos.</p>
-    <img src="imagenes/Eniac01.webp" alt="ENIAC - Primer computador electrónico" />
-    <p>En 1945, John von Neumann propuso el modelo de arquitectura que lleva su nombre, donde la computadora tiene una unidad central de procesamiento (CPU), memoria, entrada/salida y un bus común para datos e instrucciones, revolucionando el diseño y facilitando la programación.</p>
-  </section>
+    <button class="accordion">Conceptos Clave</button>
+    <div class="panel">
+      <h2>Elementos Fundamentales</h2>
+      <ul>
+        <li><strong>Hardware:</strong> Componentes físicos como CPU, memoria RAM, disco duro.</li>
+        <li><strong>Software:</strong> Sistema operativo, aplicaciones, programas de control.</li>
+        <li><strong>Microarquitectura:</strong> Organización interna de la CPU para ejecutar instrucciones eficientemente.</li>
+        <li><strong>Arquitectura del Conjunto de Instrucciones (ISA):</strong> Conjunto de comandos que la CPU puede ejecutar.</li>
+        <li><strong>CPU:</strong> El "cerebro" que ejecuta instrucciones y cálculos.</li>
+        <li><strong>Memoria:</strong> Almacena datos e instrucciones temporales.</li>
+        <li><strong>Dispositivos de entrada/salida:</strong> Teclado, mouse, monitor.</li>
+        <li><strong>Buses:</strong> Canales de comunicación de datos entre componentes.</li>
+      </ul>
+    </div>
 
-  <section>
-    <h2>Evolución y Componentes Clave</h2>
-    <p>Con el avance de la tecnología, la arquitectura del computador se ha ido refinando e incorporando nuevas ideas para mejorar la eficiencia y el rendimiento. Algunos hitos importantes incluyen:</p>
-    <ul>
-      <li><strong>Generación de transistores (1950s):</strong> Reemplazaron los tubos de vacío, reduciendo tamaño y consumo energético.</li>
-      <li><strong>Microprocesadores (1970s):</strong> Integraron toda la CPU en un solo chip, haciendo posible la computación personal.</li>
-      <li><strong>Arquitectura RISC (1980s):</strong> Simplificó las instrucciones para acelerar la ejecución y mejorar el rendimiento.</li>
-      <li><strong>Computación paralela y multiprocesamiento:</strong> Uso de múltiples núcleos y procesadores para manejar tareas simultáneas.</li>
-      <li><strong>Arquitectura moderna:</strong> Integración de GPUs, sistemas en chip (SoC), y tecnologías para inteligencia artificial y computación en la nube.</li>
-    </ul>
-    <img src="imagenes/evolucion de la arquitectura.jpg" alt="evolucions">
-  </section>
+    <button class="accordion">Tipos de Arquitectura</button>
+    <div class="panel">
+      <h2>Diversos Modelos</h2>
+      <ul>
+        <li><strong>Von Neumann:</strong> Memoria compartida para datos e instrucciones.</li>
+        <li><strong>Harvard:</strong> Memoria separada para datos e instrucciones.</li>
+        <li><strong>Pipeline:</strong> Instrucciones divididas en etapas para mejorar rendimiento.</li>
+      </ul>
+    </div>
 
-  <section>
-    <h2>Conceptos Fundamentales de la Arquitectura</h2>
-    <p>Los elementos básicos que componen la arquitectura de un computador incluyen:</p>
-    <ul>
-      <li><strong>Unidad Central de Procesamiento (CPU):</strong> Ejecuta instrucciones y coordina las operaciones.</li>
-      <li><strong>Memoria:</strong> Donde se almacenan datos e instrucciones.</li>
-      <li><strong>Unidad de Entrada/Salida (E/S):</strong> Permite la comunicación con dispositivos externos.</li>
-      <li><strong>Bus de Datos:</strong> Canal para transferir datos entre componentes.</li>
-      <li><strong>Set de instrucciones:</strong> Lenguaje básico que la CPU entiende y ejecuta.</li>
-    </ul>
-  </section>
+    <button class="accordion">Importancia de la Arquitectura</button>
+    <div class="panel">
+      <p>La arquitectura determina el rendimiento, la capacidad de procesamiento y la funcionalidad de los sistemas. Es clave para el desarrollo de nuevas tecnologías e innovaciones como la inteligencia artificial y la computación en la nube. También influye en la eficiencia energética y la capacidad de escalar en rendimiento mediante tecnologías como la computación paralela y el uso de arquitecturas especializadas como GPU y TPU.</p>
+    </div>
 
-  <section>
-    <h2>Importancia y Futuro de la Arquitectura del Computador</h2>
-    <p>La arquitectura sigue siendo clave para el desarrollo tecnológico, permitiendo mejorar la velocidad, eficiencia energética, y capacidades de los dispositivos. Hoy, la investigación se enfoca en arquitecturas especializadas para inteligencia artificial, computación cuántica, y computación neuromórfica.</p>
-    <p>En definitiva, la arquitectura del computador es el alma técnica que permite que todos los dispositivos digitales funcionen, evolucionando para enfrentar los retos del futuro.</p>
-  </section>
+    <button class="accordion">Evolución Histórica</button>
+    <div class="panel">
+      <h2>Evolución</h2>
+      <ul>
+        <li>1950s: Transistores reemplazan tubos de vacío</li>
+        <li>1970s: Surge el microprocesador</li>
+        <li>1980s: Arquitectura RISC</li>
+        <li>Actualidad: IA, computación en la nube, supercomputadoras</li>
+      </ul>
+      <img src="imagenes/procesadores_modernos.webp" alt="Procesadores modernos">
+    </div>
+  </div>
 
   <footer>
-    Fuentes: <a href="https://es.wikipedia.org/wiki/Arquitectura_de_computadoras" target="_blank" rel="noopener noreferrer">Wikipedia - Arquitectura de Computadoras</a>, <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/architecture.html" target="_blank" rel="noopener noreferrer">Intel - Arquitectura</a>, <a href="https://www.computerhistory.org/timeline/1945/" target="_blank" rel="noopener noreferrer">Computer History Museum</a>
+    Fuentes:
+    <a href="https://es.wikipedia.org/wiki/Arquitectura_de_computadoras" target="_blank">Wikipedia</a>,
+    <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/architecture.html" target="_blank">Intel</a>
   </footer>
 
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    for (var i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  </script>
 </body>
 </html>
