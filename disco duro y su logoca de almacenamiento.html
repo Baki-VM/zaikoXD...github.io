@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Disco Duro y Lógica de Almacenamiento</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #121a13;
+    color: #b0c8b0;
+    margin: 0;
+    padding: 0 20px 40px;
+    line-height: 1.7;
+  }
+  header {
+    background: linear-gradient(90deg, #2e5939, #3d6c47);
+    padding: 40px 20px 30px;
+    text-align: center;
+    border-bottom: 4px solid #3d6c47;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 3em;
+    color: #d2e4d2;
+    font-weight: 900;
+    letter-spacing: 3px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 30px auto 0;
+  }
+  .accordion {
+    background-color: #2e5939;
+    color: #d2e4d2;
+    cursor: pointer;
+    padding: 22px 30px;
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 28px;
+    box-shadow: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition:
+      background-color 0.35s ease,
+      transform 0.3s ease;
+  }
+  .accordion:hover {
+    background-color: #3d6c47;
+    color: #eaf2ea;
+    transform: scale(1.02);
+  }
+  .accordion.active {
+    background-color: #3d6c47;
+    color: #eaf2ea;
+  }
+  .accordion::after {
+    content: '+';
+    font-size: 28px;
+    color: #a7b8a7;
+    transition: transform 0.3s ease;
+    user-select: none;
+  }
+  .accordion.active::after {
+    content: '-';
+    color: #eaf2ea;
+    transform: rotate(180deg);
+  }
+  .panel {
+    background-color: #1c2b1d;
+    padding: 25px 35px 35px;
+    border-left: 6px solid #3d6c47;
+    border-radius: 0 0 16px 16px;
+    font-size: 1.18em;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+  }
+  .panel.open {
+    opacity: 1;
+    max-height: 1200px;
+  }
+  .panel p {
+    margin-bottom: 18px;
+  }
+  ul {
+    margin-left: 1.6em;
+    padding-left: 0;
+    list-style-type: disc;
+  }
+  ul li {
+    margin-bottom: 14px;
+  }
+  img {
+    max-width: 100%;
+    border-radius: 14px;
+    margin: 25px 0;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+  }
+  img:hover {
+    transform: scale(1.02);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background: #2e5939;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 18px 24px;
+    border-bottom: 1px solid #3d6c47;
+    text-align: left;
+    color: #c5d7c5;
+  }
+  th {
+    background: #3d6c47;
+    font-weight: 700;
+    font-size: 1.15em;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  a {
+    color: #3d6c47;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  /* Gráficos barras */
+  .bar-chart {
+    max-width: 100%;
+    margin: 30px auto 0;
+    padding: 20px 15px;
+    background: #1c2b1d;
+    border-radius: 14px;
+  }
+  .bar-title {
+    color: #a7b8a7;
+    font-weight: 700;
+    margin-bottom: 14px;
+    font-size: 1.3em;
+  }
+  .bar {
+    background: #3d6c47;
+    height: 26px;
+    margin: 12px 0;
+    border-radius: 12px;
+    color: #d2e4d2;
+    text-align: right;
+    padding-right: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    transition: background 0.3s ease;
+    width: 0;
+    animation: growBar 1s forwards;
+  }
+  .bar:hover {
+    background: #597a58;
+  }
+  @keyframes growBar {
+    to { width: var(--width); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Disco Duro y Lógica de Almacenamiento</h1>
+</header>
+
+<div class="container">
+
+  <button class="accordion">¿Qué es un Disco Duro (HDD)?</button>
+  <div class="panel">
+    <p>El disco duro es el dispositivo principal de almacenamiento permanente en una computadora. Guarda todos los datos, programas y el sistema operativo incluso cuando el equipo está apagado.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Western_Digital_Hard_Drive.jpg" alt="Disco Duro HDD">
+  </div>
+
+  <button class="accordion">Partes y Funcionamiento Interno</button>
+  <div class="panel">
+    <ul>
+      <li><strong>Platos Magnéticos:</strong> Superficies circulares recubiertas de material magnético donde se almacenan los datos.</li>
+      <li><strong>Actuador:</strong> Brazo que mueve las cabezas de lectura/escritura sobre los platos.</li>
+      <li><strong>Cabezas de Lectura/Escritura:</strong> Dispositivos que leen y escriben datos magnetizando zonas específicas.</li>
+      <li><strong>Motor del Eje:</strong> Gira los platos a alta velocidad (5400 a 7200 RPM o más).</li>
+      <li><strong>PCB (Placa de Circuito Impreso):</strong> Controla la comunicación con la computadora y la gestión interna.</li>
+    </ul>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Hard_drive_internals.JPG" alt="Partes internas de un disco duro">
+  </div>
+
+  <button class="accordion">Lógica de Almacenamiento</button>
+  <div class="panel">
+    <p>Los datos se almacenan en sectores y pistas dentro de los platos. Cada pista es un círculo concéntrico dividido en sectores que contienen una cantidad fija de bytes.</p>
+    <p>Cuando el sistema operativo necesita leer o escribir, el actuador posiciona la cabeza sobre la pista correcta y lee o escribe en los sectores específicos.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Hard_disk_drive_sectors.png" alt="Sectores y pistas de un disco duro">
+  </div>
+
+  <button class="accordion">Comparación HDD vs SSD</button>
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>Disco Duro (HDD)</th>
+          <th>Unidad de Estado Sólido (SSD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Velocidad</td>
+          <td>Más lento, depende de la velocidad de giro.</td>
+          <td>Muy rápido, sin partes móviles.</td>
+        </tr>
+        <tr>
+          <td>Durabilidad</td>
+          <td>Partes mecánicas susceptibles a fallos.</td>
+          <td>Más resistente a golpes y vibraciones.</td>
+        </tr>
+        <tr>
+          <td>Precio por GB</td>
+          <td>Más económico.</td>
+          <td>Más costoso.</td>
+        </tr>
+        <tr>
+          <td>Ruido</td>
+          <td>Produce ruido mecánico.</td>
+          <td>Silencioso.</td>
+        </tr>
+        <tr>
+          <td>Consumo energético</td>
+          <td>Mayor consumo.</td>
+          <td>Menor consumo.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="bar-chart" aria-label="Comparación de velocidades entre HDD y SSD">
+      <div class="bar-title">Velocidad Relativa (Mayor es mejor)</div>
+      <div class="bar" style="--width: 40%;">HDD 40%</div>
+      <div class="bar" style="--width: 95%;">SSD 95%</div>
+    </div>
+
+    <div class="bar-chart" aria-label="Evolución de capacidad de discos duros">
+      <div class="bar-title">Evolución de capacidad en discos duros (GB)</div>
+      <div class="bar" style="--width: 1%;">1956: 5 MB</div>
+      <div class="bar" style="--width: 10%;">1990: 500 MB</div>
+      <div class="bar" style="--width: 50%;">2000: 40 GB</div>
+      <div class="bar" style="--width: 80%;">2010: 1 TB</div>
+      <div class="bar" style="--width: 100%;">2024: 2 TB+</div>
+    </div>
+
+  </div>
+
+  <button class="accordion">Importancia de la Fragmentación</button>
+  <div class="panel">
+    <p>La fragmentación ocurre cuando los archivos se dividen y almacenan en sectores no contiguos, lo que ralentiza el acceso porque la cabeza debe moverse más para leer el archivo completo.</p>
+    <p>Los sistemas operativos incluyen herramientas de desfragmentación para optimizar el almacenamiento y mejorar el rendimiento.</p>
+  </div>
+
+  <button class="accordion">Curiosidades y Recursos</button>
+  <div class="panel">
+    <ul>
+      <li>Los primeros discos duros de IBM en 1956 tenían solo 5 MB y pesaban más de una tonelada.</li>
+      <li>Los discos modernos alcanzan capacidades de varios terabytes en formatos compactos.</li>
+      <li>Más info en <a href="https://es.wikipedia.org/wiki/Disco_duro" target="_blank">Wikipedia - Disco Duro</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      const isActive = acc.classList.contains('active');
+      // Cierra todo
+      accordions.forEach(a => {
+        a.classList.remove('active');
+        a.nextElementSibling.classList.remove('open');
+      });
+      if (!isActive) {
+        acc.classList.add('active');
+        acc.nextElementSibling.classList.add('open');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>  

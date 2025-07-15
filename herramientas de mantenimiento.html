@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🛠️ 1.15 Herramientas de Mantenimiento - Guía Completa</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #323232, #1c1c1c);
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 2px 2px 6px #000;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .section {
+    background: linear-gradient(135deg, #2e2e2e, #454545);
+    margin-bottom: 20px;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .section:hover {
+    background: linear-gradient(135deg, #ff6e48, #ff3a1c);
+  }
+  h2 {
+    color: #ff7f50;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+  ul {
+    margin: 10px 0 0 20px;
+    list-style-type: disc;
+  }
+  li {
+    margin-bottom: 8px;
+  }
+  img {
+    width: 100%;
+    max-width: 600px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(255,75,43,0.5);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #2c3e50;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th, td {
+    border: 1px solid #34495e;
+    padding: 12px;
+    text-align: center;
+    color: #e0e0e0;
+  }
+  th {
+    background: #ff6e48;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .content {
+    display: none;
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🛠️ 1.15 Herramientas de Mantenimiento - Guía Completa</h1>
+</header>
+
+<div class="container">
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>🔧 Destornilladores</h2>
+    <div class="content">
+      <p>Imprescindibles para abrir y ajustar componentes. Aquí los tipos clave:</p>
+      <ul>
+        <li><strong>Phillips:</strong> Cabeza cruzada, el más común en PCs.</li>
+        <li><strong>Plano:</strong> Ranura recta, para tornillos antiguos o especiales.</li>
+        <li><strong>Torx:</strong> Estrella de 6 puntas, usados en dispositivos modernos para seguridad.</li>
+        <li><strong>Hexagonal (Allen):</strong> Para tornillos hexagonales, usual en soportes y muebles.</li>
+        <li><strong>Tri-wing y Pentalobe:</strong> Exclusivos de Apple para evitar manipulaciones simples.</li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Screwdriver_set.jpg/640px-Screwdriver_set.jpg" alt="Set de destornilladores">
+    </div>
+  </div>
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>🧴 Pasta Térmica</h2>
+    <div class="content">
+      <p>Mejora la transferencia de calor entre CPU y disipador, clave para evitar sobrecalentamientos:</p>
+      <ul>
+        <li>Aplicar en capa fina y pareja.</li>
+        <li>Renovar cada 1-2 años o al desmontar el disipador.</li>
+        <li>Tipos: base silicona (básica), metal líquido (máxima conductividad pero delicada).</li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Thermal_paste_on_CPU.jpg" alt="Aplicación de pasta térmica">
+    </div>
+  </div>
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>🔌 Multímetro</h2>
+    <div class="content">
+      <p>Para medir voltajes, resistencias y continuidad en circuitos, básico para diagnóstico:</p>
+      <ul>
+        <li>Digital (más común) y analógico.</li>
+        <li>Útil para verificar estado de fuentes, componentes y conexiones.</li>
+        <li>Previene daños detectando cortocircuitos o fallas.</li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Digital_multimeter_MAS830L.jpg/640px-Digital_multimeter_MAS830L.jpg" alt="Multímetro digital">
+    </div>
+  </div>
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>💨 Aire Comprimido</h2>
+    <div class="content">
+      <p>Limpia polvo y suciedad sin tocar, ideal para teclados, ventiladores y ranuras:</p>
+      <ul>
+        <li>Usar en ráfagas cortas para evitar humedad.</li>
+        <li>Previene daños por polvo acumulado y sobrecalentamientos.</li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Compressed_air_duster.jpg/640px-Compressed_air_duster.jpg" alt="Lata de aire comprimido">
+    </div>
+  </div>
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>🔍 Otras Herramientas Clave</h2>
+    <div class="content">
+      <p>Más que un toolbox básico, estas herramientas hacen que tu mantenimiento sea profesional:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Herramienta</th>
+            <th>Uso Principal</th>
+            <th>Descripción</th>
+            <th>Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pinzas</td>
+            <td>Manipulación precisa</td>
+            <td>Para agarrar componentes y cables pequeños.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tweezers.jpg/100px-Tweezers.jpg" alt="Pinzas" style="border-radius:8px;"></td>
+          </tr>
+          <tr>
+            <td>Soplete de soldadura</td>
+            <td>Soldar componentes</td>
+            <td>Une piezas electrónicas con estaño fundido.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Soldering_iron.jpg/100px-Soldering_iron.jpg" alt="Soplete de soldadura" style="border-radius:8px;"></td>
+          </tr>
+          <tr>
+            <td>Extractor de chips</td>
+            <td>Desmontaje seguro</td>
+            <td>Para sacar circuitos integrados sin dañarlos.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Chip_pullers.jpg/100px-Chip_pullers.jpg" alt="Extractor de chips" style="border-radius:8px;"></td>
+          </tr>
+          <tr>
+            <td>Brochas antiestáticas</td>
+            <td>Limpieza delicada</td>
+            <td>Eliminan polvo sin riesgo de descarga electrostática.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Antistatic_brush.jpg/100px-Antistatic_brush.jpg" alt="Brocha antiestática" style="border-radius:8px;"></td>
+          </tr>
+          <tr>
+            <td>Pulsera antiestática</td>
+            <td>Protección electrostática</td>
+            <td>Evita descargas que dañan componentes sensibles.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/ESD_wrist_strap.jpg/100px-ESD_wrist_strap.jpg" alt="Pulsera antiestática" style="border-radius:8px;"></td>
+          </tr>
+          <tr>
+            <td>Linterna LED</td>
+            <td>Iluminación</td>
+            <td>Para ver con detalle en espacios oscuros.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/LED_flashlight_01.jpg/100px-LED_flashlight_01.jpg" alt="Linterna LED" style="border-radius:8px;"></td>
+          </tr>
+          <tr>
+            <td>Destornillador eléctrico</td>
+            <td>Montaje rápido</td>
+            <td>Para atornillar sin esfuerzo manual.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Electric_screwdriver.jpg/100px-Electric_screwdriver.jpg" alt="Destornillador eléctrico" style="border-radius:8px;"></td>
+          </tr>
+          <tr>
+            <td>Extractor de polvo por vacío</td>
+            <td>Limpieza profunda</td>
+            <td>Succiona polvo sin dañar componentes.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Computer_dust_vacuum_cleaner.jpg/100px-Computer_dust_vacuum_cleaner.jpg" alt="Extractor de polvo por vacío" style="border-radius:8px;"></td>
+          </tr>
+          <tr>
+            <td>Alcohol isopropílico</td>
+            <td>Limpieza</td>
+            <td>Elimina residuos de pasta térmica y suciedad.</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Isopropyl_alcohol.jpg/100px-Isopropyl_alcohol.jpg" alt="Alcohol isopropílico" style="border-radius:8px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleContent(section) {
+    const content = section.querySelector('.content');
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
+
+</body>
+</html>

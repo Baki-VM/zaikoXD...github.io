@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CPU: El Cerebro de la Computadora</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0 20px 40px;
+  }
+  header {
+    background: linear-gradient(90deg, #0072ff, #00c6ff);
+    padding: 40px 20px 30px;
+    text-align: center;
+    border-bottom: 4px solid #00c6ff;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    color: white;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 30px auto 0;
+  }
+  .accordion {
+    background-color: #0072ff;
+    color: white;
+    cursor: pointer;
+    padding: 20px 30px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 6px 15px rgba(0, 114, 255, 0.3);
+  }
+  .accordion:hover, .active {
+    background-color: #00c6ff;
+    transform: scale(1.02);
+  }
+  .panel {
+    background-color: #1c1c1c;
+    padding: 20px 30px 30px;
+    display: none;
+    border-left: 5px solid #00c6ff;
+    border-radius: 0 0 10px 10px;
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+  .panel p {
+    margin-bottom: 15px;
+  }
+  img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 20px 0;
+  }
+  ul {
+    margin-left: 1.2em;
+    padding-left: 0;
+    list-style-type: disc;
+  }
+  ul li {
+    margin-bottom: 12px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #292929;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 15px;
+    border: 1px solid #00c6ff;
+    text-align: center;
+  }
+  th {
+    background: linear-gradient(90deg, #0072ff, #00c6ff);
+    font-weight: 700;
+    font-size: 1.1em;
+  }
+  a {
+    color: #00c6ff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CPU: El Cerebro de la Computadora</h1>
+</header>
+
+<div class="container">
+  <button class="accordion">¿Qué es el CPU?</button>
+  <div class="panel">
+    <p>El CPU, o Unidad Central de Procesamiento, es el componente principal que ejecuta las instrucciones de los programas y del sistema operativo. Su función es interpretar y procesar datos para que la computadora realice las tareas que le solicitamos.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Intel_CPU_Core_i7.jpg" alt="CPU Intel">
+  </div>
+
+  <button class="accordion">Componentes Internos</button>
+  <div class="panel">
+    <ul>
+      <li><strong>Unidad de Control:</strong> Coordina y dirige las operaciones dentro del CPU.</li>
+      <li><strong>ALU (Unidad Aritmético Lógica):</strong> Realiza operaciones matemáticas y lógicas básicas.</li>
+      <li><strong>Registros:</strong> Pequeñas áreas de almacenamiento para datos temporales.</li>
+      <li><strong>Memoria Caché:</strong> Almacena datos e instrucciones usadas frecuentemente para acelerar el procesamiento.</li>
+    </ul>
+  </div>
+
+  <button class="accordion">Funciones Clave del CPU</button>
+  <div class="panel">
+    <ul>
+      <li>Ejecutar instrucciones de programas y sistemas operativos.</li>
+      <li>Gestionar la transferencia de datos entre memoria y periféricos.</li>
+      <li>Permitir la multitarea a través de núcleos múltiples.</li>
+    </ul>
+  </div>
+
+  <button class="accordion">Evolución del CPU</button>
+  <div class="panel">
+    <table>
+      <thead>
+        <tr><th>Año</th><th>Procesador</th><th>Características</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1971</td><td>Intel 4004</td><td>Primer microprocesador comercial de 4 bits.</td></tr>
+        <tr><td>1985</td><td>Intel 80386</td><td>CPU de 32 bits que mejoró el rendimiento.</td></tr>
+        <tr><td>1993</td><td>Pentium</td><td>Introdujo arquitectura superscalar para mayor eficiencia.</td></tr>
+        <tr><td>2006</td><td>Intel Core</td><td>Procesadores multinúcleo para mejor multitarea.</td></tr>
+        <tr><td>2020+</td><td>AMD Ryzen / Intel i9</td><td>Alta eficiencia y rendimiento para tareas exigentes.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="accordion">Infografías y Recursos</button>
+  <div class="panel">
+    <img src="https://cdn.buttercms.com/IYVYbqjLTsmj7uvU1O4u" alt="Arquitectura CPU">
+    <p>Para más información detallada, visita <a href="https://es.wikipedia.org/wiki/Unidad_central_de_procesamiento" target="_blank">Wikipedia</a>.</p>
+  </div>
+</div>
+
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      acc.classList.toggle('active');
+      const panel = acc.nextElementSibling;
+      if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+      } else {
+        panel.style.display = 'block';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

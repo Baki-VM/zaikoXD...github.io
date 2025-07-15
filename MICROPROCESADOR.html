@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Microprocesador: Investigación Detallada</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .card {
+    background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .card:hover {
+    transform: scale(1.03);
+  }
+  .card-header {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    background: #252525;
+    padding: 0 20px;
+  }
+  .card-content.open {
+    padding: 20px;
+    max-height: 1500px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #333;
+  }
+  th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: center;
+  }
+  th {
+    background: #ff7e5f;
+  }
+  img, .graph {
+    width: 100%;
+    border-radius: 8px;
+    margin: 15px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>1.13 Investigación Completa: El Microprocesador</h1>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <div class="card-header">¿Qué es un Microprocesador?</div>
+    <div class="card-content">
+      <p>El microprocesador es un circuito integrado fundamental que actúa como el cerebro de la computadora. Procesa instrucciones y datos, permitiendo que el sistema funcione eficientemente.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Intel_Core_i7_Processor_-_front.jpg" alt="Microprocesador Intel Core i7">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Componentes Principales</div>
+    <div class="card-content">
+      <table>
+        <tr><th>Componente</th><th>Función</th></tr>
+        <tr><td>ALU</td><td>Realiza operaciones aritméticas y lógicas</td></tr>
+        <tr><td>Unidad de Control</td><td>Coordina el flujo de datos e instrucciones</td></tr>
+        <tr><td>Registros</td><td>Almacenan datos temporales</td></tr>
+        <tr><td>Cache</td><td>Memoria rápida para acceso frecuente</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Funcionamiento Básico</div>
+    <div class="card-content">
+      <p>El microprocesador ejecuta un ciclo llamado ciclo de instrucción compuesto por:</p>
+      <ol>
+        <li><strong>Fetch:</strong> Obtención de la instrucción desde la memoria.</li>
+        <li><strong>Decode:</strong> Decodificación de la instrucción.</li>
+        <li><strong>Execute:</strong> Ejecución de la operación requerida.</li>
+        <li><strong>Writeback:</strong> Guardar el resultado en memoria.</li>
+      </ol>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Instruction_Cycle.png" alt="Ciclo de Instrucción">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Evolución Histórica</div>
+    <div class="card-content">
+      <p>Desde los años 70 hasta hoy, la evolución de los microprocesadores ha sido impresionante:</p>
+      <table>
+        <tr><th>Año</th><th>Modelo</th><th>Bits</th><th>Velocidad</th></tr>
+        <tr><td>1971</td><td>Intel 4004</td><td>4 bits</td><td>740 kHz</td></tr>
+        <tr><td>1989</td><td>Intel 80486</td><td>32 bits</td><td>20 MHz</td></tr>
+        <tr><td>2008</td><td>Intel Core i7</td><td>64 bits</td><td>2.66 GHz</td></tr>
+        <tr><td>2022</td><td>AMD Ryzen 9</td><td>64 bits</td><td>4.9 GHz</td></tr>
+      </table>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Intel_Core_i7_Processor_-_back.jpg" alt="Parte trasera de un microprocesador Intel">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Importancia en Ingeniería de Sistemas</div>
+    <div class="card-content">
+      <p>Conocer el funcionamiento del microprocesador es clave para:</p>
+      <ul>
+        <li>Desarrollar software eficiente.</li>
+        <li>Optimizar el uso del hardware.</li>
+        <li>Comprender arquitecturas de computadoras.</li>
+        <li>Mejorar la programación a bajo nivel.</li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Computer_architecture_layers.svg" alt="Capas de la arquitectura de computadoras">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Más Información</div>
+    <div class="card-content">
+      <p>Para profundizar más, visita:</p>
+      <ul>
+        <li><a href="https://es.wikipedia.org/wiki/Microprocesador" target="_blank">Wikipedia: Microprocesador</a></li>
+        <li><a href="https://www.intel.com/content/www/us/en/processors/what-is-a-processor.html" target="_blank">Intel: Qué es un procesador</a></li>
+        <li><a href="https://www.amd.com/es/processors" target="_blank">AMD: Procesadores</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.querySelector('.card-header').addEventListener('click', () => {
+      const content = card.querySelector('.card-content');
+      content.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tarjeta Madre: Arquitectura y Componentes Detallados</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #121417;
+    color: #d0d4db;
+    margin: 0;
+    padding: 0 20px 40px;
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    padding: 40px 20px 30px;
+    text-align: center;
+    border-bottom: 5px solid #4a90e2;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 3em;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+  }
+  .container {
+    max-width: 1100px;
+    margin: 30px auto 0;
+  }
+  .accordion {
+    background-color: #2a5298;
+    color: #e0e6f3;
+    cursor: pointer;
+    padding: 22px 30px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 25px;
+    box-shadow: 0 6px 15px rgba(42, 82, 152, 0.6);
+    transition: background 0.35s ease, transform 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .accordion:hover, .accordion.active {
+    background-color: #4a90e2;
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.8);
+  }
+  .accordion::after {
+    content: '+';
+    font-size: 26px;
+    color: #cbd5e1;
+    transition: transform 0.3s ease;
+  }
+  .accordion.active::after {
+    content: '-';
+    color: #ffffff;
+  }
+  .panel {
+    background-color: #1c2030;
+    padding: 25px 35px 35px;
+    display: none;
+    border-left: 6px solid #4a90e2;
+    border-radius: 0 0 15px 15px;
+    box-shadow: inset 0 0 20px rgba(74, 144, 226, 0.3);
+    font-size: 1.15em;
+  }
+  .panel p {
+    margin-bottom: 18px;
+  }
+  ul {
+    margin-left: 1.4em;
+    padding-left: 0;
+    list-style-type: disc;
+  }
+  ul li {
+    margin-bottom: 14px;
+  }
+  img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin: 25px 0;
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.6);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background: #2a3a65;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(42, 58, 101, 0.7);
+  }
+  th, td {
+    padding: 18px 22px;
+    border-bottom: 1px solid #4a90e2;
+    text-align: left;
+    color: #e0e6f3;
+  }
+  th {
+    background: linear-gradient(90deg, #4a90e2, #1e3c72);
+    font-weight: 800;
+    font-size: 1.1em;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  a {
+    color: #4a90e2;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .bar-chart {
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 15px 10px;
+    background: #1c2030;
+    border-radius: 12px;
+    box-shadow: inset 0 0 15px rgba(74, 144, 226, 0.2);
+  }
+  .bar {
+    background: #4a90e2;
+    height: 24px;
+    margin: 10px 0;
+    border-radius: 12px;
+    color: #e0e6f3;
+    text-align: right;
+    padding-right: 15px;
+    font-weight: 600;
+    line-height: 24px;
+    transition: background 0.4s ease;
+  }
+  .bar:hover {
+    background: #3a78cc;
+  }
+  /* Estilo creativo para la lista de componentes principales */
+  .component-list {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+  }
+  .component-list li {
+    background: linear-gradient(135deg, #ff6e7f, #bfe9ff);
+    color: #1b1f38;
+    font-weight: 700;
+    margin-bottom: 18px;
+    padding: 18px 22px;
+    border-radius: 14px;
+    font-size: 1.18em;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(255, 110, 127, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .component-list li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 10px 25px rgba(255, 110, 127, 0.5);
+  }
+  .component-list .icon {
+    font-size: 2.2em;
+    margin-right: 18px;
+    flex-shrink: 0;
+    user-select: none;
+    transition: transform 0.3s ease;
+  }
+  .component-list li:hover .icon {
+    transform: rotate(15deg) scale(1.2);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Tarjeta Madre: Arquitectura y Componentes Detallados</h1>
+</header>
+
+<div class="container">
+
+  <button class="accordion">¿Qué es la Tarjeta Madre?</button>
+  <div class="panel">
+    <p>La tarjeta madre es el circuito impreso principal donde se conectan y comunican todos los componentes vitales de una computadora. Actúa como el centro neurálgico que permite que el CPU, memoria, dispositivos de almacenamiento y periféricos trabajen coordinadamente.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Motherboard-ASUS-Prime-Z390-A.jpg" alt="Tarjeta Madre moderna">
+    <p>Es fundamental seleccionar una tarjeta madre compatible con el CPU y los demás componentes para asegurar un rendimiento óptimo y estabilidad en el sistema.</p>
+  </div>
+
+  <button class="accordion">Arquitectura y Chipset</button>
+  <div class="panel">
+    <p>El chipset es el conjunto de chips en la tarjeta madre que controla la comunicación entre el CPU, la memoria RAM, los dispositivos de almacenamiento y los periféricos. Está dividido generalmente en:</p>
+    <ul>
+      <li><strong>Northbridge:</strong> Gestiona las conexiones de alta velocidad, como CPU a memoria RAM y tarjeta gráfica.</li>
+      <li><strong>Southbridge:</strong> Controla periféricos de menor velocidad, como USB, audio, y discos duros.</li>
+    </ul>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Northbridge_and_Southbridge_diagram.svg" alt="Diagrama Northbridge y Southbridge" style="max-width:80%; margin: 20px auto; display:block;">
+    <p>En las tarjetas madre modernas, muchas funciones del Northbridge están integradas directamente en el CPU, simplificando el diseño.</p>
+  </div>
+
+  <button class="accordion">Componentes Principales</button>
+  <div class="panel">
+    <ul class="component-list">
+      <li><span class="icon">🧠</span> <strong>Slots de Memoria RAM:</strong> Donde se insertan los módulos de memoria para que el CPU pueda acceder rápidamente a los datos.</li>
+      <li><span class="icon">🔌</span> <strong>Socket del CPU:</strong> El lugar donde se conecta el microprocesador. Su tipo debe coincidir con el procesador elegido.</li>
+      <li><span class="icon">⚡</span> <strong>Slots PCI Express (PCIe):</strong> Para tarjetas de expansión como gráficas, sonido, red, etc.</li>
+      <li><span class="icon">💾</span> <strong>Conectores de Almacenamiento:</strong> SATA para discos duros tradicionales y NVMe para unidades SSD ultra rápidas.</li>
+      <li><span class="icon">🔊</span> <strong>Puertos USB, HDMI, Ethernet y Audio:</strong> Para conectar periféricos y dispositivos externos.</li>
+    </ul>
+  </div>
+
+  <button class="accordion">Memoria RAM vs ROM en la Tarjeta Madre</button>
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>Memoria RAM</th>
+          <th>Memoria ROM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Función</td>
+          <td>Almacena datos e instrucciones temporales para uso activo.</td>
+          <td>Almacena instrucciones permanentes, como el firmware.</td>
+        </tr>
+        <tr>
+          <td>Volatilidad</td>
+          <td>Volátil: pierde datos al apagar el equipo.</td>
+          <td>No volátil: conserva datos al apagar.</td>
+        </tr>
+        <tr>
+          <td>Modificabilidad</td>
+          <td>Se puede leer y escribir rápidamente.</td>
+          <td>Generalmente solo lectura, con pocas excepciones.</td>
+        </tr>
+        <tr>
+          <td>Ubicación</td>
+          <td>Insertada en slots RAM de la tarjeta madre.</td>
+          <td>Soldada o integrada en la placa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="accordion">Funciones y Comunicación</button>
+  <div class="panel">
+    <p>La tarjeta madre facilita el intercambio constante de datos y señales eléctricas entre el CPU, memoria, almacenamiento y dispositivos conectados. Esto se logra mediante buses de datos y control que recorren la placa, asegurando que cada componente reciba y envíe información en tiempo real y sin errores.</p>
+    <div class="bar-chart">
+      <div class="bar" style="width: 80%;">Bus de Datos - 64 bits</div>
+      <div class="bar" style="width: 60%;">Bus de Direcciones - 48 bits</div>
+      <div class="bar" style="width: 75%;">Bus de Control - 56 bits</div>
+    </div>
+  </div>
+
+  <button class="accordion">Recomendaciones y Mantenimiento</button>
+  <div class="panel">
+    <ul>
+      <li>Mantener la tarjeta madre limpia de polvo para evitar sobrecalentamiento y cortocircuitos.</li>
+      <li>Actualizar el BIOS para mejorar compatibilidad y rendimiento.</li>
+      <li>Verificar conexiones de cables y componentes antes de encender el equipo.</li>
+      <li>Usar una fuente de alimentación estable y adecuada para evitar daños.</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      acc.classList.toggle('active');
+      const panel = acc.nextElementSibling;
+      if(panel.style.display === "block"){
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

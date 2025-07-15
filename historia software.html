@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>💾 1.16 Historia del Software - Línea de Tiempo Interactiva</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #232526, #1c1c1c);
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0 20px 40px;
+  }
+  header {
+    background: linear-gradient(90deg, #007CF0, #00DFD8);
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 2px 2px 6px #000;
+  }
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+  }
+  .timeline {
+    position: relative;
+    padding: 0;
+    list-style: none;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 4px;
+    height: 100%;
+    background: #00DFD8;
+    border-radius: 2px;
+  }
+  .event {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 80px;
+  }
+  .event:last-child {
+    margin-bottom: 0;
+  }
+  .event .date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #007CF0;
+    color: #fff;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,124,240,0.7);
+  }
+  .event .content {
+    background: #1f2937;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,223,216,0.3);
+    transition: transform 0.3s ease;
+  }
+  .event:hover .content {
+    transform: scale(1.05);
+  }
+  h2 {
+    margin-top: 0;
+    color: #00DFD8;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,223,216,0.5);
+  }
+  th, td {
+    padding: 14px 20px;
+    text-align: left;
+    background: #273449;
+    color: #e0f7f7;
+    border-bottom: 1px solid #00b8b8;
+  }
+  th {
+    background: #00b8b8;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 5px 20px rgba(0,223,216,0.4);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💾 1.16 Historia del Software</h1>
+</header>
+
+<div class="container">
+
+  <ul class="timeline">
+    <li class="event">
+      <span class="date">1940s</span>
+      <div class="content">
+        <h2>Los Primeros Pasos</h2>
+        <p>En los años 40, el software no existía como tal; los programas eran escritos directamente en código máquina, muy cercano al hardware. Las primeras máquinas, como la ENIAC, usaban cables y paneles para programar tareas específicas.</p>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="date">1950s</span>
+      <div class="content">
+        <h2>Lenguajes de Alto Nivel y Compiladores</h2>
+        <p>Surgen los primeros lenguajes de programación como Fortran y COBOL, facilitando la creación de programas. Se desarrollan compiladores para traducir estos lenguajes a código máquina.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Fortran_machine.jpg" alt="Tarjeta perforada Fortran">
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="date">1960s</span>
+      <div class="content">
+        <h2>Sistemas Operativos y Software de Sistema</h2>
+        <p>Se crean los primeros sistemas operativos básicos para administrar recursos y tareas. También aparece el software de sistema y las primeras bases de datos.</p>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="date">1970s</span>
+      <div class="content">
+        <h2>Software Comercial y Lenguajes Nuevos</h2>
+        <p>Empieza la comercialización del software, la aparición de UNIX, y lenguajes como C, que marcarán la base del desarrollo moderno.</p>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="date">1980s</span>
+      <div class="content">
+        <h2>Interfaces Gráficas y Software Personal</h2>
+        <p>Surgen las interfaces gráficas (GUI) como Windows y MacOS. El software se vuelve más accesible para usuarios comunes.</p>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="date">1990s</span>
+      <div class="content">
+        <h2>Internet y Software en Red</h2>
+        <p>Explosión de la Internet y software conectado en red, con navegadores, aplicaciones web y software colaborativo.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Internet_1992_network_map.png" alt="Mapa de Internet 1992">
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="date">2000s</span>
+      <div class="content">
+        <h2>Software Móvil y Código Abierto</h2>
+        <p>Con la llegada de smartphones, el software móvil domina. El movimiento de código abierto gana fuerza con proyectos como Linux y Android.</p>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="date">2010s - Hoy</span>
+      <div class="content">
+        <h2>Inteligencia Artificial y Cloud Computing</h2>
+        <p>La revolución del software basado en IA, aprendizaje automático y computación en la nube, transforman industrias y el modo en que usamos tecnología.</p>
+      </div>
+    </li>
+  </ul>
+
+  <h2>Tabla Resumen de Evolución del Software</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Década</th>
+        <th>Eventos Clave</th>
+        <th>Impacto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1940s</td>
+        <td>Programación en código máquina, ENIAC</td>
+        <td>Base del software moderno</td>
+      </tr>
+      <tr>
+        <td>1950s</td>
+        <td>Lenguajes Fortran, COBOL, compiladores</td>
+        <td>Facilitó desarrollo de software</td>
+      </tr>
+      <tr>
+        <td>1960s</td>
+        <td>Sistemas operativos iniciales, bases de datos</td>
+        <td>Gestión de recursos y datos</td>
+      </tr>
+      <tr>
+        <td>1970s</td>
+        <td>UNIX, lenguaje C, software comercial</td>
+        <td>Estandarización y expansión</td>
+      </tr>
+      <tr>
+        <td>1980s</td>
+        <td>GUI, Windows, MacOS</td>
+        <td>Accesibilidad para usuarios</td>
+      </tr>
+      <tr>
+        <td>1990s</td>
+        <td>Internet, software en red, navegadores</td>
+        <td>Conectividad global</td>
+      </tr>
+      <tr>
+        <td>2000s</td>
+        <td>Smartphones, código abierto, Linux, Android</td>
+        <td>Movilidad y colaboración</td>
+      </tr>
+      <tr>
+        <td>2010s - Hoy</td>
+        <td>IA, machine learning, cloud computing</td>
+        <td>Innovación y transformación digital</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body>
+</html>
