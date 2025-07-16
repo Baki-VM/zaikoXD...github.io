@@ -10,43 +10,38 @@
     background: linear-gradient(120deg, #1e3c72, #2a5298);
     color: #f0f0f0;
     margin: 0;
-    padding: 15px;
+    padding: 20px 25px 50px;
   }
   header {
     background: linear-gradient(45deg, #ff512f, #dd2476);
-    padding: 30px 15px;
+    padding: 40px 20px;
     text-align: center;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 25px 25px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
   }
   header h1 {
     margin: 0;
-    font-size: 2rem;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 3px #000;
-  }
-  header p {
-    font-size: 1rem;
-    color: #eee;
-    margin-top: 10px;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 4px #000;
   }
   .section {
     background: #1f2937;
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    margin: 25px 0;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   }
   h2 {
     color: #ff512f;
-    margin-bottom: 12px;
-    font-size: 1.5rem;
-    border-bottom: 1px solid #ff512f;
-    padding-bottom: 6px;
+    margin-bottom: 15px;
+    font-size: 2rem;
+    border-bottom: 2px solid #ff512f;
+    padding-bottom: 8px;
   }
   p, li {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    line-height: 1.8;
   }
   ul, ol {
     padding-left: 20px;
@@ -55,11 +50,10 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
-    font-size: 0.9rem;
   }
   th, td {
     border: 1px solid #333f58;
-    padding: 10px;
+    padding: 14px 18px;
     text-align: left;
   }
   th {
@@ -75,32 +69,10 @@
   }
   .highlight {
     background: #dd2476;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
     color: #fff;
-  }
-  iframe {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
-    border: none;
-  }
-
-  /* Adaptación para móviles */
-  @media (max-width: 600px) {
-    header h1 {
-      font-size: 1.8rem;
-    }
-    header p {
-      font-size: 0.9rem;
-    }
-    h2 {
-      font-size: 1.3rem;
-    }
-    table, th, td {
-      font-size: 0.85rem;
-    }
   }
 </style>
 </head>
@@ -108,68 +80,109 @@
 
 <header>
   <h1>🛠️ Armar tu PC de Gama Media en 2025</h1>
-  <p>Guía paso a paso, desde lo que tenés que comprar hasta el ensamblaje.</p>
+  <p style="font-size:1.2rem; margin-top:10px; color:#eee;">Guía paso a paso, desde lo que tenés que comprar hasta el ensamblaje sin perder detalle.</p>
 </header>
 
 <div class="section">
   <h2>🛒 ¿Qué componentes comprar? Lista y precios aproximados</h2>
-  <p>Lista base de componentes recomendados con precios aproximados en USD:</p>
+  <p>Para armar una PC de gama media potente y actual, esta es la lista base que yo recomiendo con sus precios aproximados en USD (precios pueden variar según tu país):</p>
   <table>
     <thead>
       <tr>
         <th>Componente</th>
         <th>Modelo recomendado</th>
-        <th>Precio (USD)</th>
-        <th>Descripción</th>
+        <th>Precio aprox. (USD)</th>
+        <th>Descripción rápida</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>CPU</td><td>Ryzen 5 5600X / i5-13400F</td><td>$160 - $220</td><td>6 núcleos, potente en gaming y multitarea.</td></tr>
-      <tr><td>Motherboard</td><td>MSI B550 / ASUS TUF B660</td><td>$120 - $180</td><td>Compatibilidad y expansión.</td></tr>
-      <tr><td>RAM</td><td>16GB DDR4 3200MHz</td><td>$50 - $80</td><td>Dual channel para mejor rendimiento.</td></tr>
-      <tr><td>Almacenamiento</td><td>SSD NVMe 1TB</td><td>$60 - $100</td><td>Velocidad en arranque y programas.</td></tr>
-      <tr><td>GPU</td><td>RTX 3060 / RX 6600 XT</td><td>$250 - $350</td><td>Juegos en 1080p fluidos.</td></tr>
-      <tr><td>Fuente</td><td>Corsair CX650 / EVGA 650W</td><td>$60 - $90</td><td>650W estable y segura.</td></tr>
-      <tr><td>Gabinete</td><td>NZXT H510 / NR400</td><td>$70 - $100</td><td>Buena ventilación y espacio.</td></tr>
-      <tr><td>Refrigeración</td><td>Stock o Hyper 212</td><td>$0 - $40</td><td>Depende si el CPU trae disipador.</td></tr>
+      <tr>
+        <td>Procesador (CPU)</td>
+        <td>AMD Ryzen 5 5600X / Intel Core i5-13400F</td>
+        <td>$160 - $220</td>
+        <td>6 núcleos, buen rendimiento para gaming y multitarea.</td>
+      </tr>
+      <tr>
+        <td>Placa madre (Motherboard)</td>
+        <td>MSI B550 Tomahawk / ASUS TUF B660</td>
+        <td>$120 - $180</td>
+        <td>Soporte para Ryzen 5000 / Intel 12ª Gen, con buenas opciones de expansión.</td>
+      </tr>
+      <tr>
+        <td>Memoria RAM</td>
+        <td>16GB DDR4 3200 MHz (2x8GB)</td>
+        <td>$50 - $80</td>
+        <td>Dual channel para mejor rendimiento, ideal para gaming y trabajo.</td>
+      </tr>
+      <tr>
+        <td>Almacenamiento</td>
+        <td>SSD NVMe 1TB (Western Digital Blue SN570 o similar)</td>
+        <td>$60 - $100</td>
+        <td>Arranque rápido y carga veloz de programas y juegos.</td>
+      </tr>
+      <tr>
+        <td>Tarjeta gráfica (GPU)</td>
+        <td>NVIDIA RTX 3060 / AMD RX 6600 XT</td>
+        <td>$250 - $350</td>
+        <td>Buena para juegos 1080p y tareas gráficas.</td>
+      </tr>
+      <tr>
+        <td>Fuente de poder (PSU)</td>
+        <td>Corsair CX650 / EVGA 650W 80+ Bronze</td>
+        <td>$60 - $90</td>
+        <td>650W certificada, estable y segura.</td>
+      </tr>
+      <tr>
+        <td>Gabinete (Case)</td>
+        <td>NZXT H510 / Cooler Master NR400</td>
+        <td>$70 - $100</td>
+        <td>Buena ventilación y espacio para upgrades.</td>
+      </tr>
+      <tr>
+        <td>Refrigeración</td>
+        <td>Disipador stock o Cooler Master Hyper 212</td>
+        <td>$0 - $40</td>
+        <td>Dependiendo si el procesador incluye ventilador.</td>
+      </tr>
     </tbody>
   </table>
-  <p><em>💡 Consejo: verifica la compatibilidad entre componentes antes de comprar.</em></p>
+  <p><em>💡 Consejo: siempre compra componentes compatibles, verifica sockets y formatos antes.</em></p>
 </div>
 
 <div class="section">
-  <h2>🔧 Ensamblaje paso a paso</h2>
+  <h2>🔧 Ensamblaje paso a paso (como si fueras vos armandola)</h2>
   <ol>
-    <li>Prepara tu espacio con luz y pulsera antiestática.</li>
-    <li>Instala el procesador en el socket con cuidado.</li>
-    <li>Aplica una gota de pasta térmica.</li>
-    <li>Coloca el disipador y conecta el ventilador.</li>
-    <li>Instala la RAM en los slots correctos.</li>
-    <li>Monta la placa madre en el gabinete.</li>
-    <li>Instala SSD y conecta cables SATA si es necesario.</li>
-    <li>Fija la fuente de poder y conecta los cables.</li>
-    <li>Coloca la tarjeta gráfica en el PCIe x16.</li>
-    <li>Conecta USB frontal, audio y botón de encendido.</li>
-    <li>Haz el primer encendido y entra al BIOS.</li>
-    <li>Organiza el cableado con bridas.</li>
-    <li>Cierra el gabinete.</li>
-    <li>Instala Windows o Linux desde USB.</li>
+    <li><strong>Prepara tu espacio de trabajo:</strong> limpio, con luz natural o una buena lámpara, mesa despejada y usa pulsera antiestática o toca una superficie metálica para descargar electricidad estática.</li>
+    <li><strong>Instala el procesador:</strong> abre con cuidado el socket de la placa madre levantando la palanca, identifica el triángulo dorado en la CPU y alinéalo con el del socket, colócalo suavemente sin forzar.</li>
+    <li><strong>Aplica pasta térmica:</strong> pon una pequeña gota del tamaño de un grano de arroz en el centro del procesador. No es necesario esparcirla; el disipador hará eso al presionar.</li>
+    <li><strong>Coloca el disipador/refrigeración:</strong> fíjalo con los mecanismos de sujeción, conecta el ventilador a la placa en el conector CPU_FAN.</li>
+    <li><strong>Instala la memoria RAM:</strong> abre las pestañas del slot, inserta los módulos DDR4 presionando hasta que encajen y las pestañas cierren con clic.</li>
+    <li><strong>Coloca la placa madre en el gabinete:</strong> primero instala los separadores o “standoffs” en el gabinete para que la placa no toque el metal. Luego pon la placa y atornilla con cuidado.</li>
+    <li><strong>Conecta almacenamiento:</strong> si es SSD M.2, atorníllalo en su ranura. Si es SATA, conecta cables SATA y alimentación desde la fuente.</li>
+    <li><strong>Instala la fuente de poder:</strong> atorníllala en la parte trasera del gabinete y conecta los cables principales (24 pines y CPU 8 pines) a la placa madre.</li>
+    <li><strong>Coloca la tarjeta gráfica:</strong> inserta en el slot PCIe x16, atornilla para fijar y conecta los cables de alimentación PCIe si la tarjeta lo requiere.</li>
+    <li><strong>Conecta cables adicionales:</strong> USB frontal, audio, ventiladores y botón de encendido/reset del gabinete según el manual de la placa.</li>
+    <li><strong>Haz el primer encendido:</strong> conecta monitor, teclado y mouse; enciende y entra al BIOS. Verifica que detecte CPU, RAM y almacenamiento.</li>
+    <li><strong>Organiza el cableado:</strong> usa bridas para que no bloqueen el flujo de aire y cierre correcto del gabinete.</li>
+    <li><strong>Cierra el gabinete:</strong> coloca paneles laterales y atornilla.</li>
+    <li><strong>Instala sistema operativo:</strong> usa USB booteable con Windows o Linux, sigue la instalación guiada.</li>
   </ol>
 </div>
 
 <div class="section">
   <h2>📺 Video tutorial recomendado</h2>
-  <iframe src="https://www.youtube.com/embed/jDgFbYoTtr4?si=xrQ6gOc-zbP2VObX" title="Cómo armar una PC paso a paso" allowfullscreen></iframe>
+  <p>Este video en español muestra claramente todo el proceso que acá describimos, para que no te pierdas ni un solo detalle.</p>
+  <iframe width="100%" height="480" src="https://www.youtube.com/embed/jDgFbYoTtr4?si=xrQ6gOc-zbP2VObX" title="Cómo armar una PC paso a paso" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <div class="section">
-  <h2>💡 Consejos finales</h2>
+  <h2>💡 Consejos finales que no podés olvidar</h2>
   <ul>
-    <li><span class="highlight">No apresures:</span> evita forzar componentes.</li>
-    <li><span class="highlight">Compatibilidad:</span> CPU, RAM, GPU y placa madre.</li>
-    <li><span class="highlight">Actualiza BIOS:</span> si tu procesador es nuevo.</li>
-    <li><span class="highlight">Evita la estática:</span> toca metal antes de manipular.</li>
-    <li><span class="highlight">Mantén tu PC limpia:</span> el polvo reduce el rendimiento.</li>
+    <li><span class="highlight">No apresures:</span> mejor ir lento y firme para evitar daños.</li>
+    <li><span class="highlight">Revisa la compatibilidad:</span> socket del CPU, RAM soportada y tamaño del gabinete.</li>
+    <li><span class="highlight">Actualiza BIOS:</span> a veces la placa madre necesita la última versión para tu procesador.</li>
+    <li><span class="highlight">Maneja la estática:</span> evita tocar componentes electrónicos con las manos sucias o sin descargarte.</li>
+    <li><span class="highlight">Mantén tu PC limpia:</span> el polvo mata el rendimiento y vida útil.</li>
   </ul>
 </div>
 
