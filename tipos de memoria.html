@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 1.14 Tipos de Memoria - Exploración Interactiva</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background: linear-gradient(90deg, #fc466b, #3f5efb);
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .section {
+    background: linear-gradient(135deg, #232526, #414345);
+    margin-bottom: 20px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .section:hover {
+    background: linear-gradient(135deg, #485563, #29323c);
+  }
+  h2 {
+    color: #00f2fe;
+    font-size: 2rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #2c3e50;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th, td {
+    border: 1px solid #34495e;
+    padding: 12px;
+    text-align: center;
+  }
+  th {
+    background: #00c6ff;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  img {
+    width: 100%;
+    border-radius: 8px;
+    margin: 15px 0;
+  }
+  .content {
+    display: none;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🧠 1.14 Tipos de Memoria - Investigación Interactiva</h1>
+</header>
+
+<div class="container">
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>💡 Memoria RAM</h2>
+    <div class="content">
+      <p>La memoria RAM (Random Access Memory) permite el acceso rápido y temporal a datos que la CPU necesita de inmediato. Es vital para ejecutar programas, aplicaciones y procesar múltiples tareas al mismo tiempo.</p>
+      <ul>
+        <li>Tipos: SDRAM, DDR (DDR2, DDR3, DDR4, DDR5).</li>
+        <li>Capacidades: Desde 4GB en equipos básicos hasta 256GB o más en servidores.</li>
+        <li>Velocidades: DDR5 puede superar los 6400 MT/s.</li>
+        <li>Volatilidad: Pierde los datos al apagar el equipo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>🔒 Memoria ROM</h2>
+    <div class="content">
+      <p>La memoria ROM (Read-Only Memory) contiene datos permanentes que no se pierden al apagar el equipo. Es esencial para almacenar el firmware que arranca el sistema operativo.</p>
+      <ul>
+        <li>Tipos: PROM, EPROM, EEPROM.</li>
+        <li>Características: No volátil, sólo lectura o de reescritura limitada.</li>
+        <li>Ejemplos: BIOS, firmware en dispositivos electrónicos.</li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/EPROM_chip.jpg" alt="Chip ROM">
+    </div>
+  </div>
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>⚡ Memoria Caché</h2>
+    <div class="content">
+      <p>Memoria ultrarrápida integrada en el procesador. Guarda datos e instrucciones usados frecuentemente para reducir el tiempo de acceso y aumentar el rendimiento del procesador.</p>
+      <table>
+        <tr><th>Nivel</th><th>Ubicación</th><th>Velocidad</th><th>Tamaño</th></tr>
+        <tr><td>L1</td><td>Dentro del núcleo</td><td>Extremadamente alta</td><td>32KB - 128KB</td></tr>
+        <tr><td>L2</td><td>Por núcleo o compartido</td><td>Muy alta</td><td>256KB - 1MB</td></tr>
+        <tr><td>L3</td><td>Compartido entre núcleos</td><td>Alta</td><td>2MB - 64MB</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>💾 Memoria Flash</h2>
+    <div class="content">
+      <p>La memoria flash es un tipo de almacenamiento no volátil que retiene datos sin necesidad de energía. Se encuentra en dispositivos USB, tarjetas SD, SSD y smartphones.</p>
+      <ul>
+        <li>Ventajas: Resistente, rápida, silenciosa y de bajo consumo.</li>
+        <li>Desventajas: Vida útil limitada por ciclos de escritura.</li>
+        <li>Aplicaciones: Almacenamiento de fotos, videos, sistemas operativos portables.</li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/USB_flash_drives.jpg" alt="Memoria Flash">
+    </div>
+  </div>
+
+  <div class="section" onclick="toggleContent(this)">
+    <h2>📊 Comparativa General</h2>
+    <div class="content">
+      <table>
+        <tr>
+          <th>Tipo</th>
+          <th>Volátil</th>
+          <th>Velocidad</th>
+          <th>Uso</th>
+          <th>Ejemplos</th>
+        </tr>
+        <tr>
+          <td>RAM</td>
+          <td>Sí</td>
+          <td>Muy alta</td>
+          <td>Procesos activos y temporales</td>
+          <td>DDR4, DDR5</td>
+        </tr>
+        <tr>
+          <td>ROM</td>
+          <td>No</td>
+          <td>Media</td>
+          <td>Inicio del sistema</td>
+          <td>BIOS, Firmware</td>
+        </tr>
+        <tr>
+          <td>Caché</td>
+          <td>Sí</td>
+          <td>Extremadamente alta</td>
+          <td>Procesamiento inmediato</td>
+          <td>L1, L2, L3</td>
+        </tr>
+        <tr>
+          <td>Flash</td>
+          <td>No</td>
+          <td>Alta</td>
+          <td>Almacenamiento permanente</td>
+          <td>SSD, USB</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleContent(section) {
+  const content = section.querySelector('.content');
+  content.style.display = content.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+</body>
+</html>
