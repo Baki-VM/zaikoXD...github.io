@@ -220,13 +220,55 @@
         padding: 8px 12px;
       }
     }
+    /* Estilo extra para botones de navegación */
+nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-btn {
+  position: relative;
+  padding: 10px 18px;
+  background-color: #28a745; /* Verde base igual que .boton-enlace */
+  color: white;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(40, 167, 69, 0.4);
+  user-select: none;
+}
+
+.nav-btn:hover {
+  background-color: #218838; /* Verde más oscuro */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(33, 136, 56, 0.6);
+}
+
+.nav-btn:active {
+  background-color: #19692c;
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(25, 105, 44, 0.8);
+  transition: none;
+}
+
   </style>
 </head>
 <body>
-     <header>
-    <h1>💻 Hardware I </h1>
-    <p>Trabajo para la materia de Hardware y Software — UPDS Santa Cruz</p>
-  </header>
+    <header>
+  <h1>💻 Hardware I </h1>
+  <p>Trabajo para la materia de Hardware y Software — UPDS Santa Cruz</p>
+  <nav style="margin-top: 15px;">
+    <a class="boton-enlace nav-btn" href="index.html">Inicio</a>
+    <a class="boton-enlace nav-btn" href="HARDWARE I .html">Hardware 1</a>
+    <a class="boton-enlace nav-btn" href="HARDWARE 2.html">Hardware 2</a>
+    <a class="boton-enlace nav-btn" href="#software1">Software 1</a>
+    <a class="boton-enlace nav-btn" href="#software2">Software 2</a>
+  </nav>
+</header>
+
 
 
   <main>
