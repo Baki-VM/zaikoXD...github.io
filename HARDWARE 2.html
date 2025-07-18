@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hardware 2</title>
     <style>
         body {
@@ -14,7 +14,7 @@
         }
         header {
             background: #00c6ff;
-            padding: 30px;
+            padding: 30px 20px 20px 20px;
             text-align: center;
             border-bottom: 4px solid #0072ff;
         }
@@ -23,6 +23,29 @@
             font-size: 2.5em;
             color: white;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .boton-header-container {
+            margin-top: 15px;
+        }
+        .boton-header {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #00ffcc, #00c6ff);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .boton-header:hover {
+            background: linear-gradient(135deg, #00e6b8, #0072ff);
+            color: #fff;
+            transform: scale(1.05);
         }
         .container {
             padding: 20px;
@@ -60,6 +83,8 @@
             transition: all 0.3s ease;
             text-align: center;
             margin-top: 10px;
+            cursor: pointer;
+            user-select: none;
         }
         .boton-enlace:hover {
             background: linear-gradient(135deg, #00e6b8, #0072ff);
@@ -78,6 +103,13 @@
 
     <header>
         <h1>Hardware 2</h1>
+        <div class="boton-header-container">
+            <a class="boton-header" href="inicio.html">INICIO</a>
+            <a class="boton-header" href="hardware1.html">Hardware 1</a>
+            <a class="boton-header" href="hardware2.html">Hardware 2</a>
+            <a class="boton-header" href="software1.html">Software 1</a>
+            <a class="boton-header" href="software2.html">Software 2</a>
+        </div>
     </header>
 
     <div class="container">
@@ -171,10 +203,5 @@
             <a class="boton-enlace" href="ensamblaje de una computadora.html">Tutorial Ensamblaje</a>
         </section>
     </div>
-
-    <footer>
-        &copy; 2025 Hardware 2 - Todos los derechos reservados
-    </footer>
-
 </body>
 </html>
