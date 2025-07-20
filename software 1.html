@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software 1 - Portal Principal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #f1f5f9;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+  }
+
+  header {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    padding: 50px 20px 60px;
+    text-align: center;
+    box-shadow: 0 0 30px #2563ebbb;
+  }
+
+  header h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #e0f2fe;
+    text-shadow: 0 0 15px #60a5fa;
+  }
+
+  header p {
+    font-size: 1.3rem;
+    color: #bae6fd;
+    margin-top: 15px;
+    font-style: italic;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+  }
+
+  section.card {
+    background: #1e293b;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    margin-bottom: 50px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    padding: 25px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  section.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(59, 130, 246, 0.7);
+  }
+
+  section.card img {
+    width: 280px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 0 25px #2563eb88;
+    flex-shrink: 0;
+  }
+
+  .content {
+    flex: 1 1 600px;
+    color: #cbd5e1;
+  }
+
+  .content h2 {
+    color: #60a5fa;
+    font-size: 2rem;
+    margin-bottom: 18px;
+    text-shadow: 0 0 10px #3b82f6;
+  }
+
+  .content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+  }
+
+  .content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+
+  .content table, .content th, .content td {
+    border: 1px solid #2563eb99;
+  }
+
+  .content th, .content td {
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 1rem;
+    color: #e0e7ff;
+  }
+
+  .content th {
+    background: #2563ebdd;
+  }
+
+  .btn {
+    display: inline-block;
+    background: #3b82f6;
+    color: #e0f2fe;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 5px 15px #3b82f655;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #60a5fa;
+    box-shadow: 0 8px 25px #60a5faaa;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    section.card {
+      flex-direction: column;
+      padding: 20px 15px;
+    }
+
+    section.card img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #2563ebbb;
+    }
+
+    .content {
+      flex: 1 1 100%;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Software 1</h1>
+  <p>Tu portal para entender los conceptos clave del software, desde lo lógico hasta sus tipos y mantenimiento.</p>
+</header>
+
+<main>
+
+  <!-- 2.1 Componentes lógicos -->
+  <section class="card" id="comp-logicos">
+    <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" alt="Componentes lógicos" />
+    <div class="content">
+      <h2>2.1 Componentes lógicos y aplicaciones informáticas</h2>
+      <p>Los componentes lógicos son la parte intangible del sistema informático: <strong>programas, aplicaciones, sistemas operativos</strong> y todo aquello que hace funcionar el hardware y nos permite realizar tareas.</p>
+      <p>Ejemplos incluyen desde Windows y Linux, hasta las apps que usas para todo día a día.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sistema operativo</td>
+            <td>Software base que gestiona el hardware y recursos del equipo.</td>
+          </tr>
+          <tr>
+            <td>Aplicaciones</td>
+            <td>Programas diseñados para tareas específicas (navegadores, juegos, utilidades).</td>
+          </tr>
+          <tr>
+            <td>Utilidades</td>
+            <td>Herramientas para optimizar, proteger o mejorar el sistema.</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#detalles-comp-logicos" class="btn">Leer más</a>
+    </div>
+  </section>
+
+  <!-- 2.2 Mantenimiento -->
+  <section class="card" id="mantenimiento-software">
+    <img src="https://cdn-icons-png.flaticon.com/512/2917/2917994.png" alt="Mantenimiento software" />
+    <div class="content">
+      <h2>2.2 Mantenimiento en Software</h2>
+      <p>El mantenimiento es vital para que el software siga funcionando bien, corrigiendo errores y adaptándose a nuevos entornos.</p>
+      <p>Sin mantenimiento, las aplicaciones se vuelven lentas, inseguras o simplemente obsoletas.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo de mantenimiento</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Correctivo</td>
+            <td>Corrección de fallos y errores.</td>
+          </tr>
+          <tr>
+            <td>Adaptativo</td>
+            <td>Ajustes por cambios en hardware o software.</td>
+          </tr>
+          <tr>
+            <td>Perfectivo</td>
+            <td>Mejoras y optimizaciones.</td>
+          </tr>
+          <tr>
+            <td>Preventivo</td>
+            <td>Prevención de futuros problemas.</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#detalles-mantenimiento" class="btn">Leer más</a>
+    </div>
+  </section>
+
+  <!-- 2.3 Tipos de software -->
+  <section class="card" id="tipos-software">
+    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006553.png" alt="Tipos de software" />
+    <div class="content">
+      <h2>2.3 Tipos de Software</h2>
+      <p>Existen dos grandes tipos de software que trabajan juntos para que tu equipo funcione y cumpla tareas:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Función</th>
+            <th>Ejemplos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sistema</td>
+            <td>Gestiona hardware y recursos.</td>
+            <td>Windows, Linux, macOS</td>
+          </tr>
+          <tr>
+            <td>Aplicación</td>
+            <td>Herramientas para tareas específicas.</td>
+            <td>Word, Chrome, Photoshop</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#detalles-tipos-software" class="btn">Leer más</a>
+    </div>
+  </section>
+
+  <!-- 2.4 Software libre -->
+  <section class="card" id="software-libre">
+    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006564.png" alt="Software libre" />
+    <div class="content">
+      <h2>2.4 Software libre</h2>
+      <p>El software libre es como un libro abierto: cualquiera puede usarlo, modificarlo y compartirlo. Es colaboración y libertad digital en su máxima expresión.</p>
+      <p>Grandes ejemplos incluyen <strong>Linux</strong>, <strong>Firefox</strong> y <strong>LibreOffice</strong>.</p>
+      <a href="#detalles-software-libre" class="btn">Leer más</a>
+    </div>
+  </section>
+
+  <!-- 2.5 Software propietario -->
+  <section class="card" id="software-propietario">
+    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006561.png" alt="Software propietario" />
+    <div class="content">
+      <h2>2.5 Software propietario</h2>
+      <p>Este software es cerrado y protegido: solo el creador controla su uso y distribución. Por eso, sus licencias son estrictas.</p>
+      <p>Ejemplos clásicos son <strong>Windows</strong>, <strong>Adobe Photoshop</strong> y <strong>Microsoft Office</strong>.</p>
+      <a href="#detalles-software-propietario" class="btn">Leer más</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS
+</footer>
+
+</body>
+</html>
+
