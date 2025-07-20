@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes Lógicos y Aplicaciones Informáticas</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f6f9fc, #e9f0f5);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-bottom: 5px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #2575fc;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background: #2575fc;
+            color: white;
+        }
+
+        section {
+            max-width: 1100px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        h2 {
+            color: #6a11cb;
+            border-bottom: 3px solid #ccc;
+            padding-bottom: 0.5rem;
+        }
+
+        .card {
+            background: #f0f4ff;
+            padding: 1.2rem;
+            border-left: 5px solid #6a11cb;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background: #dce7ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #6a11cb;
+            color: white;
+            border-top: 5px solid #fff;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffecb5;
+            padding: 0.5rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌐 Componentes Lógicos y Aplicaciones Informáticas</h1>
+        <p>Todo lo que necesitas saber para comprender el corazón del mundo digital. Desde cero, para principiantes.</p>
+    </header>
+
+    <nav>
+        <a href="#componentes">Componentes Lógicos</a>
+        <a href="#aplicaciones">Aplicaciones Informáticas</a>
+        <a href="#importancia">Importancia</a>
+    </nav>
+
+    <section id="componentes">
+        <h2>🚀 ¿Qué son los Componentes Lógicos?</h2>
+        <p>Para entender un computador, imagina un cuerpo humano: el hardware sería el cuerpo físico, mientras que los componentes lógicos serían el cerebro y los pensamientos que controlan ese cuerpo. Son los programas, instrucciones y procesos que hacen que el hardware tenga un propósito.</p>
+
+        <p>Históricamente, antes de los componentes lógicos, las computadoras eran enormes calculadoras. Fue la programación, introducida por Ada Lovelace en el siglo XIX, la que permitió darles instrucciones específicas para realizar diversas tareas.</p>
+
+        <div class="card">
+            <h3>📌 Software de Sistema</h3>
+            <p>Es el conjunto de programas que gestionan los recursos físicos de una computadora: memoria, procesador, almacenamiento. Sin esto, la máquina no podría funcionar. Ejemplos: <strong>Windows, Linux, macOS</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h3>📌 Software de Aplicación</h3>
+            <p>Programas que permiten realizar tareas específicas para el usuario, como escribir textos, crear música o gestionar negocios. Ejemplos: <strong>Word, Excel, Photoshop, Instagram</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h3>📌 Software de Programación</h3>
+            <p>Estas herramientas permiten a los desarrolladores escribir el software que usas cada día. Incluyen lenguajes como <strong>Python, Java, C++</strong> y entornos como <strong>Visual Studio</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h3>📌 Algoritmos</h3>
+            <p>Son recetas que indican paso a paso cómo resolver un problema. Sin algoritmos, no existirían apps, videojuegos o redes sociales. Son claves en la inteligencia artificial y en la toma de decisiones de máquinas.</p>
+        </div>
+    </section>
+
+    <section id="aplicaciones">
+        <h2>💻 Aplicaciones Informáticas</h2>
+        <p>Las aplicaciones informáticas son programas que ejecutamos en computadoras y móviles para satisfacer necesidades concretas.</p>
+
+        <div class="card">
+            <h3>🗂️ Aplicaciones de Oficina</h3>
+            <p>Programas como <strong>Microsoft Office</strong> nos permiten escribir documentos, hacer cálculos en hojas de Excel y presentar ideas con PowerPoint.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎨 Aplicaciones de Diseño</h3>
+            <p>Para diseñar desde un logotipo hasta un edificio, usamos software como <strong>Photoshop, Illustrator, AutoCAD</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌍 Aplicaciones Web</h3>
+            <p>Son programas que funcionan a través de Internet, como <strong>Google Drive</strong>, o redes sociales como <strong>Facebook</strong> o <strong>Instagram</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎮 Aplicaciones de Entretenimiento</h3>
+            <p>Netflix para ver películas, Spotify para escuchar música, y videojuegos como Fortnite para divertirnos.</p>
+        </div>
+    </section>
+
+    <section id="importancia">
+        <h2>🌟 Importancia de los Componentes Lógicos y Aplicaciones</h2>
+        <p>Los componentes lógicos son esenciales para:</p>
+        <ul>
+            <li>Controlar todo el hardware de un dispositivo.</li>
+            <li>Facilitar la comunicación entre personas a través de apps y redes sociales.</li>
+            <li>Realizar investigaciones científicas complejas.</li>
+            <li>Crear videojuegos, programas educativos y de entretenimiento.</li>
+        </ul>
+
+        <p>Las aplicaciones informáticas nos permiten trabajar, aprender, divertirnos y conectar con el mundo, abriendo la puerta a nuevas tecnologías como la inteligencia artificial, el big data y la computación cuántica.</p>
+
+        <div class="highlight">
+            "Conocer los componentes lógicos es como aprender a hablar el idioma de las computadoras."
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - Todos los derechos reservados | 🚀 Educación Informática para Todos</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const section = document.querySelector(link.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
