@@ -25,6 +25,7 @@
     }
 
     .container {
+      position: relative;
       background: rgba(255, 255, 255, 0.08);
       border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 30px;
@@ -113,6 +114,55 @@
       transform: scale(1.2) rotate(12deg);
     }
 
+    /* Botón personalizado abajo izquierda (más pequeño) */
+    .link-btn {
+      position: absolute;
+      left: 30px;
+      bottom: 80px;
+      background: linear-gradient(145deg, #0066cc, #3399ff);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .link-btn:hover {
+      background: linear-gradient(145deg, #3399ff, #0066cc);
+      transform: translateY(-3px);
+    }
+
+    /* Espacio para nombres y grupo */
+    .info-group {
+      margin: 60px auto 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 800px;
+      text-align: left;
+      color: #e0e0e0;
+      font-size: 1rem;
+    }
+
+    .info-group div {
+      margin-bottom: 5px;
+    }
+
+    .info-group .group-title {
+      grid-column: span 3;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 15px;
+      color: #00e3ae;
+    }
+
     footer {
       margin-top: 60px;
       font-size: 1rem;
@@ -130,34 +180,40 @@
       }
     }
 
-    /* RESPONSIVE: para celulares */
     @media (max-width: 768px) {
       .header {
         flex-direction: column;
         gap: 20px;
       }
-
       .header img {
         width: 60%;
         height: auto;
       }
-
       .header h1 {
         font-size: 2.2rem;
         white-space: normal;
       }
-
       .container h2 {
         font-size: 1.2rem;
       }
-
       .menu-btn {
         padding: 25px 10px;
         font-size: 1.1rem;
       }
-
       .menu-btn i {
         font-size: 2.2rem;
+      }
+      .link-btn {
+        left: 20px;
+        bottom: 60px;
+        padding: 6px 12px;
+        font-size: 0.75rem;
+      }
+      .info-group {
+        grid-template-columns: 1fr;
+      }
+      .info-group .group-title {
+        grid-column: span 1;
       }
     }
   </style>
@@ -190,6 +246,22 @@
         Software 2
       </a>
     </div>
+
+    <!-- Nuevo espacio para nombres y grupo -->
+    <div class="info-group">
+      <div class="group-title">Integrantes y Grupo</div>
+      <div>1. ___________________________</div>
+      <div>2. ___________________________</div>
+      <div>3. ___________________________</div>
+      <div>4. ___________________________</div>
+      <div>5. ___________________________</div>
+      <div>6. ___________________________</div>
+    </div>
+
+    <!-- Botón-enlace abajo a la izquierda -->
+    <a href="#" class="link-btn">
+      <i class="fas fa-book"></i> Manual de Mantenimiento de Hardware y Software
+    </a>
 
     <footer>
       UPDS Santa Cruz — Reinaldo — 2025
