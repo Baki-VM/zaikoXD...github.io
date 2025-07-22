@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2.8 Software Motores de Bases de Datos - Trabajo Completo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      color: #e0e7ff;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      padding: 40px 20px 60px;
+      box-shadow: 0 0 30px rgba(59,130,246,0.9);
+      position: relative;
+      overflow: hidden;
+      color: #e0e7ff;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250px;
+      height: 250px;
+      background: url('https://cdn-icons-png.flaticon.com/512/732/732221.png') center center/contain no-repeat;
+      opacity: 0.35;  /* opacidad reforzada para que se note */
+      pointer-events: none;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 0 10px #3b82f6);
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 25px 30px;
+      background: rgba(30,41,59,0.95);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    }
+    h1, h2, h3 {
+      color: #60a5fa;
+      margin-bottom: 15px;
+    }
+    p, li {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+    th, td {
+      border: 1px solid #60a5fa;
+      padding: 14px 18px;
+      text-align: left;
+    }
+    th {
+      background: #3b82f6;
+      color: #fff;
+    }
+    ul {
+      margin-left: 25px;
+      margin-bottom: 25px;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      width: 100%;
+      border-radius: 12px;
+      margin: 25px 0;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.5);
+    }
+    .note {
+      background: #2563eb22;
+      border-left: 6px solid #2563ebaa;
+      padding: 15px 20px;
+      margin: 25px 0;
+      font-style: italic;
+      color: #dbeafe;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>2.8 Software Motores de Bases de Datos (BBDD)</h1>
+  <p>Una guía completa para entender qué son los motores de bases de datos, cómo funcionan, tipos y ejemplos para usar en la vida real.</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>¿Qué es un Motor de Base de Datos?</h2>
+    <p>Un motor de base de datos es el software que gestiona, organiza y permite el acceso a los datos almacenados en una base de datos. Es el "cerebro" que hace que puedas guardar, buscar y manipular datos de manera rápida y segura.</p>
+    <p>Es el encargado de recibir las consultas (queries), procesarlas y devolver resultados eficientes sin que tú tengas que preocuparte por cómo están físicamente almacenados los datos.</p>
+  </section>
+
+  <section>
+    <h2>¿Por qué son importantes los Motores de BBDD?</h2>
+    <ul>
+      <li><strong>Gestión Eficiente:</strong> Organizan millones o incluso miles de millones de registros.</li>
+      <li><strong>Integridad:</strong> Mantienen la exactitud y consistencia de los datos.</li>
+      <li><strong>Seguridad:</strong> Controlan accesos y protegen la información.</li>
+      <li><strong>Acceso Concurrente:</strong> Permiten que múltiples usuarios accedan y modifiquen datos sin conflictos.</li>
+      <li><strong>Escalabilidad:</strong> Crecen y se adaptan a las necesidades del negocio o proyecto.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tipos Principales de Motores de Bases de Datos</h2>
+    <p>Existen distintos tipos de motores según cómo gestionan los datos, su estructura y objetivos:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Descripción</th>
+          <th>Ejemplos</th>
+          <th>Uso Común</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Relacionales (RDBMS)</td>
+          <td>Organizan datos en tablas con filas y columnas, usando SQL para consultas.</td>
+          <td>MySQL, PostgreSQL, Oracle DB, Microsoft SQL Server</td>
+          <td>Aplicaciones empresariales, comercio electrónico, sistemas bancarios.</td>
+        </tr>
+        <tr>
+          <td>No Relacionales (NoSQL)</td>
+          <td>Usan estructuras flexibles: documentos, clave-valor, grafos, etc.</td>
+          <td>MongoDB, Cassandra, Redis, Neo4j</td>
+          <td>Big Data, aplicaciones web, análisis en tiempo real.</td>
+        </tr>
+        <tr>
+          <td>In-Memory</td>
+          <td>Almacenan datos principalmente en RAM para ultra velocidad.</td>
+          <td>Redis, Memcached</td>
+          <td>Cacheo, sesiones, sistemas en tiempo real.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Cómo Funciona un Motor de Base de Datos Relacional</h2>
+    <p>Estos motores usan SQL (Structured Query Language), un lenguaje estándar para consultar y manipular datos.</p>
+    <p>Funcionan creando y gestionando:</p>
+    <ul>
+      <li><strong>Tablas:</strong> Donde se almacenan los datos en filas (registros) y columnas (campos).</li>
+      <li><strong>Índices:</strong> Para acelerar las búsquedas.</li>
+      <li><strong>Relaciones:</strong> Vínculos entre tablas para organizar datos relacionados.</li>
+      <li><strong>Transacciones:</strong> Procesos atómicos para garantizar integridad y consistencia.</li>
+    </ul>
+    <div class="note">
+      <strong>Ejemplo sencillo de SQL para obtener datos:</strong>
+      <pre style="background:#2563eb22; padding: 12px; border-radius: 8px;">SELECT nombre, edad FROM usuarios WHERE edad &gt; 18;</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Comparativa Visual de Motores de Bases de Datos</h2>
+    <img src="https://miro.medium.com/max/1400/1*YnP9TNDRM1po-9Hh4-dycw.png" alt="Comparativa RDBMS vs NoSQL" />
+    <p style="text-align:center; font-size:0.9rem; margin-top:-20px;">Fuente: Medium.com</p>
+  </section>
+
+  <section>
+    <h2>Ejemplos Reales y Recomendados de Motores de BBDD</h2>
+    <ul>
+      <li><strong>MySQL:</strong> Muy popular, gratuito y de código abierto, ideal para web y proyectos pequeños/medianos.</li>
+      <li><strong>PostgreSQL:</strong> Potente y con funciones avanzadas, excelente para proyectos que necesitan integridad fuerte.</li>
+      <li><strong>Oracle DB:</strong> Usado en grandes empresas, muy robusto y con soporte comercial.</li>
+      <li><strong>MongoDB:</strong> NoSQL basado en documentos, flexible para datos semi-estructurados.</li>
+      <li><strong>Redis:</strong> In-memory para cache y aceleración de aplicaciones en tiempo real.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Pasos para Implementar un Motor de Base de Datos en un Proyecto</h2>
+    <ol>
+      <li><strong>Analiza tus necesidades:</strong> ¿Qué tipo de datos manejarás? ¿Estructurados o flexibles?</li>
+      <li><strong>Elige el motor adecuado:</strong> Relacional para datos estructurados; NoSQL para datos variables o con gran volumen.</li>
+      <li><strong>Diseña tu base de datos:</strong> Define tablas, campos, relaciones, índices y restricciones.</li>
+      <li><strong>Instala y configura el motor:</strong> Descarga, instala y ajusta según tu entorno.</li>
+      <li><strong>Conecta tu aplicación:</strong> Usa drivers o librerías para comunicar tu software con la base de datos.</li>
+      <li><strong>Realiza pruebas:</strong> Asegura que las consultas y operaciones funcionen correctamente y sean eficientes.</li>
+      <li><strong>Mantén y optimiza:</strong> Monitoriza el rendimiento y haz ajustes según crezcan los datos y usuarios.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Recursos para Profundizar</h2>
+    <ul>
+      <li><a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer">MySQL Official</a></li>
+      <li><a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer">PostgreSQL Official</a></li>
+      <li><a href="https://docs.mongodb.com/" target="_blank" rel="noopener noreferrer">MongoDB Documentation</a></li>
+      <li><a href="https://redis.io/" target="_blank" rel="noopener noreferrer">Redis Official</a></li>
+      <li><a href="https://www.sqlshack.com/sql-server-vs-mysql-vs-postgresql-vs-oracle/" target="_blank" rel="noopener noreferrer">Comparativa motores BBDD</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Conclusión</h2>
+    <p>Los motores de bases de datos son herramientas críticas que soportan casi todas las aplicaciones y sistemas modernos. Elegir el correcto y saber implementarlo marca la diferencia entre un proyecto exitoso o uno que se vuelve un dolor de cabeza.</p>
+    <p>Dominar estos conceptos es esencial para cualquier ingeniero en sistemas o desarrollador que quiera construir soluciones sólidas y escalables.</p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS
+</footer>
+
+</body>
+</html>

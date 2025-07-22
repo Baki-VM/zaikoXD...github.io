@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2.10 Computación en la Nube - Trabajo Universitario Completo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #cce7ff, #66b3ff);
+      color: #003366;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: #0059b3;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #003366;
+      text-decoration: underline;
+    }
+    header {
+      position: relative;
+      text-align: center;
+      background: #e6f0ff;
+      padding: 50px 20px 70px;
+      color: #003366;
+      box-shadow: 0 0 30px rgba(0, 51, 102, 0.4);
+      overflow: hidden;
+      margin-bottom: 40px;
+      border-radius: 12px;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 220px;
+      height: 220px;
+      background: url('https://cdn-icons-png.flaticon.com/512/4140/4140043.png') center/contain no-repeat;
+      opacity: 0.15;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 0 15px #003366);
+      pointer-events: none;
+      z-index: 0;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-shadow: 0 0 10px #3399ff;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      padding: 20px 30px;
+      background: #ffffffcc;
+      color: #003366;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 83, 165, 0.4);
+    }
+    h2 {
+      color: #0059b3;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3399ff;
+      padding-bottom: 6px;
+    }
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+    }
+    ul, ol {
+      margin-left: 25px;
+      margin-bottom: 25px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      box-shadow: 0 0 15px rgba(51, 153, 255, 0.3);
+    }
+    th, td {
+      border: 1px solid #3399ff;
+      padding: 12px 18px;
+      text-align: left;
+    }
+    th {
+      background-color: #3399ff;
+      color: white;
+      font-weight: 700;
+    }
+    .graph {
+      text-align: center;
+      margin: 30px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #003366;
+      color: #cce7ff;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      border-radius: 0 0 12px 12px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>2.10 Computación en la Nube</h1>
+  <p>Una mirada profunda a la computación en la nube: fundamentos, modelos, ventajas y aplicaciones actuales.</p>
+</header>
+
+<main>
+  <section>
+    <h2>Introducción a la Computación en la Nube</h2>
+    <p>La computación en la nube es un paradigma que permite acceder a recursos informáticos (servidores, almacenamiento, bases de datos, software, análisis, etc.) a través de internet, sin necesidad de tener infraestructura física local.</p>
+    <p>Su auge comenzó en los 2000s con la masificación del internet y hoy es clave para empresas, desarrolladores y usuarios por su flexibilidad y escalabilidad.</p>
+  </section>
+
+  <section>
+    <h2>Historia y Evolución</h2>
+    <p>El concepto se inspira en décadas anteriores con la idea de tiempo compartido en computadoras centrales en los 60s.</p>
+    <p>En 2006, Amazon Web Services (AWS) lanzó EC2, popularizando la nube pública. Desde entonces, otros grandes como Microsoft Azure, Google Cloud Platform y IBM Cloud entraron al juego, expandiendo funcionalidades y alcance global.</p>
+  </section>
+
+  <section>
+    <h2>Modelos de Servicio</h2>
+    <p>Existen tres modelos principales:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Descripción</th>
+          <th>Ejemplos</th>
+          <th>¿Quién lo administra?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>IaaS (Infraestructura como Servicio)</td>
+          <td>Ofrece hardware virtualizado: servidores, almacenamiento y redes.</td>
+          <td>AWS EC2, Google Compute Engine, Azure VMs</td>
+          <td>Proveedor (infraestructura), usuario (software y apps)</td>
+        </tr>
+        <tr>
+          <td>PaaS (Plataforma como Servicio)</td>
+          <td>Proporciona plataformas para desarrollar y desplegar aplicaciones sin gestionar infraestructura.</td>
+          <td>Heroku, Google App Engine, Azure App Service</td>
+          <td>Proveedor (infraestructura y plataforma), usuario (aplicaciones)</td>
+        </tr>
+        <tr>
+          <td>SaaS (Software como Servicio)</td>
+          <td>Software accesible vía web sin instalación local.</td>
+          <td>Google Workspace, Microsoft 365, Dropbox</td>
+          <td>Proveedor (todo)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Modelos de Implementación</h2>
+    <p>Cómo se despliega la nube:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Descripción</th>
+          <th>Ventajas</th>
+          <th>Ejemplos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nube Pública</td>
+          <td>Servicios accesibles al público en general por proveedores externos.</td>
+          <td>Bajo costo, escalabilidad, fácil acceso.</td>
+          <td>AWS, Google Cloud, Azure</td>
+        </tr>
+        <tr>
+          <td>Nube Privada</td>
+          <td>Infraestructura exclusiva para una organización.</td>
+          <td>Más control, seguridad y personalización.</td>
+          <td>Infraestructura propia o proveedores dedicados</td>
+        </tr>
+        <tr>
+          <td>Nube Híbrida</td>
+          <td>Combinación de nube pública y privada.</td>
+          <td>Flexibilidad, balance entre costo y seguridad.</td>
+          <td>Empresas que mezclan infra propia con servicios públicos</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Ventajas de la Computación en la Nube</h2>
+    <ul>
+      <li><strong>Escalabilidad:</strong> Ajusta recursos fácilmente según demanda.</li>
+      <li><strong>Costos reducidos:</strong> Paga solo por lo que usas, sin inversión inicial fuerte.</li>
+      <li><strong>Accesibilidad:</strong> Accede a tus datos y aplicaciones desde cualquier lugar con internet.</li>
+      <li><strong>Seguridad:</strong> Proveedores invierten en protecciones avanzadas y backups automáticos.</li>
+      <li><strong>Innovación rápida:</strong> Lanzamiento rápido de nuevos servicios y aplicaciones.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Casos de Uso y Aplicaciones Reales</h2>
+    <ul>
+      <li>Empresas que usan SaaS para colaboración (Slack, Zoom, Google Workspace).</li>
+      <li>Desarrolladores usando PaaS para crear aplicaciones sin preocuparse por servidores.</li>
+      <li>Almacenamiento de grandes datos y análisis con IaaS (Big Data, Machine Learning).</li>
+      <li>Streaming de video y música (Netflix, Spotify) aprovechando la nube.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Desafíos y Consideraciones</h2>
+    <ul>
+      <li>Dependencia de conexión a internet confiable.</li>
+      <li>Preocupaciones sobre privacidad y cumplimiento legal.</li>
+      <li>Costos pueden subir inesperadamente si no se monitorean recursos.</li>
+      <li>Necesidad de entender bien el modelo para optimizar uso y seguridad.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Gráfica de Crecimiento del Mercado de la Nube</h2>
+    <div class="graph">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cloud_computing_market_size.png/800px-Cloud_computing_market_size.png" alt="Crecimiento del mercado de computación en la nube" style="max-width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(0, 83, 165, 0.6);" />
+      <p style="font-style: italic; font-size: 0.9rem; margin-top: 8px;">Fuente: Statista - Tamaño del mercado global de computación en la nube</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Conclusión</h2>
+    <p>La computación en la nube representa un cambio radical en cómo las empresas y usuarios consumen tecnología, ofreciendo flexibilidad, eficiencia y escalabilidad a un nivel antes impensado. Aprender y dominar sus conceptos es vital para cualquier profesional en sistemas, tecnología o negocios.</p>
+  </section>
+
+  <section>
+    <h2>Referencias</h2>
+    <ul>
+      <li><a href="https://azure.microsoft.com/es-es/overview/what-is-cloud-computing/" target="_blank" rel="noopener noreferrer">Microsoft Azure - ¿Qué es computación en la nube?</a></li>
+      <li><a href="https://aws.amazon.com/es/what-is-cloud-computing/" target="_blank" rel="noopener noreferrer">Amazon Web Services - Introducción a la nube</a></li>
+      <li><a href="https://www.ibm.com/cloud/learn/cloud-computing" target="_blank" rel="noopener noreferrer">IBM - Computación en la nube</a></li>
+      <li><a href="https://www.gartner.com/en/information-technology/glossary/cloud-computing" target="_blank" rel="noopener noreferrer">Gartner - Definición de computación en la nube</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS
+</footer>
+
+</body>
+</html>
