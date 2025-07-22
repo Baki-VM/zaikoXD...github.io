@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software 2 - Página Principal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .boton-enlace {
+            display: inline-block;
+            background-color: #00f2fe;
+            color: #000;
+            padding: 10px 20px;
+            margin: 10px 0;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .boton-enlace:hover {
+            background-color: #4facfe;
+            transform: translateY(-5px);
+        }
+
+        section {
+            padding: 2rem;
+            border-top: 2px solid #fff;
+            background-color: rgba(255,255,255,0.05);
+            margin: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: #00f2fe;
+            border-bottom: 1px solid #00f2fe;
+            padding-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #fff;
+            padding: 10px;
+            text-align: center;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        th {
+            background-color: #444;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #111;
+            border-top: 2px solid #fff;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Software 2</h1>
+        <p>Explora los distintos tipos de software con esta guía interactiva y visual</p>
+    </header>
+
+    <section id="antivirus">
+        <h2>2.6 Software Antivirus</h2>
+        <p>Programas que protegen tu sistema de virus, malware, spyware y otras amenazas cibernéticas.</p>
+        <table>
+            <tr><th>Antivirus</th><th>Características</th></tr>
+            <tr><td>Kaspersky</td><td>Alta protección, escaneo en tiempo real</td></tr>
+            <tr><td>Avast</td><td>Gratis, protección básica, firewall</td></tr>
+            <tr><td>Norton</td><td>Protección avanzada, VPN integrada</td></tr>
+        </table>
+        <a class="boton-enlace" href="#antivirus">Ir a Software Antivirus</a>
+    </section>
+
+    <section id="lenguajes">
+        <h2>2.7 Software Lenguajes de Programación</h2>
+        <p>Permiten escribir código para desarrollar aplicaciones, sitios web, videojuegos, entre otros.</p>
+        <ul>
+            <li><strong>Python:</strong> Fácil de aprender, ideal en IA y ciencia de datos.</li>
+            <li><strong>Java:</strong> Multiplataforma, ideal para móviles y empresas.</li>
+            <li><strong>C#:</strong> Potente para videojuegos con Unity.</li>
+        </ul>
+        <a class="boton-enlace" href="#lenguajes">Ir a Lenguajes de Programación</a>
+    </section>
+
+    <section id="bbdd">
+        <h2>2.8 Software Motores de BBDD</h2>
+        <p>Permiten almacenar, consultar y gestionar grandes volúmenes de datos estructurados.</p>
+        <table>
+            <tr><th>Motor</th><th>Ventaja</th></tr>
+            <tr><td>MySQL</td><td>Gratis, rápido y confiable</td></tr>
+            <tr><td>PostgreSQL</td><td>Extensible, soporta grandes volúmenes</td></tr>
+            <tr><td>SQL Server</td><td>Integración con ecosistema Microsoft</td></tr>
+        </table>
+        <a class="boton-enlace" href="#bbdd">Ir a Motores de BBDD</a>
+    </section>
+
+    <section id="versionadores">
+        <h2>2.9 Software Versionadores</h2>
+        <p>Herramientas para controlar versiones de código y facilitar el trabajo colaborativo.</p>
+        <ul>
+            <li><strong>Git:</strong> Popular, rápido y distribuido.</li>
+            <li><strong>GitHub:</strong> Plataforma para alojar proyectos.</li>
+            <li><strong>GitLab:</strong> Alternativa con herramientas CI/CD.</li>
+        </ul>
+        <a class="boton-enlace" href="#versionadores">Ir a Versionadores</a>
+    </section>
+
+    <section id="nube">
+        <h2>2.10 Computación en la Nube</h2>
+        <p>Uso de servidores remotos para almacenar datos y ejecutar aplicaciones accesibles desde internet.</p>
+        <ul>
+            <li>Amazon AWS</li>
+            <li>Microsoft Azure</li>
+            <li>Google Cloud Platform</li>
+        </ul>
+        <a class="boton-enlace" href="#nube">Ir a Computación en la Nube</a>
+    </section>
+
+    <section id="funciones">
+        <h2>Funciones Básicas y Correcta Instalación</h2>
+        <p>Pasos esenciales antes de instalar cualquier software:</p>
+        <ol>
+            <li>Descargar desde sitios oficiales.</li>
+            <li>Verificar requisitos del sistema.</li>
+            <li>Configurar opciones recomendadas.</li>
+            <li>Actualizar tras la instalación.</li>
+        </ol>
+        <a class="boton-enlace" href="#funciones">Ir a Funciones e Instalación</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Software 2. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
+
