@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidades de Medida en Computación</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #1a2980;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .subtitle {
+      font-size: 1.4rem;
+      color: #2c3e50;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 5px solid #1a2980;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    }
+    
+    .card-header {
+      background: linear-gradient(to right, #1a2980, #26d0ce);
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .card-header i {
+      font-size: 2rem;
+    }
+    
+    .card-content {
+      padding: 25px;
+    }
+    
+    .card-content h3 {
+      color: #1a2980;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #26d0ce;
+      padding-bottom: 10px;
+    }
+    
+    .unit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .unit-item {
+      background: #e3fafc;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid #1a2980;
+      transition: transform 0.2s ease;
+    }
+    
+    .unit-item:hover {
+      transform: scale(1.03);
+      background: #c5f6fa;
+    }
+    
+    .unit-item h4 {
+      color: #1a2980;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    table th {
+      background: #1a2980;
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+    
+    table td {
+      padding: 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    table tr:nth-child(even) {
+      background: #f0f9ff;
+    }
+    
+    table tr:hover {
+      background: #e0f7fa;
+    }
+    
+    .example {
+      background: #dbf4ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #1a2980;
+    }
+    
+    .comparison {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .comparison-box {
+      flex: 1;
+      background: #e3fafc;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    .comparison-box h4 {
+      color: #1a2980;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .source {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #555;
+      font-style: italic;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      color: white;
+      font-size: 1.1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .comparison {
+        flex-direction: column;
+      }
+    }
+
+    /* Nuevos estilos para los botones de navegación */
+    .nav-botones-fijos {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 9999;
+      display: flex;
+      gap: 16px;
+    }
+    .boton-enlace {
+      display: inline-block;
+      background-color: #1a2980;
+      color: #fff;
+      padding: 12px 28px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.08rem;
+      box-shadow: 0 4px 12px rgba(26,41,128,0.18);
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .boton-enlace:hover {
+      background-color: #26d0ce;
+      color: #fff;
+      transform: translateY(-3px) scale(1.04);
+    }
+    @media (max-width: 600px) {
+      .nav-botones-fijos {
+        right: 10px;
+        bottom: 10px;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .boton-enlace {
+        padding: 10px 18px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-ruler-combined"></i> Unidades de Medida en Computación</h1>
+      <p class="subtitle">Comprendiendo las unidades que cuantifican almacenamiento, procesamiento y transmisión de datos</p>
+    </header>
+    
+    <div class="cards-container">
+      <!-- Almacenamiento -->
+      <div class="card">
+        <div class="card-header">
+          <i class="fas fa-database"></i>
+          <h2>Unidades de Almacenamiento</h2>
+        </div>
+        <div class="card-content">
+          <h3>Conceptos Fundamentales</h3>
+          <p>Las unidades de almacenamiento miden la cantidad de datos que pueden ser guardados en dispositivos como discos duros, memorias USB o tarjetas SD. La unidad básica es el <strong>bit</strong>, que representa un valor binario (0 o 1).</p>
+          
+          <div class="unit-grid">
+            <div class="unit-item">
+              <h4><i class="fas fa-microchip"></i> Bit (b)</h4>
+              <p>Unidad mínima de información digital (0 o 1)</p>
+            </div>
+            <div class="unit-item">
+              <h4><i class="fas fa-font"></i> Byte (B)</h4>
+              <p>8 bits - Representa un carácter (ej: letra ASCII)</p>
+            </div>
+            <div class="unit-item">
+              <h4><i class="fas fa-hashtag"></i> Nibble</h4>
+              <p>4 bits - Equivalente a un dígito hexadecimal</p>
+            </div>
+            <div class="unit-item">
+              <h4><i class="fas fa-language"></i> Palabra (Word)</h4>
+              <p>Cantidad de bits procesada al mismo tiempo por la CPU (típicamente 2, 4 u 8 bytes)</p>
+            </div>
+          </div>
+          
+          <h3>Sistemas de Multiplicadores</h3>
+          <div class="comparison">
+            <div class="comparison-box">
+              <h4><i class="fas fa-calculator"></i> Métrico (SI)</h4>
+              <p>KB = 1,000 B</p>
+              <p>MB = 1,000,000 B</p>
+              <p>GB = 1,000,000,000 B</p>
+              <p>TB = 1,000,000,000,000 B</p>
+            </div>
+            <div class="comparison-box">
+              <h4><i class="fas fa-binary"></i> Binario (IEC)</h4>
+              <p>KiB = 1,024 B</p>
+              <p>MiB = 1,024 KiB</p>
+              <p>GiB = 1,024 MiB</p>
+              <p>TiB = 1,024 GiB</p>
+            </div>
+          </div>
+          
+          <h3>Tabla de Equivalencias</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Unidad</th>
+                <th>Abreviatura</th>
+                <th>Equivalencia</th>
+                <th>Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Bit</td><td>bit</td><td>Unidad básica</td><td>Un interruptor (on/off)</td></tr>
+              <tr><td>Byte</td><td>B</td><td>8 bits</td><td>Un carácter de texto</td></tr>
+              <tr><td>Kilobyte</td><td>KB</td><td>1,000 Bytes</td><td>Una página de texto</td></tr>
+              <tr><td>Megabyte</td><td>MB</td><td>1,000 KB</td><td>Una canción MP3 (3-5 MB)</td></tr>
+              <tr><td>Gigabyte</td><td>GB</td><td>1,000 MB</td><td>Una película HD (2-5 GB)</td></tr>
+              <tr><td>Terabyte</td><td>TB</td><td>1,000 GB</td><td>Biblioteca de 500,000 libros</td></tr>
+            </tbody>
+          </table>
+          
+          <div class="source">
+            Fuentes: Wikipedia, SaveMyExams, TinyPic
+          </div>
+        </div>
+      </div>
+      
+      <!-- Procesamiento -->
+      <div class="card">
+        <div class="card-header">
+          <i class="fas fa-microchip"></i>
+          <h2>Unidades de Procesamiento</h2>
+        </div>
+        <div class="card-content">
+          <h3>Medición del Rendimiento</h3>
+          <p>Las unidades de procesamiento miden la capacidad del procesador para ejecutar instrucciones en un tiempo determinado. Estas unidades son fundamentales para evaluar el rendimiento de los sistemas computacionales.</p>
+          
+          <div class="unit-grid">
+            <div class="unit-item">
+              <h4><i class="fas fa-clock"></i> Ciclo de reloj</h4>
+              <p>Unidad temporal que regula la ejecución de instrucciones</p>
+            </div>
+            <div class="unit-item">
+              <h4><i class="fas fa-tasks"></i> IPC</h4>
+              <p>Instrucciones por ciclo (medida de eficiencia)</p>
+            </div>
+            <div class="unit-item">
+              <h4><i class="fas fa-calculator"></i> FLOPS</h4>
+              <p>Operaciones de coma flotante por segundo</p>
+            </div>
+          </div>
+          
+          <h3>Velocidad del Procesador</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Unidad</th>
+                <th>Equivalencia</th>
+                <th>Uso</th>
+                <th>Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Hertz</td><td>1 Hz = 1 ciclo/seg</td><td>Medida básica</td><td>Procesadores antiguos</td></tr>
+              <tr><td>Kilohertz</td><td>1,000 Hz</td><td>Primeros procesadores</td><td>Intel 8086 (5-10 MHz)</td></tr>
+              <tr><td>Megahertz</td><td>1,000,000 Hz</td><td>Procesadores 90s-2000s</td><td>Pentium III (500-1000 MHz)</td></tr>
+              <tr><td>Gigahertz</td><td>1,000,000,000 Hz</td><td>Procesadores modernos</td><td>Intel Core i9 (3-5 GHz)</td></tr>
+            </tbody>
+          </table>
+          
+          <div class="example">
+            <h4><i class="fas fa-lightbulb"></i> Ejemplo práctico:</h4>
+            <p>Un procesador de 3.2 GHz puede ejecutar hasta 3,200 millones de ciclos por segundo. Esto permite:</p>
+            <ul>
+              <li>Editar video 4K en tiempo real</li>
+              <li>Ejecutar simulaciones científicas complejas</li>
+              <li>Jugar videojuegos de última generación</li>
+            </ul>
+          </div>
+          
+          <h3>FLOPS - Potencia de Cálculo</h3>
+          <p>Los FLOPS (Floating Point Operations Per Second) miden la capacidad de cálculo en aplicaciones científicas y numéricas:</p>
+          <ul>
+            <li><strong>MegaFLOPS (MFLOPS):</strong> Millones de operaciones por segundo</li>
+            <li><strong>GigaFLOPS (GFLOPS):</strong> Miles de millones de operaciones por segundo</li>
+            <li><strong>TeraFLOPS (TFLOPS):</strong> Billones de operaciones por segundo (GPUs modernas)</li>
+            <li><strong>PetaFLOPS (PFLOPS):</strong> Supercomputadoras de alto rendimiento</li>
+          </ul>
+          
+          <div class="source">
+            Fuentes: Gobierno, literatura técnica, Intel
+          </div>
+        </div>
+      </div>
+      
+      <!-- Transmisión -->
+      <div class="card">
+        <div class="card-header">
+          <i class="fas fa-wifi"></i>
+          <h2>Unidades de Transmisión</h2>
+        </div>
+        <div class="card-content">
+          <h3>Velocidad de Datos</h3>
+          <p>Estas unidades miden la velocidad a la que los datos son enviados o recibidos entre dispositivos o sistemas en red. Son fundamentales en telecomunicaciones e internet.</p>
+          
+          <div class="unit-grid">
+            <div class="unit-item">
+              <h4><i class="fas fa-tachometer-alt"></i> bps</h4>
+              <p>Bits por segundo (unidad básica)</p>
+            </div>
+            <div class="unit-item">
+              <h4><i class="fas fa-network-wired"></i> Paquete</h4>
+              <p>Unidad lógica de datos enviada por redes</p>
+            </div>
+            <div class="unit-item">
+              <h4><i class="fas fa-server"></i> TCP/IP</h4>
+              <p>Protocolo que utiliza paquetes de datos</p>
+            </div>
+          </div>
+          
+          <h3>Velocidades de Transmisión</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Unidad</th>
+                <th>Abreviatura</th>
+                <th>Equivalencia</th>
+                <th>Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Bits por segundo</td><td>bps</td><td>Unidad básica</td><td>Módems antiguos (300 bps)</td></tr>
+              <tr><td>Kilobits por segundo</td><td>Kbps</td><td>1,000 bps</td><td>Audio de baja calidad</td></tr>
+              <tr><td>Megabits por segundo</td><td>Mbps</td><td>1,000,000 bps</td><td>Internet doméstico (100 Mbps)</td></tr>
+              <tr><td>Gigabits por segundo</td><td>Gbps</td><td>1,000,000,000 bps</td><td>Redes empresariales y 5G</td></tr>
+            </tbody>
+          </table>
+          
+          <div class="example">
+            <h4><i class="fas fa-download"></i> Ejemplo de descarga:</h4>
+            <p>Una conexión de 100 Mbps puede descargar:</p>
+            <ul>
+              <li>Una canción (5 MB) en <strong>0.4 segundos</strong></li>
+              <li>Una película HD (4 GB) en <strong>5.5 minutos</strong></li>
+              <li>Un juego (50 GB) en <strong>1.1 horas</strong></li>
+            </ul>
+          </div>
+          
+          <h3>Paquetes de Red</h3>
+          <p>Un paquete de red es una unidad de datos que se transmite a través de una red. Incluye:</p>
+          <ul>
+            <li><strong>Cabecera:</strong> Información de control (origen, destino, tipo de datos)</li>
+            <li><strong>Carga útil:</strong> Los datos reales que se envían</li>
+            <li><strong>Trailer:</strong> Información para detección de errores</li>
+          </ul>
+          <p>Los protocolos como TCP/IP dividen los datos en paquetes para su transmisión eficiente a través de redes.</p>
+          
+          <div class="source">
+            Fuentes: Craig'n'Dave, TinyPic, Cisco Networking Academy
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Unidades de Medida en Computación - Guía Completa</p>
+      <p>Fuentes adicionales: Introducción a la Informática (A. Tanenbaum), HP Education</p>
+    </footer>
+
+    <!-- Botones de navegación fijos -->
+    <div class="nav-botones-fijos">
+      <a class="boton-enlace" href="1.3.html">&#8592; Página anterior</a>
+      <a class="boton-enlace" href="1.5.html">Página siguiente &#8594;</a>
+    </div>
+  </div>
+</body>
+</html>

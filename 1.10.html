@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CPU: El Cerebro de la Computadora</title>
+<style>
+  :root {
+    --primary: #0072ff;
+    --secondary: #00c6ff;
+    --dark: #0f2027;
+    --darker: #0a161c;
+    --light: #f0f0f0;
+    --accent: #ff6b6b;
+    --success: #4CAF50;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--dark), #203a43, #2c5364);
+    color: var(--light);
+    line-height: 1.6;
+    padding: 0 20px 40px;
+  }
+  
+  header {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    padding: 50px 20px 40px;
+    text-align: center;
+    border-bottom: 4px solid var(--secondary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 40%);
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 3.2em;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    position: relative;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    font-size: 1.2em;
+    margin-top: 15px;
+    opacity: 0.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+  
+  @media (max-width: 900px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .section-title {
+    font-size: 2.2em;
+    margin: 40px 0 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--secondary);
+    color: white;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--accent);
+  }
+  
+  .accordion {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: white;
+    cursor: pointer;
+    padding: 22px 30px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 1.3em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 6px 15px rgba(0, 114, 255, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .accordion::after {
+    content: "+";
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+  }
+  
+  .accordion:hover, .active {
+    background: linear-gradient(90deg, #0060d8, #00a8e8);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
+  }
+  
+  .active::after {
+    content: "−";
+    transform: rotate(0);
+  }
+  
+  .panel {
+    background-color: rgba(28, 28, 28, 0.8);
+    padding: 0 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    border-radius: 0 0 12px 12px;
+    font-size: 1.1em;
+    line-height: 1.7;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: none;
+  }
+  
+  .panel-content {
+    padding: 25px 0;
+  }
+  
+  .panel p {
+    margin-bottom: 18px;
+  }
+  
+  .card {
+    background: rgba(28, 28, 28, 0.7);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card h3 {
+    color: var(--secondary);
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0, 198, 255, 0.3);
+  }
+  
+  img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  ul {
+    margin-left: 1.5em;
+    padding-left: 0;
+    list-style-type: none;
+  }
+  
+  ul li {
+    margin-bottom: 15px;
+    padding-left: 1.5em;
+    position: relative;
+  }
+  
+  ul li::before {
+    content: "•";
+    color: var(--secondary);
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -0.3em;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: rgba(41, 41, 41, 0.7);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  th, td {
+    padding: 18px 15px;
+    border: 1px solid rgba(0, 198, 255, 0.3);
+    text-align: left;
+  }
+  
+  th {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    font-weight: 700;
+    font-size: 1.1em;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  tr:hover {
+    background-color: rgba(0, 114, 255, 0.1);
+  }
+  
+  a {
+    color: var(--secondary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  
+  .highlight {
+    color: var(--secondary);
+    font-weight: 600;
+  }
+  
+  .component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+  }
+  
+  .component-card {
+    background: rgba(20, 20, 20, 0.6);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid rgba(0, 198, 255, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .component-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary);
+    background: rgba(30, 30, 30, 0.8);
+  }
+  
+  .component-card h4 {
+    color: var(--secondary);
+    margin-bottom: 15px;
+    font-size: 1.4em;
+  }
+  
+  .component-card ul {
+    margin-top: 15px;
+  }
+  
+  .component-card ul li {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+  }
+  
+  .diagram-container {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 30px 0;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .diagram-container img {
+    max-width: 90%;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9em;
+  }
+
+  /* Nuevos estilos para los botones de navegación */
+.nav-botones-fijos {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    gap: 16px;
+}
+.boton-enlace {
+    display: inline-block;
+    background-color: #1565c0;
+    color: #fff;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.08rem;
+    box-shadow: 0 4px 12px rgba(21,101,192,0.18);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+}
+.boton-enlace:hover {
+    background-color: #26c6da;
+    color: #fff;
+    transform: translateY(-3px) scale(1.04);
+}
+@media (max-width: 600px) {
+    .nav-botones-fijos {
+        right: 10px;
+        bottom: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .boton-enlace {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CPU: El Cerebro de la Computadora</h1>
+  <p class="subtitle">Comprendiendo el componente fundamental que impulsa todos los sistemas informáticos modernos</p>
+</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Introducción al CPU</h2>
+    <p>El <span class="highlight">CPU (Unidad Central de Procesamiento)</span> es el componente principal de cualquier dispositivo informático. Actúa como el cerebro del sistema, ejecutando instrucciones de programas y procesando datos. A lo largo de la historia, los CPUs han evolucionado desde simples procesadores de 4 bits hasta complejos sistemas multinúcleo capaces de realizar billones de operaciones por segundo.</p>
+    
+    <p>En esta guía completa, exploraremos todos los aspectos del CPU: desde su funcionamiento básico hasta sus componentes internos, características, tipos y evolución histórica. También examinaremos cómo interactúa con otros componentes clave de una computadora.</p>
+  </div>
+
+  <div class="grid-container">
+    <div>
+      <button class="accordion">¿Qué es el CPU?</button>
+      <div class="panel">
+        <div class="panel-content">
+          <p>El CPU, o <span class="highlight">Unidad Central de Procesamiento</span>, es el componente principal que ejecuta las instrucciones de los programas y del sistema operativo. Su función es interpretar y procesar datos para que la computadora realice las tareas que le solicitamos.</p>
+          
+          <p>CPU es la abreviación de Unidad Central de Procesamiento, un componente básico de todo dispositivo que procesa datos y realiza cálculos matemáticos-informáticos. El CPU proporciona la capacidad de programación y, junto con la memoria y los dispositivos de entrada/salida, es uno de los componentes presentes en la historia de los ordenadores.</p>
+          
+          <p>Con el tiempo, los microprocesadores de un chip fueron reemplazando a los CPU, usualmente cuando se hace referencia a este término se habla de los microprocesadores.</p>
+          
+          <img src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2024/03/procesadores-intel-3283837.jpg?tf=3840x" alt="CPU Intel">
+        </div>
+      </div>
+
+      <button class="accordion">Funciones del CPU</button>
+      <div class="panel">
+        <div class="panel-content">
+          <p>El CPU es la pieza fundamental de todo dispositivo, es considerado el cerebro de un sistema. Sus funciones principales son:</p>
+          
+          <ul>
+            <li><strong>Ejecutar instrucciones:</strong> Interpreta y ejecuta las secuencias de instrucciones de cada programa valiéndose de operaciones aritméticas y matemáticas.</li>
+            <li><strong>Interpretar datos:</strong> Procesa todos los datos que provienen del dispositivo, tanto de los programas como la información que envía el usuario a través de aplicaciones.</li>
+            <li><strong>Controlar componentes:</strong> Gestiona el funcionamiento de cada componente del sistema para que todas las acciones sean realizadas en tiempo y forma.</li>
+            <li><strong>Gestionar transferencias:</strong> Controla el flujo de datos entre memoria y periféricos.</li>
+            <li><strong>Permitir multitarea:</strong> Facilita la ejecución simultánea de procesos a través de núcleos múltiples.</li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="accordion">Componentes Internos del CPU</button>
+      <div class="panel">
+        <div class="panel-content">
+          <p>Un CPU está compuesto internamente de varios componentes especializados:</p>
+          
+          <ul>
+            <li><strong>Núcleo:</strong> Es la unidad base que interpreta y ejecuta acciones. Los procesadores modernos tienen múltiples núcleos.</li>
+            <li><strong>Unidad de Control:</strong> Circuito digital que extrae instrucciones de la memoria, las descifra y ejecuta.</li>
+            <li><strong>ALU (Unidad Aritmético Lógica):</strong> Realiza operaciones matemáticas y lógicas básicas.</li>
+            <li><strong>Unidad de Coma Flotante:</strong> Componente especializado en cálculos con números decimales.</li>
+            <li><strong>Memoria Caché:</strong> Almacena datos e instrucciones usadas frecuentemente para acelerar el procesamiento.</li>
+            <li><strong>Registros:</strong> Pequeñas áreas de almacenamiento para datos temporales.</li>
+            <li><strong>Controlador de Memoria:</strong> Regula el flujo de datos entre el procesador y la memoria.</li>
+            <li><strong>Bus:</strong> Sistema digital que envía y recibe datos entre componentes.</li>
+          </ul>
+          
+          <div class="diagram-container">
+            <img src="https://cdn.shopify.com/s/files/1/0329/9865/3996/t/5/assets/what_is_a_cpu_architecture-NdSD5k.True?v=1707784002" alt="Arquitectura CPU">
+            <p>Diagrama de la arquitectura interna de un CPU moderno</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="accordion">Características del CPU</button>
+      <div class="panel">
+        <div class="panel-content">
+          <p>Existen varias características que determinan el rendimiento de un CPU:</p>
+          
+          <ul>
+            <li><strong>Consumo energético:</strong> Cantidad de energía que consume el CPU al ejecutar acciones. CPUs más potentes generalmente consumen más energía.</li>
+            <li><strong>Frecuencia de reloj:</strong> Velocidad medida en GHz que determina cuántas operaciones puede realizar el CPU por segundo.</li>
+            <li><strong>Número de núcleos:</strong> Cantidad de unidades de procesamiento independientes. Más núcleos permiten mayor paralelismo.</li>
+            <li><strong>Número de hilos:</strong> Capacidad para manejar múltiples tareas simultáneamente mediante tecnología como Hyper-Threading.</li>
+            <li><strong>Memoria caché:</strong> Memoria ultra rápida integrada en el CPU. Mayor caché generalmente mejora el rendimiento.</li>
+            <li><strong>Tipo de bus:</strong> Tecnología de comunicación entre el CPU y otros componentes.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button class="accordion">Tipos de CPU</button>
+      <div class="panel">
+        <div class="panel-content">
+          <p>Los CPU se clasifican principalmente según la cantidad de núcleos:</p>
+          
+          <ul>
+            <li><strong>De un solo núcleo:</strong> El tipo más antiguo, capaz de realizar una acción a la vez.</li>
+            <li><strong>De dos núcleos:</strong> Permite realizar más de una acción simultáneamente, mejorando la multitarea básica.</li>
+            <li><strong>De cuatro núcleos:</strong> Ofrece mayor capacidad de procesamiento paralelo, ideal para aplicaciones más exigentes.</li>
+            <li><strong>De seis u ocho núcleos:</strong> Diseñados para alto rendimiento en aplicaciones profesionales, juegos y servidores.</li>
+            <li><strong>De diez o más núcleos:</strong> Para estaciones de trabajo profesionales y servidores de alto rendimiento.</li>
+          </ul>
+          
+          <p>Además, existen CPUs especializados como los procesadores gráficos (GPU) y unidades de procesamiento neuronal (NPU).</p>
+        </div>
+      </div>
+
+      <button class="accordion">Lenguaje del CPU</button>
+      <div class="panel">
+        <div class="panel-content">
+          <p>El lenguaje de los CPU es un sistema de códigos a través del que se comunican las instrucciones que debe ejecutar el procesador para el correcto funcionamiento del dispositivo.</p>
+          
+          <p>Los procesadores no interpretan cualquier tipo de información, sino aquella escrita de forma binaria, es decir, con los caracteres cero y uno. Cada programa o aplicación está formado por una cadena de instrucciones escritas en este código, que son correctamente interpretadas por la máquina.</p>
+          
+          <p>Este lenguaje binario es el nivel más básico de comunicación con el hardware. Los lenguajes de programación de alto nivel son traducidos a este código binario mediante compiladores o intérpretes.</p>
+        </div>
+      </div>
+
+      <button class="accordion">Evolución del CPU</button>
+      <div class="panel">
+        <div class="panel-content">
+          <table>
+            <thead>
+              <tr><th>Año</th><th>Procesador</th><th>Características</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1971</td><td>Intel 4004</td><td>Primer microprocesador comercial de 4 bits, 2,300 transistores, 740 kHz</td></tr>
+              <tr><td>1978</td><td>Intel 8086</td><td>Primera arquitectura x86 de 16 bits, base para los PCs modernos</td></tr>
+              <tr><td>1985</td><td>Intel 80386</td><td>CPU de 32 bits que mejoró significativamente el rendimiento</td></tr>
+              <tr><td>1993</td><td>Pentium</td><td>Introdujo arquitectura superscalar para mayor eficiencia</td></tr>
+              <tr><td>1999</td><td>Pentium III</td><td>Introdujo SSE (Streaming SIMD Extensions)</td></tr>
+              <tr><td>2005</td><td>Pentium D</td><td>Primer procesador de doble núcleo de Intel</td></tr>
+              <tr><td>2006</td><td>Intel Core 2</td><td>Procesadores multinúcleo para mejor multitarea</td></tr>
+              <tr><td>2011</td><td>Intel Sandy Bridge</td><td>Mejoró significativamente el rendimiento por vatio</td></tr>
+              <tr><td>2017</td><td>AMD Ryzen</td><td>Revitalizó la competencia en CPUs de alto rendimiento</td></tr>
+              <tr><td>2020+</td><td>AMD Ryzen / Intel i9</td><td>Alta eficiencia y rendimiento para tareas exigentes, hasta 64 núcleos</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <button class="accordion">Componentes de una Computadora</button>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="component-grid">
+            <div class="component-card">
+              <h4>Tarjeta Madre</h4>
+              <p><strong>Función:</strong> Conecta todos los componentes de la computadora y distribuye energía.</p>
+              <ul>
+                <li>Proporciona conectividad para CPU, RAM, GPU</li>
+                <li>Contiene puertos para dispositivos de almacenamiento</li>
+                <li>Incluye BIOS/UEFI para inicialización del sistema</li>
+              </ul>
+            </div>
+            
+            <div class="component-card">
+              <h4>Memoria RAM</h4>
+              <p><strong>Función:</strong> Memoria operativa temporal para datos en uso.</p>
+              <ul>
+                <li>Velocidad medida en MHz</li>
+                <li>Capacidades de 4GB a 128GB+</li>
+                <li>Tipos: DDR4, DDR5</li>
+              </ul>
+            </div>
+            
+            <div class="component-card">
+              <h4>Disco Duro/SSD</h4>
+              <p><strong>Función:</strong> Almacenamiento permanente de datos.</p>
+              <ul>
+                <li>HDD: Discos magnéticos, más económicos</li>
+                <li>SSD: Memoria flash, mucho más rápidos</li>
+                <li>NVMe: SSD de ultra alta velocidad</li>
+              </ul>
+            </div>
+            
+            <div class="component-card">
+              <h4>Fuente de Poder</h4>
+              <p><strong>Función:</strong> Convierte corriente alterna a continua y alimenta componentes.</p>
+              <ul>
+                <li>Potencia medida en vatios (500W-1600W)</li>
+                <li>Certificaciones de eficiencia (80 Plus)</li>
+                <li>Protecciones contra sobrevoltaje</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Infografías y Recursos</h2>
+    <p>Para comprender mejor el funcionamiento del CPU y su relación con otros componentes, aquí presentamos algunas infografías útiles:</p>
+    
+    <div class="diagram-container">
+      <img src="https://cdn.shopify.com/s/files/1/0329/9865/3996/t/5/assets/what_is_a_cpu_architecture-NdSD5k.True?v=1707784002" alt="Arquitectura CPU">
+      <p>Arquitectura detallada de un CPU moderno mostrando núcleos, caché y controladores</p>
+    </div>
+    
+    <p>Para más información detallada sobre CPUs y arquitectura de computadoras, visita:</p>
+    <ul>
+      <li><a href="https://es.wikipedia.org/wiki/Unidad_central_de_procesamiento" target="_blank">Artículo de Wikipedia sobre CPU</a></li>
+      <li><a href="https://www.intel.la/content/www/xl/es/products/docs/processors/cpu.html" target="_blank">Guía de CPUs de Intel</a></li>
+      <li><a href="https://www.amd.com/es/processors" target="_blank">Procesadores AMD</a></li>
+      <li><a href="https://computerhistory.org/" target="_blank">Museo de Historia de la Computación</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Guía Educativa sobre CPUs y Arquitectura de Computadoras | © 2025 Todos los derechos reservados</p>
+  <p>Información recopilada de diversas fuentes educativas y técnicas</p>
+</div>
+
+<!-- Botones de navegación fijos -->
+<div class="nav-botones-fijos">
+  <a class="boton-enlace" href="1.9.html">&#8592; Página anterior</a>
+  <a class="boton-enlace" href="2.0.html">Página siguiente &#8594;</a>
+</div>
+
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+  
+  accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      acc.classList.toggle('active');
+      const panel = acc.nextElementSibling;
+      
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        panel.style.padding = "0 30px";
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.style.padding = "0 30px";
+      } 
+    });
+  });
+  
+  // Abrir el primer acordeón automáticamente
+  document.querySelector('.accordion').click();
+</script>
+
+</body>
+</html>

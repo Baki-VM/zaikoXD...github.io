@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Tipos de Memoria - Exploración Interactiva</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+  }
+
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 40px 20px;
+    text-align: center;
+    background: linear-gradient(90deg, #fc466b, #3f5efb);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+  }
+
+  .header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  .header p {
+    font-size: 1.4rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  .memory-card {
+    background: linear-gradient(135deg, #232526, #414345);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .memory-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  }
+
+  .memory-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, #00f2fe, #4facfe);
+  }
+
+  .memory-card.ram::before { background: linear-gradient(90deg, #fc466b, #3f5efb); }
+  .memory-card.rom::before { background: linear-gradient(90deg, #11998e, #38ef7d); }
+  .memory-card.cache::before { background: linear-gradient(90deg, #f83600, #f9d423); }
+  .memory-card.flash::before { background: linear-gradient(90deg, #654ea3, #da98b4); }
+  .memory-card.comparison::before { background: linear-gradient(90deg, #7f00ff, #e100ff); }
+
+  .memory-card h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #00f2fe;
+  }
+
+  .memory-card h2 i {
+    font-size: 2.5rem;
+  }
+
+  .memory-content {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .memory-card.active .memory-content {
+    display: block;
+  }
+
+  .memory-card p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+
+  .memory-card ul {
+    padding-left: 25px;
+    margin-bottom: 20px;
+  }
+
+  .memory-card li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+  }
+
+  .memory-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #00f2fe;
+    font-size: 1.5rem;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .image-container:hover img {
+    transform: scale(1.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  th {
+    background: rgba(0, 242, 254, 0.3);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+  }
+
+  .comparison-chart {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+  }
+
+  .chart-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .chart-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .chart-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #00f2fe;
+  }
+
+  .chart-label {
+    font-size: 1.1rem;
+  }
+
+  .footer {
+    max-width: 1200px;
+    margin: 50px auto 20px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 18px;
+    text-align: center;
+    font-size: 1.1rem;
+    border-top: 2px solid rgba(0, 242, 254, 0.3);
+  }
+
+  .footer a {
+    color: #00f2fe;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer a:hover {
+    color: #38ef7d;
+    text-decoration: underline;
+  }
+
+  .nav-botones-fijos {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    gap: 16px;
+  }
+  .boton-enlace {
+    display: inline-block;
+    background-color: #00f2fe;
+    color: #222;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.08rem;
+    box-shadow: 0 4px 12px rgba(0,242,254,0.18);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .boton-enlace:hover {
+    background-color: #3f5efb;
+    color: #fff;
+    transform: translateY(-3px) scale(1.04);
+  }
+  @media (max-width: 600px) {
+    .nav-botones-fijos {
+        right: 10px;
+        bottom: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .boton-enlace {
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 2.5rem;
+    }
+    
+    .header p {
+      font-size: 1.1rem;
+    }
+    
+    .memory-card h2 {
+      font-size: 1.6rem;
+    }
+    
+    .comparison-chart {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      padding: 30px 15px;
+    }
+    
+    .header h1 {
+      font-size: 2rem;
+    }
+    
+    .memory-card {
+      padding: 20px;
+    }
+    
+    .comparison-chart {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>🧠 Tipos de Memoria en Computación</h1>
+    <p>Explora las diferentes memorias que hacen posible el funcionamiento de los sistemas informáticos modernos</p>
+  </div>
+
+  <div class="container">
+    <!-- Memoria RAM -->
+    <div class="memory-card ram" onclick="toggleContent(this)">
+      <h2><i class="fas fa-bolt"></i> Memoria RAM</h2>
+      <p>Memoria de acceso aleatorio que permite la lectura y escritura rápida de datos</p>
+      
+      <div class="memory-content">
+        <p>La memoria RAM (Random Access Memory) es un tipo de memoria volátil que permite el acceso rápido y temporal a datos que la CPU necesita de inmediato. Es vital para ejecutar programas, aplicaciones y procesar múltiples tareas al mismo tiempo.</p>
+        
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1626204327506-0d3ba11ff380?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Módulos de memoria RAM">
+        </div>
+        
+        <h3>Características clave:</h3>
+        <ul>
+          <li><strong>Volatilidad:</strong> Pierde todos los datos al apagar el equipo</li>
+          <li><strong>Velocidad:</strong> Acceso extremadamente rápido (nanosegundos)</li>
+          <li><strong>Capacidad:</strong> Desde 4GB en equipos básicos hasta 256GB+ en servidores</li>
+          <li><strong>Tipos:</strong> SDRAM, DDR (DDR2, DDR3, DDR4, DDR5)</li>
+        </ul>
+        
+        <h3>Evolución de la RAM:</h3>
+        <table>
+          <tr>
+            <th>Tipo</th>
+            <th>Año</th>
+            <th>Velocidad (MT/s)</th>
+            <th>Voltaje</th>
+          </tr>
+          <tr>
+            <td>DDR</td>
+            <td>2000</td>
+            <td>200-400</td>
+            <td>2.5V</td>
+          </tr>
+          <tr>
+            <td>DDR2</td>
+            <td>2003</td>
+            <td>400-1066</td>
+            <td>1.8V</td>
+          </tr>
+          <tr>
+            <td>DDR3</td>
+            <td>2007</td>
+            <td>800-2133</td>
+            <td>1.5V</td>
+          </tr>
+          <tr>
+            <td>DDR4</td>
+            <td>2014</td>
+            <td>1600-3200</td>
+            <td>1.2V</td>
+          </tr>
+          <tr>
+            <td>DDR5</td>
+            <td>2020</td>
+            <td>4800-8400</td>
+            <td>1.1V</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Memoria ROM -->
+    <div class="memory-card rom" onclick="toggleContent(this)">
+      <h2><i class="fas fa-microchip"></i> Memoria ROM</h2>
+      <p>Memoria de sólo lectura que almacena firmware y software esencial</p>
+      
+      <div class="memory-content">
+        <p>La memoria ROM (Read-Only Memory) contiene datos permanentes que no se pierden al apagar el equipo. Es esencial para almacenar el firmware que arranca el sistema operativo y configuraciones básicas del hardware.</p>
+        
+        <div class="image-container">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/ROM_chip.jpg/1200px-ROM_chip.jpg" alt="Chip de memoria ROM">
+        </div>
+        
+        <h3>Tipos de ROM:</h3>
+        <ul>
+          <li><strong>MROM:</strong> Máscara ROM - Programada durante fabricación</li>
+          <li><strong>PROM:</strong> Programmable ROM - Programable una vez por usuario</li>
+          <li><strong>EPROM:</strong> Erasable PROM - Borrable con luz ultravioleta</li>
+          <li><strong>EEPROM:</strong> Electrically Erasable PROM - Borrable eléctricamente</li>
+          <li><strong>Flash:</strong> Variante moderna de EEPROM con mayor velocidad</li>
+        </ul>
+        
+        <h3>Aplicaciones principales:</h3>
+        <ul>
+          <li>BIOS/UEFI en placas base</li>
+          <li>Firmware en dispositivos electrónicos</li>
+          <li>Cartuchos de videojuegos antiguos</li>
+          <li>Sistemas embebidos y IoT</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Memoria Caché -->
+    <div class="memory-card cache" onclick="toggleContent(this)">
+      <h2><i class="fas fa-tachometer-alt"></i> Memoria Caché</h2>
+      <p>Memoria ultrarrápida integrada en el procesador</p>
+      
+      <div class="memory-content">
+        <p>Memoria de alta velocidad integrada directamente en el procesador que almacena datos e instrucciones usados frecuentemente. Actúa como un buffer entre la CPU y la RAM, reduciendo significativamente los tiempos de acceso.</p>
+        
+        <div class="image-container">
+          <img src="https://www.howtogeek.com/wp-content/uploads/2021/05/cpu_with_heatspreader_removed.jpg?height=200p&trim=2,2,2,2" alt="Procesador con memoria caché">
+        </div>
+        
+        <h3>Niveles de caché:</h3>
+        <table>
+          <tr>
+            <th>Nivel</th>
+            <th>Ubicación</th>
+            <th>Velocidad</th>
+            <th>Tamaño</th>
+            <th>Acceso</th>
+          </tr>
+          <tr>
+            <td>L1</td>
+            <td>Dentro de cada núcleo</td>
+            <td>1-3 ciclos</td>
+            <td>32-128 KB</td>
+            <td>Extremadamente rápido</td>
+          </tr>
+          <tr>
+            <td>L2</td>
+            <td>Por núcleo o compartida</td>
+            <td>10-15 ciclos</td>
+            <td>256 KB - 1 MB</td>
+            <td>Muy rápido</td>
+          </tr>
+          <tr>
+            <td>L3</td>
+            <td>Compartida entre núcleos</td>
+            <td>20-40 ciclos</td>
+            <td>2-64 MB</td>
+            <td>Rápido</td>
+          </tr>
+          <tr>
+            <td>L4</td>
+            <td>Fuera del procesador</td>
+            <td>100+ ciclos</td>
+            <td>128 MB+</td>
+            <td>Moderado</td>
+          </tr>
+        </table>
+        
+        <h3>Importancia del caché:</h3>
+        <p>La caché puede mejorar el rendimiento del procesador hasta en un 40%. Los procesadores modernos dedican hasta el 50% de su espacio a memoria caché para reducir la "penalización de caché" cuando los datos no están disponibles inmediatamente.</p>
+      </div>
+    </div>
+
+    <!-- Memoria Flash -->
+    <div class="memory-card flash" onclick="toggleContent(this)">
+      <h2><i class="fas fa-sd-card"></i> Memoria Flash</h2>
+      <p>Almacenamiento no volátil de alta velocidad</p>
+      
+      <div class="memory-content">
+        <p>La memoria flash es un tipo de almacenamiento no volátil que retiene datos sin necesidad de energía. Combina la velocidad de acceso de la RAM con la persistencia de la ROM, siendo la base de las unidades SSD, tarjetas SD y almacenamiento en dispositivos móviles.</p>
+        
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Dispositivos de memoria flash">
+        </div>
+        
+        <h3>Tipos de memoria flash:</h3>
+        <ul>
+          <li><strong>NAND Flash:</strong> Alta densidad, menor costo, ideal para almacenamiento masivo</li>
+          <li><strong>NOR Flash:</strong> Acceso aleatorio rápido, ideal para código ejecutable</li>
+          <li><strong>3D NAND:</strong> Apilamiento vertical de celdas para mayor capacidad</li>
+        </ul>
+        
+        <h3>Aplicaciones y características:</h3>
+        <ul>
+          <li><strong>Ventajas:</strong> Resistente, silenciosa, bajo consumo, alta velocidad</li>
+          <li><strong>Desventajas:</strong> Vida útil limitada por ciclos de escritura</li>
+          <li><strong>SSD:</strong> Unidades de estado sólido con velocidades de hasta 7,000 MB/s</li>
+          <li><strong>eMMC/UFS:</strong> Almacenamiento en dispositivos móviles</li>
+          <li><strong>NVMe:</strong> Protocolo de alta velocidad para conexión directa a PCIe</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Comparativa General -->
+    <div class="memory-card comparison" onclick="toggleContent(this)">
+      <h2><i class="fas fa-chart-bar"></i> Comparativa General</h2>
+      <p>Análisis comparativo de los diferentes tipos de memoria</p>
+      
+      <div class="memory-content">
+        <h3>Comparación entre tipos de memoria:</h3>
+        <table>
+          <tr>
+            <th>Tipo</th>
+            <th>Volatilidad</th>
+            <th>Velocidad</th>
+            <th>Capacidad</th>
+            <th>Uso principal</th>
+            <th>Costo por GB</th>
+          </tr>
+          <tr>
+            <td>RAM</td>
+            <td>Volátil</td>
+            <td>Muy alta</td>
+            <td>4-256 GB</td>
+            <td>Memoria de trabajo</td>
+            <td>$5-$20</td>
+          </tr>
+          <tr>
+            <td>ROM</td>
+            <td>No volátil</td>
+            <td>Media</td>
+            <td>KB-MB</td>
+            <td>Firmware</td>
+            <td>$10-$100</td>
+          </tr>
+          <tr>
+            <td>Caché</td>
+            <td>Volátil</td>
+            <td>Extremadamente alta</td>
+            <td>KB-MB</td>
+            <td>Acelerar CPU</td>
+            <td>Muy alto</td>
+          </tr>
+          <tr>
+            <td>Flash</td>
+            <td>No volátil</td>
+            <td>Alta</td>
+            <td>GB-TB</td>
+            <td>Almacenamiento</td>
+            <td>$0.10-$1</td>
+          </tr>
+        </table>
+        
+        <h3>Velocidad de acceso comparativa:</h3>
+        <div class="comparison-chart">
+          <div class="chart-item">
+            <div class="chart-label">Caché L1</div>
+            <div class="chart-value">1 ns</div>
+            <div class="chart-label">(1 ciclo)</div>
+          </div>
+          <div class="chart-item">
+            <div class="chart-label">Caché L2</div>
+            <div class="chart-value">3 ns</div>
+            <div class="chart-label">(10 ciclos)</div>
+          </div>
+          <div class="chart-item">
+            <div class="chart-label">RAM</div>
+            <div class="chart-value">60 ns</div>
+            <div class="chart-label">(200 ciclos)</div>
+          </div>
+          <div class="chart-item">
+            <div class="chart-label">SSD</div>
+            <div class="chart-value">50 μs</div>
+            <div class="chart-label">(150,000 ciclos)</div>
+          </div>
+          <div class="chart-item">
+            <div class="chart-label">HDD</div>
+            <div class="chart-value">10 ms</div>
+            <div class="chart-label">(30,000,000 ciclos)</div>
+          </div>
+        </div>
+        
+        <h3>Jerarquía de memoria:</h3>
+        <p>Los sistemas informáticos modernos organizan la memoria en una jerarquía que equilibra costo, capacidad y velocidad. La caché L1 es la más rápida pero costosa y pequeña, mientras que el almacenamiento masivo (SSD/HDD) es más lento pero económico y de gran capacidad.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones de navegación fijos -->
+  <div class="nav-botones-fijos">
+    <a class="boton-enlace" href="1.13.html">&#8592; Página anterior</a>
+    <a class="boton-enlace" href="2.0.html">Página siguiente &#8594;</a>
+  </div>
+
+  <div class="footer">
+    <p>© 2023 Exploración Interactiva de Tipos de Memoria | Fuentes: 
+      <a href="https://computer.howstuffworks.com/computer-memory.htm" target="_blank">HowStuffWorks</a>, 
+      <a href="https://www.crucial.com/articles/about-memory/support-what-computer-memory" target="_blank">Crucial</a>, 
+      <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html" target="_blank">Intel</a>
+    </p>
+    <p>Diseñado con fines educativos | Información técnica actualizada a 2023</p>
+  </div>
+
+  <script>
+    function toggleContent(card) {
+      // Cerrar todas las tarjetas primero
+      const allCards = document.querySelectorAll('.memory-card');
+      allCards.forEach(c => {
+        if (c !== card) {
+          c.classList.remove('active');
+        }
+      });
+      
+      // Alternar la tarjeta actual
+      card.classList.toggle('active');
+    }
+    
+    // Abrir la primera tarjeta al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.memory-card').classList.add('active');
+    });
+  </script>
+</body>
+</html>

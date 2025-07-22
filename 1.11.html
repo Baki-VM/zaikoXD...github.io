@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tarjeta Madre: Arquitectura y Componentes Detallados</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0e17, #121a25);
+    color: #d0d4db;
+    margin: 0;
+    padding: 0 20px 40px;
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    padding: 40px 20px 30px;
+    text-align: center;
+    border-bottom: 5px solid #4a90e2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 3em;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    background: linear-gradient(90deg, #a6c1ee, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    color: #cbd5e1;
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 30px auto 0;
+  }
+  .accordion {
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    color: #e0e6f3;
+    cursor: pointer;
+    padding: 22px 30px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 25px;
+    box-shadow: 0 6px 15px rgba(42, 82, 152, 0.6);
+    transition: all 0.35s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .accordion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #4a90e2, #1e3c72);
+    transition: width 0.5s ease;
+    z-index: -1;
+  }
+  .accordion:hover, .accordion.active {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.8);
+  }
+  .accordion:hover::before, .accordion.active::before {
+    width: 100%;
+  }
+  .accordion::after {
+    content: '+';
+    font-size: 26px;
+    color: #cbd5e1;
+    transition: all 0.3s ease;
+    font-weight: 700;
+  }
+  .accordion.active::after {
+    content: '-';
+    color: #ffffff;
+    transform: rotate(180deg);
+  }
+  .panel {
+    background: rgba(28, 32, 48, 0.95);
+    padding: 25px 35px 35px;
+    display: none;
+    border-left: 6px solid #4a90e2;
+    border-radius: 0 0 15px 15px;
+    box-shadow: inset 0 0 20px rgba(74, 144, 226, 0.3);
+    font-size: 1.15em;
+    backdrop-filter: blur(5px);
+  }
+  .panel p {
+    margin-bottom: 18px;
+  }
+  ul {
+    margin-left: 1.4em;
+    padding-left: 0;
+    list-style-type: disc;
+  }
+  ul li {
+    margin-bottom: 14px;
+  }
+  img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.6);
+    border: 1px solid #4a90e2;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background: #2a3a65;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(42, 58, 101, 0.7);
+  }
+  th, td {
+    padding: 18px 22px;
+    border-bottom: 1px solid #4a90e2;
+    text-align: left;
+    color: #e0e6f3;
+  }
+  th {
+    background: linear-gradient(90deg, #4a90e2, #1e3c72);
+    font-weight: 800;
+    font-size: 1.1em;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  a {
+    color: #4a90e2;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: #a6c1ee;
+  }
+  .bar-chart {
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 15px 10px;
+    background: #1c2030;
+    border-radius: 12px;
+    box-shadow: inset 0 0 15px rgba(74, 144, 226, 0.2);
+  }
+  .bar {
+    background: linear-gradient(90deg, #4a90e2, #1e3c72);
+    height: 24px;
+    margin: 10px 0;
+    border-radius: 12px;
+    color: #e0e6f3;
+    text-align: right;
+    padding-right: 15px;
+    font-weight: 600;
+    line-height: 24px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background-size: 200% 100%;
+    animation: shine 2s infinite;
+  }
+  .bar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+  }
+  .component-list {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+  }
+  .component-list li {
+    background: linear-gradient(135deg, #2a5298, #4a90e2);
+    color: #e0e6f3;
+    font-weight: 700;
+    margin-bottom: 18px;
+    padding: 18px 22px;
+    border-radius: 14px;
+    font-size: 1.18em;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(42, 82, 152, 0.4);
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .component-list li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+    z-index: -1;
+  }
+  .component-list li:hover::before {
+    left: 100%;
+  }
+  .component-list li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 10px 25px rgba(42, 82, 152, 0.6);
+  }
+  .component-list .icon {
+    font-size: 2.2em;
+    margin-right: 18px;
+    flex-shrink: 0;
+    user-select: none;
+    transition: transform 0.3s ease;
+  }
+  .component-list li:hover .icon {
+    transform: rotate(15deg) scale(1.2);
+  }
+  .subsection {
+    background: rgba(42, 58, 101, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+    border-left: 4px solid #4a90e2;
+  }
+  .subsection h3 {
+    color: #a6c1ee;
+    margin-top: 0;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+  }
+  .evolution-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 0;
+  }
+  .evolution-item {
+    background: rgba(42, 58, 101, 0.7);
+    border-radius: 12px;
+    padding: 20px;
+    width: calc(33% - 20px);
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  .evolution-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.5);
+  }
+  .evolution-item h4 {
+    color: #a6c1ee;
+    margin-top: 0;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .feature-card {
+    background: rgba(42, 58, 101, 0.7);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.5);
+  }
+  .feature-card h4 {
+    color: #a6c1ee;
+    margin-top: 0;
+  }
+  @keyframes shine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @media (max-width: 768px) {
+    .evolution-item {
+      width: calc(50% - 15px);
+    }
+    header h1 {
+      font-size: 2.2em;
+    }
+    .accordion {
+      font-size: 18px;
+      padding: 18px 20px;
+    }
+  }
+  @media (max-width: 480px) {
+    .evolution-item {
+      width: 100%;
+    }
+    header h1 {
+      font-size: 1.8em;
+    }
+    .accordion {
+      font-size: 16px;
+    }
+  }
+  .nav-botones-fijos {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    gap: 16px;
+  }
+  .boton-enlace {
+    display: inline-block;
+    background-color: #1565c0;
+    color: #fff;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.08rem;
+    box-shadow: 0 4px 12px rgba(21,101,192,0.18);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .boton-enlace:hover {
+    background-color: #26c6da;
+    color: #fff;
+    transform: translateY(-3px) scale(1.04);
+  }
+  @media (max-width: 600px) {
+    .nav-botones-fijos {
+        right: 10px;
+        bottom: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .boton-enlace {
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Tarjeta Madre: Arquitectura y Componentes Detallados</h1>
+  <p class="subtitle">El corazón de la computadora donde todos los componentes se conectan y comunican</p>
+</header>
+
+<div class="container">
+
+  <button class="accordion">¿Qué es la Tarjeta Madre?</button>
+  <div class="panel">
+    <p>La tarjeta madre es el circuito impreso principal donde se conectan y comunican todos los componentes vitales de una computadora. Actúa como el centro neurálgico que permite que el CPU, memoria, dispositivos de almacenamiento y periféricos trabajen coordinadamente.</p>
+    <p>Es el componente rey del PC junto al CPU, de ahí que originariamente se denomine "motherboard" (placa madre), debido a que marca todas las compatibilidades e incompatibilidades del sistema. Toda configuración de PC a piezas comienza por la elección de una placa base por su socket y chipset, dos elementos vitales.</p>
+    <img src="https://lh5.googleusercontent.com/41IMAwh3yd1CZVZY5moLHexxXHAyuZ6x3trLbQt4uhpe5rOP5yLl62zp5uPG0aXU0KIWBYOays3w5ATUoOFM-DGzw2iCwrNq7gmLrhP7P1PvTQXr9NqFv-g4wiM30g_1WOSZ1zPo" alt="Tarjeta Madre moderna">
+    <p>Es fundamental seleccionar una tarjeta madre compatible con el CPU y los demás componentes para asegurar un rendimiento óptimo y estabilidad en el sistema.</p>
+  </div>
+
+  <button class="accordion">Arquitectura y Chipset</button>
+  <div class="panel">
+    <p>El chipset es el conjunto de chips en la tarjeta madre que controla la comunicación entre el CPU, la memoria RAM, los dispositivos de almacenamiento y los periféricos. Está dividido generalmente en:</p>
+    <ul>
+      <li><strong>Northbridge:</strong> Gestiona las conexiones de alta velocidad, como CPU a memoria RAM y tarjeta gráfica.</li>
+      <li><strong>Southbridge:</strong> Controla periféricos de menor velocidad, como USB, audio, y discos duros.</li>
+    </ul>
+    <img src="https://softwareg.com.au/cdn/shop/articles/1200px-Chipset_schematic_svg.png?v=1707757168" alt="Diagrama Northbridge y Southbridge" style="max-width:80%; margin: 20px auto; display:block;">
+    <p>En las tarjetas madre modernas, muchas funciones del Northbridge están integradas directamente en el CPU, simplificando el diseño.</p>
+    
+    <div class="subsection">
+      <h3>Clasificación de Chipsets</h3>
+      <div class="evolution-timeline">
+        <div class="evolution-item">
+          <h4>Gama Baja</h4>
+          <p>Gamas A o H de Intel y AMD: chipsets básicos con características esenciales</p>
+        </div>
+        <div class="evolution-item">
+          <h4>Gama Media</h4>
+          <p>Gamas B de Intel y AMD: chipsets mainstream con buen equilibrio entre características y precio</p>
+        </div>
+        <div class="evolution-item">
+          <h4>Gama Alta</h4>
+          <p>Gamas Z de Intel y X de AMD: chipsets entusiastas con todas las características avanzadas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="accordion">Componentes Principales</button>
+  <div class="panel">
+    <ul class="component-list">
+      <li><span class="icon">🧠</span> <strong>Slots de Memoria RAM:</strong> Donde se insertan los módulos de memoria para que el CPU pueda acceder rápidamente a los datos.</li>
+      <li><span class="icon">🔌</span> <strong>Socket del CPU:</strong> El lugar donde se conecta el microprocesador. Su tipo debe coincidir con el procesador elegido.</li>
+      <li><span class="icon">⚡</span> <strong>Slots PCI Express (PCIe):</strong> Para tarjetas de expansión como gráficas, sonido, red, etc.</li>
+      <li><span class="icon">💾</span> <strong>Conectores de Almacenamiento:</strong> SATA para discos duros tradicionales y NVMe para unidades SSD ultra rápidas.</li>
+      <li><span class="icon">🔊</span> <strong>Puertos USB, HDMI, Ethernet y Audio:</strong> Para conectar periféricos y dispositivos externos.</li>
+    </ul>
+    
+    <div class="subsection">
+      <h3>VRM (Módulo Regulador de Voltaje)</h3>
+      <p>El VRM es un módulo regulador de voltaje encargado de controlar el voltaje que se envía a los componentes para suministrar energía de forma estable y limpia. Los VRM se encuentran en la parte superior o en los aledaños del socket.</p>
+      <p>La fuente de alimentación manda energía a los VRM y éstos regulan los voltajes antes de enviarla a la CPU, GPU y memorias RAM. Cada componente tiene unos límites de voltaje, y dependiendo de la tecnología se envía la energía de forma personalizada.</p>
+      <img src="https://storage-asset.msi.com/global/picture/image/feature/mb/Z790/Z790-TOMAHAWK-MAX-WIFI/VRM-design.jpg" alt="Diseño VRM">
+    </div>
+  </div>
+
+  <button class="accordion">Memoria RAM vs ROM en la Tarjeta Madre</button>
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>Memoria RAM</th>
+          <th>Memoria ROM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Función</td>
+          <td>Almacena datos e instrucciones temporales para uso activo.</td>
+          <td>Almacena instrucciones permanentes, como el firmware.</td>
+        </tr>
+        <tr>
+          <td>Volatilidad</td>
+          <td>Volátil: pierde datos al apagar el equipo.</td>
+          <td>No volátil: conserva datos al apagar.</td>
+        </tr>
+        <tr>
+          <td>Modificabilidad</td>
+          <td>Se puede leer y escribir rápidamente.</td>
+          <td>Generalmente solo lectura, con pocas excepciones.</td>
+        </tr>
+        <tr>
+          <td>Ubicación</td>
+          <td>Insertada en slots RAM de la tarjeta madre.</td>
+          <td>Soldada o integrada en la placa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="accordion">Tipos de Memoria RAM</button>
+  <div class="panel">
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>DRAM (Memoria Dinámica)</h4>
+        <p>Es la más habitual y constituye la mayor parte de la memoria de un ordenador. Es una memoria de acceso aleatorio y volátil, por lo que al apagar el ordenador se pierde la información.</p>
+      </div>
+      <div class="feature-card">
+        <h4>SDRAM</h4>
+        <p>Sus celdas construidas a base de capacitores poseen chips de memoria en ambos lados de la placa de circuito impresa, con 168 terminales. Permite el manejo de 32 y 64 bits.</p>
+      </div>
+      <div class="feature-card">
+        <h4>DDR SDRAM</h4>
+        <p>Memoria de doble tasa de transferencia de datos. Los módulos DDR-SDRAM son del mismo tamaño que los DIMM de SDRAM pero con más conectores (184 pines).</p>
+      </div>
+      <div class="feature-card">
+        <h4>DDR2</h4>
+        <p>Segunda generación de DDR. Mejora la señalización y usa voltajes más bajos. Tienen 240 pines y están diseñadas para procesadores de doble núcleo.</p>
+      </div>
+      <div class="feature-card">
+        <h4>DDR3</h4>
+        <p>Tercera generación de DDR. Comienza con 800Mbps y sube hasta 1600Mbps. Menor consumo de energía (1.5V) y menor generación de calor.</p>
+      </div>
+      <div class="feature-card">
+        <h4>SRAM (Memoria Estática)</h4>
+        <p>No necesita actualizarse continuamente. Es más cara pero más rápida. Se utiliza en la memoria caché. Basada en semiconductores, capaz de mantener datos mientras está alimentada.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="accordion">Memoria Caché</button>
+  <div class="panel">
+    <p>En informática, la caché es la memoria de acceso rápido de una computadora, que guarda temporalmente las últimas informaciones procesadas. Funciona de manera similar a la memoria principal pero es de menor tamaño y acceso más rápido.</p>
+    
+    <div class="subsection">
+      <h3>Niveles de Memoria Caché</h3>
+      <div class="evolution-timeline">
+        <div class="evolution-item">
+          <h4>Caché L1</h4>
+          <p>Integrada en el núcleo del procesador, trabajando a la misma velocidad. Normalmente entre 64KB y 256KB. Dividida en dos partes: instrucciones y datos.</p>
+        </div>
+        <div class="evolution-item">
+          <h4>Caché L2</h4>
+          <p>Integrada en el procesador pero no directamente en el núcleo. Suele ser mayor que L1 (hasta 2MB). Utilizada más por programas que por el sistema.</p>
+        </div>
+        <div class="evolution-item">
+          <h4>Caché L3</h4>
+          <p>Memoria caché más lenta que L2, utilizada para compartir datos entre múltiples núcleos. Puede alcanzar varios megabytes de capacidad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="accordion">Memoria ROM</button>
+  <div class="panel">
+    <p>La memoria de solo lectura (ROM) es un medio de almacenamiento utilizado en ordenadores y dispositivos electrónicos, que permite sólo la lectura de la información y no su escritura, independientemente de la presencia o no de una fuente de energía.</p>
+    
+    <div class="subsection">
+      <h3>Tipos de Memoria ROM</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>EPROM</h4>
+          <p>Retiene los datos cuando la fuente de energía se apaga (no volátil). Retiene datos durante 10-20 años. Se borra mediante luz ultravioleta.</p>
+        </div>
+        <div class="feature-card">
+          <h4>EEPROM</h4>
+          <p>Puede ser programada, borrada y reprogramada eléctricamente. Aunque puede ser leída ilimitadas veces, sólo puede ser borrada y reprogramada entre 100,000 y 1,000,000 de veces.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Memoria Flash</h4>
+          <p>Forma desarrollada de la memoria EEPROM que permite que múltiples posiciones de memoria sean escritas o borradas en una misma operación mediante impulsos eléctricos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="accordion">Funciones y Comunicación</button>
+  <div class="panel">
+    <p>La tarjeta madre facilita el intercambio constante de datos y señales eléctricas entre el CPU, memoria, almacenamiento y dispositivos conectados. Esto se logra mediante buses de datos y control que recorren la placa, asegurando que cada componente reciba y envíe información en tiempo real y sin errores.</p>
+    <div class="bar-chart">
+      <div class="bar" style="width: 80%;">Bus de Datos - 64 bits</div>
+      <div class="bar" style="width: 60%;">Bus de Direcciones - 48 bits</div>
+      <div class="bar" style="width: 75%;">Bus de Control - 56 bits</div>
+    </div>
+  </div>
+
+  <button class="accordion">Recomendaciones y Mantenimiento</button>
+  <div class="panel">
+    <ul>
+      <li>Mantener la tarjeta madre limpia de polvo para evitar sobrecalentamiento y cortocircuitos.</li>
+      <li>Actualizar el BIOS para mejorar compatibilidad y rendimiento.</li>
+      <li>Verificar conexiones de cables y componentes antes de encender el equipo.</li>
+      <li>Usar una fuente de alimentación estable y adecuada para evitar daños.</li>
+      <li>Para overclock, seleccionar placas base con buenos VRM y disipación térmica.</li>
+      <li>Verificar compatibilidad entre socket de la placa base y procesador.</li>
+      <li>Considerar la cantidad y tipo de slots de RAM necesarios para tus aplicaciones.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- Botones de navegación fijos -->
+<div class="nav-botones-fijos">
+  <a class="boton-enlace" href="1.10.html">&#8592; Página anterior</a>
+  <a class="boton-enlace" href="1.12.html">Página siguiente &#8594;</a>
+</div>
+
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      acc.classList.toggle('active');
+      const panel = acc.nextElementSibling;
+      if(panel.style.display === "block"){
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  });
+  
+  // Abrir el primer acordeón automáticamente
+  document.addEventListener('DOMContentLoaded', function() {
+    const firstAccordion = document.querySelector('.accordion');
+    if(firstAccordion) {
+      firstAccordion.classList.add('active');
+      firstAccordion.nextElementSibling.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>

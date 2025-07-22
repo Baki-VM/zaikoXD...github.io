@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componentes Principales de una Computadora</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0d47a1;
+      --secondary: #1e88e5;
+      --accent: #0a2a6f;
+      --light-bg: #e3f2fd;
+      --dark-bg: #1a2a3a;
+      --card-bg: #ffffff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      color: #212121;
+      line-height: 1.7;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      margin-bottom: 30px;
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .subtitle {
+      font-size: 1.4rem;
+      color: var(--accent);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .components-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .component-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 5px solid var(--secondary);
+    }
+    
+    .component-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .component-header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .component-header i {
+      font-size: 2rem;
+    }
+    
+    .component-content {
+      padding: 25px;
+    }
+    
+    .component-content h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+    
+    .component-content p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .component-image {
+      width: 100%;
+      text-align: center;
+      margin: 15px 0;
+    }
+    
+    .component-image img {
+      max-width: 100%;
+      height: 220px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .feature-card {
+      background: var(--light-bg);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid var(--secondary);
+    }
+    
+    .feature-card h4 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    table th {
+      background: var(--primary);
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+    
+    table td {
+      padding: 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    table tr:nth-child(even) {
+      background: #f5f9ff;
+    }
+    
+    table tr:hover {
+      background: #e3f2fd;
+    }
+    
+    .source {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #555;
+      font-style: italic;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      border-top: 1px solid #ddd;
+      color: #555;
+    }
+    
+    @media (max-width: 768px) {
+      .components-container {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Nuevos estilos para los botones de navegación */
+.nav-botones-fijos {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    gap: 16px;
+}
+.boton-enlace {
+    display: inline-block;
+    background-color: #0d47a1;
+    color: #fff;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.08rem;
+    box-shadow: 0 4px 12px rgba(13,71,161,0.18);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+}
+.boton-enlace:hover {
+    background-color: #1565c0;
+    color: #fff;
+    transform: translateY(-3px) scale(1.04);
+}
+@media (max-width: 600px) {
+    .nav-botones-fijos {
+        right: 10px;
+        bottom: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .boton-enlace {
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-computer"></i> Componentes Principales de una Computadora</h1>
+      <p class="subtitle">Conoce las piezas esenciales que hacen funcionar tu equipo y cómo trabajan en conjunto</p>
+    </header>
+    
+    <div class="components-container">
+      <!-- Placa Base -->
+      <div class="component-card">
+        <div class="component-header">
+          <i class="fas fa-microchip"></i>
+          <h2>1.3.1 PLACA BASE (MOTHERBOARD)</h2>
+        </div>
+        <div class="component-content">
+          <p>La placa base es el corazón de tu computadora, siendo el componente que conecta todos los demás elementos del sistema. Es una tarjeta de circuito impreso a la que se conectan los componentes que constituyen la computadora.</p>
+          
+          <div class="component-image">
+            <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Placa Base">
+          </div>
+          
+          <h3>Elementos clave:</h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4><i class="fas fa-microchip"></i> Socket del CPU</h4>
+              <p>Zócalo para instalar el procesador</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fas fa-memory"></i> Ranuras RAM</h4>
+              <p>Conectores para módulos de memoria</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fas fa-plug"></i> Conectores</h4>
+              <p>USB, SATA, alimentación</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fas fa-network-wired"></i> Chipset</h4>
+              <p>Gestiona comunicación entre componentes</p>
+            </div>
+          </div>
+          
+          <p>La calidad de la placa base determina las posibilidades de expansión y el rendimiento general. Es crucial elegir una que se adapte a tus necesidades específicas.</p>
+          
+          <div class="source">
+            Fuentes: 
+            <a href="https://www.xataka.com/basics/partes-placa-base-te-explicamos-sus-componentes-forma-sencilla-entiendas-que-tiene" target="_blank">Xataka</a>, 
+            <a href="https://concepto.de/placa-madre/" target="_blank">Concepto.de</a>, 
+            <a href="https://www.areatecnologia.com/elementos-placa-base.htm" target="_blank">AreaTecnología</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Procesador -->
+      <div class="component-card">
+        <div class="component-header">
+          <i class="fas fa-brain"></i>
+          <h2>1.3.2 PROCESADOR (CPU)</h2>
+        </div>
+        <div class="component-content">
+          <p>El procesador es el cerebro de tu computadora, siendo la Unidad Central de Procesamiento que ejecuta todas las instrucciones y cálculos. Los principales fabricantes son Intel y AMD.</p>
+          
+          <div class="component-image">
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Procesador">
+          </div>
+          
+          <h3>Características principales:</h3>
+          <ul>
+            <li><strong>Núcleos:</strong> Múltiples núcleos procesan instrucciones simultáneamente</li>
+            <li><strong>Velocidad:</strong> Medida en gigahercios (GHz)</li>
+            <li><strong>Tecnologías:</strong> Hyperthreading, multithreading</li>
+            <li><strong>Integración:</strong> Controladores de memoria y gráficos básicos</li>
+          </ul>
+          
+          <p>La elección del procesador determina el rendimiento en tareas intensivas como gaming, edición de video y aplicaciones profesionales.</p>
+          
+          <div class="source">
+            Fuentes: 
+            <a href="https://www.amd.com/es/products/processors/desktops/ryzen.html" target="_blank">AMD Ryzen</a>, 
+            <a href="https://www.intel.com/content/www/us/en/products/details/processors/core.html" target="_blank">Intel Core</a>, 
+            <a href="https://www.profesionalreview.com/guias/comparar-procesadores/" target="_blank">Comparar procesadores</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Memoria RAM -->
+      <div class="component-card">
+        <div class="component-header">
+          <i class="fas fa-memory"></i>
+          <h2>1.3.3 MEMORIA RAM</h2>
+        </div>
+        <div class="component-content">
+          <p>La memoria RAM es el almacenamiento temporal de alta velocidad donde se cargan los datos y programas que está utilizando actualmente tu computadora. Es volátil (pierde datos al apagarse).</p>
+          
+          <div class="component-image">
+            <img src="https://images.unsplash.com/photo-1591370874773-6702e8f12fd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Memoria RAM">
+          </div>
+          
+          <h3>Especificaciones técnicas:</h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4><i class="fas fa-tachometer-alt"></i> Tecnología</h4>
+              <p>DDR4 / DDR5</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fas fa-database"></i> Capacidad</h4>
+              <p>4GB - 128GB+</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fas fa-bolt"></i> Velocidad</h4>
+              <p>MHz (2400-6400+)</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fas fa-stopwatch"></i> Latencia</h4>
+              <p>Nanosegundos</p>
+            </div>
+          </div>
+          
+          <p>Para usuarios básicos, 8GB son suficientes. Para gaming, edición de video o trabajo profesional, se recomiendan 16GB o más.</p>
+          
+          <div class="source">
+            Fuentes: 
+            <a href="https://www.corsair.com/es/es/categories/products/memory" target="_blank">Corsair</a>, 
+            <a href="https://www.kingston.com/es/memory" target="_blank">Kingston</a>, 
+            <a href="https://www.crucial.com/memory" target="_blank">Crucial</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Almacenamiento -->
+      <div class="component-card">
+        <div class="component-header">
+          <i class="fas fa-hdd"></i>
+          <h2>1.3.4 ALMACENAMIENTO (HDD/SSD)</h2>
+        </div>
+        <div class="component-content">
+          <p>El sistema de almacenamiento guarda permanentemente tus archivos, programas y sistema operativo. Los principales tipos son HDD (discos magnéticos) y SSD (memoria flash sin partes móviles).</p>
+          
+          <div class="component-image">
+            <img src="https://images.unsplash.com/photo-1593538312308-d4c29d8dc7f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Almacenamiento">
+          </div>
+          
+          <h3>Comparativa HDD vs SSD:</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>HDD</th>
+                <th>SSD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Velocidad</td>
+                <td>100-200 MB/s</td>
+                <td>500-7000 MB/s</td>
+              </tr>
+              <tr>
+                <td>Tiempo de arranque</td>
+                <td>30-60 segundos</td>
+                <td>5-15 segundos</td>
+              </tr>
+              <tr>
+                <td>Durabilidad</td>
+                <td>Medio (partes móviles)</td>
+                <td>Alto (sin partes móviles)</td>
+              </tr>
+              <tr>
+                <td>Consumo</td>
+                <td>Alto</td>
+                <td>Bajo</td>
+              </tr>
+              <tr>
+                <td>Precio por GB</td>
+                <td>Bajo</td>
+                <td>Alto</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p>Para una experiencia óptima, usa un SSD como unidad principal para el sistema operativo y programas, y un HDD para almacenamiento masivo.</p>
+          
+          <div class="source">
+            Fuentes: 
+            <a href="https://www.samsung.com/es/memory-storage/ssd/" target="_blank">Samsung SSD</a>, 
+            <a href="https://www.westerndigital.com/es-es/products/internal-drives" target="_blank">Western Digital</a>, 
+            <a href="https://www.seagate.com/es/es/internal-hard-drives/" target="_blank">Seagate</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tarjeta Gráfica -->
+      <div class="component-card">
+        <div class="component-header">
+          <i class="fas fa-gamepad"></i>
+          <h2>1.3.5 TARJETA GRÁFICA (GPU)</h2>
+        </div>
+        <div class="component-content">
+          <p>La tarjeta gráfica o GPU procesa y renderiza imágenes, videos y gráficos 3D. Puede ser integrada (en el procesador) o dedicada (tarjeta independiente).</p>
+          
+          <div class="component-image">
+            <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Tarjeta Gráfica">
+          </div>
+          
+          <h3>Principales fabricantes:</h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4><i class="fab fa-nvidia"></i> NVIDIA</h4>
+              <p>Series GeForce RTX y GTX</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fab fa-amd"></i> AMD</h4>
+              <p>Series Radeon RX</p>
+            </div>
+          </div>
+          
+          <h3>Tecnologías avanzadas:</h3>
+          <ul>
+            <li><strong>Ray Tracing:</strong> Iluminación realista en tiempo real</li>
+            <li><strong>DLSS (NVIDIA):</strong> Mejora rendimiento mediante IA</li>
+            <li><strong>FSR (AMD):</strong> Escalado de resolución</li>
+          </ul>
+          
+          <p>Para gaming, diseño 3D o edición de video profesional, una GPU dedicada es esencial.</p>
+          
+          <div class="source">
+            Fuentes: 
+            <a href="https://www.nvidia.com/es-es/geforce/graphics-cards/" target="_blank">NVIDIA GeForce</a>, 
+            <a href="https://www.amd.com/es/products/graphics/desktops" target="_blank">AMD Radeon</a>, 
+            <a href="https://www.asus.com/es/graphics-cards/" target="_blank">ASUS Graphics</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Fuente de Alimentación -->
+      <div class="component-card">
+        <div class="component-header">
+          <i class="fas fa-plug"></i>
+          <h2>1.3.6 FUENTE DE ALIMENTACIÓN (PSU)</h2>
+        </div>
+        <div class="component-content">
+          <p>La fuente de alimentación convierte la corriente alterna de la red eléctrica en corriente continua estable para todos los componentes. Una PSU de calidad es crucial para la estabilidad del sistema.</p>
+          
+          <div class="component-image">
+            <img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fuente de Alimentación">
+          </div>
+          
+          <h3>Clasificación:</h3>
+          <ul>
+            <li><strong>Potencia:</strong> 400W, 500W, 650W, 850W+</li>
+            <li><strong>Eficiencia:</strong> Certificación 80 Plus (Bronze, Silver, Gold, Platinum, Titanium)</li>
+            <li><strong>Modularidad:</strong> Fuentes modulares permiten conectar solo cables necesarios</li>
+          </ul>
+          
+          <h3>Cables y voltajes:</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Color</th>
+                <th>Voltaje</th>
+                <th>Función</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Rojo</td><td>+5V</td><td>Lógica y placas</td></tr>
+              <tr><td>Amarillo</td><td>+12V</td><td>CPU, GPU, ventiladores</td></tr>
+              <tr><td>Naranja</td><td>+3.3V</td><td>Chipset y memoria</td></tr>
+              <tr><td>Negro</td><td>0V</td><td>Conexión a tierra</td></tr>
+              <tr><td>Morado</td><td>+5VSB</td><td>Modo espera</td></tr>
+              <tr><td>Verde</td><td>PS_ON</td><td>Activa la fuente</td></tr>
+            </tbody>
+          </table>
+          
+          <div class="source">
+            Fuentes: 
+            <a href="https://www.corsair.com/es/es/categories/products/power-supply-units" target="_blank">Corsair PSU</a>, 
+            <a href="https://seasonic.com/power-supplies" target="_blank">Seasonic</a>, 
+            <a href="https://www.evga.com/power-supplies/" target="_blank">EVGA</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Dispositivos E/S -->
+      <div class="component-card">
+        <div class="component-header">
+          <i class="fas fa-keyboard"></i>
+          <h2>1.3.7 DISPOSITIVOS DE ENTRADA/SALIDA</h2>
+        </div>
+        <div class="component-content">
+          <p>Permiten la interacción entre el usuario y la computadora. Incluyen dispositivos de entrada (capturan datos) y salida (presentan información).</p>
+          
+          <div class="component-image">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Periféricos">
+          </div>
+          
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4><i class="fas fa-mouse"></i> Entrada</h4>
+              <ul>
+                <li>Teclado</li>
+                <li>Mouse</li>
+                <li>Micrófono</li>
+                <li>Cámara web</li>
+                <li>Escáner</li>
+              </ul>
+            </div>
+            
+            <div class="feature-card">
+              <h4><i class="fas fa-tv"></i> Salida</h4>
+              <ul>
+                <li>Monitor</li>
+                <li>Altavoces</li>
+                <li>Auriculares</li>
+                <li>Impresora</li>
+                <li>Proyector</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3>Monitores:</h3>
+          <ul>
+            <li><strong>Tecnologías:</strong> IPS, VA, TN, OLED</li>
+            <li><strong>Resoluciones:</strong> Full HD, 2K, 4K, 8K</li>
+            <li><strong>Frecuencia:</strong> 60Hz, 120Hz, 144Hz, 240Hz+</li>
+          </ul>
+          
+          <div class="source">
+            Fuentes: 
+            <a href="https://www.logitech.com/es-es" target="_blank">Logitech</a>, 
+            <a href="https://www.razer.com/es-es" target="_blank">Razer</a>, 
+            <a href="https://www.asus.com/es/displays-desktops/monitors/" target="_blank">ASUS Monitores</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gabinete y Refrigeración -->
+      <div class="component-card">
+        <div class="component-header">
+          <i class="fas fa-fan"></i>
+          <h2>1.3.8 GABINETE Y REFRIGERACIÓN</h2>
+        </div>
+        <div class="component-content">
+          <p>El gabinete aloja y protege todos los componentes internos. El sistema de refrigeración mantiene temperaturas óptimas para el funcionamiento.</p>
+          
+          <div class="component-image">
+            <img src="https://images.unsplash.com/photo-1593508511955-7a31c6bf230f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Gabinete">
+          </div>
+          
+          <h3>Características del gabinete:</h3>
+          <ul>
+            <li><strong>Tamaños:</strong> Mini-ITX, Micro-ATX, ATX, E-ATX</li>
+            <li><strong>Materiales:</strong> Acero, aluminio, vidrio templado</li>
+            <li><strong>Características:</strong> Flujo de aire, filtros antipolvo, gestión de cables, iluminación RGB</li>
+          </ul>
+          
+          <h3>Sistemas de refrigeración:</h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4><i class="fas fa-wind"></i> Refrigeración por aire</h4>
+              <p>Disipadores y ventiladores</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fas fa-tint"></i> Refrigeración líquida</h4>
+              <p>AIO o sistemas personalizados</p>
+            </div>
+            <div class="feature-card">
+              <h4><i class="fas fa-arrows-alt-h"></i> Flujo de aire</h4>
+              <p>Ventiladores de entrada/salida</p>
+            </div>
+          </div>
+          
+          <div class="source">
+            Fuentes: 
+            <a href="https://www.fractal-design.com/products/cases/" target="_blank">Fractal Design</a>, 
+            <a href="https://www.coolermaster.com/catalog/cases/" target="_blank">Cooler Master</a>, 
+            <a href="https://www.nzxt.com/categories/cases" target="_blank">NZXT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Componentes Principales de una Computadora - Guía Completa</p>
+      <p>Todos los derechos reservados &copy; 2023</p>
+    </footer>
+
+    <!-- Botones de navegación fijos -->
+    <div class="nav-botones-fijos">
+      <a class="boton-enlace" href="1.2.html">&#8592; Página anterior</a>
+      <a class="boton-enlace" href="1.4.html">Página siguiente &#8594;</a>
+    </div>
+  </div>
+</body>
+</html>
