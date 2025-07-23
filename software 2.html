@@ -1,189 +1,536 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software 2 - Página Principal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Software 2 - Guía Completa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        :root {
+            --primary: #2563eb;
+            --secondary: #0ea5e9;
+            --accent: #8b5cf6;
+            --dark: #0f172a;
+            --light: #f1f5f9;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --gradient: linear-gradient(135deg, #2563eb, #0ea5e9, #8b5cf6);
+            --card-bg: rgba(255, 255, 255, 0.08);
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
+            box-sizing: border-box;
         }
-
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #1a2a32, #2c5364);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
         header {
             text-align: center;
-            padding: 3rem 1rem;
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            border-bottom: 3px solid #fff;
+            padding: 2rem 1rem;
+            background: var(--gradient);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.1);
         }
-
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
         h1 {
+            font-family: 'Poppins', sans-serif;
             font-size: 3.5rem;
             margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #d1e8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
         }
-
+        
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
         .boton-enlace {
-            display: inline-block;
-            background-color: #00f2fe;
-            color: #000;
-            padding: 10px 20px;
-            margin: 10px 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 12px 25px;
+            margin: 8px 5px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            font-weight: 500;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-
+        
+        .boton-enlace::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
         .boton-enlace:hover {
-            background-color: #4facfe;
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.25);
         }
-
+        
+        .boton-enlace:hover::before {
+            width: 100%;
+        }
+        
+        .boton-enlace i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
         nav {
-            text-align: center;
-            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
         }
-
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
         section {
-            padding: 2rem;
-            border-top: 2px solid #fff;
-            background-color: rgba(255,255,255,0.05);
-            margin: 1rem 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-
+        
+        section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--secondary);
+        }
+        
         h2 {
-            color: #00f2fe;
-            border-bottom: 1px solid #00f2fe;
-            padding-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
+        
+        h2 i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.15);
         }
-
-        th, td {
-            border: 1px solid #fff;
-            padding: 10px;
-            text-align: center;
-            background-color: rgba(255,255,255,0.1);
-        }
-
+        
         th {
-            background-color: #444;
+            background: rgba(59, 130, 246, 0.3);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
         }
-
+        
+        td {
+            padding: 14px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
         ul, ol {
             margin-left: 1.5rem;
+            margin-bottom: 20px;
         }
-
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        li::before {
+            content: '•';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+        
+        strong {
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .btn-container {
+            margin-top: auto;
+            padding-top: 20px;
+        }
+        
+        .section-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.2);
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .section-btn:hover {
+            background: rgba(59, 130, 246, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-btn i {
+            margin-right: 8px;
+        }
+        
         footer {
             text-align: center;
-            padding: 1.5rem;
-            background-color: #111;
-            border-top: 2px solid #fff;
-            margin-top: 2rem;
+            padding: 2.5rem 1rem;
+            background: rgba(0, 0, 0, 0.4);
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-link:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.2);
+            color: #c4b5fd;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(59, 130, 246, 0.3), transparent 70%);
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .boton-enlace {
+                width: 90%;
+                margin: 6px auto;
+            }
+            
+            section {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Software 2</h1>
-        <p>Explora los distintos tipos de software con esta guía interactiva y visual</p>
-
-        <nav>
-            <a class="boton-enlace" href="HARDWARE I .html">Hardware 1</a>
-            <a class="boton-enlace" href="HARDWARE 2.html">Hardware 2</a>
-            <a class="boton-enlace" href="software 1.html">Software 1</a>
-            <a class="boton-enlace" href="software 2.html">Software 2</a>
-            <a class="boton-enlace" href="index.html">Inicio</a>
-        </nav>
+        <div class="header-content">
+            <h1>Software 2</h1>
+            <p class="subtitle">Explora los distintos tipos de software con esta guía interactiva y visual</p>
+            
+            <nav>
+                <a class="boton-enlace" href="HARDWARE I .html">
+                    <i class="fas fa-microchip"></i> Hardware 1
+                </a>
+                <a class="boton-enlace" href="HARDWARE 2.html">
+                    <i class="fas fa-server"></i> Hardware 2
+                </a>
+                <a class="boton-enlace" href="software 1.html">
+                    <i class="fas fa-window-restore"></i> Software 1
+                </a>
+                <a class="boton-enlace" href="software 2.html">
+                    <i class="fas fa-laptop-code"></i> Software 2
+                </a>
+                <a class="boton-enlace" href="index.html">
+                    <i class="fas fa-home"></i> Inicio
+                </a>
+            </nav>
+        </div>
     </header>
 
-    <section id="antivirus">
-        <h2>2.6 Software Antivirus</h2>
-        <p>Programas que protegen tu sistema de virus, malware, spyware y otras amenazas cibernéticas.</p>
-        <table>
-            <tr><th>Antivirus</th><th>Características</th></tr>
-            <tr><td>Kaspersky</td><td>Alta protección, escaneo en tiempo real</td></tr>
-            <tr><td>Avast</td><td>Gratis, protección básica, firewall</td></tr>
-            <tr><td>Norton</td><td>Protección avanzada, VPN integrada</td></tr>
-        </table>
-        <a class="boton-enlace" href="2.6 Software antivirus.html">Ir a Software Antivirus</a>
-    </section>
+    <div class="container">
+        <section id="antivirus">
+            <h2><i class="fas fa-shield-alt"></i> 2.6 Software Antivirus</h2>
+            <p>Programas que protegen tu sistema de <span class="highlight">virus, malware, spyware</span> y otras amenazas cibernéticas en tiempo real.</p>
+            
+            <table>
+                <tr><th>Antivirus</th><th>Características</th></tr>
+                <tr><td>Kaspersky</td><td>Alta protección, escaneo en tiempo real</td></tr>
+                <tr><td>Avast</td><td>Gratis, protección básica, firewall</td></tr>
+                <tr><td>Norton</td><td>Protección avanzada, VPN integrada</td></tr>
+            </table>
+            
+            <div class="btn-container">
+                <a class="section-btn" href="2.6 Software antivirus.html">
+                    <i class="fas fa-arrow-right"></i> Ir a Software Antivirus
+                </a>
+            </div>
+            <div class="tag">Seguridad · Protección · Escaneo</div>
+        </section>
 
-    <section id="lenguajes">
-        <h2>2.7 Software Lenguajes de Programación</h2>
-        <p>Permiten escribir código para desarrollar aplicaciones, sitios web, videojuegos, entre otros.</p>
-        <ul>
-            <li><strong>Python:</strong> Fácil de aprender, ideal en IA y ciencia de datos.</li>
-            <li><strong>Java:</strong> Multiplataforma, ideal para móviles y empresas.</li>
-            <li><strong>C#:</strong> Potente para videojuegos con Unity.</li>
-        </ul>
-        <a class="boton-enlace" href="2.7 Software lenguajes de programación.html">Ir a Lenguajes de Programación</a>
-    </section>
+        <section id="lenguajes">
+            <h2><i class="fas fa-code"></i> 2.7 Lenguajes de Programación</h2>
+            <p>Permiten escribir código para desarrollar aplicaciones, sitios web, videojuegos, entre otros.</p>
+            
+            <ul>
+                <li><strong>Python:</strong> Fácil de aprender, ideal en IA y ciencia de datos.</li>
+                <li><strong>Java:</strong> Multiplataforma, ideal para móviles y empresas.</li>
+                <li><strong>C#:</strong> Potente para videojuegos con Unity.</li>
+            </ul>
+            
+            <div class="btn-container">
+                <a class="section-btn" href="2.7 Software lenguajes de programación.html">
+                    <i class="fas fa-arrow-right"></i> Ir a Lenguajes de Programación
+                </a>
+            </div>
+            <div class="tag">Desarrollo · Código · Aplicaciones</div>
+        </section>
 
-    <section id="bbdd">
-        <h2>2.8 Software Motores de BBDD</h2>
-        <p>Permiten almacenar, consultar y gestionar grandes volúmenes de datos estructurados.</p>
-        <table>
-            <tr><th>Motor</th><th>Ventaja</th></tr>
-            <tr><td>MySQL</td><td>Gratis, rápido y confiable</td></tr>
-            <tr><td>PostgreSQL</td><td>Extensible, soporta grandes volúmenes</td></tr>
-            <tr><td>SQL Server</td><td>Integración con ecosistema Microsoft</td></tr>
-        </table>
-        <a class="boton-enlace" href="2.8 Software motores de BBDD.html">Ir a Motores de BBDD</a>
-    </section>
+        <section id="bbdd">
+            <h2><i class="fas fa-database"></i> 2.8 Motores de BBDD</h2>
+            <p>Permiten almacenar, consultar y gestionar grandes volúmenes de datos estructurados de manera eficiente.</p>
+            
+            <table>
+                <tr><th>Motor</th><th>Ventaja</th></tr>
+                <tr><td>MySQL</td><td>Gratis, rápido y confiable</td></tr>
+                <tr><td>PostgreSQL</td><td>Extensible, soporta grandes volúmenes</td></tr>
+                <tr><td>SQL Server</td><td>Integración con ecosistema Microsoft</td></tr>
+            </table>
+            
+            <div class="btn-container">
+                <a class="section-btn" href="2.8 Software motores de BBDD.html">
+                    <i class="fas fa-arrow-right"></i> Ir a Motores de BBDD
+                </a>
+            </div>
+            <div class="tag">Datos · Almacenamiento · Consultas</div>
+        </section>
 
-    <section id="versionadores">
-        <h2>2.9 Software Versionadores</h2>
-        <p>Herramientas para controlar versiones de código y facilitar el trabajo colaborativo.</p>
-        <ul>
-            <li><strong>Git:</strong> Popular, rápido y distribuido.</li>
-            <li><strong>GitHub:</strong> Plataforma para alojar proyectos.</li>
-            <li><strong>GitLab:</strong> Alternativa con herramientas CI/CD.</li>
-        </ul>
-        <a class="boton-enlace" href="2.9 Software versionadores.html">Ir a Versionadores</a>
-    </section>
+        <section id="versionadores">
+            <h2><i class="fas fa-code-branch"></i> 2.9 Software Versionadores</h2>
+            <p>Herramientas para controlar versiones de código y facilitar el trabajo colaborativo en equipos de desarrollo.</p>
+            
+            <ul>
+                <li><strong>Git:</strong> Popular, rápido y distribuido.</li>
+                <li><strong>GitHub:</strong> Plataforma para alojar proyectos.</li>
+                <li><strong>GitLab:</strong> Alternativa con herramientas CI/CD.</li>
+            </ul>
+            
+            <div class="btn-container">
+                <a class="section-btn" href="2.9 Software versionadores.html">
+                    <i class="fas fa-arrow-right"></i> Ir a Versionadores
+                </a>
+            </div>
+            <div class="tag">Control · Colaboración · Desarrollo</div>
+        </section>
 
-    <section id="nube">
-        <h2>2.10 Computación en la Nube</h2>
-        <p>Uso de servidores remotos para almacenar datos y ejecutar aplicaciones accesibles desde internet.</p>
-        <ul>
-            <li>Amazon AWS</li>
-            <li>Microsoft Azure</li>
-            <li>Google Cloud Platform</li>
-        </ul>
-        <a class="boton-enlace" href="2.10 Computación en la nube.html">Ir a Computación en la Nube</a>
-    </section>
+        <section id="nube">
+            <h2><i class="fas fa-cloud"></i> 2.10 Computación en la Nube</h2>
+            <p>Uso de servidores remotos para almacenar datos y ejecutar aplicaciones accesibles desde internet.</p>
+            
+            <ul>
+                <li>Amazon AWS - Infraestructura líder mundial</li>
+                <li>Microsoft Azure - Soluciones empresariales</li>
+                <li>Google Cloud Platform - Potencia en IA y análisis</li>
+            </ul>
+            
+            <div class="btn-container">
+                <a class="section-btn" href="2.10 Computación en la nube.html">
+                    <i class="fas fa-arrow-right"></i> Ir a Computación en la Nube
+                </a>
+            </div>
+            <div class="tag">Servidores · Almacenamiento · Escalabilidad</div>
+        </section>
 
-    <section id="funciones">
-        <h2>Funciones Básicas y Correcta Instalación</h2>
-        <p>Pasos esenciales antes de instalar cualquier software:</p>
-        <ol>
-            <li>Descargar desde sitios oficiales.</li>
-            <li>Verificar requisitos del sistema.</li>
-            <li>Configurar opciones recomendadas.</li>
-            <li>Actualizar tras la instalación.</li>
-        </ol>
-        <a class="boton-enlace" href="2.11Maneja funciones básicas de los distintos tipos de Software Instala Software correctamente.html">Ir a Funciones e Instalación</a>
-    </section>
+        <section id="funciones">
+            <h2><i class="fas fa-cogs"></i> Funciones e Instalación</h2>
+            <p>Pasos esenciales antes de instalar cualquier software para garantizar un funcionamiento óptimo:</p>
+            
+            <ol>
+                <li>Descargar desde sitios oficiales para evitar malware</li>
+                <li>Verificar requisitos del sistema (hardware y SO)</li>
+                <li>Configurar opciones recomendadas durante instalación</li>
+                <li>Actualizar tras la instalación para correcciones</li>
+            </ol>
+            
+            <div class="btn-container">
+                <a class="section-btn" href="2.11Maneja funciones básicas de los distintos tipos de Software Instala Software correctamente.html">
+                    <i class="fas fa-arrow-right"></i> Ir a Funciones e Instalación
+                </a>
+            </div>
+            <div class="tag">Instalación · Configuración · Optimización</div>
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Software 2. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a class="footer-link" href="#"><i class="fas fa-book"></i> Documentación</a>
+                <a class="footer-link" href="#"><i class="fas fa-question-circle"></i> Soporte</a>
+                <a class="footer-link" href="#"><i class="fas fa-envelope"></i> Contacto</a>
+            </div>
+            <p class="copyright">&copy; 2025 Software 2. Todos los derechos reservados.</p>
+        </div>
     </footer>
-
 </body>
 </html>
-
