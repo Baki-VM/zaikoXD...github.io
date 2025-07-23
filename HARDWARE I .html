@@ -1,474 +1,767 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Presentación: Historia de la Computadora</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historia de la Computadora - UPDS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --main-color: #1abc9c;
-      --dark-bg: #2c3e50;
-      --light-bg: #ecf0f1;
-      --highlight: #f39c12;
+      --primary: #3498db;
+      --primary-dark: #2980b9;
+      --secondary: #2c3e50;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --gray: #95a5a6;
+      --gradient-start: #1a2980;
+      --gradient-end: #26d0ce;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #ecf0f1, #dff9fb);
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 60px;
     }
 
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
     header {
-      background: linear-gradient(to right, #16a085, #1abc9c);
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
       color: white;
-      padding: 30px 20px;
+      padding: 30px 0;
       text-align: center;
-      animation: fadeIn 1s ease-in-out;
-      user-select: none;
-    }
-
-    main {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    section {
-      background-color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
       margin-bottom: 30px;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.1) 80%, transparent 80%, transparent);
+      background-size: 50px 50px;
+      transform: rotate(30deg);
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      opacity: 0.9;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .nav-btn {
+      position: relative;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-weight: 700;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-btn.active {
+      background: rgba(255, 255, 255, 0.4);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Main Content */
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .section-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
       position: relative;
     }
 
-    section:hover {
-      transform: scale(1.01);
+    .section-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-header {
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .section-title {
-      font-weight: 700;
       font-size: 1.2rem;
-      color: var(--main-color);
-      margin-bottom: 12px;
-      border-bottom: 2px solid var(--main-color);
-      padding-bottom: 5px;
-      user-select: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    section h2 {
-      margin-top: 0;
-      color: var(--main-color);
+    .section-title i {
+      font-size: 1.4rem;
     }
 
+    .toggle-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(90deg);
+    }
+
+    .section-content {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .section-card.active .section-content {
+      padding: 20px;
+      max-height: 2000px;
+    }
+
+    .section-card.active .toggle-btn {
+      transform: rotate(180deg);
+    }
+
+    .section-card h2 {
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    li::before {
+      content: "•";
+      color: var(--primary);
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0;
+      top: -5px;
+    }
+
+    /* Table */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
+      margin: 20px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
 
-    table, th, td {
-      border: 1px solid #bbb;
-    }
-
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-
-    img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-      display: block;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    .toggle {
-      background-color: var(--main-color);
+    th {
+      background-color: var(--primary);
       color: white;
-      padding: 10px 15px;
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f9f9f9;
+    }
+
+    /* Image */
+    .img-container {
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .img-container img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .img-container:hover img {
+      transform: scale(1.05);
+    }
+
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: var(--gray);
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s ease;
       border: none;
       cursor: pointer;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      font-weight: bold;
-      user-select: none;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+      margin-top: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: "";
       position: absolute;
-      top: 20px;
-      right: 20px;
-      transition: background 0.3s ease;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
     }
 
-    .toggle:hover {
-      background-color: #159d8a;
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
     }
 
-    .content {
-      display: none;
-      margin-top: 40px;
-    }
-
-    ul.check {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul.check li::before {
-      content: "✅ ";
-      margin-right: 5px;
+    .btn:hover::before {
+      transform: translateX(100%);
     }
 
     .external-link {
-      display: inline-block;
-      background: var(--highlight);
-      color: white;
-      padding: 10px 15px;
-      text-decoration: none;
-      margin-top: 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s ease;
+      background: linear-gradient(to right, var(--warning), #e67e22);
     }
 
     .external-link:hover {
-      background: #e67e22;
+      box-shadow: 0 8px 20px rgba(243, 156, 18, 0.6);
     }
 
-    .boton-enlace {
-      text-decoration: none;
-      color: white;
-      background-color: #28a745;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      font-size: 13px;
-      display: inline-block;
-      margin-top: 10px;
-    }
-
-    .boton-enlace:hover {
-      background-color: #218838;
-    }
-
+    /* Footer */
     footer {
-      background-color: var(--dark-bg);
+      background: var(--secondary);
       color: white;
       text-align: center;
-      padding: 15px;
-      user-select: none;
+      padding: 25px 20px;
+      margin-top: 50px;
+      position: relative;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    footer::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: linear-gradient(to bottom, transparent, var(--secondary));
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
-      header {
-        padding: 20px 10px;
+      h1 {
+        font-size: 2.2rem;
       }
-
-      main {
-        padding: 10px;
-      }
-
-      .section-title {
+      
+      .subtitle {
         font-size: 1rem;
-        margin-right: 0;
       }
-
-      section h2 {
+      
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      
+      main {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-card {
+        margin-bottom: 15px;
+      }
+      
+      .section-header {
+        padding: 15px;
+      }
+      
+      .section-title {
         font-size: 1.1rem;
       }
-
-      table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        border: none;
-      }
-
-      th, td {
-        white-space: nowrap;
-        font-size: 0.9rem;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
-
-      .toggle {
-        position: static;
-        display: block;
+      
+      .btn {
         width: 100%;
-        margin-top: 10px;
-        font-size: 0.9rem;
-        padding: 10px;
         text-align: center;
       }
-
-      .boton-enlace, .external-link {
-        font-size: 0.85rem;
-        padding: 8px 12px;
-      }
     }
-    /* Estilo extra para botones de navegación */
-nav {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.nav-btn {
-  position: relative;
-  padding: 10px 18px;
-  background-color: #28a745; /* Verde base igual que .boton-enlace */
-  color: white;
-  font-weight: 700;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(40, 167, 69, 0.4);
-  user-select: none;
-}
-
-.nav-btn:hover {
-  background-color: #218838; /* Verde más oscuro */
-  transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(33, 136, 56, 0.6);
-}
-
-.nav-btn:active {
-  background-color: #19692c;
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(25, 105, 44, 0.8);
-  transition: none;
-}
-
   </style>
 </head>
 <body>
-    <header>
-  <h1>💻 Hardware I </h1>
-  <p>Trabajo para la materia de Hardware y Software — UPDS Santa Cruz</p>
-  <nav style="margin-top: 15px;">
-    <a class="boton-enlace nav-btn" href="index.html">Inicio</a>
-    <a class="boton-enlace nav-btn" href="HARDWARE I .html">Hardware 1</a>
-    <a class="boton-enlace nav-btn" href="HARDWARE 2.html">Hardware 2</a>
-    <a class="boton-enlace nav-btn" href="software 1.html">Software 1</a>
-    <a class="boton-enlace nav-btn" href="software 2.html">Software 2</a>
-  </nav>
-</header>
+  <header>
+    <div class="container header-content">
+      <h1><i class="fas fa-laptop-code"></i> Hardware I</h1>
+      <p class="subtitle">Trabajo para la materia de Hardware y Software — UPDS Santa Cruz</p>
+      
+      <nav>
+        <a class="nav-btn" href="index.html">
+          <i class="fas fa-home"></i> Inicio
+        </a>
+        <a class="nav-btn" href="HARDWARE I .html">
+          <i class="fas fa-microchip"></i> Hardware 1
+        </a>
+        <a class="nav-btn" href="HARDWARE 2.html">
+          <i class="fas fa-microchip"></i> Hardware 2
+        </a>
+        <a class="nav-btn" href="software 1.html">
+          <i class="fas fa-code"></i> Software 1
+        </a>
+        <a class="nav-btn" href="software 2.html">
+          <i class="fas fa-code"></i> Software 2
+        </a>
+      </nav>
+    </div>
+  </header>
 
-
-
-  <main>
-  
-      <section id="historia">
-      <div class="section-title">1.1 Historia y Evolución</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.1 Historia y evolución de la computadora</h2>
-        <p>Desde el ábaco hasta la inteligencia artificial, la computadora ha revolucionado nuestra forma de vivir. Inició con herramientas mecánicas y hoy nos permite explorar el universo digital.</p>
-        <img src="imagenes/image.webp" alt="ENIAC" />
-        <a class="boton-enlace" href="1.1.html">Ir a la página</a>
+  <div class="container">
+    <main>
+      <!-- Sección 1.1 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-history"></i> 1.1 Historia y Evolución
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-desktop"></i> Historia y evolución de la computadora</h2>
+          <p>Desde el ábaco hasta la inteligencia artificial, la computadora ha revolucionado nuestra forma de vivir. Inició con herramientas mecánicas y hoy nos permite explorar el universo digital.</p>
+          
+          <div class="img-container">
+            <img src="imagenes/image.webp" alt="ENIAC">
+          </div>
+          
+          <a class="btn" href="1.1.html">
+            <i class="fas fa-book"></i> Ir a la página
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="generaciones">
-      <div class="section-title">1.2 Generaciones de Computadoras</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.2 Generaciones de Computadoras</h2>
-        <table>
-          <thead>
-            <tr><th>Generación</th><th>Tecnología</th><th>Ejemplo</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1ª</td><td>Válvulas de vacío</td><td>ENIAC</td></tr>
-            <tr><td>2ª</td><td>Transistores</td><td>IBM 1401</td></tr>
-            <tr><td>3ª</td><td>Circuitos integrados</td><td>IBM 360</td></tr>
-            <tr><td>4ª</td><td>Microprocesadores</td><td>Intel 4004</td></tr>
-            <tr><td>5ª</td><td>IA y paralelismo</td><td>Sistemas Expertos</td></tr>
-          </tbody>
-        </table>
-        <a class="external-link" href="https://es.wikipedia.org/wiki/Generaciones_de_las_computadoras" target="_blank" rel="noopener noreferrer">Ver más detalles</a>
-        <a class="boton-enlace" href="1.2.html">Ir a la página de contacto</a>
+      <!-- Sección 1.2 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-layer-group"></i> 1.2 Generaciones de Computadoras
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-microchip"></i> Generaciones de Computadoras</h2>
+          
+          <table>
+            <thead>
+              <tr><th>Generación</th><th>Tecnología</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1ª</td><td>Válvulas de vacío</td><td>ENIAC</td></tr>
+              <tr><td>2ª</td><td>Transistores</td><td>IBM 1401</td></tr>
+              <tr><td>3ª</td><td>Circuitos integrados</td><td>IBM 360</td></tr>
+              <tr><td>4ª</td><td>Microprocesadores</td><td>Intel 4004</td></tr>
+              <tr><td>5ª</td><td>IA y paralelismo</td><td>Sistemas Expertos</td></tr>
+            </tbody>
+          </table>
+          
+          <a class="btn external-link" href="https://es.wikipedia.org/wiki/Generaciones_de_las_computadoras" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Ver más detalles
+          </a>
+          
+          <a class="btn" href="1.2.html">
+            <i class="fas fa-file-alt"></i> Ir a la página
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="elementos">
-      <div class="section-title">1.3 Elementos Principales del Computador</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.3 Elementos principales del computador</h2>
-        <ul class="check">
-          <li>CPU (Unidad Central de Procesamiento): el cerebro de la computadora.</li>
-          <li>Memoria RAM: almacenamiento temporal para procesos activos.</li>
-          <li>Almacenamiento: HDD, SSD para guardar datos.</li>
-          <li>Tarjeta gráfica (GPU): procesamiento visual.</li>
-          <li>Placa base: conecta todos los componentes.</li>
-          <li>Fuente de poder: suministra energía.</li>
-        </ul>
-        <img src="imagenes/componentes de una computadora.webp" alt="componentes" />
-        <a class="boton-enlace" href="1.3.html">Ir a la página de contacto</a>
+      <!-- Sección 1.3 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-cogs"></i> 1.3 Elementos Principales
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-microchip"></i> Elementos principales del computador</h2>
+          
+          <ul>
+            <li><strong>CPU (Unidad Central de Procesamiento)</strong>: el cerebro de la computadora</li>
+            <li><strong>Memoria RAM</strong>: almacenamiento temporal para procesos activos</li>
+            <li><strong>Almacenamiento</strong>: HDD, SSD para guardar datos</li>
+            <li><strong>Tarjeta gráfica (GPU)</strong>: procesamiento visual</li>
+            <li><strong>Placa base</strong>: conecta todos los componentes</li>
+            <li><strong>Fuente de poder</strong>: suministra energía</li>
+          </ul>
+          
+          <div class="img-container">
+            <img src="imagenes/componentes de una computadora.webp" alt="Componentes de computadora">
+            <div class="img-caption">Componentes principales de una computadora</div>
+          </div>
+          
+          <a class="btn" href="1.3.html">
+            <i class="fas fa-file-alt"></i> Ir a la página
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="unidades">
-      <div class="section-title">1.4 Unidades de Medición</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.4 Unidades para medir almacenamiento, procesamiento y transmisión</h2>
-        <ul class="check">
-          <li>Bit y Byte: unidades básicas de información.</li>
-          <li>KB, MB, GB, TB: unidades de almacenamiento.</li>
-          <li>Hertz (Hz): velocidad de procesamiento.</li>
-          <li>bps (bits por segundo): velocidad de transmisión.</li>
-        </ul>
-        <table>
-          <thead>
-            <tr><th>Unidad</th><th>Descripción</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Bit</td><td>Unidad mínima de información</td></tr>
-            <tr><td>Byte</td><td>8 bits</td></tr>
-            <tr><td>KB</td><td>1024 Bytes</td></tr>
-            <tr><td>GHz</td><td>Mil millones de ciclos por segundo</td></tr>
-          </tbody>
-        </table>
-        <a class="boton-enlace" href="1.4.html">INVESTIGACION</a>
+      <!-- Sección 1.4 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-ruler"></i> 1.4 Unidades de Medición
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-calculator"></i> Unidades para medir almacenamiento, procesamiento y transmisión</h2>
+          
+          <ul>
+            <li><strong>Bit y Byte</strong>: unidades básicas de información</li>
+            <li><strong>KB, MB, GB, TB</strong>: unidades de almacenamiento</li>
+            <li><strong>Hertz (Hz)</strong>: velocidad de procesamiento</li>
+            <li><strong>bps (bits por segundo)</strong>: velocidad de transmisión</li>
+          </ul>
+          
+          <table>
+            <thead>
+              <tr><th>Unidad</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Bit</td><td>Unidad mínima de información</td></tr>
+              <tr><td>Byte</td><td>8 bits</td></tr>
+              <tr><td>KB</td><td>1024 Bytes</td></tr>
+              <tr><td>GHz</td><td>Mil millones de ciclos por segundo</td></tr>
+            </tbody>
+          </table>
+          
+          <a class="btn" href="1.4.html">
+            <i class="fas fa-search"></i> INVESTIGACIÓN
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="componentes">
-      <div class="section-title">1.5 Componentes Digitales, Eléctricos, Electrónicos, Electromecánicos y Mecánicos</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.5 Componentes digitales, eléctricos, electrónicos, electromecánicos y mecánicos</h2>
-        <ul class="check">
-          <li>Digitales: microprocesadores, memorias RAM.</li>
-          <li>Eléctricos: cables, fuentes de alimentación.</li>
-          <li>Electrónicos: transistores, diodos.</li>
-          <li>Electromecánicos: discos duros HDD.</li>
-          <li>Mecánicos: ventiladores, conectores.</li>
-        </ul>
-        <img src="imagenes/componentes de una computadora.webp" alt="Componentes" />
-        <a class="boton-enlace" href="1.5.html">INVESTIGACION</a>
+      <!-- Sección 1.5 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-puzzle-piece"></i> 1.5 Tipos de Componentes
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-cube"></i> Componentes digitales, eléctricos, electrónicos, electromecánicos y mecánicos</h2>
+          
+          <ul>
+            <li><strong>Digitales</strong>: microprocesadores, memorias RAM</li>
+            <li><strong>Eléctricos</strong>: cables, fuentes de alimentación</li>
+            <li><strong>Electrónicos</strong>: transistores, diodos</li>
+            <li><strong>Electromecánicos</strong>: discos duros HDD</li>
+            <li><strong>Mecánicos</strong>: ventiladores, conectores</li>
+          </ul>
+          
+          <div class="img-container">
+            <img src="imagenes/componentes de una computadora.webp" alt="Tipos de componentes">
+            <div class="img-caption">Diferentes tipos de componentes en una computadora</div>
+          </div>
+          
+          <a class="btn" href="1.5.html">
+            <i class="fas fa-search"></i> INVESTIGACIÓN
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="hardware">
-      <div class="section-title">1.6 Hardware Externo</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.6 Hardware externo</h2>
-        <ul class="check">
-          <li>Monitor</li>
-          <li>Teclado</li>
-          <li>Ratón</li>
-          <li>Impresora</li>
-          <li>Escáner</li>
-        </ul>
-        <img src="imagenes/hartware externo.webp" alt="hardware-externo-1">
-        <p>Puedes agregar imágenes o tablas para explicar cada uno.</p>
-        <a class="boton-enlace" href="1.6.html">INVESTIGACION</a>
+      <!-- Sección 1.6 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-desktop"></i> 1.6 Hardware Externo
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-keyboard"></i> Hardware externo</h2>
+          
+          <ul>
+            <li><strong>Monitor</strong>: dispositivo de visualización</li>
+            <li><strong>Teclado</strong>: dispositivo de entrada de texto</li>
+            <li><strong>Ratón</strong>: dispositivo apuntador</li>
+            <li><strong>Impresora</strong>: dispositivo de salida física</li>
+            <li><strong>Escáner</strong>: dispositivo de entrada de imágenes</li>
+          </ul>
+          
+          <div class="img-container">
+            <img src="imagenes/hartware externo.webp" alt="Hardware externo">
+            <div class="img-caption">Ejemplos de hardware externo</div>
+          </div>
+          
+          <a class="btn" href="1.6.html">
+            <i class="fas fa-search"></i> INVESTIGACIÓN
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="es">
-      <div class="section-title">1.7 Componentes de Entrada y Salida</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.7 Componentes de Entrada / Salida</h2>
-        <p>Los componentes de Entrada permiten introducir datos (teclado, mouse), mientras que los de Salida muestran resultados (monitor, impresora).</p>
-        <table>
-          <thead>
-            <tr><th>Tipo</th><th>Ejemplos</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Entrada</td><td>Teclado, Mouse, Escáner</td></tr>
-            <tr><td>Salida</td><td>Monitor, Impresora, Altavoces</td></tr>
-            <tr><td>Entrada/Salida</td><td>Pantallas táctiles, Modems</td></tr>
-          </tbody>
-        </table>
-        <a class="boton-enlace" href="1.7.html">INVESTIGACION</a>
+      <!-- Sección 1.7 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-exchange-alt"></i> 1.7 Entrada/Salida
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-plug"></i> Componentes de Entrada / Salida</h2>
+          
+          <p>Los componentes de Entrada permiten introducir datos (teclado, mouse), mientras que los de Salida muestran resultados (monitor, impresora).</p>
+          
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Ejemplos</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Entrada</td><td>Teclado, Mouse, Escáner</td></tr>
+              <tr><td>Salida</td><td>Monitor, Impresora, Altavoces</td></tr>
+              <tr><td>Entrada/Salida</td><td>Pantallas táctiles, Modems</td></tr>
+            </tbody>
+          </table>
+          
+          <a class="btn" href="1.7.html">
+            <i class="fas fa-search"></i> INVESTIGACIÓN
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="perifericos">
-      <div class="section-title">1.8 Periféricos de Almacenamiento Internos y Externos</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.8 Periféricos de almacenamiento internos y externos</h2>
-        <ul class="check">
-          <li>Internos: HDD, SSD, memorias RAM.</li>
-          <li>Externos: discos duros USB, memorias flash, tarjetas SD.</li>
-        </ul>
-        <img src="imagenes/disco duro.webp" alt="Disco duro externo" />
-        <a class="boton-enlace" href="1.8.html">INVESTIGACION</a>
+      <!-- Sección 1.8 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-hdd"></i> 1.8 Periféricos de Almacenamiento
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-save"></i> Periféricos de almacenamiento internos y externos</h2>
+          
+          <ul>
+            <li><strong>Internos</strong>: HDD, SSD, memorias RAM</li>
+            <li><strong>Externos</strong>: discos duros USB, memorias flash, tarjetas SD</li>
+          </ul>
+          
+          <div class="img-container">
+            <img src="imagenes/disco duro.webp" alt="Disco duro externo">
+            <div class="img-caption">Ejemplo de disco duro externo</div>
+          </div>
+          
+          <a class="btn" href="1.8.html">
+            <i class="fas fa-search"></i> INVESTIGACIÓN
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="arquitectura">
-      <div class="section-title">1.9 Arquitectura del Computador</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.9 Arquitectura del computador</h2>
-        <p>Arquitectura básica:</p>
-        <ul class="check">
-          <li>Unidad Central de Procesamiento (CPU)</li>
-          <li>Memoria principal (RAM)</li>
-          <li>Dispositivos de Entrada y Salida</li>
-          <li>Bus de datos y control</li>
-        </ul>
-        <p>Puedes agregar diagramas, imágenes o tablas explicativas.</p>
-        <img src="imagenes/arquitectura.webp" alt="arquitectura">
-        <a class="boton-enlace" href="1.9.html">INVESTIGACION</a>
+      <!-- Sección 1.9 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-sitemap"></i> 1.9 Arquitectura del Computador
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-project-diagram"></i> Arquitectura del computador</h2>
+          
+          <p>Arquitectura básica:</p>
+          <ul>
+            <li><strong>Unidad Central de Procesamiento (CPU)</strong>: procesa instrucciones</li>
+            <li><strong>Memoria principal (RAM)</strong>: almacena datos temporales</li>
+            <li><strong>Dispositivos de Entrada y Salida</strong>: permiten interactuar con el sistema</li>
+            <li><strong>Bus de datos y control</strong>: conectan los componentes</li>
+          </ul>
+          
+          <div class="img-container">
+            <img src="imagenes/arquitectura.webp" alt="Arquitectura de computadora">
+            <div class="img-caption">Arquitectura básica de una computadora</div>
+          </div>
+          
+          <a class="btn" href="1.9.html">
+            <i class="fas fa-search"></i> INVESTIGACIÓN
+          </a>
+        </div>
       </div>
-    </section>
 
-    <section id="curiosidades">
-      <div class="section-title">1.10 Curiosidades sobre la computadora</div>
-      <button class="toggle" onclick="toggleContent(this)">Mostrar/Ocultar Contenido</button>
-      <div class="content">
-        <h2>1.10 Curiosidades sobre la computadora</h2>
-        <ul class="check">
-          <li>El primer bug fue literalmente un insecto (una polilla) dentro de un computador Harvard Mark II.</li>
-          <li>El ENIAC ocupaba una habitación y consumía tanta energía como una pequeña ciudad.</li>
-          <li>Los primeros computadores usaban tarjetas perforadas para la entrada de datos.</li>
-          <li>Hoy en día, la potencia de un smartphone supera con creces a la de las primeras computadoras.</li>
-        </ul>
+      <!-- Sección 1.10 -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-lightbulb"></i> 1.10 Curiosidades
+          </div>
+          <button class="toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <h2><i class="fas fa-star"></i> Curiosidades sobre la computadora</h2>
+          
+          <ul>
+            <li>El primer "bug" fue literalmente un insecto (una polilla) dentro de un computador Harvard Mark II.</li>
+            <li>El ENIAC ocupaba una habitación entera y consumía tanta energía como una pequeña ciudad.</li>
+            <li>Los primeros computadores usaban tarjetas perforadas para la entrada de datos.</li>
+            <li>Hoy en día, la potencia de un smartphone supera con creces a la de las primeras computadoras.</li>
+            <li>El término "byte" fue acuñado por Werner Buchholz en 1956.</li>
+          </ul>
+        </div>
       </div>
-    </section>
-
-  </main>
+    </main>
+  </div>
 
   <footer>
-    <p>&copy; 2025 Reinaldo — UPDS Santa Cruz</p>
+    <div class="container">
+      <p>&copy; 2025 Reinaldo Vaca Martinez — UPDS Santa Cruz</p>
+      <p>Trabajo académico para la materia de Hardware y Software</p>
+    </div>
   </footer>
- 
+
   <script>
-    function toggleContent(button) {
-      const content = button.nextElementSibling;
-      if (content.style.display === 'block') {
-        content.style.display = 'none';
-        button.textContent = 'Mostrar/Ocultar Contenido';
-      } else {
-        content.style.display = 'block';
-        button.textContent = 'Ocultar Contenido';
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButtons = document.querySelectorAll('.toggle-btn');
+      
+      toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const card = this.closest('.section-card');
+          card.classList.toggle('active');
+        });
+      });
+      
+      // Activar la primera sección por defecto
+      const firstCard = document.querySelector('.section-card');
+      if (firstCard) {
+        firstCard.classList.add('active');
       }
-    }
+    });
   </script>
-  
 </body>
 </html>
