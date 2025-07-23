@@ -4,9 +4,23 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Software 1 - Portal Principal</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
-  /* Reset */
+  /* Variables y reset */
+  :root {
+    --primary: #3b82f6;
+    --secondary: #60a5fa;
+    --accent: #818cf8;
+    --dark: #0f172a;
+    --light: #e2e8f0;
+    --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+    --glass: rgba(30, 41, 59, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --transition: all 0.4s ease;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -20,189 +34,437 @@
     color: #f1f5f9;
     min-height: 100vh;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    position: relative;
   }
 
-  /* Overlay oscuro para mejorar lectura */
+  /* Efecto de partículas */
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    background: rgba(96, 165, 250, 0.3);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(100px) rotate(360deg); opacity: 0; }
+  }
+
+  /* Overlay oscuro */
   body::before {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15, 23, 42, 0.75); /* Azul oscuro translúcido */
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7));
     z-index: -1;
   }
 
+  /* Header */
   header {
-    background: rgba(37, 99, 235, 0.85);
-    padding: 50px 20px 60px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 30px 20px 80px;
     text-align: center;
-    box-shadow: 0 0 30px #2563ebbb;
-    border-radius: 0 0 25px 25px;
+    border-radius: 0 0 30px 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--glass-border);
+  }
+
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
   }
 
   header h1 {
-    font-size: 3.8rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    color: #e0f2fe;
-    text-shadow: 0 0 15px #60a5fa;
+    background: linear-gradient(to right, #e0f2fe, #bae6fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+    margin-bottom: 10px;
   }
 
   header p {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #bae6fd;
-    margin-top: 15px;
-    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    font-weight: 300;
   }
 
+  /* Navegación */
   nav {
-    margin-top: 25px;
-  }
-
-  nav a.btn {
-    margin: 0 10px;
-  }
-
-  main {
-    max-width: 1100px;
-    margin: 40px auto 60px;
-    padding: 0 20px;
-  }
-
-  section.card {
-    background: rgba(30, 41, 59, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    margin-bottom: 50px;
-    overflow: hidden;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .nav-btn {
+    display: inline-flex;
     align-items: center;
-    gap: 30px;
-    padding: 25px 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #2563eb99;
+    background: rgba(59, 130, 246, 0.2);
+    color: #e0f2fe;
+    font-weight: 500;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
   }
 
-  section.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(37, 99, 235, 0.8);
-    border-color: #60a5fa;
-  }
-
-  section.card img {
-    width: 280px;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 0 30px #2563ebcc;
-    flex-shrink: 0;
-  }
-
-  .content {
-    flex: 1 1 600px;
-    color: #cbd5e1;
-  }
-
-  .content h2 {
-    color: #60a5fa;
-    font-size: 2rem;
-    margin-bottom: 18px;
-    text-shadow: 0 0 10px #3b82f6;
-  }
-
-  .content p {
+  .nav-btn i {
+    margin-right: 8px;
     font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 15px;
   }
 
-  .content table {
+  .nav-btn:hover {
+    background: rgba(96, 165, 250, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
+  }
+
+  .nav-btn.active {
+    background: var(--gradient);
+    box-shadow: 0 0 20px var(--primary);
+  }
+
+  /* Main content */
+  main {
+    max-width: 1300px;
+    margin: -50px auto 80px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 30px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.6s forwards;
+  }
+
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.2s; }
+  .card:nth-child(4) { animation-delay: 0.3s; }
+  .card:nth-child(5) { animation-delay: 0.4s; }
+
+  @keyframes fadeInUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5);
+  }
+
+  .card-img {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: rgba(15, 23, 42, 0.4);
+  }
+
+  .card-img i {
+    font-size: 5rem;
+    background: linear-gradient(to right, #60a5fa, #818cf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(96, 165, 250, 0.5));
+  }
+
+  .card-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-content h2 {
+    color: #60a5fa;
+    font-size: 1.8rem;
+    margin-bottom: 18px;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    display: flex;
+    align-items: center;
+  }
+
+  .card-content h2 i {
+    margin-right: 12px;
+    font-size: 1.6rem;
+    background: linear-gradient(to right, #60a5fa, #818cf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .card-content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #cbd5e1;
+    flex: 1;
+  }
+
+  .card-content table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    background: rgba(15, 23, 42, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(96, 165, 250, 0.2);
   }
 
-  .content table, .content th, .content td {
-    border: 1px solid #2563eb99;
-  }
-
-  .content th, .content td {
-    padding: 10px 15px;
+  .card-content th, .card-content td {
+    padding: 12px 15px;
     text-align: left;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #e0e7ff;
   }
 
-  .content th {
-    background: #2563ebdd;
+  .card-content th {
+    background: rgba(37, 99, 235, 0.4);
+    font-weight: 500;
+  }
+
+  .card-content tr:nth-child(even) {
+    background: rgba(15, 23, 42, 0.2);
   }
 
   .btn {
-    display: inline-block;
-    background: #3b82f6;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient);
     color: #e0f2fe;
     font-weight: 600;
     padding: 12px 25px;
-    border-radius: 30px;
+    border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 5px 15px #3b82f655;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    margin-top: auto;
+    width: fit-content;
+  }
+
+  .btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
   }
 
   .btn:hover {
-    background: #60a5fa;
-    box-shadow: 0 8px 25px #60a5faaa;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+  }
+
+  .btn:hover i {
+    transform: translateX(5px);
+  }
+
+  /* Footer */
+  footer {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid rgba(96, 165, 250, 0.2);
+    position: relative;
+  }
+
+  footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: var(--gradient);
+  }
+
+  footer p {
+    color: #94a3b8;
+    font-size: 1rem;
+  }
+
+  /* Botón de ir arriba */
+  .scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.5);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition);
+    z-index: 100;
+  }
+
+  .scroll-top.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.7);
   }
 
   /* Responsive */
   @media (max-width: 900px) {
-    section.card {
-      flex-direction: column;
-      padding: 20px 15px;
+    main {
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     }
-
-    section.card img {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #2563ebbb;
+    
+    header h1 {
+      font-size: 2.8rem;
     }
-
-    .content {
-      flex: 1 1 100%;
-    }
-
-    nav a.btn {
-      display: block;
-      margin: 10px auto;
-      width: fit-content;
+    
+    header p {
+      font-size: 1.2rem;
     }
   }
 
+  @media (max-width: 600px) {
+    main {
+      grid-template-columns: 1fr;
+    }
+    
+    header {
+      padding: 25px 15px 70px;
+    }
+    
+    header h1 {
+      font-size: 2.4rem;
+    }
+    
+    header p {
+      font-size: 1.1rem;
+    }
+    
+    .nav-btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+    
+    .card-img i {
+      font-size: 4rem;
+    }
+    
+    .card-content {
+      padding: 20px;
+    }
+    
+    .card-content h2 {
+      font-size: 1.6rem;
+    }
+  }
+
+  /* Animaciones */
+  @keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .card-img i {
+    animation: floatIcon 4s ease-in-out infinite;
+  }
 </style>
 </head>
 <body>
 
+<!-- Efecto de partículas -->
+<div class="particles" id="particles"></div>
+
 <header>
-  <h1>Software 1</h1>
+  <h1><i class="fas fa-laptop-code"></i> Software 1</h1>
   <p>Tu portal para entender los conceptos clave del software, desde lo lógico hasta sus tipos y mantenimiento.</p>
 
   <nav>
-    <a href="index.html" class="btn">Inicio</a>
-    <a href="HARDWARE I .html" class="btn">Hardware 1</a>
-    <a href="HARDWARE 2.html" class="btn">Hardware 2</a>
-    <a href="software 1.html" class="btn">Software 1</a>
-    <a href="software 2.html" class="btn">Software 2</a>
+    <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Inicio</a>
+    <a href="HARDWARE I .html" class="nav-btn"><i class="fas fa-microchip"></i> Hardware 1</a>
+    <a href="HARDWARE 2.html" class="nav-btn"><i class="fas fa-server"></i> Hardware 2</a>
+    <a href="software 1.html" class="nav-btn active"><i class="fas fa-file-code"></i> Software 1</a>
+    <a href="software 2.html" class="nav-btn"><i class="fas fa-cogs"></i> Software 2</a>
   </nav>
 </header>
 
 <main>
-
   <!-- 2.1 Componentes lógicos -->
   <section class="card" id="comp-logicos">
-    <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" alt="Componentes lógicos" />
-    <div class="content">
-      <h2>2.1 Componentes lógicos y aplicaciones informáticas</h2>
+    <div class="card-img">
+      <i class="fas fa-brain"></i>
+    </div>
+    <div class="card-content">
+      <h2><i class="fas fa-cogs"></i> 2.1 Componentes lógicos</h2>
       <p>Los componentes lógicos son la parte intangible del sistema informático: <strong>programas, aplicaciones, sistemas operativos</strong> y todo aquello que hace funcionar el hardware y nos permite realizar tareas.</p>
-      <p>Ejemplos incluyen desde Windows y Linux, hasta las apps que usas para todo día a día.</p>
+      
       <table>
         <thead>
           <tr>
@@ -225,17 +487,19 @@
           </tr>
         </tbody>
       </table>
-      <a href="2.1 Componentes lógicos y aplicaciones informáticas..html" class="btn">Leer más</a>
+      <a href="2.1 Componentes lógicos y aplicaciones informáticas..html" class="btn">Explorar <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
   <!-- 2.2 Mantenimiento -->
   <section class="card" id="mantenimiento-software">
-    <img src="https://cdn-icons-png.flaticon.com/512/2917/2917994.png" alt="Mantenimiento software" />
-    <div class="content">
-      <h2>2.2 Mantenimiento en Software</h2>
+    <div class="card-img">
+      <i class="fas fa-tools"></i>
+    </div>
+    <div class="card-content">
+      <h2><i class="fas fa-sync-alt"></i> 2.2 Mantenimiento</h2>
       <p>El mantenimiento es vital para que el software siga funcionando bien, corrigiendo errores y adaptándose a nuevos entornos.</p>
-      <p>Sin mantenimiento, las aplicaciones se vuelven lentas, inseguras o simplemente obsoletas.</p>
+      
       <table>
         <thead>
           <tr>
@@ -262,16 +526,19 @@
           </tr>
         </tbody>
       </table>
-      <a href="2.2 Mantenimiento en Software.html" class="btn">Leer más</a>
+      <a href="2.2 Mantenimiento en Software.html" class="btn">Explorar <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
   <!-- 2.3 Tipos de software -->
   <section class="card" id="tipos-software">
-    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006553.png" alt="Tipos de software" />
-    <div class="content">
-      <h2>2.3 Tipos de Software</h2>
+    <div class="card-img">
+      <i class="fas fa-layer-group"></i>
+    </div>
+    <div class="card-content">
+      <h2><i class="fas fa-shapes"></i> 2.3 Tipos de Software</h2>
       <p>Existen dos grandes tipos de software que trabajan juntos para que tu equipo funcione y cumpla tareas:</p>
+      
       <table>
         <thead>
           <tr>
@@ -293,37 +560,93 @@
           </tr>
         </tbody>
       </table>
-      <a href="2.3 Tipos de Software.html" class="btn">Leer más</a>
+      <a href="2.3 Tipos de Software.html" class="btn">Explorar <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
   <!-- 2.4 Software libre -->
   <section class="card" id="software-libre">
-    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006564.png" alt="Software libre" />
-    <div class="content">
-      <h2>2.4 Software libre</h2>
+    <div class="card-img">
+      <i class="fas fa-lock-open"></i>
+    </div>
+    <div class="card-content">
+      <h2><i class="fas fa-code-branch"></i> 2.4 Software libre</h2>
       <p>El software libre es como un libro abierto: cualquiera puede usarlo, modificarlo y compartirlo. Es colaboración y libertad digital en su máxima expresión.</p>
       <p>Grandes ejemplos incluyen <strong>Linux</strong>, <strong>Firefox</strong> y <strong>LibreOffice</strong>.</p>
-      <a href="2.4 Software libre.html" class="btn">Leer más</a>
+      <a href="2.4 Software libre.html" class="btn">Explorar <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
   <!-- 2.5 Software propietario -->
   <section class="card" id="software-propietario">
-    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006561.png" alt="Software propietario" />
-    <div class="content">
-      <h2>2.5 Software propietario</h2>
+    <div class="card-img">
+      <i class="fas fa-lock"></i>
+    </div>
+    <div class="card-content">
+      <h2><i class="fas fa-copyright"></i> 2.5 Software propietario</h2>
       <p>Este software es cerrado y protegido: solo el creador controla su uso y distribución. Por eso, sus licencias son estrictas.</p>
       <p>Ejemplos clásicos son <strong>Windows</strong>, <strong>Adobe Photoshop</strong> y <strong>Microsoft Office</strong>.</p>
-      <a href="2.5 Software propietario.html" class="btn">Leer más</a>
+      <a href="2.5 Software propietario.html" class="btn">Explorar <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 </main>
 
 <footer>
-  &copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS
+  <p>&copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS</p>
 </footer>
 
+<div class="scroll-top" id="scrollTop">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+  // Crear partículas
+  function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 30;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      // Tamaño aleatorio
+      const size = Math.random() * 10 + 5;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Posición inicial aleatoria
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      
+      // Retraso de animación aleatorio
+      particle.style.animationDelay = `${Math.random() * 15}s`;
+      
+      particlesContainer.appendChild(particle);
+    }
+  }
+  
+  // Botón de scroll hacia arriba
+  const scrollTopBtn = document.getElementById('scrollTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.classList.add('show');
+    } else {
+      scrollTopBtn.classList.remove('show');
+    }
+  });
+  
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  
+  // Inicializar
+  document.addEventListener('DOMContentLoaded', () => {
+    createParticles();
+  });
+</script>
 </body>
 </html>
-
