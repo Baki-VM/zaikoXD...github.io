@@ -88,6 +88,46 @@
     display: none;
     margin-top: 15px;
   }
+  /* Estilos para los botones de navegación fijos */
+.nav-botones-fijos {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    gap: 16px;
+}
+.boton-enlace {
+    display: inline-block;
+    background-color: #ff416c;
+    color: #fff;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.08rem;
+    box-shadow: 0 4px 12px rgba(255,65,108,0.18);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+}
+.boton-enlace:hover {
+    background-color: #ff4b2b;
+    color: #fff;
+    transform: translateY(-3px) scale(1.04);
+}
+@media (max-width: 600px) {
+    .nav-botones-fijos {
+        right: 10px;
+        bottom: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .boton-enlace {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+}
 </style>
 </head>
 <body>
@@ -223,6 +263,12 @@
       </table>
     </div>
   </div>
+
+  <!-- Botones de navegación fijos -->
+<div class="nav-botones-fijos">
+  <a class="boton-enlace" href="1.14.html">&#8592; Página anterior</a>
+  <a class="boton-enlace" href="1.16.html">Página siguiente &#8594;</a>
+</div>
 
 </div>
 
