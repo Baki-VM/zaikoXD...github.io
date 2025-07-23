@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.6 Software Antivirus - Guía Completa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ef4444;
+      --primary-dark: #dc2626;
+      --secondary: #0f172a;
+      --accent: #f87171;
+      --light: #f1f5f9;
+      --dark: #0f172a;
+      --medium: #1e293b;
+      --card-bg: rgba(30, 41, 59, 0.95);
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--light);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    /* Header mejorado */
+    header {
+      text-align: center;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      padding: 30px 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      z-index: 10;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: -1;
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+    
+    /* Navegación */
+    nav {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 20px;
+    }
+    
+    .nav-link {
+      color: var(--light);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      transition: var(--transition);
+      font-weight: 500;
+      background: rgba(239, 68, 68, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    /* Contenido principal */
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(220, 38, 38, 0.25);
+    }
+    
+    h2 {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    h3 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin: 25px 0 15px;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    
+    /* Listas mejoradas */
+    ul, ol {
+      padding-left: 25px;
+      margin: 15px 0;
+    }
+    
+    li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    ul li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+    
+    ol {
+      counter-reset: step-counter;
+    }
+    
+    ol li {
+      counter-increment: step-counter;
+      list-style: none;
+    }
+    
+    ol li::before {
+      content: counter(step-counter);
+      background: var(--primary);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.9rem;
+    }
+    
+    /* Tabla mejorada */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    
+    th {
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+    
+    tr:nth-child(even) {
+      background: rgba(30, 41, 59, 0.7);
+    }
+    
+    tr:hover {
+      background: rgba(239, 68, 68, 0.1);
+    }
+    
+    .price-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    
+    .free {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+    }
+    
+    .paid {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--primary);
+    }
+    
+    /* Imagen */
+    .img-container {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 25px 0;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    
+    .img-container img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .img-container:hover img {
+      transform: scale(1.03);
+    }
+    
+    .img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    /* Enlaces */
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: var(--primary);
+    }
+    
+    a:hover::after {
+      width: 100%;
+    }
+    
+    .download-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .antivirus-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+    
+    .antivirus-card:hover {
+      transform: translateY(-5px);
+      background: rgba(239, 68, 68, 0.1);
+      border-color: var(--primary);
+    }
+    
+    .antivirus-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    
+    /* Estadísticas */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+    
+    .stat-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      transition: var(--transition);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stat-value {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 10px 0;
+      line-height: 1;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L100,100 L100,0 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: -1;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+    
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      background: var(--primary-dark);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      h2 {
+        font-size: 1.7rem;
+      }
+      
+      section {
+        padding: 20px;
+      }
+      
+      .nav-container {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+      
+      .stat-value {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .stat-card {
+        padding: 20px;
+      }
+      
+      .stat-value {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1><i class="fas fa-shield-virus"></i> 2.6 Software Antivirus</h1>
+  <p class="subtitle">Protege tu computadora y aprende todo lo necesario para mantenerla segura paso a paso</p>
+</header>
+
+<nav>
+  <div class="nav-container">
+    <a href="#que-es" class="nav-link"><i class="fas fa-question-circle"></i> ¿Qué es?</a>
+    <a href="#importancia" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Importancia</a>
+    <a href="#funcionamiento" class="nav-link"><i class="fas fa-cogs"></i> Funcionamiento</a>
+    <a href="#instalacion" class="nav-link"><i class="fas fa-download"></i> Instalación</a>
+    <a href="#recomendados" class="nav-link"><i class="fas fa-star"></i> Recomendados</a>
+    <a href="#estadisticas" class="nav-link"><i class="fas fa-chart-bar"></i> Estadísticas</a>
+    <a href="#consejos" class="nav-link"><i class="fas fa-lightbulb"></i> Consejos</a>
+    <a href="#descargas" class="nav-link"><i class="fas fa-cloud-download-alt"></i> Descargas</a>
+  </div>
+</nav>
+
+<main>
+  <section id="que-es">
+    <h2><i class="fas fa-question-circle"></i> ¿Qué es un Software Antivirus?</h2>
+    <p>Un antivirus es un programa diseñado para proteger tu computadora contra programas maliciosos como virus, troyanos, ransomware, spyware y otros tipos de malware. Detecta amenazas, las bloquea y elimina antes de que causen daños a tu sistema o datos personales.</p>
+    <p>Los antivirus modernos no solo protegen contra virus tradicionales, sino que también ofrecen protección contra phishing, sitios web maliciosos, correos electrónicos peligrosos y vulnerabilidades de software.</p>
+  </section>
+
+  <section id="importancia">
+    <h2><i class="fas fa-exclamation-triangle"></i> ¿Por qué es importante tener un Antivirus?</h2>
+    <ul>
+      <li><strong>Protección de datos:</strong> Evita la pérdida de información personal y financiera.</li>
+      <li><strong>Seguridad de identidad:</strong> Protege contra robo de identidad y fraude.</li>
+      <li><strong>Control del sistema:</strong> Impide que hackers tomen control de tu equipo.</li>
+      <li><strong>Rendimiento:</strong> Mejora el rendimiento del sistema evitando malware que consume recursos.</li>
+      <li><strong>Protección en tiempo real:</strong> Escanea archivos y actividades en segundo plano constantemente.</li>
+      <li><strong>Seguridad en internet:</strong> Protege durante la navegación web y descargas.</li>
+    </ul>
+  </section>
+
+  <section id="funcionamiento">
+    <h2><i class="fas fa-cogs"></i> ¿Cómo Funciona un Antivirus?</h2>
+    <p>Los antivirus utilizan múltiples técnicas para proteger tu sistema:</p>
+    
+    <div class="stats-container">
+      <div class="stat-card">
+        <i class="fas fa-fingerprint"></i>
+        <h3>Detección por firmas</h3>
+        <p>Compara archivos con una base de datos de firmas de virus conocidos</p>
+      </div>
+      
+      <div class="stat-card">
+        <i class="fas fa-brain"></i>
+        <h3>Análisis heurístico</h3>
+        <p>Detecta comportamientos sospechosos en archivos o programas</p>
+      </div>
+      
+      <div class="stat-card">
+        <i class="fas fa-cloud"></i>
+        <h3>Protección en la nube</h3>
+        <p>Analiza archivos sospechosos utilizando recursos en la nube</p>
+      </div>
+    </div>
+    
+    <p>La mayoría de los antivirus modernos también ofrecen protección en tiempo real, monitoreando todo lo que se descarga o ejecuta en el sistema, así como protección de red contra intrusiones externas.</p>
+  </section>
+
+  <section id="instalacion">
+    <h2><i class="fas fa-download"></i> Pasos para Instalar y Configurar un Antivirus</h2>
+    <ol>
+      <li><strong>Selecciona un antivirus:</strong> Elige uno adecuado para tus necesidades y sistema operativo.</li>
+      <li><strong>Descarga segura:</strong> Siempre descarga desde la página oficial del desarrollador.</li>
+      <li><strong>Instalación:</strong> Ejecuta el instalador y sigue las instrucciones en pantalla.</li>
+      <li><strong>Actualización:</strong> Actualiza la base de datos de virus inmediatamente después de instalar.</li>
+      <li><strong>Configuración:</strong> Configura escaneos automáticos diarios o semanales.</li>
+      <li><strong>Protección en tiempo real:</strong> Activa la protección en tiempo real y las funciones de monitoreo.</li>
+      <li><strong>Escaneo completo:</strong> Realiza un escaneo completo inicial del sistema.</li>
+      <li><strong>Mantenimiento:</strong> Programa actualizaciones automáticas y revisiones periódicas.</li>
+    </ol>
+  </section>
+
+  <section id="recomendados">
+    <h2><i class="fas fa-star"></i> Antivirus Recomendados y Características</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Antivirus</th>
+          <th>Ventajas</th>
+          <th>Desventajas</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kaspersky</strong></td>
+          <td>Altísima detección de malware, protección bancaria avanzada, bajo consumo de recursos</td>
+          <td>Algunas funciones avanzadas requieren pago, controversias sobre seguridad de datos</td>
+          <td><span class="price-tag paid">Pago</span></td>
+        </tr>
+        <tr>
+          <td><strong>Bitdefender</strong></td>
+          <td>Excelente contra ransomware, protección multicapa, modo juego para no interrumpir</td>
+          <td>Pocas opciones gratuitas, interfaz puede ser compleja para principiantes</td>
+          <td><span class="price-tag paid">Pago</span></td>
+        </tr>
+        <tr>
+          <td><strong>Avast</strong></td>
+          <td>Fácil de usar, versión gratuita completa, herramientas adicionales de optimización</td>
+          <td>Publicidad en la versión gratuita, controversias pasadas sobre venta de datos</td>
+          <td><span class="price-tag free">Gratis</span> / <span class="price-tag paid">Pago</span></td>
+        </tr>
+        <tr>
+          <td><strong>Windows Defender</strong></td>
+          <td>Integrado en Windows 10/11, buen nivel de protección, sin costo adicional</td>
+          <td>Menos funciones que soluciones de pago, protección limitada contra amenazas avanzadas</td>
+          <td><span class="price-tag free">Gratis</span></td>
+        </tr>
+        <tr>
+          <td><strong>McAfee</strong></td>
+          <td>Protección completa con firewall, gestor de contraseñas y VPN incluida</td>
+          <td>Consumo de recursos elevado, puede ralentizar sistemas menos potentes</td>
+          <td><span class="price-tag paid">Pago</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="estadisticas">
+    <h2><i class="fas fa-chart-bar"></i> Estadísticas del Impacto de Malware</h2>
+    
+    <div class="stats-container">
+      <div class="stat-card">
+        <i class="fas fa-bug"></i>
+        <div class="stat-value">39s</div>
+        <p>Cada 39 segundos ocurre un ataque informático en el mundo</p>
+      </div>
+      
+      <div class="stat-card">
+        <i class="fas fa-lock"></i>
+        <div class="stat-value">+150%</div>
+        <p>Crecimiento de ataques de ransomware en los últimos 3 años</p>
+      </div>
+      
+      <div class="stat-card">
+        <i class="fas fa-dollar-sign"></i>
+        <div class="stat-value">$6T</div>
+        <p>Pérdidas anuales globales por cibercrimen (2025)</p>
+      </div>
+    </div>
+    
+    <div class="img-container">
+      <img src="https://www.cybersecurity-insiders.com/wp-content/uploads/2021/08/Top-10-Most-Common-Types-of-Malware.png" alt="Tipos de Malware Más Comunes">
+      <div class="img-caption">Distribución de los tipos de malware más comunes - Cybersecurity Insiders</div>
+    </div>
+  </section>
+
+  <section id="consejos">
+    <h2><i class="fas fa-lightbulb"></i> Consejos Prácticos para una Protección Completa</h2>
+    <ul>
+      <li><strong>Actualizaciones constantes:</strong> Mantén siempre actualizado tu antivirus y sistema operativo.</li>
+      <li><strong>Precaución con correos:</strong> No abras correos ni enlaces de fuentes desconocidas o sospechosas.</li>
+      <li><strong>Descargas seguras:</strong> Descarga software solo de sitios oficiales y confiables.</li>
+      <li><strong>Contraseñas robustas:</strong> Usa contraseñas seguras, diferentes en cada servicio, y considera un gestor de contraseñas.</li>
+      <li><strong>Copias de seguridad:</strong> Realiza respaldos periódicos de tu información importante (regla 3-2-1).</li>
+      <li><strong>Doble autenticación:</strong> Activa la autenticación en dos factores siempre que sea posible.</li>
+      <li><strong>Conciencia digital:</strong> Edúcate continuamente sobre nuevas amenazas y técnicas de protección.</li>
+    </ul>
+  </section>
+
+  <section id="descargas">
+    <h2><i class="fas fa-cloud-download-alt"></i> ¿Dónde Descargar Antivirus?</h2>
+    <p>Descarga siempre desde las páginas oficiales para evitar software modificado o malware:</p>
+    
+    <div class="download-links">
+      <div class="antivirus-card">
+        <i class="fab fa-kickstarter-k"></i>
+        <h3>Kaspersky</h3>
+        <a href="https://www.kaspersky.com" target="_blank">www.kaspersky.com</a>
+      </div>
+      
+      <div class="antivirus-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Bitdefender</h3>
+        <a href="https://www.bitdefender.com" target="_blank">www.bitdefender.com</a>
+      </div>
+      
+      <div class="antivirus-card">
+        <i class="fas fa-a"></i>
+        <h3>Avast</h3>
+        <a href="https://www.avast.com" target="_blank">www.avast.com</a>
+      </div>
+      
+      <div class="antivirus-card">
+        <i class="fab fa-microsoft"></i>
+        <h3>Windows Defender</h3>
+        <p>Integrado en Windows 10/11</p>
+      </div>
+      
+      <div class="antivirus-card">
+        <i class="fas fa-m"></i>
+        <h3>McAfee</h3>
+        <a href="https://www.mcafee.com" target="_blank">www.mcafee.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS</p>
+  <p>Guía Completa de Seguridad Informática</p>
+</footer>
+
+<div class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+  // Botón para volver arriba
+  const backToTop = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+  });
+  
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  
+  // Resaltar enlace de navegación activo
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      
+      if (pageYOffset >= (sectionTop - 200)) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').substring(1) === current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+<!-- Botones de navegación -->
+<div class="nav-buttons">
+  <a class="btn-link" href="software 2.html">⬅ MENU</a>
+  <a class="btn-link" href="2.7 Software lenguajes de programación.html">Siguiente ➡</a>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+  .nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 9999;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-link:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px 4px rgba(255, 0, 0, 0.6);
+  }
+</style>
+
+
+</body>
+</html>

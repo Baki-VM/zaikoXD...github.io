@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes Lógicos y Aplicaciones Informáticas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff6b6b;
+            --light: #f6f9fc;
+            --dark: #333;
+            --card-bg: #f0f4ff;
+            --hover-bg: #dce7ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, var(--light), #e9f0f5);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-bottom: 5px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        section {
+            max-width: 1100px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 3px solid #ccc;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 i {
+            margin-right: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-left: 5px solid var(--primary);
+            border-radius: 12px;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: var(--hover-bg);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3 i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--primary);
+            color: white;
+            border-top: 5px solid #fff;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(255,243,205,0.8), rgba(255,236,181,0.8));
+            border-left: 4px solid #ffecb5;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .highlight::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(0,0,0,0.05);
+            font-family: Georgia, serif;
+        }
+
+        /* Botón de página siguiente */
+        .next-page-btn {
+            display: inline-block;
+            margin: 30px auto 0;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 6px 15px rgba(106, 17, 203, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-page-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .next-page-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(106, 17, 203, 0.5);
+        }
+
+        .next-page-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .next-page-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+
+        .next-page-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Botón flotante para ir arriba */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 1.5rem;
+                margin: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            nav a {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .next-page-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<!-- Botones de navegación -->
+<div class="nav-buttons">
+  <a class="btn-link" href="software 1.html">⬅ MENU</a>
+  <a class="btn-link" href="2.2 Mantenimiento en Software.html">Siguiente ➡</a>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+  .nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 9999;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-link:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px 4px rgba(255, 0, 0, 0.6);
+  }
+</style>
+
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-microchip"></i> Componentes Lógicos y Aplicaciones Informáticas</h1>
+            <p>Todo lo que necesitas saber para comprender el corazón del mundo digital. Desde cero, para principiantes.</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#componentes"><i class="fas fa-cogs"></i> Componentes Lógicos</a>
+        <a href="#aplicaciones"><i class="fas fa-laptop-code"></i> Aplicaciones Informáticas</a>
+        <a href="#importancia"><i class="fas fa-star"></i> Importancia</a>
+    </nav>
+
+    <section id="componentes">
+        <h2><i class="fas fa-cogs"></i> ¿Qué son los Componentes Lógicos?</h2>
+        <p>Para entender un computador, imagina un cuerpo humano: el hardware sería el cuerpo físico, mientras que los componentes lógicos serían el cerebro y los pensamientos que controlan ese cuerpo. Son los programas, instrucciones y procesos que hacen que el hardware tenga un propósito.</p>
+
+        <p>Históricamente, antes de los componentes lógicos, las computadoras eran enormes calculadoras. Fue la programación, introducida por Ada Lovelace en el siglo XIX, la que permitió darles instrucciones específicas para realizar diversas tareas.</p>
+
+        <div class="card-container">
+            <div class="card">
+                <h3><i class="fas fa-desktop"></i> Software de Sistema</h3>
+                <p>Es el conjunto de programas que gestionan los recursos físicos de una computadora: memoria, procesador, almacenamiento. Sin esto, la máquina no podría funcionar. Ejemplos: <strong>Windows, Linux, macOS</strong>.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-mobile-alt"></i> Software de Aplicación</h3>
+                <p>Programas que permiten realizar tareas específicas para el usuario, como escribir textos, crear música o gestionar negocios. Ejemplos: <strong>Word, Excel, Photoshop, Instagram</strong>.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-code"></i> Software de Programación</h3>
+                <p>Estas herramientas permiten a los desarrolladores escribir el software que usas cada día. Incluyen lenguajes como <strong>Python, Java, C++</strong> y entornos como <strong>Visual Studio</strong>.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-brain"></i> Algoritmos</h3>
+                <p>Son recetas que indican paso a paso cómo resolver un problema. Sin algoritmos, no existirían apps, videojuegos o redes sociales. Son claves en la inteligencia artificial y en la toma de decisiones de máquinas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="aplicaciones">
+        <h2><i class="fas fa-laptop-code"></i> Aplicaciones Informáticas</h2>
+        <p>Las aplicaciones informáticas son programas que ejecutamos en computadoras y móviles para satisfacer necesidades concretas.</p>
+
+        <div class="card-container">
+            <div class="card">
+                <h3><i class="fas fa-file-alt"></i> Aplicaciones de Oficina</h3>
+                <p>Programas como <strong>Microsoft Office</strong> nos permiten escribir documentos, hacer cálculos en hojas de Excel y presentar ideas con PowerPoint.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-paint-brush"></i> Aplicaciones de Diseño</h3>
+                <p>Para diseñar desde un logotipo hasta un edificio, usamos software como <strong>Photoshop, Illustrator, AutoCAD</strong>.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-globe"></i> Aplicaciones Web</h3>
+                <p>Son programas que funcionan a través de Internet, como <strong>Google Drive</strong>, o redes sociales como <strong>Facebook</strong> o <strong>Instagram</strong>.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-gamepad"></i> Aplicaciones de Entretenimiento</h3>
+                <p>Netflix para ver películas, Spotify para escuchar música, y videojuegos como Fortnite para divertirnos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="importancia">
+        <h2><i class="fas fa-star"></i> Importancia de los Componentes Lógicos y Aplicaciones</h2>
+        <p>Los componentes lógicos son esenciales para:</p>
+        <ul>
+            <li>Controlar todo el hardware de un dispositivo.</li>
+            <li>Facilitar la comunicación entre personas a través de apps y redes sociales.</li>
+            <li>Realizar investigaciones científicas complejas.</li>
+            <li>Crear videojuegos, programas educativos y de entretenimiento.</li>
+        </ul>
+
+        <p>Las aplicaciones informáticas nos permiten trabajar, aprender, divertirnos y conectar con el mundo, abriendo la puerta a nuevas tecnologías como la inteligencia artificial, el big data y la computación cuántica.</p>
+
+        <div class="highlight">
+            "Conocer los componentes lógicos es como aprender a hablar el idioma de las computadoras."
+        </div>
+        
+        <!-- Botón de página siguiente -->
+        <div class="btn-container">
+            <a href="pagina-siguiente.html" class="next-page-btn">
+                Ir a la página siguiente <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - Todos los derechos reservados | <i class="fas fa-rocket"></i> Educación Informática para Todos</p>
+    </footer>
+    
+    <!-- Botón flotante para ir arriba -->
+    <a href="#" class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Navegación suave
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const section = document.querySelector(link.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Botón flotante para ir arriba
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animación al pasar el mouse sobre las tarjetas
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+
+</body>
+
+</html>

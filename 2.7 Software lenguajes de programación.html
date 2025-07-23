@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2.7 Software Lenguajes de Programación - Trabajo Completo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --accent: #06b6d4;
+      --light: #f1f5f9;
+      --dark: #0f172a;
+      --gray: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius: 12px;
+      --shadow: 0 8px 25px rgba(0,0,0,0.4);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--primary-dark), #1e3a8a);
+      color: var(--light);
+      line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 20%);
+      z-index: -1;
+    }
+    
+    header {
+      text-align: center;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      padding: 60px 20px 80px;
+      box-shadow: 0 0 30px rgba(59,130,246,0.6);
+      position: relative;
+      overflow: hidden;
+      color: var(--light);
+      margin-bottom: 50px;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://cdn-icons-png.flaticon.com/512/226/226777.png') center center/contain no-repeat;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    header h1 {
+      font-size: 3.2rem;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      animation: fadeInDown 1s ease;
+    }
+    
+    header p {
+      font-size: 1.4rem;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .header-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      animation: fadeIn 1.5s ease;
+    }
+    
+    .header-icons i {
+      font-size: 2.5rem;
+      background: rgba(255, 255, 255, 0.15);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .header-icons i:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-5px);
+    }
+    
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: rgba(30, 41, 59, 0.5);
+      z-index: 1000;
+    }
+    
+    .progress-bar {
+      height: 5px;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo i {
+      color: var(--accent);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+    
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--light);
+    }
+    
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: var(--light);
+      margin: 5px 0;
+      transition: var(--transition);
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 30px auto 60px;
+      padding: 30px;
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    section {
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+      animation: fadeIn 0.8s ease;
+    }
+    
+    section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    h1, h2, h3 {
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    
+    h2 {
+      font-size: 2.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    p, li {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+      color: #e2e8f0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    th, td {
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      padding: 16px 20px;
+      text-align: left;
+    }
+    
+    th {
+      background: var(--primary);
+      color: var(--light);
+      font-weight: 600;
+    }
+    
+    tr:nth-child(even) {
+      background: rgba(30, 41, 59, 0.3);
+    }
+    
+    tr:hover {
+      background: rgba(59, 130, 246, 0.1);
+    }
+    
+    img {
+      width: 100%;
+      border-radius: var(--radius);
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    img:hover {
+      transform: scale(1.01);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    }
+    
+    .img-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+    
+    .img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    ul, ol {
+      margin-left: 25px;
+      margin-bottom: 25px;
+    }
+    
+    li {
+      margin-bottom: 10px;
+      position: relative;
+    }
+    
+    ul li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    
+    ol li {
+      counter-increment: step-counter;
+    }
+    
+    ol li::before {
+      content: counter(step-counter);
+      background: var(--primary);
+      color: white;
+      font-size: 0.85rem;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      margin-left: -35px;
+    }
+    
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    
+    .note {
+      background: rgba(37, 99, 235, 0.15);
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      margin: 30px 0;
+      color: var(--light);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .note::before {
+      content: "i";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      font-size: 6rem;
+      font-weight: bold;
+      opacity: 0.05;
+      font-family: Georgia, serif;
+    }
+    
+    .note strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .code-block {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin: 20px 0;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    }
+    
+    .code-block code {
+      color: #a5b4fc;
+      display: block;
+      line-height: 1.5;
+    }
+    
+    .lang-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+    
+    .lang-card {
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: var(--transition);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+    }
+    
+    .lang-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      border-color: rgba(96, 165, 250, 0.5);
+    }
+    
+    .lang-header {
+      background: var(--primary);
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .lang-header h3 {
+      margin: 0;
+      color: var(--light);
+      font-size: 1.4rem;
+    }
+    
+    .lang-body {
+      padding: 20px;
+    }
+    
+    .lang-body ul {
+      margin: 15px 0 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .lang-body li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+    
+    .lang-body li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+    
+    .lang-footer {
+      padding: 15px 20px;
+      background: rgba(30, 41, 59, 0.8);
+      text-align: center;
+    }
+    
+    .stats-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .stat-card {
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: var(--radius);
+      padding: 20px;
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+    }
+    
+    .stat-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    
+    .stat-card h3 {
+      font-size: 1.8rem;
+      margin: 10px 0;
+    }
+    
+    .stat-card p {
+      color: var(--gray);
+      margin: 0;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: var(--transition);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 99;
+    }
+    
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: var(--accent);
+      transform: translateY(-5px);
+    }
+    
+    footer {
+      background: rgba(15, 23, 42, 0.95);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--gray);
+      font-size: 1rem;
+      border-top: 1px solid rgba(96, 165, 250, 0.2);
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      transition: var(--transition);
+    }
+    
+    .social-icons a:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      header p {
+        font-size: 1.2rem;
+      }
+      
+      .lang-cards {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        transform: translateY(-150%);
+        transition: var(--transition);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      }
+      
+      .nav-links.active {
+        transform: translateY(0);
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .hamburger.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+      
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+      
+      header {
+        padding: 40px 20px 60px;
+      }
+      
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      main {
+        padding: 20px;
+        margin: 20px;
+      }
+      
+      .stats-container {
+        flex-direction: column;
+      }
+      
+      .header-icons i {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .lang-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <i class="fas fa-code"></i>
+      <span>DevGuide</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#intro">Introducción</a>
+      <a href="#historia">Historia</a>
+      <a href="#clasificacion">Clasificación</a>
+      <a href="#paradigmas">Paradigmas</a>
+      <a href="#aprender">Aprender</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <h1>2.7 Software Lenguajes de Programación</h1>
+  <p>Una guía completa para entender los lenguajes de programación, su historia, tipos, paradigmas y cómo aprender a programar desde cero.</p>
+  
+  <div class="header-icons">
+    <i class="fab fa-html5"></i>
+    <i class="fab fa-css3-alt"></i>
+    <i class="fab fa-js"></i>
+    <i class="fab fa-python"></i>
+    <i class="fab fa-java"></i>
+  </div>
+</header>
+
+<main>
+  <section id="intro">
+    <h2>Introducción</h2>
+    <p>Los lenguajes de programación son el puente entre los humanos y las computadoras. Sin ellos, no podríamos crear software que haga posible desde enviar un mensaje hasta manejar sistemas complejos de inteligencia artificial.</p>
+    <p>Esta guía te llevará desde lo más básico hasta un nivel profesional, explicando conceptos, tipos y herramientas para que empieces a programar con confianza.</p>
+    
+    <div class="stats-container">
+      <div class="stat-card">
+        <i class="fas fa-language"></i>
+        <h3>700+</h3>
+        <p>Lenguajes de programación</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-user-graduate"></i>
+        <h3>26.9M</h3>
+        <p>Desarrolladores en el mundo</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-laptop-code"></i>
+        <h3>90%</h3>
+        <p>Empresas que necesitan programadores</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia">
+    <h2>Breve Historia de los Lenguajes de Programación</h2>
+    <p>Los primeros lenguajes aparecieron en los años 40 y 50 con el código máquina y ensamblador, muy cercanos al hardware.</p>
+    <p>Con el tiempo, surgieron lenguajes de alto nivel como Fortran, COBOL, y luego Python, Java y más, que simplificaron la creación de programas complejos y accesibles.</p>
+    <div class="img-container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Timeline_of_programming_languages.svg" alt="Línea de tiempo de lenguajes de programación históricos" />
+      <div class="img-caption">Evolución de los lenguajes de programación desde 1950 hasta la actualidad</div>
+    </div>
+  </section>
+
+  <section id="clasificacion">
+    <h2>Clasificación y Tipos de Lenguajes de Programación</h2>
+    <p>Para entender mejor, los lenguajes se dividen según su nivel de abstracción y propósito:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Descripción</th>
+          <th>Ejemplos</th>
+          <th>Uso Principal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bajo Nivel</td>
+          <td>Lenguajes cercanos al hardware, código difícil para humanos pero rápido para máquinas.</td>
+          <td>Ensamblador, Código Máquina</td>
+          <td>Control de hardware, sistemas embebidos.</td>
+        </tr>
+        <tr>
+          <td>Alto Nivel</td>
+          <td>Lenguajes fáciles de aprender y usar, con abstracciones más amigables.</td>
+          <td>Python, Java, JavaScript, Ruby</td>
+          <td>Aplicaciones web, móviles, software general.</td>
+        </tr>
+        <tr>
+          <td>Intermedio</td>
+          <td>Balance entre bajo y alto nivel para optimización y control.</td>
+          <td>C, C++</td>
+          <td>Desarrollo de sistemas y software de alto rendimiento.</td>
+        </tr>
+        <tr>
+          <td>Especializados</td>
+          <td>Diseñados para tareas específicas como matemáticas o gráficos.</td>
+          <td>MATLAB, R, SQL</td>
+          <td>Análisis de datos, bases de datos, investigación.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="paradigmas">
+    <h2>Paradigmas de Programación</h2>
+    <p>Un paradigma es una forma o estilo para escribir código. Los principales son:</p>
+    <ul>
+      <li><strong>Imperativo:</strong> Le dices a la computadora qué hacer paso a paso. Ejemplo: C, Python.</li>
+      <li><strong>Orientado a Objetos:</strong> Usa objetos que contienen datos y funciones para modelar el mundo real. Ejemplo: Java, C++.</li>
+      <li><strong>Funcional:</strong> Usa funciones puras sin cambiar estados ni datos. Ejemplo: Haskell, Scala.</li>
+      <li><strong>Lógico:</strong> Basado en reglas y lógica formal. Ejemplo: Prolog.</li>
+    </ul>
+    <div class="note">
+      <strong>Dato clave:</strong> Algunos lenguajes soportan varios paradigmas, como Python o JavaScript, lo que los hace muy flexibles.
+    </div>
+  </section>
+
+  <section id="aprender">
+    <h2>¿Cómo Empezar a Aprender a Programar?</h2>
+    <p>Si nunca has programado, aquí tienes la ruta paso a paso para entrar en este mundo:</p>
+    <ol>
+      <li><strong>Define tu objetivo:</strong> ¿Quieres hacer apps, juegos, webs o análisis de datos?</li>
+      <li><strong>Elige un lenguaje inicial:</strong> Python es ideal para principiantes por su sintaxis simple.</li>
+      <li><strong>Estudia la sintaxis básica:</strong> Variables, tipos de datos, condicionales, ciclos y funciones.</li>
+      <li><strong>Haz ejercicios prácticos:</strong> Resuelve problemas simples, como calculadoras o juegos básicos.</li>
+      <li><strong>Lee documentación y tutoriales:</strong> Aprende a buscar y entender recursos oficiales y comunidades.</li>
+      <li><strong>Participa en comunidades:</strong> Foros, grupos y eventos te ayudarán a resolver dudas y aprender rápido.</li>
+      <li><strong>Construye proyectos:</strong> Aplica lo aprendido creando programas reales o colaborando en proyectos open source.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Lenguajes Populares y Áreas de Aplicación</h2>
+    
+    <div class="lang-cards">
+      <div class="lang-card">
+        <div class="lang-header" style="background: #306998;">
+          <h3>Python</h3>
+        </div>
+        <div class="lang-body">
+          <p>Lenguaje de alto nivel con sintaxis simple y legible. Ideal para principiantes y profesionales.</p>
+          <ul>
+            <li>Ciencia de datos</li>
+            <li>Inteligencia Artificial</li>
+            <li>Desarrollo web</li>
+            <li>Automatización</li>
+          </ul>
+        </div>
+        <div class="lang-footer">
+          <div class="code-block">
+            <code>print("Hola Mundo")</code>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lang-card">
+        <div class="lang-header" style="background: #5382a1;">
+          <h3>Java</h3>
+        </div>
+        <div class="lang-body">
+          <p>Lenguaje orientado a objetos con el lema "Write Once, Run Anywhere".</p>
+          <ul>
+            <li>Aplicaciones móviles (Android)</li>
+            <li>Software empresarial</li>
+            <li>Sistemas embebidos</li>
+            <li>Big Data</li>
+          </ul>
+        </div>
+        <div class="lang-footer">
+          <div class="code-block">
+            <code>System.out.println("Hola Mundo");</code>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lang-card">
+        <div class="lang-header" style="background: #f0db4f; color: #323330;">
+          <h3>JavaScript</h3>
+        </div>
+        <div class="lang-body">
+          <p>Lenguaje de scripting para la web. Actualmente usado en frontend y backend.</p>
+          <ul>
+            <li>Desarrollo web frontend</li>
+            <li>Backend (Node.js)</li>
+            <li>Aplicaciones móviles</li>
+            <li>Juegos en navegador</li>
+          </ul>
+        </div>
+        <div class="lang-footer">
+          <div class="code-block">
+            <code>console.log("Hola Mundo");</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Herramientas y Entornos para Programar</h2>
+    <p>Para programar necesitarás:</p>
+    <ul>
+      <li><strong>Editor de código o IDE:</strong> Programas como Visual Studio Code, IntelliJ IDEA, PyCharm o Eclipse te ayudan a escribir y depurar código.</li>
+      <li><strong>Compiladores o intérpretes:</strong> Traducen tu código en algo que la computadora entienda y ejecute.</li>
+      <li><strong>Sistemas de control de versiones:</strong> Como Git, para guardar y manejar cambios en tus proyectos.</li>
+    </ul>
+    
+    <div class="note">
+      <strong>Consejo profesional:</strong> Configura tu entorno de desarrollo con las extensiones adecuadas para tu lenguaje. Esto puede aumentar tu productividad en más de un 50%.
+    </div>
+  </section>
+
+  <section>
+    <h2>Gráfica de Popularidad de Lenguajes (2024)</h2>
+    <div class="img-container">
+      <img src="https://miro.medium.com/v2/resize:fit:1400/1*pLVz1zE4PXu0DIF6MxOaNw.png" alt="Popularidad de Lenguajes de Programación" />
+      <div class="img-caption">Ranking de popularidad de lenguajes según el índice TIOBE</div>
+    </div>
+    <p style="text-align:center; font-size:0.9rem; margin-top:10px;">Fuente: <a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="noopener noreferrer">TIOBE Index</a></p>
+  </section>
+
+  <section>
+    <h2>Recursos para Aprender</h2>
+    <ul>
+      <li><a href="https://www.freecodecamp.org" target="_blank" rel="noopener noreferrer">FreeCodeCamp</a> - Cursos completos y gratuitos para principiantes y avanzados.</li>
+      <li><a href="https://www.codecademy.com" target="_blank" rel="noopener noreferrer">Codecademy</a> - Plataforma interactiva con proyectos prácticos.</li>
+      <li><a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer">MDN Web Docs</a> - Documentación oficial y tutoriales para desarrollo web.</li>
+      <li><a href="https://www.khanacademy.org/computing/computer-programming" target="_blank" rel="noopener noreferrer">Khan Academy</a> - Aprende conceptos básicos con videos y ejercicios.</li>
+      <li><a href="https://leetcode.com" target="_blank" rel="noopener noreferrer">LeetCode</a> - Practica resolución de problemas para entrevistas técnicas.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Conclusión</h2>
+    <p>Los lenguajes de programación son la piedra angular del mundo digital moderno. Dominar uno o varios te abre puertas a miles de oportunidades profesionales y te permite transformar ideas en realidades digitales.</p>
+    <p>Empieza pequeño, sé constante y no temas equivocarte: programar es tanto arte como ciencia, y la práctica es la clave del éxito.</p>
+  </section>
+</main>
+
+<div class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Barra de progreso
+  window.onscroll = function() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+    
+    // Botón de volver arriba
+    const backToTop = document.getElementById('backToTop');
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+  };
+  
+  // Botón de volver arriba
+  document.getElementById('backToTop').addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  
+  // Menú hamburguesa
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+  
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+  
+  // Animaciones al cargar
+  document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach((section, index) => {
+      setTimeout(() => {
+        section.style.animation = 'fadeIn 0.8s ease forwards';
+      }, 200 * index);
+    });
+  });
+</script>
+<!-- Botones de navegación -->
+<div class="nav-buttons">
+  <a class="btn-link" href="2.6 Software antivirus.html">⬅ Anterior</a>
+  <a class="btn-link" href="2.8 Software motores de BBDD.html">Siguiente ➡</a>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+  .nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 9999;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-link:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px 4px rgba(255, 0, 0, 0.6);
+  }
+</style>
+
+
+</body>
+</html>

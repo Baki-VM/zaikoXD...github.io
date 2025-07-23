@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2.3 Tipos de Software - Guía Completa</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  /* Variables de colores */
+  :root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --primary-light: #60a5fa;
+    --secondary: #8b5cf6;
+    --background: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.95);
+    --card-border: rgba(59, 130, 246, 0.3);
+    --text: #e0e7ff;
+    --text-light: #cbd5e1;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+  }
+  
+  /* Reset y tipografía */
+  * {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    background-attachment: fixed;
+  }
+
+  /* Header mejorado con animación */
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(to right, #0f172a, #1e293b);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  
+  header h1 {
+    font-size: 3.8rem;
+    color: var(--primary);
+    text-shadow: 0 0 15px var(--primary-light);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    border-radius: 4px;
+  }
+  
+  header p {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #93c5fdcc;
+    margin-top: 25px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+  }
+  
+  .stat-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 15px 25px;
+    min-width: 180px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .stat-card .number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    margin-bottom: 5px;
+  }
+  
+  .stat-card .label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  /* Tarjetas de sección mejoradas */
+  .section-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  }
+  
+  .section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(59, 130, 246, 0.4);
+  }
+
+  h2 {
+    color: var(--primary-light);
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+  }
+  
+  h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 3px;
+  }
+
+  p {
+    font-size: 1.18rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 18px;
+  }
+
+  /* Tablas mejoradas */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  th, td {
+    padding: 18px 20px;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  th {
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 1.05rem;
+  }
+
+  td {
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+  }
+  
+  tr:nth-child(even) td {
+    background: rgba(30, 41, 59, 0.5);
+  }
+  
+  tr:hover td {
+    background: rgba(59, 130, 246, 0.1);
+  }
+
+  /* Listas con iconos */
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 20px 0;
+  }
+
+  ul li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    font-size: 1.15rem;
+    color: var(--text-light);
+  }
+
+  ul li::before {
+    content: "\f105";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--primary);
+    font-size: 1.3rem;
+  }
+  
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .feature-list li i {
+    color: var(--primary);
+    font-size: 1.5rem;
+    min-width: 30px;
+    margin-top: 5px;
+  }
+
+  /* Imágenes mejoradas */
+  .img-container {
+    text-align: center;
+    margin: 30px 0;
+    position: relative;
+  }
+
+  .img-container img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+  
+  .img-container:hover img {
+    transform: scale(1.02);
+  }
+
+  .img-caption {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* Botón mejorado */
+  .btn-leer {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 16px 45px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-decoration: none;
+    box-shadow: 0 8px 25px var(--primary-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+  
+  .btn-leer i {
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-leer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.7);
+  }
+  
+  .btn-leer:hover i {
+    transform: translateX(5px);
+  }
+
+  /* Acordeones mejorados */
+  .accordion-container {
+    margin: 25px 0;
+  }
+  
+  .accordion {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(51, 65, 85, 0.7));
+    color: var(--text);
+    cursor: pointer;
+    padding: 20px 25px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+  }
+  
+  .accordion:hover, .accordion.active {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(51, 65, 85, 0.8));
+  }
+  
+  .accordion i {
+    transition: transform 0.3s ease;
+  }
+  
+  .accordion.active i {
+    transform: rotate(180deg);
+  }
+  
+  .panel {
+    background: rgba(30, 41, 59, 0.7);
+    overflow: hidden;
+    padding: 0 25px;
+    border-left: 4px solid var(--primary);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text);
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    max-height: 0;
+  }
+  
+  .panel-content {
+    padding: 25px 0;
+  }
+
+  /* Nuevo diseño de comparación */
+  .comparison {
+    display: flex;
+    gap: 30px;
+    margin: 40px 0;
+  }
+  
+  .comparison-box {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .comparison-box:hover {
+    transform: translateY(-10px);
+  }
+  
+  .comparison-box h3 {
+    color: var(--primary-light);
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .comparison-box h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 3px;
+  }
+  
+  .comparison-box ul {
+    margin-top: 20px;
+  }
+
+  /* Nuevo: Timeline de evolución */
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 40px auto;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    left: 50%;
+    margin-left: -2px;
+  }
+  
+  .timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    width: calc(50% - 40px);
+  }
+  
+  .timeline-item:nth-child(odd) {
+    left: 0;
+  }
+  
+  .timeline-item:nth-child(even) {
+    left: calc(50% + 40px);
+  }
+  
+  .timeline-content {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+  }
+  
+  .timeline-content h4 {
+    color: var(--primary-light);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+  }
+  
+  .timeline-content .year {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border: 4px solid var(--background);
+    border-radius: 50%;
+    top: 20px;
+  }
+  
+  .timeline-item:nth-child(odd)::after {
+    right: -60px;
+  }
+  
+  .timeline-item:nth-child(even)::after {
+    left: -60px;
+  }
+
+  /* Footer mejorado */
+  footer {
+    background: linear-gradient(to right, #0f172a, #1e293b);
+    padding: 50px 20px 30px;
+    margin-top: 60px;
+    border-top: 1px solid rgba(59, 130, 246, 0.2);
+    position: relative;
+  }
+  
+  footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+  }
+  
+  .footer-column {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .footer-column h3 {
+    color: var(--primary-light);
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-column h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 3px;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 15px;
+  }
+  
+  .footer-column a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .footer-column a:hover {
+    color: var(--primary-light);
+  }
+  
+  .footer-column a i {
+    width: 20px;
+    text-align: center;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.2);
+    color: var(--primary-light);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+  }
+  
+  .copyright {
+    text-align: center;
+    padding-top: 40px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 30px;
+    border-top: 1px solid rgba(59, 130, 246, 0.1);
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .comparison {
+      flex-direction: column;
+    }
+    
+    .timeline::before {
+      left: 30px;
+    }
+    
+    .timeline-item {
+      width: calc(100% - 80px);
+      margin-left: 80px;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 0;
+    }
+    
+    .timeline-item:nth-child(odd)::after,
+    .timeline-item:nth-child(even)::after {
+      left: -60px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2.5rem;
+    }
+    
+    header p {
+      font-size: 1.1rem;
+    }
+    
+    .section-card {
+      padding: 20px;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+    }
+    
+    p, ul li {
+      font-size: 1.05rem;
+    }
+    
+    .accordion {
+      font-size: 1.1rem;
+      padding: 16px 20px;
+    }
+    
+    .btn-leer {
+      padding: 14px 35px;
+      font-size: 1rem;
+    }
+    
+    .header-stats {
+      gap: 15px;
+    }
+    
+    .stat-card {
+      min-width: 140px;
+      padding: 12px 15px;
+    }
+    
+    .stat-card .number {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    
+    header p {
+      font-size: 1rem;
+    }
+    
+    .header-stats {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stat-card {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>2.3 Tipos de Software</h1>
+  <p>Explora en profundidad los diferentes tipos de software que hacen posible la informática moderna, desde sistemas operativos hasta aplicaciones especializadas.</p>
+  
+  <div class="header-stats">
+    <div class="stat-card">
+      <div class="number">2</div>
+      <div class="label">Categorías Principales</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">10+</div>
+      <div class="label">Subcategorías</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">∞</div>
+      <div class="label">Aplicaciones</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="section-card">
+    <section>
+      <h2>¿Qué es el software?</h2>
+      <p>El software es el alma de cualquier sistema informático, el conjunto de instrucciones y programas que transforman componentes físicos en herramientas útiles. Sin software, el hardware sería simplemente un conjunto de piezas sin propósito.</p>
+      
+      <div class="comparison">
+        <div class="comparison-box">
+          <h3>Hardware</h3>
+          <p>Componentes físicos y tangibles de un sistema informático.</p>
+          <ul>
+            <li><i class="fas fa-microchip"></i> Procesador</li>
+            <li><i class="fas fa-memory"></i> Memoria RAM</li>
+            <li><i class="fas fa-hdd"></i> Disco duro</li>
+            <li><i class="fas fa-keyboard"></i> Periféricos</li>
+          </ul>
+        </div>
+        
+        <div class="comparison-box">
+          <h3>Software</h3>
+          <p>Programas e instrucciones que hacen funcional el hardware.</p>
+          <ul>
+            <li><i class="fas fa-window-maximize"></i> Sistema Operativo</li>
+            <li><i class="fas fa-file-word"></i> Procesador de texto</li>
+            <li><i class="fas fa-gamepad"></i> Videojuegos</li>
+            <li><i class="fas fa-cogs"></i> Utilidades</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="section-card">
+    <section>
+      <h2>Resumen de tipos de software</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Función principal</th>
+            <th>Ejemplos populares</th>
+            <th>Nivel de usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><i class="fas fa-cog"></i> Sistema</td>
+            <td>Gestiona hardware y recursos del equipo</td>
+            <td>Windows, Linux, macOS</td>
+            <td>Bajo nivel</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-window-restore"></i> Aplicación</td>
+            <td>Permite realizar tareas específicas para el usuario</td>
+            <td>Word, Chrome, Photoshop</td>
+            <td>Alto nivel</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-code"></i> Desarrollo</td>
+            <td>Herramientas para crear otros programas</td>
+            <td>Visual Studio, Git, Docker</td>
+            <td>Intermedio</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-shield-alt"></i> Seguridad</td>
+            <td>Protege el sistema contra amenazas</td>
+            <td>Antivirus, Firewalls, VPN</td>
+            <td>Todos los niveles</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div class="section-card">
+    <section>
+      <h2>Software de Sistema: El cimiento digital</h2>
+      <div class="img-container">
+        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png" alt="Software de Sistema" />
+        <div class="img-caption">El software de sistema actúa como intermediario entre el hardware y las aplicaciones</div>
+      </div>
+      <p>El software de sistema es la capa fundamental que permite la interacción entre el hardware y el usuario o aplicaciones. Es el director de orquesta que coordina todos los recursos del sistema para que funcionen en armonía.</p>
+      
+      <div class="accordion-container">
+        <button class="accordion">Tipos de software de sistema <i class="fas fa-chevron-down"></i></button>
+        <div class="panel">
+          <div class="panel-content">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tipo</th>
+                  <th>Descripción</th>
+                  <th>Ejemplos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><i class="fas fa-desktop"></i> Sistema Operativo (SO)</td>
+                  <td>Controla hardware y provee servicios a software</td>
+                  <td>Windows, macOS, Linux, Android</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-microchip"></i> Firmware</td>
+                  <td>Software básico integrado en hardware (BIOS/UEFI)</td>
+                  <td>BIOS, UEFI, firmware de dispositivos</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-plug"></i> Drivers</td>
+                  <td>Permiten que el SO controle dispositivos específicos</td>
+                  <td>Drivers de impresora, tarjetas gráficas, etc.</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-tools"></i> Utilidades del Sistema</td>
+                  <td>Herramientas que optimizan y mantienen el sistema</td>
+                  <td>Antivirus, limpiadores, desfragmentadores</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Funciones clave del software de sistema:</h3>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-brain"></i>
+          <div>
+            <strong>Gestión de recursos</strong>
+            <p>Administra memoria, procesador y almacenamiento para un rendimiento óptimo.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-shield-alt"></i>
+          <div>
+            <strong>Seguridad y control de acceso</strong>
+            <p>Protege el sistema y gestiona permisos de usuarios y aplicaciones.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-plug"></i>
+          <div>
+            <strong>Control de dispositivos</strong>
+            <p>Permite la comunicación con periféricos mediante drivers especializados.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-window-restore"></i>
+          <div>
+            <strong>Interfaz de usuario</strong>
+            <p>Proporciona entornos gráficos o de línea de comandos para interactuar con el sistema.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="section-card">
+    <section>
+      <h2>Software de Aplicación: Herramientas para cada necesidad</h2>
+      <div class="img-container">
+        <img src="https://cdn-icons-png.flaticon.com/512/3242/3242257.png" alt="Software de Aplicación" />
+        <div class="img-caption">El software de aplicación satisface necesidades específicas del usuario</div>
+      </div>
+      <p>Este tipo de software transforma la capacidad computacional en soluciones prácticas para tareas específicas, desde la creación de documentos hasta el diseño profesional o el entretenimiento.</p>
+      
+      <div class="accordion-container">
+        <button class="accordion">Categorías de software de aplicación <i class="fas fa-chevron-down"></i></button>
+        <div class="panel">
+          <div class="panel-content">
+            <table>
+              <thead>
+                <tr>
+                  <th>Categoría</th>
+                  <th>Descripción</th>
+                  <th>Ejemplos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><i class="fas fa-file-word"></i> Procesadores de texto</td>
+                  <td>Creación y edición de documentos escritos</td>
+                  <td>Microsoft Word, Google Docs, LibreOffice</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-globe"></i> Navegadores web</td>
+                  <td>Acceso y navegación por internet</td>
+                  <td>Chrome, Firefox, Safari, Edge</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-photo-video"></i> Multimedia</td>
+                  <td>Reproducción y edición de audio, video e imágenes</td>
+                  <td>VLC, Photoshop, Premiere Pro, Audacity</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-chart-line"></i> Empresarial</td>
+                  <td>Soluciones para gestión, finanzas y comunicación</td>
+                  <td>SAP, Salesforce, Zoom, Slack</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-gamepad"></i> Videojuegos</td>
+                  <td>Software diseñado para entretenimiento</td>
+                  <td>Fortnite, Minecraft, The Sims</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-graduation-cap"></i> Educativo</td>
+                  <td>Herramientas para aprendizaje y enseñanza</td>
+                  <td>Duolingo, Khan Academy, Moodle</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="section-card">
+    <section>
+      <h2>Evolución histórica del software</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="year">1950s</span>
+            <h4>Primeros sistemas operativos</h4>
+            <p>Desarrollo de los primeros sistemas operativos simples para gestionar recursos de computadoras mainframe. Software específico para cada hardware.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="year">1970s</span>
+            <h4>Nacimiento de UNIX</h4>
+            <p>Creación del sistema operativo UNIX que sentaría las bases para los sistemas modernos. Desarrollo de interfaces de línea de comandos.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="year">1980s</span>
+            <h4>Revolución de las interfaces gráficas</h4>
+            <p>Apple y Microsoft popularizan las interfaces gráficas de usuario (GUI). Nacen las primeras suites ofimáticas y aplicaciones comerciales masivas.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="year">1990s</span>
+            <h4>Explosión de internet y software web</h4>
+            <p>Desarrollo de navegadores web y aplicaciones cliente-servidor. Surgimiento del software como servicio (SaaS) incipiente.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="year">2000s</span>
+            <h4>Movilidad y cloud computing</h4>
+            <p>Revolución móvil con sistemas operativos para smartphones. Migración masiva al cloud computing y modelos de suscripción.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="section-card">
+    <section>
+      <h2>¿Cómo interactúan ambos tipos?</h2>
+      <div class="img-container">
+        <img src="https://cdn-icons-png.flaticon.com/512/4392/4392528.png" alt="Interacción Software Sistema y Aplicación" />
+        <div class="img-caption">Relación jerárquica entre hardware, software de sistema y aplicaciones</div>
+      </div>
+      <p>El software de sistema crea el entorno necesario para que las aplicaciones puedan funcionar. Cuando abres un programa como Photoshop:</p>
+      
+      <ol style="padding-left: 30px; margin: 20px 0;">
+        <li>El sistema operativo asigna recursos de memoria y CPU</li>
+        <li>Los drivers gestionan la comunicación con el hardware gráfico</li>
+        <li>Las utilidades del sistema monitorean el rendimiento</li>
+        <li>El firmware del dispositivo asegura operaciones básicas</li>
+      </ol>
+      
+      <p>Esta relación jerárquica es esencial para el rendimiento y estabilidad del sistema. Sin una base sólida de software de sistema, incluso las aplicaciones mejor diseñadas serían inútiles.</p>
+    </section>
+  </div>
+
+  <div class="section-card">
+    <section>
+      <h2>Consejos para usuarios</h2>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-sync-alt"></i>
+          <div>
+            <strong>Mantén tu sistema actualizado</strong>
+            <p>Las actualizaciones del sistema operativo y drivers solucionan vulnerabilidades y mejoran el rendimiento.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-shield-virus"></i>
+          <div>
+            <strong>Usa software de seguridad</strong>
+            <p>Un buen antivirus y firewall son esenciales para proteger tu sistema y datos.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-box-open"></i>
+          <div>
+            <strong>Elige software de fuentes confiables</strong>
+            <p>Descarga aplicaciones solo de sitios oficiales o repositorios seguros para evitar malware.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-toolbox"></i>
+          <div>
+            <strong>Optimiza con utilidades</strong>
+            <p>Programas de limpieza y optimización pueden mejorar significativamente el rendimiento de sistemas antiguos.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-cloud"></i>
+          <div>
+            <strong>Considera alternativas en la nube</strong>
+            <p>Muchas aplicaciones tienen versiones web que no requieren instalación y se mantienen actualizadas automáticamente.</p>
+          </div>
+        </li>
+      </ul>
+      
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="#" class="btn-leer">Explorar más sobre software <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-column">
+      <h3>Explorar</h3>
+      <ul>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Tipos de Hardware</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Sistemas Operativos</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Desarrollo de Software</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Seguridad Informática</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h3>Recursos</h3>
+      <ul>
+        <li><a href="#"><i class="fas fa-book"></i> Guías de Aprendizaje</a></li>
+        <li><a href="#"><i class="fas fa-video"></i> Tutoriales en Video</a></li>
+        <li><a href="#"><i class="fas fa-file-alt"></i> Documentación Técnica</a></li>
+        <li><a href="#"><i class="fas fa-tools"></i> Herramientas Gratuitas</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h3>Contacto</h3>
+      <ul>
+        <li><a href="#"><i class="fas fa-envelope"></i> info@tecnologiaeducativa.com</a></li>
+        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Madrid, España</a></li>
+        <li><a href="#"><i class="fas fa-phone"></i> +34 91 123 4567</a></li>
+      </ul>
+      
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="copyright">
+    &copy; 2023 Tecnología Educativa. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart" style="color: #ef4444;"></i> para estudiantes
+  </div>
+</footer>
+
+<script>
+  // Script para acordeones
+  const accordions = document.querySelectorAll('.accordion');
+  
+  accordions.forEach(accordion => {
+    accordion.addEventListener('click', function() {
+      this.classList.toggle('active');
+      const panel = this.nextElementSibling;
+      
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        panel.style.padding = '0 25px';
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        panel.style.padding = '0 25px';
+      }
+    });
+  });
+  
+  // Inicializar el primer acordeón como abierto
+  document.querySelector('.accordion').classList.add('active');
+  document.querySelector('.panel').style.maxHeight = document.querySelector('.panel').scrollHeight + 'px';
+  document.querySelector('.panel').style.padding = '0 25px';
+  
+  // Efecto de desplazamiento suave para enlaces
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+  
+  // Animación de elementos al hacer scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.section-card, .stat-card, .comparison-box, .timeline-item').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+<!-- Botones de navegación -->
+<div class="nav-buttons">
+  <a class="btn-link" href="2.2 Mantenimiento en Software.html">⬅ Anterior</a>
+  <a class="btn-link" href="2.4 Software libre.html">Siguiente ➡</a>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+  .nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 9999;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-link:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px 4px rgba(255, 0, 0, 0.6);
+  }
+</style>
+
+
+</body>
+</html>

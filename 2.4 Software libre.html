@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Completa de Software Libre - Libertad Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #16a34a;
+      --primary-light: #4ade80;
+      --primary-dark: #15803d;
+      --dark-bg: #0f172a;
+      --dark-card: rgba(30, 41, 59, 0.95);
+      --light-bg: #f8fafc;
+      --light-card: #ffffff;
+      --text-dark: #1e293b;
+      --text-light: #f1f5f9;
+      --accent: #22c55e;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    body.light-mode {
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Navigation */
+    nav {
+      background-color: rgba(21, 128, 61, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      color: var(--primary-light);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin: 0 0.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-light);
+      color: #0f172a;
+    }
+
+    .btn-primary:hover {
+      background-color: #22d66e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      background: var(--dark-card);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .light-mode .section {
+      background: var(--light-card);
+    }
+
+    h2 {
+      color: var(--primary-light);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 2px;
+    }
+
+    .light-mode h2 {
+      color: var(--primary-dark);
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    /* Table */
+    .table-container {
+      overflow-x: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin: 2rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(34, 197, 94, 0.05);
+    }
+
+    .light-mode tr:nth-child(even) {
+      background-color: rgba(22, 163, 74, 0.08);
+    }
+
+    td {
+      border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+    }
+
+    .light-mode td {
+      border-bottom: 1px solid rgba(22, 163, 74, 0.1);
+    }
+
+    .free-cell {
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    .prop-cell {
+      color: #ef4444;
+      font-weight: 600;
+    }
+
+    /* Image */
+    .img-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 2.5rem 0;
+      position: relative;
+    }
+
+    .img-container img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .img-container:hover img {
+      transform: scale(1.03);
+    }
+
+    .img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* Lists */
+    .list-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .list-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: var(--transition);
+      border-left: 4px solid var(--primary);
+    }
+
+    .light-mode .list-card {
+      background: rgba(248, 250, 252, 0.7);
+      border-left: 4px solid var(--primary-dark);
+    }
+
+    .list-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .list-card h3 {
+      color: var(--primary-light);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .light-mode .list-card h3 {
+      color: var(--primary-dark);
+    }
+
+    ul, ol {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.8rem;
+    }
+
+    ul li::before {
+      content: "•";
+      color: var(--primary-light);
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0;
+      top: -0.3rem;
+    }
+
+    .light-mode ul li::before {
+      color: var(--primary-dark);
+    }
+
+    ol {
+      counter-reset: step-counter;
+    }
+
+    ol li {
+      counter-increment: step-counter;
+    }
+
+    ol li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: -0.1rem;
+      background: var(--primary);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    /* Stats */
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      margin: 2.5rem 0;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(22, 163, 74, 0.3);
+    }
+
+    .stat-card p {
+      font-size: 1.3rem;
+      margin: 0;
+      color: white;
+      font-weight: 500;
+    }
+
+    .highlight {
+      font-weight: 700;
+      color: #ffd700;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary-dark), #0f766e);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .section {
+        padding: 1.8rem;
+      }
+      
+      .list-container {
+        grid-template-columns: 1fr;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-links li {
+        margin: 0.3rem 0;
+      }
+      
+      .section {
+        padding: 1.5rem;
+      }
+      
+      .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1 class="animate">Guía Completa de Software Libre</h1>
+      <p class="subtitle animate delay-1">Descubre la Libertad Digital: Desde lo Básico hasta Profesional</p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-lock-open"></i>
+        <span>LibertadDigital</span>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="#que-es"><i class="fas fa-question-circle"></i> ¿Qué es?</a></li>
+        <li><a href="#comparativa"><i class="fas fa-balance-scale"></i> Comparativa</a></li>
+        <li><a href="#ejemplos"><i class="fas fa-laptop-code"></i> Ejemplos</a></li>
+        <li><a href="#guia"><i class="fas fa-book-open"></i> Guía</a></li>
+        <li><a href="#ventajas"><i class="fas fa-star"></i> Ventajas</a></li>
+      </ul>
+      
+      <div class="nav-buttons">
+        <button class="btn btn-secondary">
+          <i class="fas fa-download"></i> Recursos
+        </button>
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="que-es" class="section animate delay-1">
+      <h2><i class="fas fa-code-branch"></i> ¿Qué es el Software Libre?</h2>
+      <p>El software libre es una filosofía y práctica que garantiza a los usuarios la libertad de usar, estudiar, modificar y distribuir software. No se trata simplemente de software gratuito, sino de otorgar a los usuarios el control sobre sus herramientas digitales.</p>
+      
+      <p>Según la Free Software Foundation, el software libre se basa en cuatro libertades esenciales:</p>
+      
+      <div class="list-container">
+        <div class="list-card">
+          <h3><i class="fas fa-check-circle"></i> Libertad 0</h3>
+          <p>Ejecutar el programa como se desee, con cualquier propósito.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fas fa-code"></i> Libertad 1</h3>
+          <p>Estudiar cómo funciona el programa y modificarlo.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fas fa-copy"></i> Libertad 2</h3>
+          <p>Redistribuir copias para ayudar a otros.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fas fa-share-alt"></i> Libertad 3</h3>
+          <p>Distribuir copias de tus versiones modificadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparativa" class="section animate delay-2">
+      <h2><i class="fas fa-exchange-alt"></i> Comparativa: Software Libre vs Software Propietario</h2>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Software Libre</th>
+              <th>Software Propietario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Acceso al código fuente</td>
+              <td class="free-cell"><i class="fas fa-check"></i> Completo</td>
+              <td class="prop-cell"><i class="fas fa-times"></i> Restringido</td>
+            </tr>
+            <tr>
+              <td>Distribución</td>
+              <td class="free-cell"><i class="fas fa-check"></i> Ilimitada</td>
+              <td class="prop-cell"><i class="fas fa-times"></i> Restringida</td>
+            </tr>
+            <tr>
+              <td>Modificaciones</td>
+              <td class="free-cell"><i class="fas fa-check"></i> Permitidas</td>
+              <td class="prop-cell"><i class="fas fa-times"></i> Prohibidas</td>
+            </tr>
+            <tr>
+              <td>Coste</td>
+              <td class="free-cell"><i class="fas fa-check"></i> Gratuito o bajo coste</td>
+              <td class="prop-cell"><i class="fas fa-dollar-sign"></i> Generalmente de pago</td>
+            </tr>
+            <tr>
+              <td>Seguridad</td>
+              <td class="free-cell"><i class="fas fa-check"></i> Transparente</td>
+              <td class="prop-cell"><i class="fas fa-user-secret"></i> Cerrada</td>
+            </tr>
+            <tr>
+              <td>Personalización</td>
+              <td class="free-cell"><i class="fas fa-check"></i> Total</td>
+              <td class="prop-cell"><i class="fas fa-times"></i> Limitada</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-chart-bar"></i> Gráfica Comparativa Visual</h3>
+      
+      <div class="img-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Open-source-vs-proprietary-software.png/800px-Open-source-vs-proprietary-software.png" alt="Comparativa Software Libre vs Propietario">
+        <div class="img-caption">Diferencias clave entre software libre y propietario</div>
+      </div>
+    </section>
+
+    <section id="ejemplos" class="section animate delay-3">
+      <h2><i class="fas fa-box-open"></i> Ejemplos de Software Libre</h2>
+      
+      <div class="list-container">
+        <div class="list-card">
+          <h3><i class="fab fa-linux"></i> Linux</h3>
+          <p>Sistema operativo alternativo a Windows y macOS. Diversas distribuciones como Ubuntu, Fedora y Debian.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fab fa-firefox-browser"></i> Firefox</h3>
+          <p>Navegador web rápido, seguro y respetuoso con la privacidad. Alternativa a Chrome y Safari.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fas fa-file-alt"></i> LibreOffice</h3>
+          <p>Suite ofimática completa con procesador de texto, hoja de cálculo y presentaciones. Alternativa a Microsoft Office.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fas fa-paint-brush"></i> GIMP</h3>
+          <p>Editor de imágenes avanzado con capacidades similares a Photoshop. Ideal para diseño gráfico y retoque fotográfico.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="guia" class="section animate delay-3">
+      <h2><i class="fas fa-road"></i> Guía Paso a Paso para Empezar con Software Libre</h2>
+      
+      <ol>
+        <li>Descarga una distribución Linux fácil de usar como Ubuntu o Linux Mint desde su sitio web oficial.</li>
+        <li>Crea un USB de instalación utilizando herramientas como BalenaEtcher o Rufus.</li>
+        <li>Instala el sistema operativo (puedes probarlo primero sin instalar usando el modo Live USB).</li>
+        <li>Explora el centro de software de tu distribución para instalar aplicaciones libres.</li>
+        <li>Descarga e instala programas esenciales: LibreOffice, Firefox, GIMP, VLC Media Player.</li>
+        <li>Únete a comunidades y foros (como Reddit, Stack Exchange) para resolver dudas y aprender.</li>
+        <li>Si tienes conocimientos de programación, contribuye a proyectos en GitHub o GitLab.</li>
+      </ol>
+    </section>
+
+    <section id="ventajas" class="section animate delay-4">
+      <h2><i class="fas fa-trophy"></i> Ventajas del Software Libre</h2>
+      
+      <div class="list-container">
+        <div class="list-card">
+          <h3><i class="fas fa-wallet"></i> Económico</h3>
+          <p>La mayoría del software libre es gratuito, lo que reduce significativamente los costes de licencias.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fas fa-shield-alt"></i> Seguridad</h3>
+          <p>La transparencia del código permite que miles de desarrolladores identifiquen y corrijan vulnerabilidades rápidamente.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fas fa-puzzle-piece"></i> Personalización</h3>
+          <p>Puedes modificar el software para adaptarlo exactamente a tus necesidades específicas.</p>
+        </div>
+        
+        <div class="list-card">
+          <h3><i class="fas fa-users"></i> Comunidad</h3>
+          <p>Acceso a comunidades globales de apoyo donde puedes obtener ayuda y compartir conocimiento.</p>
+        </div>
+      </div>
+      
+      <div class="stats-container">
+        <div class="stat-card">
+          <p>Según la <span class="highlight">Fundación Linux</span>, más del <span class="highlight">70%</span> de los servidores web utilizan software libre como Linux y Apache.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-discord"></i> Discord</a>
+        <a href="#"><i class="fas fa-book"></i> Documentación</a>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle theme
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      body.classList.add('light-mode');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      
+      if (body.classList.contains('light-mode')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'light');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Animation on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+  <!-- Botones de navegación -->
+<div class="nav-buttons">
+  <a class="btn-link" href="2.3 Tipos de Software.html">⬅ Anterior</a>
+  <a class="btn-link" href="2.5 Software propietario.html">Siguiente ➡</a>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+  .nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 9999;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-link:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px 4px rgba(255, 0, 0, 0.6);
+  }
+</style>
+
+</body>
+</html>

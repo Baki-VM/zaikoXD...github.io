@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Guía Definitiva: Mantenimiento de Software Profesional</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  /* Reset mejorado */
+  * {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif;
+  }
+
+  :root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #60a5fa;
+    --accent: #10b981;
+    --dark: #0f172a;
+    --darker: #0a0f1f;
+    --medium: #1e293b;
+    --light: #e0e7ff;
+    --lighter: #f0f7ff;
+    --text: #cbd5e1;
+    --text-light: #e2e8f0;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --success: #10b981;
+  }
+
+  body, html {
+    height: 100%;
+    background: var(--darker);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* Fondo animado estilo código */
+  #backgroundCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: var(--dark);
+    opacity: 0.7;
+  }
+
+  /* Encabezado mejorado */
+  header {
+    text-align: center;
+    padding: 80px 20px 50px;
+    background: linear-gradient(135deg, var(--primary-dark), var(--dark));
+    border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+    z-index: -1;
+  }
+  
+  header h1 {
+    font-size: 3.5rem;
+    color: var(--lighter);
+    text-shadow: 0 0 20px rgba(96, 165, 250, 0.8);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  
+  header p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: var(--secondary);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .stat-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 15px;
+    padding: 15px 25px;
+    min-width: 200px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+  }
+  
+  .stat-card .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 5px;
+  }
+  
+  .stat-card .label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Contenido principal */
+  main {
+    max-width: 1300px;
+    margin: auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* Secciones mejoradas */
+  section {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 50px;
+    box-shadow: 
+      0 15px 50px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(59, 130, 246, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 70%),
+      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  section:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba(59, 130, 246, 0.2);
+  }
+
+  h2 {
+    color: var(--secondary);
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 3px;
+  }
+
+  h3 {
+    color: var(--text-light);
+    margin: 25px 0 15px;
+    font-size: 1.6rem;
+  }
+
+  p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  
+  .highlight {
+    background: rgba(96, 165, 250, 0.1);
+    border-left: 4px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 25px 0;
+  }
+
+  /* Tablas mejoradas */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  th, td {
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+  
+  th {
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+  }
+  
+  tbody tr:nth-child(even) {
+    background: rgba(30, 41, 59, 0.6);
+  }
+  
+  tbody tr:hover {
+    background: rgba(37, 99, 235, 0.1);
+  }
+
+  /* Listas mejoradas */
+  ul {
+    list-style-type: none;
+    margin: 25px 0;
+  }
+  
+  ul li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    font-size: 1.15rem;
+    color: var(--text);
+  }
+  
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: var(--primary);
+    font-size: 1.8rem;
+  }
+  
+  .icon-list li::before {
+    content: "";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    width: 26px;
+    height: 26px;
+    background: rgba(59, 130, 246, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--primary);
+  }
+  
+  .icon-list li:nth-child(1)::before { content: "\f023"; }
+  .icon-list li:nth-child(2)::before { content: "\f7d9"; }
+  .icon-list li:nth-child(3)::before { content: "\f1c0"; }
+  .icon-list li:nth-child(4)::before { content: "\f0c0"; }
+  .icon-list li:nth-child(5)::before { content: "\f544"; }
+  .icon-list li:nth-child(6)::before { content: "\f518"; }
+
+  /* Botones mejorados */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 16px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background: var(--secondary);
+    box-shadow: 0 12px 30px rgba(96, 165, 250, 0.7);
+    transform: translateY(-3px);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    box-shadow: none;
+  }
+  
+  .btn-outline:hover {
+    background: rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Acordeones mejorados */
+  .accordion-container {
+    margin: 30px 0;
+  }
+  
+  .accordion {
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.2), transparent);
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 22px 25px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .accordion::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--primary);
+  }
+  
+  .accordion .icon {
+    transition: transform 0.3s ease;
+    font-size: 1.3rem;
+  }
+  
+  .accordion:hover, .accordion.active {
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.3), transparent);
+  }
+  
+  .accordion.active .icon {
+    transform: rotate(180deg);
+  }
+  
+  .panel {
+    background: rgba(15, 23, 42, 0.5);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 25px;
+    border-left: 3px solid var(--primary);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text);
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    margin-left: 15px;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .panel-content {
+    padding: 25px 0;
+  }
+
+  /* Gráficos mejorados */
+  .charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 40px 0;
+  }
+  
+  .chart-card {
+    flex: 1;
+    min-width: 300px;
+    background: var(--medium);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  .chart-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Ejemplos de código */
+  .code-container {
+    background: #1a2436;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  .code-header {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .code-title {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .code-actions {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .code-actions button {
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s;
+  }
+  
+  .code-actions button:hover {
+    color: var(--primary);
+  }
+  
+  pre {
+    padding: 25px;
+    margin: 0;
+    overflow-x: auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+    background: #0f172a;
+  }
+  
+  code {
+    font-family: 'Courier New', monospace;
+  }
+
+  .keyword { color: #60a5fa; }
+  .function { color: #fbbf24; }
+  .string { color: #34d399; }
+  .comment { color: #94a3b8; font-style: italic; }
+  .variable { color: #c084fc; }
+
+  /* Pasos detallados */
+  .step-container {
+    display: flex;
+    gap: 30px;
+    margin: 40px 0;
+    align-items: flex-start;
+  }
+  
+  .step-number {
+    background: var(--primary);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  
+  .step-content {
+    flex: 1;
+  }
+  
+  .step-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--text-light);
+  }
+
+  /* Tooltips */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dashed var(--primary);
+    cursor: help;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 280px;
+    background: var(--medium);
+    color: var(--text);
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 50px 20px 30px;
+    color: var(--text);
+    font-size: 1.1rem;
+    background: rgba(15, 23, 42, 0.8);
+    border-top: 1px solid rgba(59, 130, 246, 0.2);
+    margin-top: 60px;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-links a:hover {
+    color: var(--text-light);
+    text-decoration: underline;
+  }
+
+  /* Responsivo mejorado */
+  @media (max-width: 992px) {
+    header h1 {
+      font-size: 2.8rem;
+    }
+    
+    .header-stats {
+      gap: 15px;
+    }
+    
+    .stat-card {
+      min-width: 160px;
+      padding: 12px 15px;
+    }
+    
+    .stat-card .number {
+      font-size: 2rem;
+    }
+    
+    section {
+      padding: 30px;
+    }
+    
+    .step-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .step-number {
+      margin-bottom: 15px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      padding: 60px 15px 40px;
+    }
+    
+    header h1 {
+      font-size: 2.3rem;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+    }
+    
+    section {
+      padding: 25px;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+    }
+    
+    .btn {
+      padding: 14px 25px;
+      font-size: 1rem;
+    }
+    
+    th, td {
+      padding: 12px 15px;
+      font-size: 0.95rem;
+    }
+    
+    .code-header {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    
+    .code-actions {
+      align-self: flex-end;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header-stats {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stat-card {
+      width: 100%;
+      max-width: 280px;
+    }
+    
+    .accordion {
+      padding: 18px 20px;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="backgroundCanvas"></canvas>
+
+<header>
+  <h1>Mantenimiento Profesional de Software</h1>
+  <p>Guía detallada paso a paso para implementar estrategias efectivas de mantenimiento en tus proyectos</p>
+  
+  <div class="header-stats">
+    <div class="stat-card">
+      <div class="number">70%</div>
+      <div class="label">del ciclo de vida del software</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">4x</div>
+      <div class="label">mayor costo de corrección tardía</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">40%</div>
+      <div class="label">mejora en productividad</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>Importancia crítica del mantenimiento de software</h2>
+  <p>El mantenimiento de software es una actividad esencial que representa aproximadamente <strong>70% del costo total</strong> del ciclo de vida de una aplicación. Sin un mantenimiento adecuado:</p>
+  
+  <ul>
+    <li>El rendimiento se degrada exponencialmente</li>
+    <li>Las vulnerabilidades de seguridad aumentan</li>
+    <li>La experiencia de usuario se deteriora</li>
+    <li>Los costos de futuras modificaciones se multiplican</li>
+  </ul>
+  
+  <div class="highlight">
+    <p><i class="fas fa-lightbulb"></i> <strong>Dato clave:</strong> Corregir un error en producción es hasta <strong>100 veces más costoso</strong> que solucionarlo durante la fase de desarrollo.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Tipos de mantenimiento con ejemplos prácticos</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Objetivo</th>
+        <th>Ejemplo detallado</th>
+        <th>Beneficios clave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Correctivo</strong></td>
+        <td>Resolver errores y fallos identificados</td>
+        <td>Corregir vulnerabilidad de seguridad en sistema de autenticación</td>
+        <td>Estabilidad y seguridad inmediata</td>
+      </tr>
+      <tr>
+        <td><strong>Adaptativo</strong></td>
+        <td>Actualizar para nuevos entornos</td>
+        <td>Migrar sistema legacy a contenedores Docker</td>
+        <td>Compatibilidad y reducción de costos operativos</td>
+      </tr>
+      <tr>
+        <td><strong>Perfectivo</strong></td>
+        <td>Mejorar funcionalidad y rendimiento</td>
+        <td>Optimizar consultas SQL reduciendo tiempos de respuesta en 300%</td>
+        <td>Mejora UX y eficiencia operacional</td>
+      </tr>
+      <tr>
+        <td><strong>Preventivo</strong></td>
+        <td>Anticipar y prevenir problemas futuros</td>
+        <td>Implementar monitoreo proactivo con alertas tempranas</td>
+        <td>Reducción de fallos críticos y tiempo de inactividad</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>Implementación de mantenimiento adaptativo: Ejemplo de código</h3>
+  
+  <div class="code-container">
+    <div class="code-header">
+      <div class="code-title">
+        <i class="fas fa-code"></i> Migración de sistema legacy a microservicios
+      </div>
+      <div class="code-actions">
+        <button><i class="far fa-copy"></i> Copiar</button>
+        <button><i class="fas fa-play"></i> Ejecutar</button>
+      </div>
+    </div>
+    <pre><code><span class="comment">// Antes: Monolítico difícil de mantener</span>
+<span class="keyword">class</span> <span class="function">EcommerceSystem</span> {
+  <span class="function">processOrder</span>(order) {
+    <span class="comment">// Validación de inventario</span>
+    <span class="keyword">const</span> <span class="variable">inventoryStatus</span> = <span class="keyword">this</span>.<span class="function">checkInventory</span>(order.items);
+    
+    <span class="comment">// Cálculo de impuestos</span>
+    <span class="keyword">const</span> <span class="variable">taxes</span> = <span class="keyword">this</span>.<span class="function">calculateTaxes</span>(order);
+    
+    <span class="comment">// Procesamiento de pago</span>
+    <span class="keyword">const</span> <span class="variable">paymentResult</span> = <span class="keyword">this</span>.<span class="function">processPayment</span>(order);
+    
+    <span class="comment">// Envío de confirmación</span>
+    <span class="keyword">this</span>.<span class="function">sendConfirmation</span>(order);
+    
+    <span class="keyword">return</span> { inventoryStatus, taxes, paymentResult };
+  }
+}
+
+<span class="comment">// Después: Arquitectura de microservicios</span>
+<span class="keyword">class</span> <span class="function">OrderService</span> {
+  <span class="function">processOrder</span>(order) {
+    <span class="keyword">const</span> <span class="variable">inventoryStatus</span> = inventoryService.<span class="function">check</span>(order.items);
+    <span class="keyword">const</span> <span class="variable">taxes</span> = taxService.<span class="function">calculate</span>(order);
+    <span class="keyword">const</span> <span class="variable">paymentResult</span> = paymentService.<span class="function">process</span>(order);
+    notificationService.<span class="function">sendConfirmation</span>(order);
+    
+    <span class="keyword">return</span> { inventoryStatus, taxes, paymentResult };
+  }
+}</code></pre>
+  </div>
+</section>
+
+<section>
+  <h2>Guía paso a paso detallada para mantenimiento</h2>
+  
+  <div class="step-container">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <h3 class="step-title">Auditoría profunda del software</h3>
+      <p>Realiza un análisis exhaustivo del estado actual del sistema:</p>
+      <ul>
+        <li>Revisa logs de errores y métricas de rendimiento</li>
+        <li>Analiza código con herramientas como SonarQube o ESLint</li>
+        <li>Identifica deuda técnica y puntos críticos</li>
+        <li>Evalúa vulnerabilidades de seguridad con OWASP ZAP</li>
+      </ul>
+      <div class="highlight">
+        <p><strong>Salida:</strong> Reporte detallado con métricas de calidad de código, vulnerabilidades y recomendaciones priorizadas.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="step-container">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <h3 class="step-title">Planificación estratégica</h3>
+      <p>Desarrolla un plan de acción detallado:</p>
+      <ul>
+        <li>Prioriza tareas usando matriz de impacto/esfuerzo</li>
+        <li>Estima recursos y tiempos requeridos</li>
+        <li>Define métricas de éxito y criterios de aceptación</li>
+        <li>Establece un sistema de monitoreo continuo</li>
+      </ul>
+      <div class="highlight">
+        <p><strong>Herramientas:</strong> Jira, Trello, Azure DevOps con planificación basada en sprints de 1-2 semanas.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-container">
+    <button class="accordion">
+      <span>Paso 3: Implementación controlada</span>
+      <i class="fas fa-chevron-down icon"></i>
+    </button>
+    <div class="panel">
+      <div class="panel-content">
+        <p>Ejecuta las mejoras utilizando metodologías seguras:</p>
+        <ul>
+          <li>Trabaja en ramas específicas (GitFlow)</li>
+          <li>Implementa pruebas unitarias y de integración</li>
+          <li>Usa revisión de código en parejas (pair programming)</li>
+          <li>Aplica integración continua (CI/CD)</li>
+        </ul>
+        
+        <div class="code-container">
+          <div class="code-header">
+            <div class="code-title">
+              <i class="fab fa-git-alt"></i> Flujo de trabajo con Git
+            </div>
+          </div>
+          <pre><code><span class="comment"># Crear rama para nueva funcionalidad</span>
+git checkout -b feature/optimize-database-queries
+
+<span class="comment"># Realizar cambios y commits</span>
+git add .
+git commit -m "Optimized user data query performance"
+
+<span class="comment"># Sincronizar con repositorio remoto</span>
+git push origin feature/optimize-database-queries
+
+<span class="comment"># Crear Pull Request para revisión</span>
+<span class="comment"># Después de aprobación, merge a rama principal</span>
+git checkout main
+git merge feature/optimize-database-queries</code></pre>
+        </div>
+      </div>
+    </div>
+    
+    <button class="accordion">
+      <span>Paso 4: Pruebas exhaustivas</span>
+      <i class="fas fa-chevron-down icon"></i>
+    </button>
+    <div class="panel">
+      <div class="panel-content">
+        <p>Implementa una estrategia de pruebas multicapa:</p>
+        <ul>
+          <li><strong>Pruebas unitarias:</strong> Jest, JUnit (cobertura > 80%)</li>
+          <li><strong>Pruebas de integración:</strong> Cypress, Selenium</li>
+          <li><strong>Pruebas de carga:</strong> JMeter, k6</li>
+          <li><strong>Pruebas de seguridad:</strong> OWASP ZAP, Burp Suite</li>
+        </ul>
+        
+        <div class="highlight">
+          <p><strong>Automatiza el 90% de las pruebas</strong> para ejecución continua y detección temprana de regresiones.</p>
+        </div>
+      </div>
+    </div>
+    
+    <button class="accordion">
+      <span>Paso 5: Despliegue controlado</span>
+      <i class="fas fa-chevron-down icon"></i>
+    </button>
+    <div class="panel">
+      <div class="panel-content">
+        <p>Implementa estrategias avanzadas de despliegue:</p>
+        <ul>
+          <li><strong>Blue-Green Deployment:</strong> Dos ambientes idénticos para cambio instantáneo</li>
+          <li><strong>Canary Releases:</strong> Liberación gradual a segmentos de usuarios</li>
+          <li><strong>Rollback automático:</strong> Si métricas clave se deterioran</li>
+          <li><strong>Feature Flags:</strong> Activar/desactivar funcionalidades sin redeploy</li>
+        </ul>
+        
+        <div class="code-container">
+          <div class="code-header">
+            <div class="code-title">
+              <i class="fas fa-code-branch"></i> Configuración de Feature Flag
+            </div>
+          </div>
+          <pre><code><span class="comment">// Ejemplo de implementación con LaunchDarkly</span>
+<span class="keyword">import</span> LaunchDarkly <span class="keyword">from</span> <span class="string">'launchdarkly-node-server-sdk'</span>;
+
+<span class="keyword">const</span> <span class="variable">client</span> = LaunchDarkly.<span class="function">init</span>(<span class="string">'SDK_KEY'</span>);
+
+<span class="keyword">async</span> <span class="function">checkFeatureEnabled</span>(<span class="variable">featureKey</span>, <span class="variable">user</span>) {
+  <span class="keyword">await</span> <span class="variable">client</span>.<span class="function">waitForInitialization</span>();
+  <span class="keyword">return</span> <span class="variable">client</span>.<span class="function">variation</span>(<span class="variable">featureKey</span>, <span class="variable">user</span>, <span class="keyword">false</span>);
+}
+
+<span class="comment">// Uso en la aplicación</span>
+<span class="keyword">if</span> (<span class="keyword">await</span> <span class="function">checkFeatureEnabled</span>(<span class="string">'new-checkout-flow'</span>, currentUser)) {
+  <span class="comment">// Implementación nueva</span>
+} <span class="keyword">else</span> {
+  <span class="comment">// Implementación anterior</span>
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Métricas y monitoreo continuo</h2>
+  
+  <div class="charts-container">
+    <div class="chart-card">
+      <h3>Tiempo entre fallos (MTBF)</h3>
+      <canvas id="mtbfChart" width="400" height="300"></canvas>
+    </div>
+    
+    <div class="chart-card">
+      <h3>Distribución de esfuerzo</h3>
+      <canvas id="effortChart" width="400" height="300"></canvas>
+    </div>
+  </div>
+  
+  <h3>KPIs esenciales para seguimiento</h3>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Indicador</th>
+        <th>Objetivo</th>
+        <th>Herramienta</th>
+        <th>Valor óptimo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Lead Time</td>
+        <td>Tiempo desde commit hasta producción</td>
+        <td>GitHub Actions, Jenkins</td>
+        <td>&lt; 1 hora</td>
+      </tr>
+      <tr>
+        <td>Change Failure Rate</td>
+        <td>% de despliegues que causan fallos</td>
+        <td>Datadog, New Relic</td>
+        <td>&lt; 5%</td>
+      </tr>
+      <tr>
+        <td>Deuda Técnica</td>
+        <td>Problemas de código pendientes</td>
+        <td>SonarQube, CodeClimate</td>
+        <td>&lt; 5% del código</td>
+      </tr>
+      <tr>
+        <td>MTTR</td>
+        <td>Tiempo medio de recuperación</td>
+        <td>PagerDuty, Opsgenie</td>
+        <td>&lt; 1 hora</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Consejos avanzados para equipos profesionales</h2>
+  
+  <ul class="icon-list">
+    <li><strong>Automatiza todo lo automatizable:</strong> Desde pruebas hasta despliegues y monitoreo</li>
+    <li><strong>Documentación viva:</strong> Mantén documentación actualizada como parte del proceso</li>
+    <li><strong>Revisiones periódicas de código:</strong> Implementa sesiones de revisión semanales</li>
+    <li><strong>Cultura de mejora continua:</strong> Realiza retrospectivas después de cada ciclo</li>
+    <li><strong>Capacitación constante:</strong> Dedica 10% del tiempo a aprendizaje de nuevas tecnologías</li>
+    <li><strong>Seguridad desde el diseño:</strong> Integra prácticas DevSecOps en todo el ciclo</li>
+  </ul>
+  
+  <div class="highlight">
+    <p><i class="fas fa-exclamation-triangle"></i> <strong>Atención:</strong> El mantenimiento preventivo adecuado puede reducir costos operativos hasta en un 60% durante el ciclo de vida del software.</p>
+  </div>
+</section>
+
+<section style="text-align:center;">
+  <h2>Recursos adicionales para profundizar</h2>
+  <p>Descarga nuestras guías detalladas y plantillas para implementar procesos de mantenimiento efectivos:</p>
+  
+  <div style="display: flex; gap: 20px; justify-content: center; margin: 40px 0; flex-wrap: wrap;">
+    <a href="#" class="btn">
+      <i class="fas fa-book"></i> Guía de Refactorización
+    </a>
+    <a href="#" class="btn">
+      <i class="fas fa-file-code"></i> Plantilla CI/CD
+    </a>
+    <a href="#" class="btn btn-outline">
+      <i class="fas fa-tools"></i> Checklist Auditoría
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2023 Guía Definitiva de Mantenimiento de Software</p>
+  
+  <div class="footer-links">
+    <a href="#"><i class="fas fa-book"></i> Documentación</a>
+    <a href="#"><i class="fas fa-graduation-cap"></i> Cursos</a>
+    <a href="#"><i class="fas fa-tools"></i> Herramientas</a>
+    <a href="#"><i class="fas fa-envelope"></i> Contacto</a>
+  </div>
+  
+  <p style="margin-top: 25px; font-size: 0.95rem; opacity: 0.8;">
+    Este contenido es proporcionado con fines educativos. Todas las prácticas deben adaptarse al contexto específico de cada proyecto.
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Fondo animado estilo código (Matrix)
+  const canvas = document.getElementById('backgroundCanvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#%&@*';
+  letters = letters.split('');
+  const fontSize = 16;
+  let columns;
+  let drops = [];
+
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    columns = Math.floor(width / fontSize);
+    
+    // Initialize drops
+    drops = [];
+    for(let i = 0; i < columns; i++) {
+      drops[i] = Math.floor(Math.random() * height / fontSize);
+    }
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw() {
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
+    ctx.fillRect(0, 0, width, height);
+    
+    ctx.fillStyle = '#3b82f6';
+    ctx.font = `${fontSize}px monospace`;
+    
+    for(let i = 0; i < drops.length; i++) {
+      const text = letters[Math.floor(Math.random() * letters.length)];
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
+      
+      // Draw character with random opacity
+      const opacity = Math.random() * 0.5 + 0.5;
+      ctx.globalAlpha = opacity;
+      ctx.fillText(text, x, y);
+      ctx.globalAlpha = 1;
+      
+      // Reset drop if it's beyond the screen
+      if(y > height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      
+      // Move drop down
+      drops[i]++;
+    }
+    
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+
+  // Gráficos Chart.js
+  const mtbfCtx = document.getElementById('mtbfChart').getContext('2d');
+  const mtbfChart = new Chart(mtbfCtx, {
+    type: 'line',
+    data: {
+      labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul'],
+      datasets: [{
+        label: 'Tiempo entre fallos (horas)',
+        data: [48, 72, 120, 150, 200, 280, 320],
+        borderColor: '#10b981',
+        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#10b981',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Horas'
+          }
+        }
+      }
+    }
+  });
+
+  const effortCtx = document.getElementById('effortChart').getContext('2d');
+  const effortChart = new Chart(effortCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Correctivo', 'Adaptativo', 'Perfectivo', 'Preventivo'],
+      datasets: [{
+        label: 'Distribución de esfuerzo',
+        data: [35, 25, 20, 20],
+        backgroundColor: [
+          'rgba(239, 68, 68, 0.8)',
+          'rgba(59, 130, 246, 0.8)',
+          'rgba(96, 165, 250, 0.8)',
+          'rgba(16, 185, 129, 0.8)'
+        ],
+        borderWidth: 0,
+        hoverOffset: 20
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.label}: ${context.parsed}%`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Acordeones mejorados (solo uno abierto a la vez)
+  const acc = document.querySelectorAll(".accordion");
+  acc.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // Toggle current
+      this.classList.toggle("active");
+      
+      // Close other accordions
+      acc.forEach(otherBtn => {
+        if(otherBtn !== this) {
+          otherBtn.classList.remove("active");
+          otherBtn.nextElementSibling.style.maxHeight = null;
+        }
+      });
+      
+      // Toggle current panel
+      const panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  });
+
+  // Copiar código
+  document.querySelectorAll('.code-actions button').forEach(button => {
+    if(button.textContent.includes('Copiar')) {
+      button.addEventListener('click', function() {
+        const codeBlock = this.closest('.code-container').querySelector('pre');
+        const textToCopy = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = button.innerHTML;
+          button.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+          
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        });
+      });
+    }
+  });
+</script>
+<!-- Botones de navegación -->
+<div class="nav-buttons">
+  <a class="btn-link" href="2.1 Componentes lógicos y aplicaciones informáticas..html">⬅ Anterior</a>
+  <a class="btn-link" href="2.3 Tipos de Software.html">Siguiente ➡</a>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+  .nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 9999;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-link:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px 4px rgba(255, 0, 0, 0.6);
+  }
+</style>
+
+
+</body>
+</html>

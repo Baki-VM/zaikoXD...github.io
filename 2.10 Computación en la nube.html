@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.10 Computación en la Nube - Guía Profesional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #0059b3;
+      --primary-light: #3399ff;
+      --primary-dark: #003366;
+      --secondary: #4d94ff;
+      --accent: #00c4ff;
+      --light-bg: #f0f7ff;
+      --card-bg: #ffffff;
+      --text-dark: #001a33;
+      --text-light: #f0f7ff;
+      --shadow: 0 8px 30px rgba(0, 83, 165, 0.2);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e6f2ff, #b3d9ff);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 80px 20px 100px;
+      color: white;
+      box-shadow: 0 0 30px rgba(0, 51, 102, 0.4);
+      overflow: hidden;
+      margin-bottom: 40px;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px rgba(51, 153, 255, 0.8);
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(0, 89, 179, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.5rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin: 0 0.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-links a.active {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto 50px;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0, 83, 165, 0.25);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-light), var(--accent));
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 1.4rem;
+      line-height: 1.8;
+    }
+
+    /* Cards */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(0, 89, 179, 0.05), rgba(51, 153, 255, 0.05));
+      border-radius: 16px;
+      padding: 2rem;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 89, 179, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 83, 165, 0.2);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-light), var(--accent));
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .card ul {
+      margin-left: 0;
+      padding-left: 1.5rem;
+    }
+
+    .card li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.8rem;
+    }
+
+    .card li::before {
+      content: "•";
+      color: var(--primary-light);
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0;
+      top: -0.3rem;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin: 2.5rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 89, 179, 0.1);
+    }
+
+    th {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(0, 89, 179, 0.03);
+    }
+
+    /* Graph */
+    .graph {
+      text-align: center;
+      margin: 40px 0;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 83, 165, 0.3);
+    }
+
+    .graph img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .graph:hover img {
+      transform: scale(1.03);
+    }
+
+    .graph-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 51, 102, 0.8);
+      color: white;
+      padding: 0.8rem;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    /* Stats */
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 15px 35px rgba(0, 83, 165, 0.4);
+    }
+
+    .stat-card p {
+      font-size: 1.4rem;
+      margin: 0;
+      color: white;
+      font-weight: 500;
+    }
+
+    .highlight {
+      font-weight: 700;
+      color: #ffd700;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary-dark), #00264d);
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-top: 4rem;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.8rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      margin-top: 1.8rem;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 2.8rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 60px 20px 80px;
+      }
+      
+      header h1 {
+        font-size: 2.4rem;
+      }
+      
+      .section {
+        padding: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section {
+        padding: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.7rem;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .nav-links li {
+        margin: 0.3rem 0;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <h1 class="animate">Computación en la Nube</h1>
+    <p class="subtitle animate delay-1">Una mirada profunda a la computación en la nube: fundamentos, modelos, ventajas y aplicaciones actuales</p>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <i class="fas fa-cloud"></i>
+      <span>CloudGuide</span>
+    </div>
+    
+    <ul class="nav-links">
+      <li><a href="#introduccion" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+      <li><a href="#modelos"><i class="fas fa-layer-group"></i> Modelos</a></li>
+      <li><a href="#ventajas"><i class="fas fa-star"></i> Ventajas</a></li>
+      <li><a href="#casos"><i class="fas fa-laptop-code"></i> Casos</a></li>
+      <li><a href="#conclusion"><i class="fas fa-check-circle"></i> Conclusión</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section id="introduccion" class="section animate delay-1">
+    <h2><i class="fas fa-info-circle"></i> Introducción a la Computación en la Nube</h2>
+    <p>La computación en la nube es un paradigma que permite acceder a recursos informáticos (servidores, almacenamiento, bases de datos, software, análisis, etc.) a través de internet, sin necesidad de tener infraestructura física local.</p>
+    
+    <div class="card">
+      <h3><i class="fas fa-history"></i> Historia y Evolución</h3>
+      <p>El concepto se inspira en décadas anteriores con la idea de tiempo compartido en computadoras centrales en los 60s.</p>
+      <p>En 2006, Amazon Web Services (AWS) lanzó EC2, popularizando la nube pública. Desde entonces, otros grandes como Microsoft Azure, Google Cloud Platform y IBM Cloud entraron al juego, expandiendo funcionalidades y alcance global.</p>
+    </div>
+  </section>
+
+  <section id="modelos" class="section animate delay-2">
+    <h2><i class="fas fa-cubes"></i> Modelos de Servicio</h2>
+    <p>Existen tres modelos principales que definen cómo se entregan los servicios en la nube:</p>
+    
+    <div class="card-container">
+      <div class="card">
+        <h3><i class="fas fa-server"></i> IaaS</h3>
+        <p><strong>Infraestructura como Servicio</strong></p>
+        <p>Ofrece hardware virtualizado: servidores, almacenamiento y redes.</p>
+        <ul>
+          <li>Máxima flexibilidad y control</li>
+          <li>El usuario gestiona sistemas operativos y aplicaciones</li>
+          <li>Ejemplos: AWS EC2, Google Compute Engine, Azure VMs</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-cogs"></i> PaaS</h3>
+        <p><strong>Plataforma como Servicio</strong></p>
+        <p>Proporciona plataformas para desarrollar y desplegar aplicaciones sin gestionar infraestructura.</p>
+        <ul>
+          <li>Enfoque en desarrollo de aplicaciones</li>
+          <li>Automatiza implementación y escalado</li>
+          <li>Ejemplos: Heroku, Google App Engine, Azure App Service</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-window-restore"></i> SaaS</h3>
+        <p><strong>Software como Servicio</strong></p>
+        <p>Software accesible vía web sin instalación local.</p>
+        <ul>
+          <li>Acceso a través de navegador web</li>
+          <li>Mantenimiento y actualizaciones automáticas</li>
+          <li>Ejemplos: Google Workspace, Microsoft 365, Dropbox</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-cloud-upload-alt"></i> Modelos de Implementación</h2>
+    <p>Diferentes formas de desplegar servicios en la nube:</p>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Ventajas</th>
+            <th>Ejemplos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nube Pública</td>
+            <td>Servicios accesibles al público en general por proveedores externos</td>
+            <td>Bajo costo, escalabilidad, fácil acceso</td>
+            <td>AWS, Google Cloud, Azure</td>
+          </tr>
+          <tr>
+            <td>Nube Privada</td>
+            <td>Infraestructura exclusiva para una organización</td>
+            <td>Más control, seguridad y personalización</td>
+            <td>Infraestructura propia o proveedores dedicados</td>
+          </tr>
+          <tr>
+            <td>Nube Híbrida</td>
+            <td>Combinación de nube pública y privada</td>
+            <td>Flexibilidad, balance entre costo y seguridad</td>
+            <td>Empresas que mezclan infra propia con servicios públicos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="ventajas" class="section animate delay-3">
+    <h2><i class="fas fa-chart-line"></i> Ventajas de la Computación en la Nube</h2>
+    
+    <div class="card-container">
+      <div class="card">
+        <h3><i class="fas fa-expand-arrows-alt"></i> Escalabilidad</h3>
+        <p>Ajusta recursos fácilmente según demanda sin inversión en hardware adicional.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-dollar-sign"></i> Reducción de Costos</h3>
+        <p>Paga solo por lo que usas, sin inversión inicial fuerte en infraestructura.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-globe"></i> Accesibilidad</h3>
+        <p>Accede a tus datos y aplicaciones desde cualquier lugar con conexión a internet.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-shield-alt"></i> Seguridad</h3>
+        <p>Proveedores invierten en protecciones avanzadas y backups automáticos.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-rocket"></i> Innovación Rápida</h3>
+        <p>Lanzamiento rápido de nuevos servicios y aplicaciones.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-sync-alt"></i> Actualizaciones Automáticas</h3>
+        <p>Mantenimiento y mejoras gestionadas por el proveedor de servicios.</p>
+      </div>
+    </div>
+    
+    <div class="graph">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cloud_computing_market_size.png/800px-Cloud_computing_market_size.png" alt="Crecimiento del mercado de computación en la nube" />
+      <div class="graph-caption">Fuente: Statista - Tamaño del mercado global de computación en la nube</div>
+    </div>
+  </section>
+
+  <section id="casos" class="section animate delay-3">
+    <h2><i class="fas fa-laptop-code"></i> Casos de Uso y Aplicaciones Reales</h2>
+    
+    <div class="card-container">
+      <div class="card">
+        <h3><i class="fas fa-users"></i> Colaboración Empresarial</h3>
+        <p>Empresas que usan SaaS para colaboración (Slack, Zoom, Google Workspace).</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-code"></i> Desarrollo de Aplicaciones</h3>
+        <p>Desarrolladores usando PaaS para crear aplicaciones sin preocuparse por servidores.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-database"></i> Big Data & Analytics</h3>
+        <p>Almacenamiento de grandes datos y análisis con IaaS (Big Data, Machine Learning).</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-video"></i> Streaming Multimedia</h3>
+        <p>Servicios de streaming de video y música (Netflix, Spotify) aprovechando la nube.</p>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-exclamation-triangle"></i> Desafíos y Consideraciones</h2>
+    
+    <div class="card">
+      <ul>
+        <li><strong>Dependencia de internet:</strong> Requiere conexión confiable para acceso constante</li>
+        <li><strong>Privacidad y cumplimiento:</strong> Preocupaciones sobre almacenamiento de datos sensibles</li>
+        <li><strong>Costos imprevistos:</strong> Pueden subir inesperadamente si no se monitorean recursos</li>
+        <li><strong>Seguridad de datos:</strong> Responsabilidad compartida entre proveedor y cliente</li>
+        <li><strong>Vendor lock-in:</strong> Dificultad para migrar entre proveedores de nube</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="conclusion" class="section animate delay-4">
+    <h2><i class="fas fa-check-circle"></i> Conclusión</h2>
+    
+    <div class="card">
+      <p>La computación en la nube representa un cambio radical en cómo las empresas y usuarios consumen tecnología, ofreciendo flexibilidad, eficiencia y escalabilidad a un nivel antes impensado.</p>
+      
+      <p>Su adopción sigue creciendo exponencialmente, transformando industrias y creando nuevas oportunidades de negocio. Aprender y dominar sus conceptos es vital para cualquier profesional en sistemas, tecnología o negocios.</p>
+      
+      <div class="stats-container">
+        <div class="stat-card">
+          <p>Se estima que para 2025, <span class="highlight">más del 85%</span> de las empresas habrán migrado sus operaciones a la nube</p>
+        </div>
+      </div>
+    </div>
+    
+    <h2><i class="fas fa-book"></i> Referencias</h2>
+    
+    <div class="card">
+      <ul>
+        <li><a href="https://azure.microsoft.com/es-es/overview/what-is-cloud-computing/" target="_blank"><i class="fas fa-external-link-alt"></i> Microsoft Azure - ¿Qué es computación en la nube?</a></li>
+        <li><a href="https://aws.amazon.com/es/what-is-cloud-computing/" target="_blank"><i class="fas fa-external-link-alt"></i> Amazon Web Services - Introducción a la nube</a></li>
+        <li><a href="https://www.ibm.com/cloud/learn/cloud-computing" target="_blank"><i class="fas fa-external-link-alt"></i> IBM - Computación en la nube</a></li>
+        <li><a href="https://www.gartner.com/en/information-technology/glossary/cloud-computing" target="_blank"><i class="fas fa-external-link-alt"></i> Gartner - Definición de computación en la nube</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-github"></i> GitHub</a>
+      <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#"><i class="fas fa-book"></i> Documentación</a>
+      <a href="#"><i class="fas fa-envelope"></i> Contacto</a>
+    </div>
+    
+    <div class="copyright">
+      &copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Smooth scrolling for navigation
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Remove active class from all links
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Add active class to clicked link
+      this.classList.add('active');
+      
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // Set first nav link as active by default
+  document.querySelector('nav a').classList.add('active');
+  
+  // Animation on scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
+<!-- Botones de navegación -->
+<div class="nav-buttons">
+  <a class="btn-link" href="2.9 Software versionadores.html">⬅ Anterior</a>
+  <a class="btn-link" href="2.11Maneja funciones básicas de los distintos tipos de Software Instala Software correctamente.html">Siguiente ➡</a>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+  .nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 9999;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-link:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px 4px rgba(255, 0, 0, 0.6);
+  }
+</style>
+
+</body>
+</html>
