@@ -33,6 +33,18 @@
       border-radius: 20px;
       margin-bottom: 30px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #1a2980, #26d0ce);
     }
     
     h1 {
@@ -40,13 +52,31 @@
       margin-bottom: 15px;
       color: #1a2980;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, #1a2980, #26d0ce);
+      border-radius: 2px;
     }
     
     .subtitle {
       font-size: 1.4rem;
       color: #2c3e50;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 20px auto;
+      padding: 15px;
+      background: rgba(38, 208, 206, 0.1);
+      border-radius: 10px;
+      border-left: 4px solid #1a2980;
     }
     
     .cards-container {
@@ -62,11 +92,28 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #1a2980, #26d0ce);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
     
     .card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    }
+    
+    .card:hover::before {
+      opacity: 1;
     }
     
     .card-header {
@@ -77,10 +124,20 @@
       align-items: center;
       gap: 15px;
       cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .card-header:hover {
+      background: linear-gradient(to right, #152063, #20b9b7);
     }
     
     .card-header i {
       font-size: 2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .card.active .card-header i {
+      transform: rotate(90deg);
     }
     
     .card-content {
@@ -91,7 +148,7 @@
     }
     
     .card.active .card-content {
-      max-height: 2000px;
+      max-height: 2500px;
       padding: 25px;
     }
     
@@ -101,34 +158,77 @@
       font-size: 1.8rem;
       border-bottom: 2px solid #26d0ce;
       padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .card-content h3 i {
+      font-size: 1.4rem;
+      color: #26d0ce;
+    }
+    
+    .card-content > p {
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      background: rgba(38, 208, 206, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid #26d0ce;
     }
     
     .component-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      margin: 20px 0;
+      margin: 25px 0;
     }
     
     .component-item {
-      background: #e3fafc;
+      background: linear-gradient(to bottom, #f8f9ff, #e3fafc);
       padding: 20px;
       border-radius: 10px;
       border-left: 4px solid #1a2980;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .component-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #1a2980, #26d0ce);
+      transform: translateY(-100%);
       transition: transform 0.3s ease;
     }
     
     .component-item:hover {
-      transform: translateY(-5px);
-      background: #c5f6fa;
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .component-item:hover::before {
+      transform: translateY(0);
     }
     
     .component-item h4 {
       color: #1a2980;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       display: flex;
       align-items: center;
       gap: 10px;
+      font-size: 1.3rem;
+    }
+    
+    .component-item h4 i {
+      color: #26d0ce;
+      font-size: 1.4rem;
     }
     
     .component-image {
@@ -142,23 +242,63 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+    }
+    
+    .component-image::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(26, 41, 128, 0.1), rgba(38, 208, 206, 0.1));
+      z-index: 1;
     }
     
     .component-image i {
       font-size: 4rem;
       color: #1a2980;
       opacity: 0.3;
+      z-index: 2;
     }
     
     .component-info {
       margin-top: 10px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .component-info p {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    
+    .component-info strong {
+      color: #1a2980;
+      display: inline-block;
+      margin-top: 8px;
     }
     
     .source {
-      margin-top: 20px;
-      font-size: 0.9rem;
+      margin-top: 25px;
+      font-size: 0.95rem;
       color: #555;
       font-style: italic;
+      padding-top: 15px;
+      border-top: 1px dashed #ccc;
+      text-align: right;
+    }
+    
+    .source a {
+      color: #1a2980;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .source a:hover {
+      color: #26d0ce;
+      text-decoration: underline;
     }
     
     footer {
@@ -167,9 +307,11 @@
       margin-top: 50px;
       color: white;
       font-size: 1.1rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
     }
     
-    /* Nuevas reglas para los botones de navegación fijos */
+    /* Botones de navegación */
     .nav-botones-fijos {
       position: fixed;
       bottom: 30px;
@@ -180,24 +322,85 @@
     }
     
     .boton-enlace {
-      display: inline-block;
-      background-color: #1a2980;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, #1a2980, #26d0ce);
       color: #fff;
       padding: 12px 28px;
       text-decoration: none;
       border-radius: 50px;
       font-weight: bold;
       font-size: 1.08rem;
-      box-shadow: 0 4px 12px rgba(26,41,128,0.18);
-      transition: background 0.3s, color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 15px rgba(26, 41, 128, 0.3);
+      transition: all 0.3s ease;
       border: none;
       cursor: pointer;
+      gap: 8px;
     }
     
     .boton-enlace:hover {
-      background-color: #26d0ce;
-      color: #fff;
-      transform: translateY(-3px) scale(1.04);
+      background: linear-gradient(to right, #152063, #20b9b7);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(26, 41, 128, 0.4);
+    }
+    
+    /* Botón para expandir/contraer todo */
+    .control-todos {
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .btn-todos {
+      background: linear-gradient(to right, #1a2980, #26d0ce);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-todos:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .card {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 2.3rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
     }
     
     @media (max-width: 600px) {
@@ -209,8 +412,16 @@
       }
       
       .boton-enlace {
-        padding: 10px 18px;
-        font-size: 1rem;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+      }
+      
+      header {
+        padding: 25px 15px;
+      }
+      
+      h1 {
+        font-size: 1.9rem;
       }
     }
   </style>
@@ -220,6 +431,15 @@
     <header>
       <h1><i class="fas fa-computer"></i> Componentes Detallados de una Computadora</h1>
       <p class="subtitle">Explora los componentes digitales, electrónicos, eléctricos, electromecánicos y mecánicos que hacen funcionar tu equipo</p>
+      
+      <div class="control-todos">
+        <button class="btn-todos" id="btnExpandir">
+          <i class="fas fa-expand"></i> Expandir todo
+        </button>
+        <button class="btn-todos" id="btnContraer">
+          <i class="fas fa-compress"></i> Contraer todo
+        </button>
+      </div>
     </header>
     
     <div class="cards-container">
@@ -230,7 +450,7 @@
           <h2>1.5.1 Componentes Digitales</h2>
         </div>
         <div class="card-content">
-          <p>Los componentes digitales procesan información en forma de señales binarias (0 y 1). Son circuitos integrados programables que ejecutan órdenes previamente grabadas en su memoria.</p>
+          <p>Los componentes digitales procesan información en forma de señales binarias (0 y 1). Son circuitos integrados programables que ejecutan órdenes previamente grabadas en su memoria. Estos componentes son la base del procesamiento de información en computadoras modernas.</p>
           
           <div class="component-grid">
             <div class="component-item">
@@ -239,8 +459,8 @@
                 <i class="fas fa-microchip"></i>
               </div>
               <div class="component-info">
-                <p>Ejecuta instrucciones, procesa datos y controla el funcionamiento general del sistema.</p>
-                <p><strong>Cómo funciona:</strong> Compuesto por ALU, Unidad de Control y registros que manejan operaciones lógicas y aritméticas.</p>
+                <p>El cerebro de la computadora que ejecuta instrucciones, procesa datos y controla el funcionamiento general del sistema. Es responsable de realizar cálculos y tomar decisiones lógicas.</p>
+                <p><strong>Cómo funciona:</strong> Compuesto por ALU (Unidad Aritmético Lógica) para operaciones matemáticas, Unidad de Control que dirige el flujo de datos, y registros que almacenan información temporal. Opera mediante ciclos de reloj que sincronizan sus acciones.</p>
               </div>
             </div>
             
@@ -250,8 +470,8 @@
                 <i class="fas fa-memory"></i>
               </div>
               <div class="component-info">
-                <p>Almacena temporalmente datos e instrucciones que la CPU usa mientras el sistema está encendido.</p>
-                <p><strong>Cómo funciona:</strong> Memoria volátil de acceso ultra rápido para lectura/escritura.</p>
+                <p>Almacena temporalmente datos e instrucciones que la CPU usa mientras el sistema está encendido. Permite acceso rápido a la información que se está utilizando activamente.</p>
+                <p><strong>Cómo funciona:</strong> Memoria volátil de acceso ultra rápido organizada en celdas direccionables. Cuando se requiere un dato, la RAM lo entrega en nanosegundos. Su capacidad se mide en GB y su velocidad en MHz.</p>
               </div>
             </div>
             
@@ -261,19 +481,19 @@
                 <i class="fas fa-sd-card"></i>
               </div>
               <div class="component-info">
-                <p>Almacena datos e instrucciones permanentes, como el firmware que arranca la computadora.</p>
-                <p><strong>Cómo funciona:</strong> Memoria no volátil con programas esenciales para inicializar el sistema.</p>
+                <p>Almacena datos e instrucciones permanentes, como el firmware que arranca la computadora. Contiene información crítica que no debe perderse al apagar el equipo.</p>
+                <p><strong>Cómo funciona:</strong> Memoria no volátil programada durante la fabricación. Al encender la computadora, la BIOS/UEFI en la ROM inicia el proceso de arranque y realiza comprobaciones básicas del hardware.</p>
               </div>
             </div>
             
             <div class="component-item">
-              <h4><i class="fas fa-microchip"></i> Tarjeta Gráfica (GPU)</h4>
+              <h4><i class="fas fa-gamepad"></i> Tarjeta Gráfica (GPU)</h4>
               <div class="component-image">
                 <i class="fas fa-gamepad"></i>
               </div>
               <div class="component-info">
-                <p>Procesa y renderiza gráficos, imágenes y videos para su visualización.</p>
-                <p><strong>Cómo funciona:</strong> Especializada en cálculos paralelos para procesamiento gráfico intensivo.</p>
+                <p>Procesa y renderiza gráficos, imágenes y videos para su visualización. Especializada en operaciones paralelas masivas requeridas para gráficos 3D y procesamiento visual.</p>
+                <p><strong>Cómo funciona:</strong> Utiliza miles de núcleos pequeños especializados en procesamiento paralelo. Transforma datos en píxeles visualizables, gestiona texturas, iluminación y efectos visuales complejos.</p>
               </div>
             </div>
           </div>
@@ -291,7 +511,7 @@
           <h2>1.5.2 Componentes Electrónicos</h2>
         </div>
         <div class="card-content">
-          <p>Dispositivos que forman parte de un circuito electrónico, encapsulados en materiales cerámicos, metálicos o plásticos con terminales metálicas.</p>
+          <p>Dispositivos que forman parte de un circuito electrónico, encapsulados en materiales cerámicos, metálicos o plásticos con terminales metálicas. Manipulan el flujo de electrones para realizar funciones específicas dentro de los sistemas informáticos.</p>
           
           <div class="component-grid">
             <div class="component-item">
@@ -300,8 +520,8 @@
                 <i class="fas fa-exchange-alt"></i>
               </div>
               <div class="component-info">
-                <p>Actúan como interruptores o amplificadores en circuitos electrónicos.</p>
-                <p><strong>Cómo funciona:</strong> Controlan el flujo de corriente eléctrica, permitiendo encender/apagar señales o amplificar señales débiles.</p>
+                <p>Actúan como interruptores o amplificadores en circuitos electrónicos. Son los componentes fundamentales de los chips modernos, permitiendo la miniaturización de circuitos.</p>
+                <p><strong>Cómo funciona:</strong> Controlan el flujo de corriente eléctrica mediante una pequeña señal de entrada. En modo interruptor, pueden encender/apagar corrientes mayores. Como amplificador, aumentan señales débiles.</p>
               </div>
             </div>
             
@@ -311,8 +531,8 @@
                 <i class="fas fa-project-diagram"></i>
               </div>
               <div class="component-info">
-                <p>Integran miles/millones de componentes electrónicos en un solo chip.</p>
-                <p><strong>Cómo funciona:</strong> Concentran transistores miniaturizados para procesar datos y señales.</p>
+                <p>Integran miles/millones de componentes electrónicos en un solo chip de silicio. Permiten la creación de dispositivos complejos en espacios minúsculos.</p>
+                <p><strong>Cómo funciona:</strong> Fabricados mediante procesos fotolitográficos que graban circuitos microscópicos en obleas de silicio. Concentran transistores miniaturizados para procesar datos y señales de manera eficiente.</p>
               </div>
             </div>
             
@@ -322,8 +542,8 @@
                 <i class="fas fa-battery-full"></i>
               </div>
               <div class="component-info">
-                <p>Almacenan y liberan energía eléctrica, estabilizando voltajes en circuitos.</p>
-                <p><strong>Cómo funciona:</strong> Retienen carga eléctrica temporalmente para filtrar ruidos o estabilizar alimentación.</p>
+                <p>Almacenan y liberan energía eléctrica, estabilizando voltajes en circuitos. Actúan como reservorios temporales de energía para suavizar fluctuaciones.</p>
+                <p><strong>Cómo funciona:</strong> Constan de dos placas conductoras separadas por un dieléctrico. Al aplicar voltaje, acumulan carga eléctrica que liberan cuando el circuito lo requiere, filtrando ruidos y estabilizando la alimentación.</p>
               </div>
             </div>
             
@@ -333,8 +553,8 @@
                 <i class="fas fa-slash"></i>
               </div>
               <div class="component-info">
-                <p>Limitan el flujo de corriente eléctrica para proteger circuitos.</p>
-                <p><strong>Cómo funciona:</strong> Disipan energía eléctrica en forma de calor para controlar intensidad de corriente.</p>
+                <p>Limitan el flujo de corriente eléctrica para proteger circuitos y establecer niveles de voltaje adecuados. Controlan la intensidad de corriente en diferentes partes del circuito.</p>
+                <p><strong>Cómo funciona:</strong> Ofrecen oposición al paso de electrones, disipando energía eléctrica en forma de calor. Su valor se mide en ohmios (Ω) y se seleccionan según las necesidades del circuito.</p>
               </div>
             </div>
           </div>
@@ -352,7 +572,7 @@
           <h2>1.5.3 Componentes Eléctricos</h2>
         </div>
         <div class="card-content">
-          <p>Se encargan de la distribución y suministro de energía eléctrica en la computadora.</p>
+          <p>Se encargan de la distribución y suministro de energía eléctrica en la computadora. Transforman, regulan y protegen los circuitos garantizando un flujo estable y seguro de electricidad a todos los componentes.</p>
           
           <div class="component-grid">
             <div class="component-item">
@@ -361,8 +581,8 @@
                 <i class="fas fa-bolt"></i>
               </div>
               <div class="component-info">
-                <p>Convierte la corriente alterna (AC) en corriente continua (DC) estable.</p>
-                <p><strong>Cómo funciona:</strong> Incluye transformadores, rectificadores y reguladores que estabilizan voltajes.</p>
+                <p>Convierte la corriente alterna (AC) en corriente continua (DC) estable requerida por los componentes. Es el corazón del sistema de alimentación de la computadora.</p>
+                <p><strong>Cómo funciona:</strong> Utiliza transformadores para reducir voltaje, rectificadores para convertir AC a DC, filtros para suavizar la corriente y reguladores para mantener voltajes constantes (+3.3V, +5V, +12V).</p>
               </div>
             </div>
             
@@ -372,8 +592,8 @@
                 <i class="fas fa-cable-car"></i>
               </div>
               <div class="component-info">
-                <p>Transportan la energía desde la fuente a cada componente.</p>
-                <p><strong>Cómo funciona:</strong> Conectan mediante conectores específicos (Molex, SATA, ATX).</p>
+                <p>Transportan la energía desde la fuente a cada componente. Diseñados para minimizar pérdidas de energía y prevenir interferencias electromagnéticas.</p>
+                <p><strong>Cómo funciona:</strong> Conectan mediante conectores específicos (Molex, SATA, ATX) que garantizan polaridad correcta. Los cables están blindados para reducir interferencias y agrupados para mejorar flujo de aire.</p>
               </div>
             </div>
             
@@ -383,8 +603,8 @@
                 <i class="fas fa-sliders-h"></i>
               </div>
               <div class="component-info">
-                <p>Aseguran que los componentes reciban un voltaje constante.</p>
-                <p><strong>Cómo funciona:</strong> Filtran y estabilizan la corriente eléctrica a niveles seguros.</p>
+                <p>Aseguran que los componentes reciban un voltaje constante y protegido de fluctuaciones. Evitan daños por sobretensiones o caídas de voltaje.</p>
+                <p><strong>Cómo funciona:</strong> Monitorean continuamente el voltaje de entrada y ajustan la salida mediante circuitos de retroalimentación. Filtran y estabilizan la corriente eléctrica a niveles seguros para componentes sensibles.</p>
               </div>
             </div>
             
@@ -394,8 +614,8 @@
                 <i class="fas fa-fire-extinguisher"></i>
               </div>
               <div class="component-info">
-                <p>Protegen los circuitos contra sobrecargas eléctricas.</p>
-                <p><strong>Cómo funciona:</strong> Se funden cuando la corriente excede un valor seguro, interrumpiendo el circuito.</p>
+                <p>Protegen los circuitos contra sobrecargas eléctricas y cortocircuitos. Actúan como dispositivos de seguridad fundamentales para prevenir daños mayores.</p>
+                <p><strong>Cómo funciona:</strong> Contienen un filamento que se funde cuando la corriente excede un valor seguro, interrumpiendo el circuito. Requieren reemplazo después de activarse para restaurar la protección.</p>
               </div>
             </div>
           </div>
@@ -413,7 +633,7 @@
           <h2>1.5.4 Componentes Electromecánicos</h2>
         </div>
         <div class="card-content">
-          <p>Combinan elementos eléctricos con partes mecánicas móviles para realizar tareas específicas.</p>
+          <p>Combinan elementos eléctricos con partes mecánicas móviles para realizar tareas específicas. Transforman energía eléctrica en movimiento mecánico y viceversa, permitiendo interacción física con el entorno.</p>
           
           <div class="component-grid">
             <div class="component-item">
@@ -422,8 +642,8 @@
                 <i class="fas fa-fan"></i>
               </div>
               <div class="component-info">
-                <p>Refrigeran componentes críticos como CPU y GPU.</p>
-                <p><strong>Cómo funciona:</strong> Motor eléctrico que hace girar aspas para mover aire fresco.</p>
+                <p>Refrigeran componentes críticos como CPU y GPU mediante flujo de aire forzado. Mantienen temperaturas operativas seguras para prevenir daños por sobrecalentamiento.</p>
+                <p><strong>Cómo funciona:</strong> Un motor eléctrico convierte energía en movimiento rotacional que hace girar aspas aerodinámicas. La velocidad se regula mediante sensores térmicos que ajustan las RPM según la temperatura.</p>
               </div>
             </div>
             
@@ -433,8 +653,8 @@
                 <i class="fas fa-hdd"></i>
               </div>
               <div class="component-info">
-                <p>Almacena grandes cantidades de datos de forma magnética.</p>
-                <p><strong>Cómo funciona:</strong> Cabezal móvil lee y escribe datos en discos giratorios a alta velocidad.</p>
+                <p>Almacena grandes cantidades de datos de forma magnética en discos giratorios. Ofrece alta capacidad a bajo costo para almacenamiento a largo plazo.</p>
+                <p><strong>Cómo funciona:</strong> Discos (platters) giran a 5400-7200 RPM mientras cabezales magnéticos se mueven radialmente para leer/escribir datos. La información se almacena en pistas concéntricas divididas en sectores.</p>
               </div>
             </div>
             
@@ -444,8 +664,8 @@
                 <i class="fas fa-compact-disc"></i>
               </div>
               <div class="component-info">
-                <p>Lee y escribe datos en discos ópticos.</p>
-                <p><strong>Cómo funciona:</strong> Láser detecta reflejos para interpretar datos digitales.</p>
+                <p>Lee y escribe datos en discos ópticos mediante tecnología láser. Permite acceso a medios físicos para instalación de software o reproducción multimedia.</p>
+                <p><strong>Cómo funciona:</strong> Un motor hace girar el disco mientras un láser de precisión enfocado mediante lentes detecta diferencias microscópicas en la superficie reflectante para interpretar datos digitales.</p>
               </div>
             </div>
             
@@ -455,8 +675,8 @@
                 <i class="fas fa-toggle-on"></i>
               </div>
               <div class="component-info">
-                <p>Interruptores electromecánicos para controlar circuitos.</p>
-                <p><strong>Cómo funciona:</strong> Utilizan un electroimán para abrir o cerrar contactos eléctricos.</p>
+                <p>Interruptores electromecánicos para controlar circuitos de mayor potencia con señales de bajo voltaje. Aíslan circuitos de control de circuitos de potencia.</p>
+                <p><strong>Cómo funciona:</strong> Una bobina electromagnética activa un mecanismo que abre o cierra contactos eléctricos cuando recibe corriente. Permite controlar dispositivos de alta potencia con componentes electrónicos sensibles.</p>
               </div>
             </div>
           </div>
@@ -474,7 +694,7 @@
           <h2>1.5.5 Componentes Mecánicos</h2>
         </div>
         <div class="card-content">
-          <p>Partes físicas que proporcionan soporte estructural y protección sin requerir electricidad.</p>
+          <p>Partes físicas que proporcionan soporte estructural, protección y gestión térmica sin requerir electricidad. Forman el esqueleto físico que alberga y protege los componentes electrónicos.</p>
           
           <div class="component-grid">
             <div class="component-item">
@@ -483,8 +703,8 @@
                 <i class="fas fa-box"></i>
               </div>
               <div class="component-info">
-                <p>Aloja y protege todos los componentes internos.</p>
-                <p><strong>Cómo funciona:</strong> Fabricado en materiales metálicos o plásticos resistentes que soportan impactos.</p>
+                <p>Aloja y protege todos los componentes internos contra impactos físicos y contaminantes ambientales. Proporciona estructura y organización al sistema.</p>
+                <p><strong>Cómo funciona:</strong> Fabricado en acero galvanizado o aluminio con diseño optimizado para flujo de aire. Incluye puntos de montaje estándar, bahías para unidades y ranuras de expansión para tarjetas adicionales.</p>
               </div>
             </div>
             
@@ -494,8 +714,8 @@
                 <i class="fas fa-screwdriver"></i>
               </div>
               <div class="component-info">
-                <p>Fijan de forma segura componentes como placas y discos.</p>
-                <p><strong>Cómo funciona:</strong> Permiten ensamblaje modular y mantenimiento sin daños físicos.</p>
+                <p>Fijan de forma segura componentes como placas y discos. Garantizan conexión eléctrica a tierra y estabilidad física durante transporte y operación.</p>
+                <p><strong>Cómo funciona:</strong> Ensamblaje modular con tornillos estandarizados (6-32 UNC) y separadores (standoffs) que elevan la placa base evitando cortocircuitos. Permiten mantenimiento sin daños físicos.</p>
               </div>
             </div>
             
@@ -505,8 +725,8 @@
                 <i class="fas fa-columns"></i>
               </div>
               <div class="component-info">
-                <p>Proveen acceso y protección adicional.</p>
-                <p><strong>Cómo funciona:</strong> Se colocan y aseguran con tornillos o mecanismos deslizantes.</p>
+                <p>Proveen acceso para mantenimiento y protección adicional contra polvo y radiación electromagnética. Contribuyen al diseño estético del sistema.</p>
+                <p><strong>Cómo funciona:</strong> Paneles metálicos con sellos EMI que se aseguran con tornillos o mecanismos deslizantes. Algunos incluyen ventanas acrílicas para visualizar componentes internos.</p>
               </div>
             </div>
             
@@ -516,8 +736,8 @@
                 <i class="fas fa-snowflake"></i>
               </div>
               <div class="component-info">
-                <p>Disipan calor sin usar partes móviles.</p>
-                <p><strong>Cómo funciona:</strong> Usan aletas metálicas que aumentan superficie para transferir calor al aire ambiente.</p>
+                <p>Disipan calor sin usar partes móviles mediante conducción y convección natural. Solución silenciosa y confiable para componentes de baja potencia.</p>
+                <p><strong>Cómo funciona:</strong> Disipadores de aluminio o cobre con aletas que aumentan superficie de contacto con el aire. El calor se transfiere del componente al disipador por conducción y luego al ambiente por convección natural.</p>
               </div>
             </div>
           </div>
@@ -536,30 +756,50 @@
 
     <!-- Botones de navegación fijos -->
     <div class="nav-botones-fijos">
-      <a class="boton-enlace" href="1.4.html">&#8592; Página anterior</a>
-      <a class="boton-enlace" href="1.6.html">Página siguiente &#8594;</a>
+      <a class="boton-enlace" href="1.4.html"><i class="fas fa-arrow-left"></i> Página anterior</a>
+      <a class="boton-enlace" href="1.6.html">Página siguiente <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const cards = document.querySelectorAll('.card');
+      const btnExpandir = document.getElementById('btnExpandir');
+      const btnContraer = document.getElementById('btnContraer');
       
+      // Función para expandir/contraer tarjetas individuales
       cards.forEach(card => {
         const header = card.querySelector('.card-header');
         
         header.addEventListener('click', () => {
           const isActive = card.classList.contains('active');
           
-          // Close all cards
-          cards.forEach(c => c.classList.remove('active'));
-          
-          // Open clicked card if it wasn't active
+          // Cerrar todas las tarjetas excepto la clickeada si no estaba activa
           if (!isActive) {
+            cards.forEach(c => c.classList.remove('active'));
             card.classList.add('active');
+          } else {
+            card.classList.remove('active');
           }
         });
       });
+      
+      // Botón para expandir todas las tarjetas
+      btnExpandir.addEventListener('click', () => {
+        cards.forEach(card => card.classList.add('active'));
+      });
+      
+      // Botón para contraer todas las tarjetas
+      btnContraer.addEventListener('click', () => {
+        cards.forEach(card => card.classList.remove('active'));
+      });
+      
+      // Animación de entrada escalonada
+      setTimeout(() => {
+        document.querySelectorAll('.card').forEach(card => {
+          card.style.animation = 'fadeIn 0.5s ease forwards';
+        });
+      }, 100);
     });
   </script>
 </body>
