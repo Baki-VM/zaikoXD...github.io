@@ -17,18 +17,18 @@
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: #f0f0f0;
     min-height: 100vh;
-    padding: 20px;
+    padding: 15px;
     line-height: 1.6;
   }
 
   .header {
     max-width: 1200px;
-    margin: 0 auto 40px;
-    padding: 40px 20px;
+    margin: 0 auto 30px;
+    padding: 30px 20px;
     text-align: center;
     background: linear-gradient(90deg, #fc466b, #3f5efb);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
   }
@@ -46,14 +46,15 @@
   }
 
   .header h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     margin-bottom: 15px;
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
     position: relative;
+    line-height: 1.2;
   }
 
   .header p {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto;
     position: relative;
@@ -64,14 +65,14 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    gap: 20px;
   }
 
   .memory-card {
     background: linear-gradient(135deg, #232526, #414345);
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    padding: 25px 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -79,8 +80,8 @@
   }
 
   .memory-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   }
 
   .memory-card::before {
@@ -89,7 +90,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 8px;
+    height: 6px;
     background: linear-gradient(90deg, #00f2fe, #4facfe);
   }
 
@@ -100,26 +101,26 @@
   .memory-card.comparison::before { background: linear-gradient(90deg, #7f00ff, #e100ff); }
 
   .memory-card h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     color: #00f2fe;
   }
 
   .memory-card h2 i {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .memory-content {
     display: none;
-    margin-top: 20px;
+    margin-top: 15px;
     animation: fadeIn 0.5s ease;
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
@@ -128,19 +129,20 @@
   }
 
   .memory-card p {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
   }
 
   .memory-card ul {
-    padding-left: 25px;
-    margin-bottom: 20px;
+    padding-left: 22px;
+    margin-bottom: 18px;
   }
 
   .memory-card li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     position: relative;
-    padding-left: 25px;
+    padding-left: 22px;
+    font-size: 1rem;
   }
 
   .memory-card li::before {
@@ -148,17 +150,21 @@
     position: absolute;
     left: 0;
     color: #00f2fe;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .image-container {
     width: 100%;
-    height: 250px;
-    border-radius: 12px;
+    height: 220px;
+    border-radius: 10px;
     overflow: hidden;
-    margin: 20px 0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin: 18px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     position: relative;
+    background: #2c3e50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .image-container img {
@@ -175,63 +181,64 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 18px 0;
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
   }
 
   th, td {
-    padding: 15px;
+    padding: 12px;
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
   }
 
   th {
     background: rgba(0, 242, 254, 0.3);
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .comparison-chart {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    margin: 30px 0;
+    gap: 12px;
+    margin: 25px 0;
   }
 
   .chart-item {
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 15px;
     text-align: center;
     transition: transform 0.3s ease;
   }
 
   .chart-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
   }
 
   .chart-value {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 8px 0;
     color: #00f2fe;
   }
 
   .chart-label {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .footer {
     max-width: 1200px;
-    margin: 50px auto 20px;
-    padding: 30px;
+    margin: 40px auto 20px;
+    padding: 25px;
     background: rgba(0, 0, 0, 0.3);
-    border-radius: 18px;
+    border-radius: 16px;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border-top: 2px solid rgba(0, 242, 254, 0.3);
   }
 
@@ -239,6 +246,7 @@
     color: #00f2fe;
     text-decoration: none;
     transition: color 0.3s ease;
+    white-space: nowrap;
   }
 
   .footer a:hover {
@@ -248,78 +256,226 @@
 
   .nav-botones-fijos {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 25px;
+    right: 25px;
     z-index: 9999;
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    gap: 12px;
   }
+  
   .boton-enlace {
     display: inline-block;
     background-color: #00f2fe;
     color: #222;
-    padding: 12px 28px;
+    padding: 12px 24px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
-    font-size: 1.08rem;
+    font-size: 1rem;
     box-shadow: 0 4px 12px rgba(0,242,254,0.18);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
+    transition: all 0.3s;
     border: none;
     cursor: pointer;
+    text-align: center;
+    min-width: 160px;
   }
+  
   .boton-enlace:hover {
     background-color: #3f5efb;
     color: #fff;
     transform: translateY(-3px) scale(1.04);
   }
-  @media (max-width: 600px) {
-    .nav-botones-fijos {
-        right: 10px;
-        bottom: 10px;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .boton-enlace {
-        padding: 10px 18px;
-        font-size: 1rem;
-    }
-  }
 
-  @media (max-width: 768px) {
+  /* Agrega esto a tu <style> para mostrar todos los cuadros en una sola fila y con scroll si es necesario */
+.comparison-chart.show-all {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 18px;
+  overflow-x: auto;
+  margin: 25px 0;
+  padding-bottom: 8px;
+}
+
+.comparison-chart.show-all .chart-item {
+  min-width: 160px;
+  flex: 0 0 auto;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 10px;
+  padding: 18px 12px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.comparison-chart.show-all .chart-item:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.comparison-chart.show-all .chart-label {
+  font-size: 1rem;
+}
+
+.comparison-chart.show-all .chart-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 8px 0;
+  color: #00f2fe;
+}
+
+/* Scrollbar visual */
+.comparison-chart.show-all::-webkit-scrollbar {
+  height: 8px;
+}
+.comparison-chart.show-all::-webkit-scrollbar-thumb {
+  background: #3f5efb;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .comparison-chart.show-all {
+    gap: 12px;
+    padding-bottom: 6px;
+  }
+  .comparison-chart.show-all .chart-item {
+    min-width: 130px;
+    padding: 14px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .comparison-chart.show-all {
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+  .comparison-chart.show-all .chart-item {
+    min-width: 110px;
+    padding: 10px 6px;
+    font-size: 0.92rem;
+  }
+}
+
+/* Mejoras para móviles */
+@media (max-width: 768px) {
+    .header {
+      padding: 25px 15px;
+      margin-bottom: 25px;
+    }
+    
     .header h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
     
     .header p {
       font-size: 1.1rem;
     }
     
+    .memory-card {
+      padding: 20px 15px;
+    }
+    
     .memory-card h2 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
     
     .comparison-chart {
       grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    
+    .image-container {
+      height: 200px;
+    }
+    
+    .nav-botones-fijos {
+      bottom: 15px;
+      right: 15px;
+    }
+    
+    .boton-enlace {
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      min-width: 140px;
     }
   }
 
   @media (max-width: 480px) {
+    body {
+      padding: 10px;
+    }
+    
     .header {
-      padding: 30px 15px;
+      padding: 20px 12px;
+      margin-bottom: 20px;
     }
     
     .header h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
+    }
+    
+    .header p {
+      font-size: 1rem;
     }
     
     .memory-card {
-      padding: 20px;
+      padding: 18px 12px;
+    }
+    
+    .memory-card h2 {
+      font-size: 1.3rem;
+    }
+    
+    .memory-card h2 i {
+      font-size: 1.5rem;
+    }
+    
+    .memory-card p, .memory-card li {
+      font-size: 0.95rem;
     }
     
     .comparison-chart {
       grid-template-columns: 1fr;
     }
+    
+    .image-container {
+      height: 180px;
+    }
+    
+    table {
+      font-size: 0.85rem;
+    }
+    
+    th, td {
+      padding: 10px 8px;
+      font-size: 0.85rem;
+    }
+    
+    .nav-botones-fijos {
+      bottom: 10px;
+      right: 10px;
+    }
+    
+    .boton-enlace {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      min-width: 130px;
+    }
+    
+    .footer {
+      padding: 20px 15px;
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Scroll horizontal para tablas en móviles */
+  .table-container {
+    overflow-x: auto;
+    margin: 15px 0;
+    border-radius: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  table {
+    min-width: 600px;
   }
 </style>
 </head>
@@ -339,7 +495,7 @@
         <p>La memoria RAM (Random Access Memory) es un tipo de memoria volátil que permite el acceso rápido y temporal a datos que la CPU necesita de inmediato. Es vital para ejecutar programas, aplicaciones y procesar múltiples tareas al mismo tiempo.</p>
         
         <div class="image-container">
-          <img src="https://images.unsplash.com/photo-1626204327506-0d3ba11ff380?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Módulos de memoria RAM">
+          <img src="https://hardzone.es/app/uploads-hardzone.es/2019/08/hx-keyfeatures-memory-fury-ddr4-rgb-2-lg.jpg?x=480&quality=80" alt="Módulos de memoria RAM">
         </div>
         
         <h3>Características clave:</h3>
@@ -351,44 +507,46 @@
         </ul>
         
         <h3>Evolución de la RAM:</h3>
-        <table>
-          <tr>
-            <th>Tipo</th>
-            <th>Año</th>
-            <th>Velocidad (MT/s)</th>
-            <th>Voltaje</th>
-          </tr>
-          <tr>
-            <td>DDR</td>
-            <td>2000</td>
-            <td>200-400</td>
-            <td>2.5V</td>
-          </tr>
-          <tr>
-            <td>DDR2</td>
-            <td>2003</td>
-            <td>400-1066</td>
-            <td>1.8V</td>
-          </tr>
-          <tr>
-            <td>DDR3</td>
-            <td>2007</td>
-            <td>800-2133</td>
-            <td>1.5V</td>
-          </tr>
-          <tr>
-            <td>DDR4</td>
-            <td>2014</td>
-            <td>1600-3200</td>
-            <td>1.2V</td>
-          </tr>
-          <tr>
-            <td>DDR5</td>
-            <td>2020</td>
-            <td>4800-8400</td>
-            <td>1.1V</td>
-          </tr>
-        </table>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Tipo</th>
+              <th>Año</th>
+              <th>Velocidad (MT/s)</th>
+              <th>Voltaje</th>
+            </tr>
+            <tr>
+              <td>DDR</td>
+              <td>2000</td>
+              <td>200-400</td>
+              <td>2.5V</td>
+            </tr>
+            <tr>
+              <td>DDR2</td>
+              <td>2003</td>
+              <td>400-1066</td>
+              <td>1.8V</td>
+            </tr>
+            <tr>
+              <td>DDR3</td>
+              <td>2007</td>
+              <td>800-2133</td>
+              <td>1.5V</td>
+            </tr>
+            <tr>
+              <td>DDR4</td>
+              <td>2014</td>
+              <td>1600-3200</td>
+              <td>1.2V</td>
+            </tr>
+            <tr>
+              <td>DDR5</td>
+              <td>2020</td>
+              <td>4800-8400</td>
+              <td>1.1V</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -401,7 +559,7 @@
         <p>La memoria ROM (Read-Only Memory) contiene datos permanentes que no se pierden al apagar el equipo. Es esencial para almacenar el firmware que arranca el sistema operativo y configuraciones básicas del hardware.</p>
         
         <div class="image-container">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/ROM_chip.jpg/1200px-ROM_chip.jpg" alt="Chip de memoria ROM">
+          <img src="https://www.jetcomputer.net/blog/wp-content/uploads/2024/03/2-1.jpg" alt="Procesador con memoria caché">
         </div>
         
         <h3>Tipos de ROM:</h3>
@@ -432,47 +590,49 @@
         <p>Memoria de alta velocidad integrada directamente en el procesador que almacena datos e instrucciones usados frecuentemente. Actúa como un buffer entre la CPU y la RAM, reduciendo significativamente los tiempos de acceso.</p>
         
         <div class="image-container">
-          <img src="https://www.howtogeek.com/wp-content/uploads/2021/05/cpu_with_heatspreader_removed.jpg?height=200p&trim=2,2,2,2" alt="Procesador con memoria caché">
+          <img src="https://www.aboutespanol.com/thmb/RcAjMqnrtWiH-S0wJIQebtFtbeQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Procesador-5b1bbdd11d64040037fb6533.jpg" alt="Procesador con memoria caché">
         </div>
         
         <h3>Niveles de caché:</h3>
-        <table>
-          <tr>
-            <th>Nivel</th>
-            <th>Ubicación</th>
-            <th>Velocidad</th>
-            <th>Tamaño</th>
-            <th>Acceso</th>
-          </tr>
-          <tr>
-            <td>L1</td>
-            <td>Dentro de cada núcleo</td>
-            <td>1-3 ciclos</td>
-            <td>32-128 KB</td>
-            <td>Extremadamente rápido</td>
-          </tr>
-          <tr>
-            <td>L2</td>
-            <td>Por núcleo o compartida</td>
-            <td>10-15 ciclos</td>
-            <td>256 KB - 1 MB</td>
-            <td>Muy rápido</td>
-          </tr>
-          <tr>
-            <td>L3</td>
-            <td>Compartida entre núcleos</td>
-            <td>20-40 ciclos</td>
-            <td>2-64 MB</td>
-            <td>Rápido</td>
-          </tr>
-          <tr>
-            <td>L4</td>
-            <td>Fuera del procesador</td>
-            <td>100+ ciclos</td>
-            <td>128 MB+</td>
-            <td>Moderado</td>
-          </tr>
-        </table>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Nivel</th>
+              <th>Ubicación</th>
+              <th>Velocidad</th>
+              <th>Tamaño</th>
+              <th>Acceso</th>
+            </tr>
+            <tr>
+              <td>L1</td>
+              <td>Dentro de cada núcleo</td>
+              <td>1-3 ciclos</td>
+              <td>32-128 KB</td>
+              <td>Extremadamente rápido</td>
+            </tr>
+            <tr>
+              <td>L2</td>
+              <td>Por núcleo o compartida</td>
+              <td>10-15 ciclos</td>
+              <td>256 KB - 1 MB</td>
+              <td>Muy rápido</td>
+            </tr>
+            <tr>
+              <td>L3</td>
+              <td>Compartida entre núcleos</td>
+              <td>20-40 ciclos</td>
+              <td>2-64 MB</td>
+              <td>Rápido</td>
+            </tr>
+            <tr>
+              <td>L4</td>
+              <td>Fuera del procesador</td>
+              <td>100+ ciclos</td>
+              <td>128 MB+</td>
+              <td>Moderado</td>
+            </tr>
+          </table>
+        </div>
         
         <h3>Importancia del caché:</h3>
         <p>La caché puede mejorar el rendimiento del procesador hasta en un 40%. Los procesadores modernos dedican hasta el 50% de su espacio a memoria caché para reducir la "penalización de caché" cuando los datos no están disponibles inmediatamente.</p>
@@ -488,7 +648,7 @@
         <p>La memoria flash es un tipo de almacenamiento no volátil que retiene datos sin necesidad de energía. Combina la velocidad de acceso de la RAM con la persistencia de la ROM, siendo la base de las unidades SSD, tarjetas SD y almacenamiento en dispositivos móviles.</p>
         
         <div class="image-container">
-          <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Dispositivos de memoria flash">
+          <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Dispositivos de memoria flash">
         </div>
         
         <h3>Tipos de memoria flash:</h3>
@@ -516,51 +676,53 @@
       
       <div class="memory-content">
         <h3>Comparación entre tipos de memoria:</h3>
-        <table>
-          <tr>
-            <th>Tipo</th>
-            <th>Volatilidad</th>
-            <th>Velocidad</th>
-            <th>Capacidad</th>
-            <th>Uso principal</th>
-            <th>Costo por GB</th>
-          </tr>
-          <tr>
-            <td>RAM</td>
-            <td>Volátil</td>
-            <td>Muy alta</td>
-            <td>4-256 GB</td>
-            <td>Memoria de trabajo</td>
-            <td>$5-$20</td>
-          </tr>
-          <tr>
-            <td>ROM</td>
-            <td>No volátil</td>
-            <td>Media</td>
-            <td>KB-MB</td>
-            <td>Firmware</td>
-            <td>$10-$100</td>
-          </tr>
-          <tr>
-            <td>Caché</td>
-            <td>Volátil</td>
-            <td>Extremadamente alta</td>
-            <td>KB-MB</td>
-            <td>Acelerar CPU</td>
-            <td>Muy alto</td>
-          </tr>
-          <tr>
-            <td>Flash</td>
-            <td>No volátil</td>
-            <td>Alta</td>
-            <td>GB-TB</td>
-            <td>Almacenamiento</td>
-            <td>$0.10-$1</td>
-          </tr>
-        </table>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Tipo</th>
+              <th>Volatilidad</th>
+              <th>Velocidad</th>
+              <th>Capacidad</th>
+              <th>Uso principal</th>
+              <th>Costo por GB</th>
+            </tr>
+            <tr>
+              <td>RAM</td>
+              <td>Volátil</td>
+              <td>Muy alta</td>
+              <td>4-256 GB</td>
+              <td>Memoria de trabajo</td>
+              <td>$5-$20</td>
+            </tr>
+            <tr>
+              <td>ROM</td>
+              <td>No volátil</td>
+              <td>Media</td>
+              <td>KB-MB</td>
+              <td>Firmware</td>
+              <td>$10-$100</td>
+            </tr>
+            <tr>
+              <td>Caché</td>
+              <td>Volátil</td>
+              <td>Extremadamente alta</td>
+              <td>KB-MB</td>
+              <td>Acelerar CPU</td>
+              <td>Muy alto</td>
+            </tr>
+            <tr>
+              <td>Flash</td>
+              <td>No volátil</td>
+              <td>Alta</td>
+              <td>GB-TB</td>
+              <td>Almacenamiento</td>
+              <td>$0.10-$1</td>
+            </tr>
+          </table>
+        </div>
         
         <h3>Velocidad de acceso comparativa:</h3>
-        <div class="comparison-chart">
+        <div class="comparison-chart show-all">
           <div class="chart-item">
             <div class="chart-label">Caché L1</div>
             <div class="chart-value">1 ns</div>
@@ -626,6 +788,24 @@
     // Abrir la primera tarjeta al cargar la página
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('.memory-card').classList.add('active');
+    });
+    
+    // Cerrar tarjeta al hacer clic fuera del contenido
+    document.addEventListener('click', function(event) {
+      const cards = document.querySelectorAll('.memory-card');
+      let clickedInside = false;
+      
+      cards.forEach(card => {
+        if (card.contains(event.target)) {
+          clickedInside = true;
+        }
+      });
+      
+      if (!clickedInside) {
+        cards.forEach(card => {
+          card.classList.remove('active');
+        });
+      }
     });
   </script>
 </body>
