@@ -1,88 +1,181 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carátula Interactiva - Hardware y Software</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
-      background-attachment: fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: 'Exo 2', sans-serif;
+      background: radial-gradient(circle at center, #0c1220, #1a1f3a, #0d0f1d);
       min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: #fff;
       overflow-x: hidden;
+      position: relative;
     }
 
+    /* Efecto de partículas */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0, 227, 174, 0.4);
+      box-shadow: 0 0 15px rgba(0, 227, 174, 0.6);
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      100% {
+        transform: translateY(-100vh) translateX(20px);
+      }
+    }
+
+    /* Contenedor principal */
     .container {
       position: relative;
-      background: rgba(255, 255, 255, 0.08);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 30px;
-      padding: 60px 40px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 0 60px rgba(0, 0, 0, 0.7);
-      text-align: center;
       width: 95%;
       max-width: 1200px;
-      animation: fadeIn 1.2s ease-in-out;
+      background: rgba(15, 20, 30, 0.85);
+      border-radius: 25px;
+      padding: 50px;
+      box-shadow: 0 0 60px rgba(0, 198, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 227, 174, 0.3);
+      z-index: 10;
+      overflow: hidden;
+      animation: fadeIn 1.2s ease-out;
     }
 
+    .container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 227, 174, 0.1) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Encabezado */
     .header {
       display: flex;
+      flex-direction: column;
       align-items: center;
+      margin-bottom: 50px;
+      position: relative;
+      padding-bottom: 30px;
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 3px;
+      background: linear-gradient(to right, transparent, #00e3ae, transparent);
+      border-radius: 50%;
+    }
+
+    .logo-row {
+      display: flex;
       justify-content: center;
-      gap: 30px;
-      margin-bottom: 40px;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 30px;
       flex-wrap: wrap;
     }
 
-    .header img {
-      width: 200px;
-      height: 260px;
+    .logo-img {
+      width: 180px;
+      height: 240px;
       border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-      transition: transform 0.3s ease-in-out;
+      object-fit: cover;
+      box-shadow: 0 0 25px rgba(0, 227, 174, 0.5);
+      transition: all 0.4s ease;
+      border: 2px solid rgba(0, 227, 174, 0.4);
     }
 
-    .header img:hover {
-      transform: scale(1.08);
+    .logo-img:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 0 40px rgba(0, 227, 174, 0.8);
     }
 
-    .header h1 {
+    .title-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .title {
+      font-family: 'Orbitron', sans-serif;
       font-size: 3.5rem;
       color: #00e3ae;
-      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
-      margin: 0;
-      white-space: nowrap;
+      text-shadow: 0 0 20px rgba(0, 227, 174, 0.8);
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+      background: linear-gradient(to right, #00e3ae, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
     }
 
-    .container h2 {
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(to right, #00e3ae, #0072ff);
+      border-radius: 10px;
+    }
+
+    .subtitle {
       font-size: 1.6rem;
-      margin-bottom: 50px;
       color: #dff9fb;
       font-weight: 300;
+      margin-top: 20px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
+    /* Botones principales */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
-      margin-top: 20px;
+      margin: 50px 0;
     }
 
     .menu-btn {
-      background: linear-gradient(145deg, #e44d26, #f16529);
+      background: linear-gradient(145deg, rgba(15, 25, 40, 0.9), rgba(25, 35, 60, 0.9));
       color: white;
       border: none;
       border-radius: 20px;
@@ -96,83 +189,213 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transform: perspective(600px) rotateX(0deg);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: 1px solid rgba(0, 227, 174, 0.3);
+    }
+
+    .menu-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, rgba(0, 198, 255, 0.15), rgba(0, 114, 255, 0.15));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
     }
 
     .menu-btn:hover {
-      background: linear-gradient(145deg, #00c6ff, #0072ff);
-      transform: translateY(-8px) scale(1.05) rotateX(4deg);
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 198, 255, 0.5);
+    }
+
+    .menu-btn:hover::before {
+      opacity: 1;
     }
 
     .menu-btn i {
-      font-size: 2.6rem;
-      margin-bottom: 15px;
-      transition: transform 0.3s ease-in-out;
+      font-size: 3.2rem;
+      margin-bottom: 20px;
+      transition: all 0.4s ease;
+      text-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+      background: linear-gradient(to right, #00e3ae, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .menu-btn:hover i {
-      transform: scale(1.2) rotate(12deg);
+      transform: scale(1.2) rotate(8deg);
+      text-shadow: 0 0 25px rgba(0, 198, 255, 0.9);
     }
 
-    /* Botón personalizado abajo izquierda (más pequeño) */
-    .link-btn {
+    .btn-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Efecto de luz en los botones */
+    .menu-btn::after {
+      content: "";
       position: absolute;
-      left: 30px;
-      bottom: 80px;
-      background: linear-gradient(145deg, #0066cc, #3399ff);
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 15px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    .link-btn:hover {
-      background: linear-gradient(145deg, #3399ff, #0066cc);
-      transform: translateY(-3px);
-    }
-
-    /* Espacio para nombres y grupo */
-    .info-group {
-      margin: 60px auto 0;
-      padding: 20px;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
+      z-index: -1;
+    }
+
+    .menu-btn:hover::after {
+      top: -20%;
+      left: -20%;
+    }
+
+    /* Integrantes */
+    .info-group {
+      margin: 50px auto 0;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      max-width: 800px;
+      gap: 20px;
+      max-width: 1000px;
       text-align: left;
       color: #e0e0e0;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      position: relative;
+      border: 1px solid rgba(0, 227, 174, 0.2);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .info-group::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(0, 227, 174, 0.05), transparent);
+      z-index: -1;
     }
 
     .info-group div {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .info-group .group-title {
+    .info-group div:hover {
+      background: rgba(0, 227, 174, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 227, 174, 0.3);
+    }
+
+    .info-group div::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #00e3ae, #0072ff);
+    }
+
+    .group-title {
       grid-column: span 3;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
+      color: #00e3ae;
+      text-shadow: 0 0 15px rgba(0, 227, 174, 0.6);
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(0, 227, 174, 0.3);
+      position: relative;
+    }
+
+    .group-title::after {
+      content: "✧";
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
       color: #00e3ae;
     }
 
-    footer {
-      margin-top: 60px;
-      font-size: 1rem;
-      color: #ddd;
+    /* Botón manual */
+    .manual-btn {
+      display: block;
+      margin: 40px auto 0;
+      background: linear-gradient(145deg, rgba(0, 102, 204, 0.9), rgba(51, 153, 255, 0.9));
+      color: #fff;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s ease;
+      text-align: center;
+      max-width: 500px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
     }
 
+    .manual-btn:hover {
+      background: linear-gradient(145deg, rgba(51, 153, 255, 0.9), rgba(0, 102, 204, 0.9));
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(51, 153, 255, 0.6);
+    }
+
+    .manual-btn i {
+      margin-right: 10px;
+    }
+
+    /* Pie de página */
+    footer {
+      margin-top: 60px;
+      font-size: 1.1rem;
+      color: #ddd;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      text-align: center;
+    }
+
+    footer::before {
+      content: "UPDS";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f2027;
+      padding: 0 20px;
+      font-weight: bold;
+      color: #00e3ae;
+      text-shadow: 0 0 10px rgba(0, 227, 174, 0.6);
+    }
+
+    /* Animaciones */
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
       }
       to {
         opacity: 1;
@@ -180,86 +403,156 @@
       }
     }
 
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 227, 174, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 20px rgba(0, 227, 174, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 227, 174, 0);
+      }
+    }
+
+    .pulse {
+      animation: pulse 3s infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .container {
+        padding: 40px;
+      }
+      
+      .logo-img {
+        width: 160px;
+        height: 210px;
+      }
+      
+      .title {
+        font-size: 3rem;
+      }
+      
+      .subtitle {
+        font-size: 1.4rem;
+      }
+    }
+
     @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
+      .container {
+        padding: 30px 20px;
+      }
+      
+      .logo-row {
         gap: 20px;
       }
-      .header img {
-        width: 60%;
-        height: auto;
+      
+      .logo-img {
+        width: 130px;
+        height: 180px;
       }
-      .header h1 {
-        font-size: 2.2rem;
-        white-space: normal;
+      
+      .title {
+        font-size: 2.3rem;
       }
-      .container h2 {
+      
+      .subtitle {
         font-size: 1.2rem;
       }
+      
       .menu-btn {
-        padding: 25px 10px;
+        padding: 30px 15px;
         font-size: 1.1rem;
       }
+      
       .menu-btn i {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
       }
-      .link-btn {
-        left: 20px;
-        bottom: 60px;
-        padding: 6px 12px;
-        font-size: 0.75rem;
-      }
+      
       .info-group {
         grid-template-columns: 1fr;
       }
-      .info-group .group-title {
+      
+      .group-title {
         grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-img {
+        width: 100px;
+        height: 140px;
+      }
+      
+      .title {
+        font-size: 2rem;
+      }
+      
+      .menu-grid {
+        gap: 20px;
+      }
+      
+      .menu-btn {
+        padding: 25px 10px;
+      }
+      
+      .manual-btn {
+        padding: 14px 20px;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Efecto de partículas -->
+  <div class="particles" id="particles"></div>
+  
   <div class="container">
     <div class="header">
-      <img src="imagenes/LOGO UPDS.jpg" alt="Logo UPDS Izquierdo" />
-      <h1>Trabajo de Investigación</h1>
-      <img src="imagenes/logo mio.jpg" alt="Logo UPDS Derecho" />
+      <div class="logo-row">
+        <img src="https://images.unsplash.com/photo-1561089489-f13d5e730d72?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Logo UPDS" class="logo-img">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Logo UPDS" class="logo-img">
+      </div>
+      
+      <div class="title-container">
+        <h1 class="title">Trabajo de Investigación</h1>
+        <h2 class="subtitle">Hardware y Software — Ingeniería en Sistemas</h2>
+      </div>
     </div>
-
-    <h2>Hardware y Software — Ingeniería en Sistemas</h2>
 
     <div class="menu-grid">
-      <a class="menu-btn" href="HARDWARE I .html">
+      <a class="menu-btn pulse" href="HARDWARE I .html">
         <i class="fas fa-microchip"></i>
-        Hardware 1
+        <span class="btn-text">Hardware 1</span>
       </a>
-      <a class="menu-btn" href="HARDWARE 2.html">
+      <a class="menu-btn pulse" href="HARDWARE 2.html">
         <i class="fas fa-memory"></i>
-        Hardware 2
+        <span class="btn-text">Hardware 2</span>
       </a>
-      <a class="menu-btn" href="software 1.html">
+      <a class="menu-btn pulse" href="software 1.html">
         <i class="fas fa-laptop-code"></i>
-        Software 1
+        <span class="btn-text">Software 1</span>
       </a>
-      <a class="menu-btn" href="software 2.html">
+      <a class="menu-btn pulse" href="software 2.html">
         <i class="fas fa-cogs"></i>
-        Software 2
+        <span class="btn-text">Software 2</span>
       </a>
     </div>
 
-    <!-- Nuevo espacio para nombres y grupo -->
+    <!-- Integrantes -->
     <div class="info-group">
       <div class="group-title">Integrantes y Grupo</div>
-      <div>1.Vaca Martinez Reinaldo</div>
-      <div>2.Endara Alavi Heidi Adriana</div>
-      <div>3.Vargas Melgar Luis Rodrigo</div>
-      <div>4.Flores Quispe Gabriel</div>
-      <div>5.Angel Yeikon Menacho Cabezas</div>
-      <div>6.Alvarez Aponte Mario</div>
+      <div>1. Vaca Martinez Reinaldo</div>
+      <div>2. Endara Alavi Heidi Adriana</div>
+      <div>3. Vargas Melgar Luis Rodrigo</div>
+      <div>4. Flores Quispe Gabriel</div>
+      <div>5. Angel Yeikon Menacho Cabezas</div>
+      <div>6. Alvarez Aponte Mario</div>
     </div>
 
-    <!-- Botón-enlace abajo a la izquierda -->
-    <a href="#" class="link-btn">
+    <!-- Botón manual -->
+    <a href="#" class="manual-btn">
       <i class="fas fa-book"></i> Manual de Mantenimiento de Hardware y Software
     </a>
 
@@ -267,5 +560,65 @@
       UPDS Santa Cruz — Reinaldo — 2025
     </footer>
   </div>
+
+  <script>
+    // Crear efecto de partículas
+    document.addEventListener('DOMContentLoaded', function() {
+      const particlesContainer = document.getElementById('particles');
+      const particlesCount = 50;
+      
+      for (let i = 0; i < particlesCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Tamaño aleatorio
+        const size = Math.random() * 20 + 5;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Posición inicial aleatoria
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Retraso de animación aleatorio
+        particle.style.animationDelay = `${Math.random() * 15}s`;
+        
+        // Duración de animación aleatoria
+        const duration = Math.random() * 20 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Opacidad aleatoria
+        particle.style.opacity = Math.random() * 0.5 + 0.3;
+        
+        particlesContainer.appendChild(particle);
+      }
+      
+      // Agregar efecto hover a los botones principales
+      const buttons = document.querySelectorAll('.menu-btn');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+          button.style.transform = 'translateY(-10px) scale(1.05)';
+        });
+        
+        button.addEventListener('mouseleave', () => {
+          button.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+      
+      // Agregar efecto hover a los nombres de los integrantes
+      const names = document.querySelectorAll('.info-group div:not(.group-title)');
+      names.forEach(name => {
+        name.addEventListener('mouseenter', () => {
+          name.style.transform = 'translateY(-5px)';
+          name.style.boxShadow = '0 5px 15px rgba(0, 227, 174, 0.3)';
+        });
+        
+        name.addEventListener('mouseleave', () => {
+          name.style.transform = '';
+          name.style.boxShadow = '';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
