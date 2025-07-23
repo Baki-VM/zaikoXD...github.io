@@ -7,393 +7,329 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --primary: #3498db;
-      --primary-dark: #2980b9;
-      --secondary: #2c3e50;
-      --accent: #e74c3c;
-      --light: #ecf0f1;
-      --dark: #2c3e50;
-      --success: #2ecc71;
-      --warning: #f39c12;
-      --gray: #95a5a6;
-      --gradient-start: #1a2980;
-      --gradient-end: #26d0ce;
+      --primary: #4f8cff;
+      --primary-dark: #2c3e50;
+      --secondary: #f5f6fa;
+      --accent: #ff6e7f;
+      --gradient: linear-gradient(135deg, #4f8cff 0%, #ff6e7f 100%);
+      --card-shadow: 0 8px 32px rgba(79,140,255,0.12);
+      --radius: 18px;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1a2980, #26d0ce);
-      color: #333;
-      line-height: 1.6;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: var(--secondary);
+      color: #222;
+      margin: 0;
       min-height: 100vh;
-      padding-bottom: 60px;
     }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* Header */
     header {
-      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-      color: white;
-      padding: 30px 0;
+      background: var(--gradient);
+      color: #fff;
+      padding: 40px 0 30px 0;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-      margin-bottom: 30px;
+      box-shadow: 0 4px 24px rgba(79,140,255,0.10);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      margin-bottom: 32px;
     }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.1) 80%, transparent 80%, transparent);
-      background-size: 50px 50px;
-      transform: rotate(30deg);
-      z-index: 0;
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 2;
-    }
-
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px #2c3e5077;
     }
-
     .subtitle {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto 20px;
-      opacity: 0.9;
+      font-size: 1.15rem;
+      opacity: 0.92;
+      margin-bottom: 12px;
     }
-
-    /* Navigation */
     nav {
+      margin-top: 18px;
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 20px;
     }
-
     .nav-btn {
-      position: relative;
-      padding: 12px 24px;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      font-weight: 700;
+      background: #fff;
+      color: var(--primary);
+      font-weight: 600;
       border-radius: 50px;
+      padding: 10px 22px;
       text-decoration: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 8px #4f8cff22;
+      border: 1px solid #e0e7ef;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
-      gap: 8px;
-      z-index: 2;
+      gap: 7px;
     }
-
-    .nav-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    .nav-btn:hover, .nav-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 16px #4f8cff33;
+      border-color: var(--primary);
+      transform: translateY(-2px) scale(1.04);
     }
-
-    .nav-btn.active {
-      background: rgba(255, 255, 255, 0.4);
-      border-color: rgba(255, 255, 255, 0.4);
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 18px;
     }
-
-    /* Main Content */
     main {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+      margin-bottom: 40px;
     }
-
     .section-card {
-      background: white;
-      border-radius: 15px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
+      transition: box-shadow 0.3s, transform 0.3s;
+      min-width: 0;
+      border: 1.5px solid #e0e7ef;
       position: relative;
     }
-
     .section-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 12px 40px #4f8cff33;
+      transform: translateY(-6px) scale(1.01);
+      border-color: var(--primary);
     }
-
     .section-header {
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      color: white;
-      padding: 18px 20px;
+      background: linear-gradient(90deg, #4f8cff 60%, #ff6e7f 100%);
+      color: #fff;
+      padding: 18px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      box-shadow: 0 2px 8px #4f8cff22;
     }
-
     .section-title {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 10px;
+      letter-spacing: 0.5px;
     }
-
     .section-title i {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
-
     .toggle-btn {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255,255,255,0.18);
       border: none;
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      color: white;
-      cursor: pointer;
+      color: #fff;
+      cursor: not-allowed;
+      opacity: 0.5;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
     }
-
-    .toggle-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: rotate(90deg);
-    }
-
     .section-content {
-      padding: 0 20px;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.5s ease;
+      padding: 22px 22px 18px 22px;
+      transition: none;
+      max-height: none;
+      overflow: visible;
+      background: #f8fbff;
     }
-
     .section-card.active .section-content {
-      padding: 20px;
-      max-height: 2000px;
+      padding: 22px 22px 18px 22px;
+      max-height: none;
     }
-
-    .section-card.active .toggle-btn {
-      transform: rotate(180deg);
-    }
-
     .section-card h2 {
       color: var(--primary-dark);
       margin-bottom: 15px;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       display: flex;
       align-items: center;
       gap: 10px;
+      font-weight: 700;
     }
-
     p {
       margin-bottom: 15px;
-      color: #555;
+      color: #444;
       line-height: 1.7;
+      font-size: 1.07rem;
     }
-
     ul, ol {
-      padding-left: 20px;
-      margin-bottom: 20px;
+      padding-left: 22px;
+      margin-bottom: 18px;
     }
-
     li {
       margin-bottom: 10px;
       position: relative;
-      padding-left: 25px;
+      padding-left: 18px;
+      font-size: 1.05rem;
     }
-
     li::before {
       content: "•";
-      color: var(--primary);
-      font-size: 1.5rem;
+      color: var(--accent);
+      font-size: 1.3rem;
       position: absolute;
       left: 0;
-      top: -5px;
+      top: 0;
     }
-
-    /* Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    th {
-      background-color: var(--primary);
-      color: white;
-      padding: 12px;
-      text-align: left;
-      font-weight: 600;
-    }
-
-    td {
-      padding: 12px;
-      border-bottom: 1px solid #eee;
-    }
-
-    tr:nth-child(even) td {
-      background-color: #f9f9f9;
-    }
-
-    /* Image */
     .img-container {
-      margin: 20px 0;
-      border-radius: 10px;
+      margin: 18px 0;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 16px #4f8cff22;
+      background: #fff;
     }
-
     .img-container img {
       width: 100%;
       display: block;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s;
     }
-
     .img-container:hover img {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
-
     .img-caption {
       text-align: center;
       font-style: italic;
-      color: var(--gray);
-      margin-top: 8px;
-      font-size: 0.9rem;
+      color: #888;
+      margin-top: 7px;
+      font-size: 0.96rem;
     }
-
-    /* Buttons */
     .btn {
       display: inline-block;
-      background: linear-gradient(to right, var(--primary), var(--primary-dark));
-      color: white;
-      padding: 12px 25px;
+      background: var(--gradient);
+      color: #fff;
+      padding: 11px 24px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
       border: none;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-      margin-top: 15px;
+      box-shadow: 0 4px 16px #4f8cff33;
+      margin-top: 12px;
+      margin-right: 8px;
       position: relative;
       overflow: hidden;
+      font-size: 1.05rem;
     }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.5s ease;
-    }
-
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+      background: linear-gradient(135deg, #ff6e7f 0%, #4f8cff 100%);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 8px 24px #ff6e7f33;
     }
-
-    .btn:hover::before {
-      transform: translateX(100%);
-    }
-
     .external-link {
-      background: linear-gradient(to right, var(--warning), #e67e22);
+      background: linear-gradient(90deg, #ff6e7f 60%, #4f8cff 100%);
     }
-
     .external-link:hover {
-      box-shadow: 0 8px 20px rgba(243, 156, 18, 0.6);
+      background: linear-gradient(90deg, #4f8cff 60%, #ff6e7f 100%);
     }
-
-    /* Footer */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 8px #4f8cff22;
+      margin: 18px 0;
+      font-size: 1.05rem;
+      overflow: hidden;
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid #e0e7ef;
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e0e7ef;
+    }
+    tr:nth-child(even) td {
+      background: #f5f6fa;
+    }
     footer {
-      background: var(--secondary);
-      color: white;
+      background: var(--primary-dark);
+      color: #fff;
       text-align: center;
-      padding: 25px 20px;
-      margin-top: 50px;
-      position: relative;
+      padding: 28px 18px;
+      margin-top: 40px;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      box-shadow: 0 -4px 24px #4f8cff22;
+      font-size: 1.08rem;
     }
-
-    footer::before {
-      content: "";
-      position: absolute;
-      top: -20px;
-      left: 0;
-      right: 0;
-      height: 20px;
-      background: linear-gradient(to bottom, transparent, var(--secondary));
+    @media (max-width: 900px) {
+      .container {
+        padding: 0 6px;
+      }
+      main {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .section-card {
+        margin-bottom: 15px;
+      }
+      table {
+        font-size: 0.98rem;
+      }
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
-      
       .subtitle {
-        font-size: 1rem;
+        font-size: 0.98rem;
       }
-      
       nav {
         flex-direction: column;
         align-items: center;
       }
-      
       .nav-btn {
         width: 100%;
         text-align: center;
         justify-content: center;
       }
-      
       main {
         grid-template-columns: 1fr;
       }
-      
       .section-card {
-        margin-bottom: 15px;
+        margin-bottom: 12px;
       }
-      
       .section-header {
-        padding: 15px;
+        padding: 12px;
       }
-      
       .section-title {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
-      
       .btn {
         width: 100%;
         text-align: center;
       }
+      table {
+        font-size: 0.95rem;
+      }
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      margin: 18px 0;
+      padding-bottom: 4px;
+    }
+    .table-scroll table {
+      min-width: 400px;
+    }
+    .table-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+    .table-scroll::-webkit-scrollbar-thumb {
+      background: #4f8cff;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -462,18 +398,20 @@
         <div class="section-content">
           <h2><i class="fas fa-microchip"></i> Generaciones de Computadoras</h2>
           
-          <table>
-            <thead>
-              <tr><th>Generación</th><th>Tecnología</th><th>Ejemplo</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>1ª</td><td>Válvulas de vacío</td><td>ENIAC</td></tr>
-              <tr><td>2ª</td><td>Transistores</td><td>IBM 1401</td></tr>
-              <tr><td>3ª</td><td>Circuitos integrados</td><td>IBM 360</td></tr>
-              <tr><td>4ª</td><td>Microprocesadores</td><td>Intel 4004</td></tr>
-              <tr><td>5ª</td><td>IA y paralelismo</td><td>Sistemas Expertos</td></tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Generación</th><th>Tecnología</th><th>Ejemplo</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1ª</td><td>Válvulas de vacío</td><td>ENIAC</td></tr>
+                <tr><td>2ª</td><td>Transistores</td><td>IBM 1401</td></tr>
+                <tr><td>3ª</td><td>Circuitos integrados</td><td>IBM 360</td></tr>
+                <tr><td>4ª</td><td>Microprocesadores</td><td>Intel 4004</td></tr>
+                <tr><td>5ª</td><td>IA y paralelismo</td><td>Sistemas Expertos</td></tr>
+              </tbody>
+            </table>
+          </div>
           
           <a class="btn external-link" href="https://es.wikipedia.org/wiki/Generaciones_de_las_computadoras" target="_blank">
             <i class="fas fa-external-link-alt"></i> Ver más detalles
@@ -530,26 +468,40 @@
         </div>
         <div class="section-content">
           <h2><i class="fas fa-calculator"></i> Unidades para medir almacenamiento, procesamiento y transmisión</h2>
-          
           <ul>
             <li><strong>Bit y Byte</strong>: unidades básicas de información</li>
             <li><strong>KB, MB, GB, TB</strong>: unidades de almacenamiento</li>
             <li><strong>Hertz (Hz)</strong>: velocidad de procesamiento</li>
             <li><strong>bps (bits por segundo)</strong>: velocidad de transmisión</li>
           </ul>
-          
-          <table>
-            <thead>
-              <tr><th>Unidad</th><th>Descripción</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Bit</td><td>Unidad mínima de información</td></tr>
-              <tr><td>Byte</td><td>8 bits</td></tr>
-              <tr><td>KB</td><td>1024 Bytes</td></tr>
-              <tr><td>GHz</td><td>Mil millones de ciclos por segundo</td></tr>
-            </tbody>
-          </table>
-          
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Unidad</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Bit</td>
+                  <td>Unidad mínima de información</td>
+                </tr>
+                <tr>
+                  <td>Byte</td>
+                  <td>8 bits</td>
+                </tr>
+                <tr>
+                  <td>KB</td>
+                  <td>1024 Bytes</td>
+                </tr>
+                <tr>
+                  <td>GHz</td>
+                  <td>Mil millones de ciclos por segundo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <a class="btn" href="1.4.html">
             <i class="fas fa-search"></i> INVESTIGACIÓN
           </a>
@@ -635,7 +587,7 @@
           
           <p>Los componentes de Entrada permiten introducir datos (teclado, mouse), mientras que los de Salida muestran resultados (monitor, impresora).</p>
           
-          <table>
+          <table class="table-scroll">
             <thead>
               <tr><th>Tipo</th><th>Ejemplos</th></tr>
             </thead>
@@ -746,22 +698,18 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const toggleButtons = document.querySelectorAll('.toggle-btn');
-      
-      toggleButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const card = this.closest('.section-card');
-          card.classList.toggle('active');
-        });
-      });
-      
-      // Activar la primera sección por defecto
-      const firstCard = document.querySelector('.section-card');
-      if (firstCard) {
-        firstCard.classList.add('active');
-      }
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.section-card');
+    // Todas las secciones abiertas al cargar y no se cierran nunca
+    cards.forEach(card => card.classList.add('active'));
+    // Opcional: deshabilita el toggle para que no se puedan cerrar
+    const toggleButtons = document.querySelectorAll('.toggle-btn');
+    toggleButtons.forEach(button => {
+      button.disabled = true;
+      button.style.opacity = "0.5";
+      button.style.cursor = "default";
     });
+  });
   </script>
 </body>
 </html>
