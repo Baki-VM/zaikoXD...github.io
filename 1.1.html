@@ -2,304 +2,104 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Historia y Evolución de la Computadora - Investigación Universitaria</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0c3c91;
-      --secondary: #174ea6;
-      --accent: #0a2a6f;
-      --light-bg: #e9f1fc;
-      --content-bg: #f9fbff;
-      --header-bg: #d0e4fc;
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --light-bg: #f8f9fa;
+      --content-bg: #ffffff;
+      --header-bg: #ecf0f1;
+      --timeline-color: #3498db;
+      --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--light-bg);
-      color: #222;
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 30px 50px 30px;
-      line-height: 1.8;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      transition: background 0.3s ease;
-    }
-    h1, h2 {
-      color: var(--primary);
-      margin-bottom: 0.6em;
-      text-align: center;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    }
-    h3 {
-      color: var(--secondary);
-      cursor: pointer;
-      margin: 20px 0 10px 0;
-      padding: 16px 22px;
-      background: var(--header-bg);
-      border-radius: 10px;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 1.18rem;
-      transition: background 0.35s ease, box-shadow 0.3s ease;
-      border-left: 6px solid var(--primary);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-    }
-    h3:hover {
-      background: #a7c5f8;
-      box-shadow: 0 4px 12px rgba(12,60,145,0.3);
-    }
-    .content {
-      padding: 22px 30px;
-      background: var(--content-bg);
-      border-radius: 0 0 10px 10px;
-      margin-bottom: 22px;
-      display: none;
-      font-size: 1.06rem;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
-      color: #2b2b2b;
-      line-height: 1.9;
-      transition: opacity 0.4s ease;
-    }
-    .active .content {
-      display: block;
-      animation: fadeInContent 0.45s ease forwards;
-    }
-    @keyframes fadeInContent {
-      from {opacity: 0; transform: translateY(-8px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    .accordion-icon {
-      font-size: 1.35rem;
-      transition: transform 0.35s ease;
-      color: var(--primary);
-    }
-    .active h3 .accordion-icon {
-      transform: rotate(90deg);
-      color: var(--accent);
-    }
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    blockquote {
-      font-style: italic;
-      border-left: 5px solid var(--primary);
-      margin: 20px 0;
-      padding: 22px;
-      color: #444;
-      background: #e5f0ff;
-      border-radius: 8px;
-      box-shadow: 1px 1px 5px rgba(12,60,145,0.15);
+      font-family: 'Roboto Slab', serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+      color: #333;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 20px;
       position: relative;
+      overflow-x: hidden;
     }
-    blockquote:before {
-      content: "“";
-      font-family: Georgia, serif;
-      font-size: 4rem;
-      position: absolute;
-      left: 10px;
-      top: -20px;
-      color: rgba(12, 60, 145, 0.1);
-    }
-    footer {
-      text-align: center;
-      margin-top: 52px;
-      font-size: 0.96rem;
-      color: #555;
-      font-style: normal;
-      letter-spacing: 0.02em;
-      border-top: 1px solid #d0e4fc;
-      padding-top: 20px;
-    }
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin: 15px 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      display: block;
-    }
-    table {
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      border-collapse: collapse;
-      margin: 25px 0;
-      font-size: 1rem;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(52, 152, 219, 0.1) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
+      pointer-events: none;
     }
-    table thead tr {
-      background: var(--primary);
-      color: #fff;
-      text-align: left;
-      font-weight: 700;
-    }
-    table th, table td {
-      padding: 14px 18px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    table tbody tr {
-      background: var(--content-bg);
-      transition: background 0.3s ease;
-    }
-    table tbody tr:last-child {
-      border-bottom: none;
-    }
-    table tbody tr:hover {
-      background: var(--header-bg);
-    }
-    .chart-container {
-      margin: 30px auto;
-      max-width: 700px;
-    }
-    .timeline-container {
-      position: relative;
-      margin: 40px 0;
-      padding: 20px 0;
-    }
-    .timeline {
-      position: relative;
-      max-width: 1000px;
+
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
     }
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background-color: var(--primary);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-      border-radius: 3px;
-    }
-    .timeline-item {
-      padding: 10px 40px;
-      position: relative;
-      width: 50%;
-      box-sizing: border-box;
-    }
-    .timeline-item:nth-child(odd) {
-      left: 0;
-    }
-    .timeline-item:nth-child(even) {
-      left: 50%;
-    }
-    .timeline-content {
-      padding: 20px;
-      background-color: white;
-      position: relative;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .timeline-content h4 {
-      margin-top: 0;
-      color: var(--primary);
-    }
-    .timeline-item:nth-child(odd) .timeline-content::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      right: -10px;
-      background-color: white;
-      top: 20px;
-      border-radius: 50%;
-      z-index: 1;
-      border: 4px solid var(--primary);
-    }
-    .timeline-item:nth-child(even) .timeline-content::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      left: -10px;
-      background-color: white;
-      top: 20px;
-      border-radius: 50%;
-      z-index: 1;
-      border: 4px solid var(--primary);
-    }
-    .theory-section {
-      background: #f0f7ff;
-      padding: 25px;
-      border-radius: 10px;
-      margin: 25px 0;
-      border-left: 4px solid var(--primary);
-    }
-    .theory-section h4 {
-      margin-top: 0;
-      color: var(--primary);
-    }
-    .highlight {
-      background: #d0e4fc;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-    .reference {
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 5px;
-      font-style: italic;
-    }
-    .key-concept {
-      background: #e5f0ff;
-      padding: 15px;
-      border-radius: 8px;
-      margin: 15px 0;
-      border-left: 3px solid var(--primary);
-    }
-    .concept-title {
-      font-weight: bold;
-      color: var(--primary);
-      margin-bottom: 5px;
-    }
-    .timeline-year {
-      font-weight: bold;
-      color: var(--primary);
-      margin-bottom: 5px;
-    }
-    .timeline-event {
-      margin-left: 10px;
-    }
-    /* --- FIN DE ESTILOS PRINCIPALES --- */
 
-    /* Botones de navegación */
-    .nav-buttons {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      gap: 15px;
-      z-index: 9999;
+    /* Encabezado */
+    header {
+      text-align: center;
+      margin: 30px 0 50px;
+      padding: 0 20px;
+      position: relative;
     }
-    .nav-buttons button {
-      background-color: #0c3c91;
+
+    .header-content {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+      border-radius: 20px;
+      padding: 40px 30px;
       color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(12,60,145,0.3);
-      transition: background-color 0.3s ease;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
     }
-    .nav-buttons button:hover {
-      background-color: #09306c;
+
+    .header-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,30 100,0 L100,100 Q50,70 0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+      background-size: cover;
     }
-    
-    /* Estadísticas de la computación */
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+      font-weight: 300;
+      position: relative;
+    }
+
     .stats-container {
       display: flex;
       flex-wrap: wrap;
@@ -307,73 +107,404 @@
       gap: 20px;
       margin: 30px 0;
     }
+
     .stat-box {
-      background: linear-gradient(135deg, #0c3c91, #174ea6);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: white;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 15px;
       width: 180px;
       text-align: center;
-      box-shadow: 0 5px 15px rgba(12,60,145,0.2);
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
+
+    .stat-box:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
     .stat-value {
       font-size: 2.2rem;
       font-weight: bold;
       margin: 10px 0;
+      font-family: 'Montserrat', sans-serif;
+      color: #f1c40f;
     }
+
     .stat-label {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
-    
-    /* Generaciones de computadoras */
-    .generations {
+
+    /* Acordeón */
+    .accordion-section {
+      max-width: 1000px;
+      margin: 0 auto 50px;
+    }
+
+    .accordion-item {
+      margin-bottom: 25px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+
+    .accordion-item:hover {
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      cursor: pointer;
+      margin: 0;
+      padding: 22px 30px;
+      user-select: none;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .accordion-icon {
+      font-size: 1.4rem;
+      transition: var(--transition);
+    }
+
+    .active h3 .accordion-icon {
+      transform: rotate(90deg);
+      color: #f1c40f;
+    }
+
+    .content {
+      padding: 30px;
+      background: var(--content-bg);
+      display: none;
+      font-size: 1.08rem;
+      color: #444;
+      line-height: 1.9;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .active .content {
+      display: block;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    /* Imágenes y bloques */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
       margin: 30px 0;
     }
+
+    .image-card {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .image-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .image-caption {
+      padding: 15px;
+      background: var(--content-bg);
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 5px solid var(--secondary);
+      margin: 25px 0;
+      padding: 25px;
+      color: #444;
+      background: #f8f9fa;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      position: relative;
+      font-size: 1.15rem;
+    }
+
+    blockquote:before {
+      content: "“";
+      font-family: Georgia, serif;
+      font-size: 5rem;
+      position: absolute;
+      left: 10px;
+      top: -20px;
+      color: rgba(52, 152, 219, 0.1);
+      line-height: 1;
+    }
+
+    .key-concept {
+      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 30px 0;
+      border-left: 5px solid var(--accent);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .concept-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Línea de tiempo */
+    .timeline-container {
+      position: relative;
+      margin: 40px 0;
+      padding: 20px 0;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      background: linear-gradient(to bottom, var(--secondary), var(--accent));
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -4px;
+      border-radius: 4px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-content {
+      padding: 25px;
+      background: white;
+      position: relative;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .timeline-content h4 {
+      margin-top: 0;
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -12px;
+      background-color: white;
+      top: 25px;
+      border-radius: 50%;
+      z-index: 1;
+      border: 6px solid var(--secondary);
+      box-shadow: 0 0 0 3px white;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      left: -12px;
+      background-color: white;
+      top: 25px;
+      border-radius: 50%;
+      z-index: 1;
+      border: 6px solid var(--accent);
+      box-shadow: 0 0 0 3px white;
+    }
+
+    .timeline-year {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      color: var(--secondary);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-event {
+      margin-left: 10px;
+      line-height: 1.8;
+    }
+
+    /* Generaciones */
+    .generations {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
     .generation-card {
       background: white;
-      border-radius: 10px;
-      padding: 20px;
-      width: 200px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      border-top: 4px solid var(--primary);
-      transition: transform 0.3s ease;
+      border-radius: 18px;
+      padding: 30px 25px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border-top: 6px solid var(--secondary);
     }
+
     .generation-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
+
     .gen-title {
+      font-family: 'Montserrat', sans-serif;
       font-weight: bold;
       color: var(--primary);
       text-align: center;
-      margin-bottom: 10px;
-    }
-    .gen-period {
-      color: #666;
-      font-size: 0.9rem;
-      text-align: center;
       margin-bottom: 15px;
+      font-size: 1.3rem;
     }
+
+    .gen-period {
+      color: var(--secondary);
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
     .gen-features {
-      font-size: 0.9rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.8;
     }
-    
+
+    .gen-features p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    /* Pie de página */
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 1rem;
+      color: #555;
+      padding: 30px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      font-weight: 500;
+    }
+
+    /* Botones de navegación */
+    .nav-botones-fijos {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 9999;
+      display: flex;
+      gap: 16px;
+    }
+
+    .boton-enlace {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 14px 30px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      gap: 10px;
+    }
+
+    .boton-enlace:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      background: linear-gradient(to right, #233140, #2980b9);
+      color: #fff;
+    }
+
     /* Responsive */
-    @media (max-width: 768px) {
-      body {
-        padding: 0 15px 30px 15px;
-        margin: 15px auto;
-      }
+    @media (max-width: 992px) {
       h1 {
-        font-size: 1.8rem;
+        font-size: 2.3rem;
       }
-      h3 {
-        padding: 12px 16px;
-        font-size: 1.1rem;
+      .subtitle {
+        font-size: 1.2rem;
       }
       .timeline::after {
         left: 30px;
@@ -388,44 +519,32 @@
       }
       .timeline-item:nth-child(odd) .timeline-content::after,
       .timeline-item:nth-child(even) .timeline-content::after {
-        left: -10px;
+        left: -12px;
         right: auto;
-      }
-      .stat-box, .generation-card {
-        width: 100%;
-        max-width: 300px;
       }
     }
 
-    /* Estilos adicionales para los botones de navegación fijos */
-    .nav-botones-fijos {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 9999;
-      display: flex;
-      gap: 16px;
-    }
-    .boton-enlace {
-      display: inline-block;
-      background-color: #0c3c91;
-      color: #fff;
-      padding: 12px 28px;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 1.08rem;
-      box-shadow: 0 4px 12px rgba(12,60,145,0.18);
-      transition: background 0.3s, color 0.3s, transform 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-    .boton-enlace:hover {
-      background-color: #174ea6;
-      color: #fff;
-      transform: translateY(-3px) scale(1.04);
-    }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .header-content {
+        padding: 30px 20px;
+      }
+      h3 {
+        padding: 18px 25px;
+        font-size: 1.1rem;
+      }
+      .content {
+        padding: 25px 20px;
+      }
+      .stat-box {
+        width: 100%;
+        max-width: 300px;
+      }
       .nav-botones-fijos {
         right: 10px;
         bottom: 10px;
@@ -433,311 +552,324 @@
         gap: 10px;
       }
       .boton-enlace {
-        padding: 10px 18px;
-        font-size: 0.9rem;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .subtitle {
+        font-size: 1.1rem;
       }
     }
   </style>
 </head>
 <body>
-
-  <h1>Historia y Evolución de la Computadora - Investigación Universitaria</h1>
-  <p>Este estudio académico detalla el fascinante recorrido que ha llevado a la humanidad desde simples herramientas de cálculo hasta los complejos sistemas inteligentes que hoy dominan nuestra realidad. Explora cada era con profundidad histórica y análisis conceptual, entendiendo cómo y por qué se dieron los avances tecnológicos fundamentales.</p>
-
-  <div class="stats-container">
-    <div class="stat-box">
-      <div class="stat-value">3000 a.C.</div>
-      <div class="stat-label">Primer ábaco</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">1837</div>
-      <div class="stat-label">Máquina Analítica</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">1946</div>
-      <div class="stat-label">Primera computadora electrónica</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-value">1971</div>
-      <div class="stat-label">Primer microprocesador</div>
-    </div>
-  </div>
-
-  <section class="accordion-section">
-
-    <article class="accordion-item">
-      <h3>📜 Orígenes Antiguos y Conceptos Fundamentales <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
-      <div class="content">
-        <p>Desde la antigüedad, el ser humano ha buscado facilitar los cálculos y la gestión de información. El <strong>ábaco</strong>, inventado en Mesopotamia alrededor del <em>3000 a.C.</em>, fue el primer instrumento para realizar operaciones aritméticas simples con mayor rapidez que el conteo manual.</p>
-
-        <blockquote>"El ábaco representa el primer intento sistemático de la humanidad para automatizar el proceso de cálculo aritmético" (Ifrah, 2001).</blockquote>
-
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Boulier1.JPG" alt="jfufy" />
-        <p>En el siglo XVII, <strong>Blaise Pascal</strong> desarrolló la <em>Pascalina</em> (1642), la primera calculadora mecánica capaz de sumar y restar, un paso decisivo que marcó el inicio de la automatización. Este dispositivo utilizaba ruedas dentadas y engranajes para realizar cálculos, representando un avance significativo en la ingeniería mecánica aplicada a la computación.</p>
-
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmzxJmOPwOgHv0fTOjnx2mdFvt5dFlIlzKww&s" alt="Pascalina" />
-
-        <p>Joseph Marie Jacquard, en 1801, inventó el telar programable usando <strong>tarjetas perforadas</strong>, un sistema que influiría directamente en la idea de programación y control secuencial de máquinas. Este invento demostró cómo las instrucciones podían codificarse físicamente y ejecutarse de manera automática, estableciendo un precedente crucial para la programación computacional.</p>
-
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW5Vh7jo6WI1dhefs-k79HGkrG2-8zvyCipg&s" alt="Telar de Jacquard" />
-      </div>
-    </article>
-
-    <article class="accordion-item">
-      <h3>💡 La Máquina Analítica y el Nacimiento de la Computación Moderna <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
-      <div class="content">
-        <p>En 1837, <strong>Charles Babbage</strong> diseñó la <em>Máquina Analítica</em>, un dispositivo mecánico con todos los elementos que definen a una computadora moderna: unidad de entrada, memoria, procesamiento y salida. Este invento conceptual fue revolucionario pero nunca llegó a construirse completamente debido a limitaciones técnicas y financieras de la época.</p>
-
-        <blockquote>"La Máquina Analítica de Babbage contenía todos los elementos lógicos de una computadora digital moderna: una unidad de entrada, memoria, unidad de procesamiento central y dispositivos de salida" (Swade, 2001).</blockquote>
-
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQPQzRtBq2rh7cmpiTW5bmVG71hMw8pCh7XA&s" alt="Máquina Analítica de Babbage" />
-
-        <p>Su colaboradora, <strong>Ada Lovelace</strong>, escribió el primer algoritmo destinado a ser procesado por una máquina, anticipando la idea de la programación informática. Lovelace comprendió que la máquina podía manipular símbolos de acuerdo con reglas, no solo números, prefigurando conceptos modernos de computación universal.</p>
-
-        <blockquote>"Ada Lovelace es considerada la primera programadora de la historia, no solo por escribir algoritmos sino por su visión profética sobre las capacidades de las máquinas computacionales."</blockquote>
-
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/250px-Ada_Lovelace_portrait.jpg" alt="Ada Lovelace" />
-
-        <div class="key-concept">
-          <div class="concept-title">Contribución conceptual de Babbage y Lovelace:</div>
-          <ul>
-            <li>Arquitectura de computadora con componentes separados (entrada, procesamiento, memoria, salida)</li>
-            <li>Concepto de programa almacenado (aunque no implementado físicamente)</li>
-            <li>Capacidad de ejecución condicional (bifurcaciones)</li>
-            <li>Reutilización de código mediante bucles</li>
-          </ul>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1><i class="fas fa-laptop-code"></i> Historia y Evolución de la Computadora</h1>
+        <p class="subtitle">Un recorrido académico desde los primeros dispositivos de cálculo hasta la inteligencia artificial</p>
+        
+        <div class="stats-container">
+          <div class="stat-box">
+            <div class="stat-value">3000 a.C.</div>
+            <div class="stat-label">Primer ábaco</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">1837</div>
+            <div class="stat-label">Máquina Analítica</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">1946</div>
+            <div class="stat-label">Primera computadora electrónica</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">1971</div>
+            <div class="stat-label">Primer microprocesador</div>
+          </div>
         </div>
       </div>
-    </article>
+    </header>
 
-    <article class="accordion-item">
-      <h3>🧠 Fundamentos Teóricos: La Máquina de Turing <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
-      <div class="content">
-        <p>En 1936, <strong>Alan Turing</strong> propuso la <em>Máquina de Turing</em>, un modelo abstracto capaz de simular cualquier algoritmo computacional. Este concepto sentó las bases para la informática teórica y la construcción de computadoras digitales, estableciendo los límites de lo que es computable.</p>
+    <section class="accordion-section">
+      <article class="accordion-item">
+        <h3><i class="fas fa-scroll"></i> Orígenes Antiguos y Conceptos Fundamentales <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+        <div class="content">
+          <p>Desde la antigüedad, el ser humano ha buscado facilitar los cálculos y la gestión de información. El <strong>ábaco</strong>, inventado en Mesopotamia alrededor del <em>3000 a.C.</em>, fue el primer instrumento para realizar operaciones aritméticas simples con mayor rapidez que el conteo manual.</p>
 
-        <blockquote>"La Máquina de Turing define los límites de lo que una máquina puede computar, estableciendo los fundamentos teóricos de la computabilidad y la complejidad algorítmica."</blockquote>
+          <blockquote>"El ábaco representa el primer intento sistemático de la humanidad para automatizar el proceso de cálculo aritmético" (Ifrah, 2001).</blockquote>
 
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGvX0aKS6Wviouf5pqdmd03zWJbs19lb7h5w&s" alt="Máquina de Turing" />
+          <div class="image-grid">
+            <div class="image-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Boulier1.JPG" alt="Ábaco antiguo">
+              <div class="image-caption">Ábaco - Primer dispositivo de cálculo</div>
+            </div>
+            <div class="image-card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmzxJmOPwOgHv0fTOjnx2mdFvt5dFlIlzKww&s" alt="Pascalina">
+              <div class="image-caption">Pascalina - Primera calculadora mecánica</div>
+            </div>
+            <div class="image-card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW5Vh7jo6WI1dhefs-k79HGkrG2-8zvyCipg&s" alt="Telar de Jacquard">
+              <div class="image-caption">Telar de Jacquard - Primer dispositivo programable</div>
+            </div>
+          </div>
 
-        <div class="key-concept">
-          <div class="concept-title">Principios fundamentales de la Máquina de Turing:</div>
-          <ul>
-            <li>Modelo abstracto que simula cualquier algoritmo mediante una cinta infinita y un cabezal lector/escritor</li>
-            <li>Definición formal de "computabilidad" - lo que puede ser calculado por un algoritmo</li>
-            <li>Prueba de que existen problemas indecidibles (como el problema de la parada)</li>
-            <li>Base teórica para el desarrollo de las computadoras digitales programables</li>
-          </ul>
+          <p>Joseph Marie Jacquard, en 1801, inventó el telar programable usando <strong>tarjetas perforadas</strong>, un sistema que influiría directamente en la idea de programación y control secuencial de máquinas. Este invento demostró cómo las instrucciones podían codificarse físicamente y ejecutarse de manera automática, estableciendo un precedente crucial para la programación computacional.</p>
         </div>
+      </article>
 
-        <p>Durante la Segunda Guerra Mundial, Turing aplicó estos principios teóricos en la máquina Bombe, usada para descifrar el código Enigma, demostrando la aplicabilidad práctica de sus conceptos teóricos en contextos críticos.</p>
-      </div>
-    </article>
+      <article class="accordion-item">
+        <h3><i class="fas fa-cogs"></i> La Máquina Analítica y el Nacimiento de la Computación Moderna <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+        <div class="content">
+          <p>En 1837, <strong>Charles Babbage</strong> diseñó la <em>Máquina Analítica</em>, un dispositivo mecánico con todos los elementos que definen a una computadora moderna: unidad de entrada, memoria, procesamiento y salida. Este invento conceptual fue revolucionario pero nunca llegó a construirse completamente debido a limitaciones técnicas y financieras de la época.</p>
 
-    <article class="accordion-item">
-      <h3>⚙️ Primeras Computadoras Electrónicas: La Era de las Válvulas <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
-      <div class="content">
-        <p>Durante la Segunda Guerra Mundial y la posguerra, aparecieron computadoras como la <strong>Z3</strong> (1941) de Konrad Zuse, la primera computadora programable y completamente automática, y la <strong>ENIAC</strong> (1946), la primera computadora electrónica de propósito general. Estas máquinas usaban válvulas de vacío que consumían mucha energía, generaban calor considerable y eran propensas a fallos.</p>
+          <blockquote>"La Máquina Analítica de Babbage contenía todos los elementos lógicos de una computadora digital moderna: una unidad de entrada, memoria, unidad de procesamiento central y dispositivos de salida" (Swade, 2001).</blockquote>
 
-        <p>La <strong>Harvard Mark I</strong> (1944) fue una computadora electromecánica de gran escala desarrollada por Howard Aiken con apoyo de IBM. Medía 15 metros de largo y 2.4 metros de alto, contenía 760,000 componentes y 800 kilómetros de cable. Podía realizar cálculos complejos pero era extremadamente lenta comparada con soluciones electrónicas.</p>
+          <div class="image-grid">
+            <div class="image-card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQPQzRtBq2rh7cmpiTW5bmVG71hMw8pCh7XA&s" alt="Máquina Analítica de Babbage">
+              <div class="image-caption">Diseño de la Máquina Analítica</div>
+            </div>
+            <div class="image-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/250px-Ada_Lovelace_portrait.jpg" alt="Ada Lovelace">
+              <div class="image-caption">Ada Lovelace - Primera programadora</div>
+            </div>
+          </div>
 
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9VyPEKK2LrC50Zx9M8KvUICL4l3t6xSY4fQ&s" alt="ENIAC" />
+          <p>Su colaboradora, <strong>Ada Lovelace</strong>, escribió el primer algoritmo destinado a ser procesado por una máquina, anticipando la idea de la programación informática. Lovelace comprendió que la máquina podía manipular símbolos de acuerdo con reglas, no solo números, prefigurando conceptos modernos de computación universal.</p>
 
-        <p>En 1949, la <strong>EDVAC</strong> (Electronic Discrete Variable Automatic Computer) incorporó el concepto de programa almacenado, propuesto por John von Neumann. Poseía físicamente casi 6000 válvulas termoiónicas y 12,000 diodos, representando un avance significativo en arquitectura computacional.</p>
-
-        <div class="key-concept">
-          <div class="concept-title">Características de la primera generación (1940-1956):</div>
-          <ul>
-            <li>Uso de válvulas de vacío como componentes electrónicos principales</li>
-            <li>Tamaño enorme (ocupaban habitaciones enteras)</li>
-            <li>Alto consumo energético y generación de calor</li>
-            <li>Programación en lenguaje máquina mediante cableado físico</li>
-            <li>Limitada capacidad de almacenamiento (tambores magnéticos)</li>
-          </ul>
+          <div class="key-concept">
+            <div class="concept-title"><i class="fas fa-lightbulb"></i> Contribución conceptual de Babbage y Lovelace:</div>
+            <ul>
+              <li>Arquitectura de computadora con componentes separados (entrada, procesamiento, memoria, salida)</li>
+              <li>Concepto de programa almacenado (aunque no implementado físicamente)</li>
+              <li>Capacidad de ejecución condicional (bifurcaciones)</li>
+              <li>Reutilización de código mediante bucles</li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="accordion-item">
-      <h3>📅 Cronología Completa de la Historia de la Computación <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
-      <div class="content">
-        <div class="timeline-container">
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1642</div>
-                <div class="timeline-event">Pascalina (Blaise Pascal): Primera calculadora mecánica para sumar y restar.</div>
-              </div>
+      <article class="accordion-item">
+        <h3><i class="fas fa-brain"></i> Fundamentos Teóricos: La Máquina de Turing <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+        <div class="content">
+          <p>En 1936, <strong>Alan Turing</strong> propuso la <em>Máquina de Turing</em>, un modelo abstracto capaz de simular cualquier algoritmo computacional. Este concepto sentó las bases para la informática teórica y la construcción de computadoras digitales, estableciendo los límites de lo que es computable.</p>
+
+          <blockquote>"La Máquina de Turing define los límites de lo que una máquina puede computar, estableciendo los fundamentos teóricos de la computabilidad y la complejidad algorítmica."</blockquote>
+
+          <div class="image-grid">
+            <div class="image-card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGvX0aKS6Wviouf5pqdmd03zWJbs19lb7h5w&s" alt="Máquina de Turing">
+              <div class="image-caption">Modelo conceptual de la Máquina de Turing</div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1801</div>
-                <div class="timeline-event">Telar de Jacquard: Usó tarjetas perforadas para automatizar tejidos. Base de la programación.</div>
-              </div>
+            <div class="image-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg" alt="Alan Turing">
+              <div class="image-caption">Alan Turing - Padre de la computación teórica</div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1837</div>
-                <div class="timeline-event">Máquina Analítica (Charles Babbage): Diseñada como la primera computadora programable mecánica. Ada Lovelace escribió algoritmos para ella.</div>
-              </div>
+          </div>
+
+          <div class="key-concept">
+            <div class="concept-title"><i class="fas fa-cogs"></i> Principios fundamentales de la Máquina de Turing:</div>
+            <ul>
+              <li>Modelo abstracto que simula cualquier algoritmo mediante una cinta infinita y un cabezal lector/escritor</li>
+              <li>Definición formal de "computabilidad" - lo que puede ser calculado por un algoritmo</li>
+              <li>Prueba de que existen problemas indecidibles (como el problema de la parada)</li>
+              <li>Base teórica para el desarrollo de las computadoras digitales programables</li>
+            </ul>
+          </div>
+
+          <p>Durante la Segunda Guerra Mundial, Turing aplicó estos principios teóricos en la máquina Bombe, usada para descifrar el código Enigma, demostrando la aplicabilidad práctica de sus conceptos teóricos en contextos críticos.</p>
+        </div>
+      </article>
+
+      <article class="accordion-item">
+        <h3><i class="fas fa-microchip"></i> Primeras Computadoras Electrónicas: La Era de las Válvulas <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+        <div class="content">
+          <p>Durante la Segunda Guerra Mundial y la posguerra, aparecieron computadoras como la <strong>Z3</strong> (1941) de Konrad Zuse, la primera computadora programable y completamente automática, y la <strong>ENIAC</strong> (1946), la primera computadora electrónica de propósito general. Estas máquinas usaban válvulas de vacío que consumían mucha energía, generaban calor considerable y eran propensas a fallos.</p>
+
+          <p>La <strong>Harvard Mark I</strong> (1944) fue una computadora electromecánica de gran escala desarrollada por Howard Aiken con apoyo de IBM. Medía 15 metros de largo y 2.4 metros de alto, contenía 760,000 componentes y 800 kilómetros de cable. Podía realizar cálculos complejos pero era extremadamente lenta comparada con soluciones electrónicas.</p>
+
+          <div class="image-grid">
+            <div class="image-card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9VyPEKK2LrC50Zx9M8KvUICL4l3t6xSY4fQ&s" alt="ENIAC">
+              <div class="image-caption">ENIAC - Primera computadora electrónica</div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1936</div>
-                <div class="timeline-event">Máquina de Turing (Alan Turing): Fundamento teórico de la computación moderna.</div>
-              </div>
+            <div class="image-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Harvard_Mark_I_Computer_-_Left_Segment.jpg/800px-Harvard_Mark_I_Computer_-_Left_Segment.jpg" alt="Harvard Mark I">
+              <div class="image-caption">Harvard Mark I - Computadora electromecánica</div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1941</div>
-                <div class="timeline-event">Z3 (Konrad Zuse): Primera computadora programable y completamente automática.</div>
+          </div>
+
+          <p>En 1949, la <strong>EDVAC</strong> (Electronic Discrete Variable Automatic Computer) incorporó el concepto de programa almacenado, propuesto por John von Neumann. Poseía físicamente casi 6000 válvulas termoiónicas y 12,000 diodos, representando un avance significativo en arquitectura computacional.</p>
+
+          <div class="key-concept">
+            <div class="concept-title"><i class="fas fa-history"></i> Características de la primera generación (1940-1956):</div>
+            <ul>
+              <li>Uso de válvulas de vacío como componentes electrónicos principales</li>
+              <li>Tamaño enorme (ocupaban habitaciones enteras)</li>
+              <li>Alto consumo energético y generación de calor</li>
+              <li>Programación en lenguaje máquina mediante cableado físico</li>
+              <li>Limitada capacidad de almacenamiento (tambores magnéticos)</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion-item">
+        <h3><i class="fas fa-timeline"></i> Cronología Completa de la Historia de la Computación <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+        <div class="content">
+          <div class="timeline-container">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1642</div>
+                  <div class="timeline-event">Pascalina (Blaise Pascal): Primera calculadora mecánica para sumar y restar.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1944</div>
-                <div class="timeline-event">Harvard Mark I: Computadora electromecánica de gran escala.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1801</div>
+                  <div class="timeline-event">Telar de Jacquard: Usó tarjetas perforadas para automatizar tejidos. Base de la programación.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1946</div>
-                <div class="timeline-event">ENIAC: Primera computadora electrónica de propósito general. Usaba válvulas al vacío.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1837</div>
+                  <div class="timeline-event">Máquina Analítica (Charles Babbage): Diseñada como la primera computadora programable mecánica. Ada Lovelace escribió algoritmos para ella.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1949</div>
-                <div class="timeline-event">EDVAC: Poseía físicamente casi 6000 válvulas termoiónicas y 12,000 diodos.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1936</div>
+                  <div class="timeline-event">Máquina de Turing (Alan Turing): Fundamento teórico de la computación moderna.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1951</div>
-                <div class="timeline-event">UNIVAC I: Primera computadora comercial.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1941</div>
+                  <div class="timeline-event">Z3 (Konrad Zuse): Primera computadora programable y completamente automática.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1958</div>
-                <div class="timeline-event">Circuito integrado (Jack Kilby y Robert Noyce): Revolucionó la electrónica reduciendo tamaño y costos.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1946</div>
+                  <div class="timeline-event">ENIAC: Primera computadora electrónica de propósito general. Usaba válvulas al vacío.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1969</div>
-                <div class="timeline-event">ARPANET: Antecedente de Internet.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1949</div>
+                  <div class="timeline-event">EDVAC: Poseía físicamente casi 6000 válvulas termoiónicas y 12,000 diodos.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1971</div>
-                <div class="timeline-event">Intel 4004: Primer microprocesador. Inicio de la era de las microcomputadoras.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1971</div>
+                  <div class="timeline-event">Intel 4004: Primer microprocesador. Inicio de la era de las microcomputadoras.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1975</div>
-                <div class="timeline-event">Altair 8800: Popularizó la computación personal. Inspiró a Gates y Allen a crear Microsoft.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1975</div>
+                  <div class="timeline-event">Altair 8800: Popularizó la computación personal. Inspiró a Gates y Allen a crear Microsoft.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1981</div>
-                <div class="timeline-event">IBM PC: Estándar de las computadoras personales modernas.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1981</div>
+                  <div class="timeline-event">IBM PC: Estándar de las computadoras personales modernas.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1984</div>
-                <div class="timeline-event">Apple Macintosh: Introdujo la interfaz gráfica al mercado masivo.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 1990</div>
+                  <div class="timeline-event">World Wide Web: Tim Berners-Lee desarrolla la WWW en el CERN.</div>
+                </div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">1990</div>
-                <div class="timeline-event">World Wide Web: Tim Berners-Lee desarrolla la WWW en el CERN.</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">2007</div>
-                <div class="timeline-event">iPhone: Revoluciona la computación móvil y los smartphones.</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">2020</div>
-                <div class="timeline-event">Computación cuántica: Primeras aplicaciones prácticas de IBM y Google.</div>
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year"><i class="fas fa-calendar"></i> 2020</div>
+                  <div class="timeline-event">Computación cuántica: Primeras aplicaciones prácticas de IBM y Google.</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+      
+      <article class="accordion-item">
+        <h3><i class="fas fa-layer-group"></i> Evolución de las Generaciones de Computadoras <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
+        <div class="content">
+          <div class="generations">
+            <div class="generation-card">
+              <div class="gen-title"><i class="fas fa-1"></i> 1ª Generación</div>
+              <div class="gen-period">1940-1956</div>
+              <div class="gen-features">
+                <p><i class="fas fa-microchip"></i> Válvulas de vacío</p>
+                <p><i class="fas fa-tachometer-alt"></i> 5,000 operaciones/s</p>
+                <p><i class="fas fa-building"></i> Tamaño enorme</p>
+                <p><i class="fas fa-bolt"></i> Alto consumo energético</p>
+              </div>
+            </div>
+            <div class="generation-card">
+              <div class="gen-title"><i class="fas fa-2"></i> 2ª Generación</div>
+              <div class="gen-period">1956-1963</div>
+              <div class="gen-features">
+                <p><i class="fas fa-microchip"></i> Transistores</p>
+                <p><i class="fas fa-tachometer-alt"></i> 200,000 operaciones/s</p>
+                <p><i class="fas fa-language"></i> Lenguajes de programación</p>
+                <p><i class="fas fa-database"></i> Memoria de núcleos magnéticos</p>
+              </div>
+            </div>
+            <div class="generation-card">
+              <div class="gen-title"><i class="fas fa-3"></i> 3ª Generación</div>
+              <div class="gen-period">1964-1971</div>
+              <div class="gen-features">
+                <p><i class="fas fa-microchip"></i> Circuitos integrados</p>
+                <p><i class="fas fa-desktop"></i> Minicomputadoras</p>
+                <p><i class="fas fa-keyboard"></i> Teclado y monitor</p>
+                <p><i class="fas fa-microphone"></i> Sistemas operativos</p>
+              </div>
+            </div>
+            <div class="generation-card">
+              <div class="gen-title"><i class="fas fa-4"></i> 4ª Generación</div>
+              <div class="gen-period">1971-2010</div>
+              <div class="gen-features">
+                <p><i class="fas fa-microchip"></i> Microprocesadores</p>
+                <p><i class="fas fa-laptop"></i> Computadoras personales</p>
+                <p><i class="fas fa-globe"></i> Internet</p>
+                <p><i class="fas fa-mobile-alt"></i> Dispositivos móviles</p>
+              </div>
+            </div>
+            <div class="generation-card">
+              <div class="gen-title"><i class="fas fa-5"></i> 5ª Generación</div>
+              <div class="gen-period">2010-Presente</div>
+              <div class="gen-features">
+                <p><i class="fas fa-brain"></i> Inteligencia Artificial</p>
+                <p><i class="fas fa-cloud"></i> Computación en la nube</p>
+                <p><i class="fas fa-atom"></i> Computación cuántica</p>
+                <p><i class="fas fa-robot"></i> Aprendizaje automático</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
     
-    <article class="accordion-item">
-      <h3>🚀 Evolución de las Generaciones de Computadoras <span class="accordion-icon"><i class="fas fa-chevron-right"></i></span></h3>
-      <div class="content">
-        <div class="generations">
-          <div class="generation-card">
-            <div class="gen-title">1ª Generación</div>
-            <div class="gen-period">1940-1956</div>
-            <div class="gen-features">
-              <p><i class="fas fa-microchip"></i> Válvulas de vacío</p>
-              <p><i class="fas fa-tachometer-alt"></i> 5,000 operaciones/s</p>
-              <p><i class="fas fa-building"></i> Tamaño enorme</p>
-            </div>
-          </div>
-          <div class="generation-card">
-            <div class="gen-title">2ª Generación</div>
-            <div class="gen-period">1956-1963</div>
-            <div class="gen-features">
-              <p><i class="fas fa-microchip"></i> Transistores</p>
-              <p><i class="fas fa-tachometer-alt"></i> 200,000 operaciones/s</p>
-              <p><i class="fas fa-language"></i> Lenguajes de programación</p>
-            </div>
-          </div>
-          <div class="generation-card">
-            <div class="gen-title">3ª Generación</div>
-            <div class="gen-period">1964-1971</div>
-            <div class="gen-features">
-              <p><i class="fas fa-microchip"></i> Circuitos integrados</p>
-              <p><i class="fas fa-desktop"></i> Minicomputadoras</p>
-              <p><i class="fas fa-keyboard"></i> Teclado y monitor</p>
-            </div>
-          </div>
-          <div class="generation-card">
-            <div class="gen-title">4ª Generación</div>
-            <div class="gen-period">1971-2010</div>
-            <div class="gen-features">
-              <p><i class="fas fa-microchip"></i> Microprocesadores</p>
-              <p><i class="fas fa-laptop"></i> Computadoras personales</p>
-              <p><i class="fas fa-globe"></i> Internet</p>
-            </div>
-          </div>
-          <div class="generation-card">
-            <div class="gen-title">5ª Generación</div>
-            <div class="gen-period">2010-Presente</div>
-            <div class="gen-features">
-              <p><i class="fas fa-brain"></i> Inteligencia Artificial</p>
-              <p><i class="fas fa-cloud"></i> Computación en la nube</p>
-              <p><i class="fas fa-atom"></i> Computación cuántica</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  </section>
-  
-  <footer>
-    <p>Investigación  </p>
-    <p>© 2025 - Todos los derechos reservados</p>
-  </footer>
+    <footer>
+      <p>Investigación Académica - Historia de la Computación</p>
+      <p>© 2025 - Todos los derechos reservados</p>
+    </footer>
+  </div>
 
   <!-- Botones de navegación fijos -->
   <div class="nav-botones-fijos">
-    <a class="boton-enlace" href="HARDWARE I .html">&#8592; menu </a>
-    <a class="boton-enlace" href="1.2.html">Página siguiente &#8594;</a>
+    <a class="boton-enlace" href="HARDWARE I .html"><i class="fas fa-arrow-left"></i> Menú</a>
+    <a class="boton-enlace" href="1.2.html">Página siguiente <i class="fas fa-arrow-right"></i></a>
   </div>
 
   <script>
@@ -758,24 +890,14 @@
         // Abrir el elemento clicado si no estaba activo
         if (!isActive) {
           item.classList.add('active');
+          
+          // Desplazar suavemente al elemento
+          setTimeout(() => {
+            item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 350);
         }
       });
     });
-    
-    // Funciones de navegación
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-    
-    function scrollToBottom() {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-      });
-    }
     
     // Abrir el primer elemento por defecto
     if (accordionItems.length > 0) {
