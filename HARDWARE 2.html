@@ -2,206 +2,488 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hardware 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hardware 2 - Guía Visual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #f0f0f0;
+        /* Variables y reset */
+        :root {
+            --primary: #00c6ff;
+            --secondary: #0072ff;
+            --accent: #00ffcc;
+            --dark-bg: #0f2027;
+            --darker-bg: #0a161c;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --text-light: #f0f0f0;
+            --text-gray: #aaa;
+            --transition: all 0.3s ease;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg), #203a43, #2c5364);
+            color: var(--text-light);
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Encabezado */
         header {
-            background: #00c6ff;
-            padding: 30px 20px 20px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 25px 20px 15px;
             text-align: center;
-            border-bottom: 4px solid #0072ff;
+            border-bottom: 4px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
         }
+        
         header h1 {
-            margin: 0;
-            font-size: 2.5em;
+            margin: 0 0 15px;
+            font-size: 2.8rem;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
         }
+        
         .boton-header-container {
-            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
         }
+        
         .boton-header {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #00ffcc, #00c6ff);
-            color: #000;
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: rgba(0, 0, 0, 0.25);
+            color: white;
             text-decoration: none;
             font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-            transition: all 0.3s ease;
-            margin: 0 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
             cursor: pointer;
             user-select: none;
+            backdrop-filter: blur(5px);
         }
+        
         .boton-header:hover {
-            background: linear-gradient(135deg, #00e6b8, #0072ff);
-            color: #fff;
-            transform: scale(1.05);
+            background: rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
         }
+        
+        .boton-header i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        /* Contenedor principal */
         .container {
-            padding: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
         }
-        section {
-            background-color: rgba(255, 255, 255, 0.08);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 5px solid #00c6ff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            transition: transform 0.3s, background-color 0.3s;
+        
+        /* Tarjetas de sección */
+        .section-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.6s ease forwards;
         }
-        section:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.12);
+        
+        .section-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
-        h2 {
-            color: #00ffcc;
+        
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(0, 198, 255, 0.3);
         }
-        ul, ol {
-            margin-left: 20px;
+        
+        .section-card h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
         }
+        
+        .section-card h2 i {
+            margin-right: 12px;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-card p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .section-card ul, .section-card ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .section-card li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .section-card li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: -15px;
+            font-size: 1.5rem;
+        }
+        
+        .section-card ol li::before {
+            content: "";
+        }
+        
         .boton-enlace {
-            display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #00ffcc, #00c6ff);
-            color: #000;
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
             text-decoration: none;
             font-weight: bold;
             border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-            transition: all 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+            transition: var(--transition);
             text-align: center;
             margin-top: 10px;
             cursor: pointer;
             user-select: none;
         }
+        
         .boton-enlace:hover {
-            background: linear-gradient(135deg, #00e6b8, #0072ff);
-            color: #fff;
-            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.5);
         }
+        
+        .boton-enlace i {
+            margin-left: 8px;
+        }
+        
+        /* Pie de página */
         footer {
             text-align: center;
-            padding: 20px;
-            background: #111;
-            color: #aaa;
+            padding: 30px 20px;
+            background: var(--darker-bg);
+            color: var(--text-gray);
+            margin-top: 50px;
+            border-top: 1px solid rgba(0, 198, 255, 0.2);
+        }
+        
+        footer p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            header h1 {
+                font-size: 2.3rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .boton-header {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Efecto de partículas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Animación de carga */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-circle {
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-
+    <!-- Animación de carga -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+    </div>
+    
+    <!-- Partículas de fondo -->
+    <div class="particles" id="particles"></div>
+    
     <header>
-        <h1>Hardware 2</h1>
+        <h1><i class="fas fa-microchip"></i> Hardware 2</h1>
         <div class="boton-header-container">
-            <a class="boton-header" href="index.html">INICIO</a>
-            <a class="boton-header" href="HARDWARE I .html">Hardware 1</a>
-            <a class="boton-header" href="HARDWARE 2.html">Hardware 2</a>
-            <a class="boton-header" href="software 1.html">Software 1</a>
-            <a class="boton-header" href="software 2.html">Software 2</a>
+            <a class="boton-header" href="index.html"><i class="fas fa-home"></i> INICIO</a>
+            <a class="boton-header" href="HARDWARE I .html"><i class="fas fa-desktop"></i> Hardware 1</a>
+            <a class="boton-header" href="HARDWARE 2.html"><i class="fas fa-server"></i> Hardware 2</a>
+            <a class="boton-header" href="software 1.html"><i class="fas fa-code"></i> Software 1</a>
+            <a class="boton-header" href="software 2.html"><i class="fas fa-database"></i> Software 2</a>
         </div>
     </header>
 
     <div class="container">
-        <section>
-            <h2>1.10 El CPU</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-brain"></i> 1.10 El CPU</h2>
             <p>El CPU es el cerebro del sistema, procesando datos y controlando todas las instrucciones esenciales para la operación del equipo.</p>
-            <a class="boton-enlace" href="1.10.html">Leer más sobre CPU</a>
-        </section>
+            <a class="boton-enlace" href="1.10.html">Leer más <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>1.11 Tarjeta Madre y sus Componentes</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-microchip"></i> 1.11 Tarjeta Madre y sus Componentes</h2>
             <p>Conecta y permite la comunicación entre todos los componentes:</p>
             <ul>
-                <li><strong>RAM:</strong> Memoria de trabajo temporal.</li>
-                <li><strong>ROM:</strong> Memoria permanente para el BIOS.</li>
-                <li>Chipsets, puertos y ranuras de expansión.</li>
+                <li><strong>RAM:</strong> Memoria de trabajo temporal</li>
+                <li><strong>ROM:</strong> Memoria permanente para el BIOS</li>
+                <li>Chipsets, puertos y ranuras de expansión</li>
             </ul>
-            <a class="boton-enlace" href="1.11.html">Más sobre Tarjeta Madre</a>
-        </section>
+            <a class="boton-enlace" href="1.11.html">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>1.12 El Disco Duro y su Lógica</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-hdd"></i> 1.12 El Disco Duro y su Lógica</h2>
             <p>Almacena datos en platos giratorios con cabezales que leen y escriben usando un sistema de pistas y sectores.</p>
-            <a class="boton-enlace" href="1.12.html">Detalles del Disco Duro</a>
-        </section>
+            <a class="boton-enlace" href="1.12.html">Ver detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>1.13 El Microprocesador</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-microscope"></i> 1.13 El Microprocesador</h2>
             <p>Microchip con millones de transistores que ejecutan operaciones matemáticas y lógicas fundamentales.</p>
-            <a class="boton-enlace" href="1.13.html">Ver Microprocesador</a>
-        </section>
+            <a class="boton-enlace" href="1.13.html">Explorar <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>1.14 Tipos de Memoria</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-memory"></i> 1.14 Tipos de Memoria</h2>
             <ul>
-                <li>RAM</li>
-                <li>ROM</li>
-                <li>Cache</li>
-                <li>Flash</li>
+                <li>RAM - Memoria de acceso aleatorio</li>
+                <li>ROM - Memoria de solo lectura</li>
+                <li>Cache - Memoria ultrarrápida</li>
+                <li>Flash - Memoria no volátil</li>
             </ul>
-            <a class="boton-enlace" href="1.14.html">Explorar Tipos de Memoria</a>
-        </section>
+            <a class="boton-enlace" href="1.14.html">Ver tipos <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>1.15 Herramientas de Mantenimiento</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-tools"></i> 1.15 Herramientas de Mantenimiento</h2>
             <ul>
-                <li>Destornilladores</li>
-                <li>Pasta térmica</li>
-                <li>Multímetro</li>
-                <li>Aire comprimido</li>
+                <li>Destornilladores de precisión</li>
+                <li>Pasta térmica de alta calidad</li>
+                <li>Multímetro digital</li>
+                <li>Aire comprimido profesional</li>
             </ul>
-            <a class="boton-enlace" href="herramientas de mantenimiento.html">Ver Herramientas</a>
-        </section>
+            <a class="boton-enlace" href="herramientas de mantenimiento.html">Ver herramientas <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>1.16 Historia del Software</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-history"></i> 1.16 Historia del Software</h2>
             <p>Desde el lenguaje máquina hasta la inteligencia artificial, el software ha transformado la interacción humano-computadora.</p>
-            <a class="boton-enlace" href="1.16.html">Historia del Software</a>
-        </section>
+            <a class="boton-enlace" href="1.16.html">Explorar historia <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>1.17 Generaciones del Software</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-layer-group"></i> 1.17 Generaciones del Software</h2>
             <ol>
-                <li>Lenguaje máquina</li>
-                <li>Ensamblador</li>
-                <li>Lenguajes de alto nivel</li>
-                <li>Bases de datos</li>
-                <li>IA y software cognitivo</li>
+                <li>Lenguaje máquina (1ª generación)</li>
+                <li>Ensamblador (2ª generación)</li>
+                <li>Lenguajes de alto nivel (3ª generación)</li>
+                <li>Bases de datos (4ª generación)</li>
+                <li>IA y software cognitivo (5ª generación)</li>
             </ol>
-            <a class="boton-enlace" href="1.17.html">Leer más sobre Generaciones</a>
-        </section>
+            <a class="boton-enlace" href="1.17.html">Ver generaciones <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>1.18 Sistemas Operativos</h2>
+        <div class="section-card">
+            <h2><i class="fas fa-laptop-code"></i> 1.18 Sistemas Operativos</h2>
             <p>Software que administra el hardware y recursos. Ejemplos: Windows, Linux, macOS.</p>
-            <a class="boton-enlace" href="1.18.html">Conocer más sobre SO</a>
-        </section>
+            <a class="boton-enlace" href="1.18.html">Conocer más <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-        <section>
-            <h2>Ensamblar una Computadora</h2>
-            <p>Guía rápida:</p>
+        <div class="section-card">
+            <h2><i class="fas fa-cogs"></i> Ensamblar una Computadora</h2>
+            <p>Guía rápida para ensamblar tu propio PC:</p>
             <ol>
                 <li>Instalar procesador con pasta térmica</li>
-                <li>Insertar memoria RAM</li>
+                <li>Insertar memoria RAM en las ranuras</li>
                 <li>Montar tarjeta madre en el gabinete</li>
                 <li>Conectar discos duros/SSD</li>
-                <li>Montar fuente de poder</li>
-                <li>Instalar tarjeta gráfica</li>
+                <li>Instalar fuente de poder</li>
+                <li>Montar tarjeta gráfica</li>
                 <li>Conectar cables y probar antes de cerrar</li>
             </ol>
-            <a class="boton-enlace" href="ensamblaje de una computadora.html">Tutorial Ensamblaje</a>
-        </section>
+            <a class="boton-enlace" href="ensamblaje de una computadora.html">Tutorial completo <i class="fas fa-arrow-right"></i></a>
+        </div>
     </div>
+    
+    <footer>
+        <p>&copy; 2023 Hardware 2 - Guía Visual | Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Simular carga de contenido
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 1000);
+            
+            // Crear partículas
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Posición aleatoria
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Duración de animación aleatoria
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        });
+    </script>
 </body>
 </html>
