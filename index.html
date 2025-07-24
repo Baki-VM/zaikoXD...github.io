@@ -81,14 +81,15 @@
       pointer-events: none;
     }
 
-    /* Encabezado */
+    /* Encabezado reorganizado */
     .header {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       margin-bottom: 50px;
       position: relative;
       padding-bottom: 30px;
+      gap: 30px;
     }
 
     .header::after {
@@ -103,18 +104,15 @@
       border-radius: 50%;
     }
 
-    .logo-row {
+    .logo-container {
+      flex: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 40px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
     }
 
     .logo-img {
-      width: 180px;
-      height: 240px;
+      width: 200px;
+      height: 260px;
       border-radius: 15px;
       object-fit: cover;
       box-shadow: 0 0 25px rgba(0, 227, 174, 0.5);
@@ -128,8 +126,10 @@
     }
 
     .title-container {
+      flex: 2;
       text-align: center;
-      margin-top: 20px;
+      padding: 0 20px;
+      z-index: 2;
     }
 
     .title {
@@ -426,8 +426,8 @@
       }
       
       .logo-img {
-        width: 160px;
-        height: 210px;
+        width: 180px;
+        height: 240px;
       }
       
       .title {
@@ -444,21 +444,29 @@
         padding: 30px 20px;
       }
       
-      .logo-row {
-        gap: 20px;
+      .header {
+        flex-direction: column;
+        gap: 40px;
+      }
+      
+      .logo-container {
+        width: 100%;
+        justify-content: space-around;
+        flex-wrap: wrap;
       }
       
       .logo-img {
-        width: 130px;
-        height: 180px;
+        width: 160px;
+        height: 220px;
+        margin: 10px;
       }
       
       .title {
-        font-size: 2.3rem;
+        font-size: 2.5rem;
       }
       
       .subtitle {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
       
       .menu-btn {
@@ -467,7 +475,7 @@
       }
       
       .menu-btn i {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
       
       .info-group {
@@ -481,12 +489,12 @@
 
     @media (max-width: 480px) {
       .logo-img {
-        width: 100px;
-        height: 140px;
+        width: 140px;
+        height: 190px;
       }
       
       .title {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       
       .menu-grid {
@@ -495,6 +503,11 @@
       
       .menu-btn {
         padding: 25px 10px;
+        font-size: 1.1rem;
+      }
+      
+      .menu-btn i {
+        font-size: 2.5rem;
       }
       
       .manual-btn {
@@ -510,15 +523,20 @@
   
   <div class="container">
     <div class="header">
-      <div class="logo-row">
+      <!-- Logo izquierdo -->
+      <div class="logo-container">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvWqdC0BdInZFwcNDwihZ9mxqn9dl-Zt8wNw&s" alt="Logo UPDS" class="logo-img">
-        <img src="imagenes/logo mio.jpg" alt="Logo UPDS" class="logo-img">
-       
       </div>
       
+      <!-- Título central -->
       <div class="title-container">
         <h1 class="title">Trabajo de Investigación</h1>
         <h2 class="subtitle">Hardware y Software — Ingeniería en Sistemas</h2>
+      </div>
+      
+      <!-- Logo derecho -->
+      <div class="logo-container">
+        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1791&auto=format&fit=crop" alt="Logo Personal" class="logo-img">
       </div>
     </div>
 
