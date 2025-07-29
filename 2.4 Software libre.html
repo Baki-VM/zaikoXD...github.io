@@ -12,9 +12,7 @@
       --primary-light: #4ade80;
       --primary-dark: #15803d;
       --dark-bg: #0f172a;
-      --dark-card: rgba(30, 41, 59, 0.95);
       --light-bg: #f8fafc;
-      --light-card: #ffffff;
       --text-dark: #1e293b;
       --text-light: #f1f5f9;
       --accent: #22c55e;
@@ -36,6 +34,7 @@
       color: var(--text-light);
       line-height: 1.6;
       transition: var(--transition);
+      padding-bottom: 80px; /* Espacio para los botones flotantes */
     }
 
     body.light-mode {
@@ -200,7 +199,7 @@
     }
 
     .section {
-      background: var(--dark-card);
+      background: rgba(30, 41, 59, 0.95);
       border-radius: 16px;
       padding: 2.5rem;
       margin-bottom: 2.5rem;
@@ -209,7 +208,7 @@
     }
 
     .light-mode .section {
-      background: var(--light-card);
+      background: #ffffff;
     }
 
     h2 {
@@ -707,6 +706,90 @@
     .light-mode .chart-description {
       background: rgba(248, 250, 252, 0.3);
     }
+    
+    /* Botones de navegación fijos */
+    .nav-buttons-fixed {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 15px;
+      z-index: 9999;
+    }
+
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      gap: 8px;
+    }
+
+    .nav-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-button.prev {
+      background-color: #3b82f6;
+    }
+
+    .nav-button.prev:hover {
+      background-color: #2563eb;
+    }
+
+    .nav-button.next {
+      background-color: var(--primary);
+    }
+
+    .nav-button.next:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .nav-button i {
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-buttons-fixed {
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .nav-button {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-buttons-fixed {
+        bottom: 15px;
+        right: 15px;
+        gap: 10px;
+      }
+      
+      .nav-button {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+      }
+      
+      .nav-button span {
+        display: none;
+      }
+      
+      .nav-button i {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1007,13 +1090,23 @@
 
   <footer>
     <div class="footer-content">
-     
-      
       <div class="copyright">
         &copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS
       </div>
     </div>
   </footer>
+
+  <!-- Botones de navegación fijos -->
+  <div class="nav-buttons-fixed">
+    <a href="2.3 Tipos de Software.html" class="nav-button prev">
+      <i class="fas fa-arrow-left"></i>
+      <span>Anterior</span>
+    </a>
+    <a href="2.5 Software propietario.html" class="nav-button next">
+      <span>Siguiente</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
 
   <script>
     // Toggle theme
