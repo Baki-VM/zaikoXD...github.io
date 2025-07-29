@@ -20,6 +20,8 @@
       --accent: #22c55e;
       --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
       --transition: all 0.3s ease;
+      --free: #22c55e;
+      --proprietary: #ef4444;
     }
 
     * {
@@ -549,6 +551,162 @@
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
     .delay-4 { animation-delay: 0.4s; }
+    
+    /* Nuevos estilos para la gráfica */
+    .comparison-chart {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    
+    .chart-category {
+      position: relative;
+      padding: 1.5rem 1rem;
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .light-mode .chart-category {
+      background: rgba(248, 250, 252, 0.5);
+    }
+    
+    .chart-category h4 {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--text-light);
+    }
+    
+    .light-mode .chart-category h4 {
+      color: var(--text-dark);
+    }
+    
+    .chart-bars {
+      display: flex;
+      height: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .chart-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 1rem;
+      font-weight: 600;
+      color: white;
+      position: relative;
+      transition: width 1s ease-out;
+    }
+    
+    .chart-bar.free {
+      background-color: var(--free);
+    }
+    
+    .chart-bar.proprietary {
+      background-color: var(--proprietary);
+    }
+    
+    .chart-bar .tooltip {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    
+    .chart-bar:hover .tooltip {
+      opacity: 1;
+    }
+    
+    .chart-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .chart-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .chart-label.free::before {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: var(--free);
+      border-radius: 2px;
+    }
+    
+    .chart-label.proprietary::before {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: var(--proprietary);
+      border-radius: 2px;
+    }
+    
+    .chart-legend {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(30, 41, 59, 0.3);
+      border-radius: 8px;
+    }
+    
+    .light-mode .chart-legend {
+      background: rgba(248, 250, 252, 0.3);
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+    
+    .legend-free {
+      background-color: var(--free);
+    }
+    
+    .legend-proprietary {
+      background-color: var(--proprietary);
+    }
+    
+    .chart-description {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(30, 41, 59, 0.3);
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+    
+    .light-mode .chart-description {
+      background: rgba(248, 250, 252, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -664,9 +822,113 @@
       
       <h3 style="margin-top: 2rem;"><i class="fas fa-chart-bar"></i> Gráfica Comparativa Visual</h3>
       
-      <div class="img-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Open-source-vs-proprietary-software.png/800px-Open-source-vs-proprietary-software.png" alt="Comparativa Software Libre vs Propietario">
-        <div class="img-caption">Diferencias clave entre software libre y propietario</div>
+      <!-- Gráfica comparativa interactiva -->
+      <div class="comparison-chart">
+        <div class="chart-category">
+          <h4><i class="fas fa-code"></i> Acceso al código</h4>
+          <div class="chart-bars">
+            <div class="chart-bar free" style="width: 100%">
+              100%
+              <div class="tooltip">Acceso completo al código fuente</div>
+            </div>
+            <div class="chart-bar proprietary" style="width: 10%">
+              10%
+              <div class="tooltip">Acceso restringido o nulo</div>
+            </div>
+          </div>
+          <div class="chart-labels">
+            <div class="chart-label free">Software Libre</div>
+            <div class="chart-label proprietary">Software Propietario</div>
+          </div>
+        </div>
+        
+        <div class="chart-category">
+          <h4><i class="fas fa-edit"></i> Libertad de modificación</h4>
+          <div class="chart-bars">
+            <div class="chart-bar free" style="width: 100%">
+              100%
+              <div class="tooltip">Modificaciones permitidas y alentadas</div>
+            </div>
+            <div class="chart-bar proprietary" style="width: 5%">
+              5%
+              <div class="tooltip">Modificaciones prohibidas por licencia</div>
+            </div>
+          </div>
+          <div class="chart-labels">
+            <div class="chart-label free">Software Libre</div>
+            <div class="chart-label proprietary">Software Propietario</div>
+          </div>
+        </div>
+        
+        <div class="chart-category">
+          <h4><i class="fas fa-money-bill-wave"></i> Coste</h4>
+          <div class="chart-bars">
+            <div class="chart-bar free" style="width: 95%">
+              95%
+              <div class="tooltip">Generalmente gratuito</div>
+            </div>
+            <div class="chart-bar proprietary" style="width: 40%">
+              40%
+              <div class="tooltip">Generalmente requiere licencia</div>
+            </div>
+          </div>
+          <div class="chart-labels">
+            <div class="chart-label free">Software Libre</div>
+            <div class="chart-label proprietary">Software Propietario</div>
+          </div>
+        </div>
+        
+        <div class="chart-category">
+          <h4><i class="fas fa-shield-alt"></i> Seguridad</h4>
+          <div class="chart-bars">
+            <div class="chart-bar free" style="width: 90%">
+              90%
+              <div class="tooltip">Auditoría pública transparente</div>
+            </div>
+            <div class="chart-bar proprietary" style="width: 70%">
+              70%
+              <div class="tooltip">Seguridad por oscuridad</div>
+            </div>
+          </div>
+          <div class="chart-labels">
+            <div class="chart-label free">Software Libre</div>
+            <div class="chart-label proprietary">Software Propietario</div>
+          </div>
+        </div>
+        
+        <div class="chart-category">
+          <h4><i class="fas fa-sliders-h"></i> Personalización</h4>
+          <div class="chart-bars">
+            <div class="chart-bar free" style="width: 100%">
+              100%
+              <div class="tooltip">Total libertad de personalización</div>
+            </div>
+            <div class="chart-bar proprietary" style="width: 20%">
+              20%
+              <div class="tooltip">Personalización limitada</div>
+            </div>
+          </div>
+          <div class="chart-labels">
+            <div class="chart-label free">Software Libre</div>
+            <div class="chart-label proprietary">Software Propietario</div>
+          </div>
+        </div>
+        
+        <div class="chart-legend">
+          <div class="legend-item">
+            <div class="legend-color legend-free"></div>
+            <span>Software Libre</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color legend-proprietary"></div>
+            <span>Software Propietario</span>
+          </div>
+        </div>
+        
+        <div class="chart-description">
+          <p><strong>Interpretación:</strong> Esta gráfica compara cinco aspectos fundamentales entre software libre y propietario. Cada barra representa el nivel de cumplimiento o disponibilidad de cada característica en ambos modelos.</p>
+          <p>El software libre sobresale en acceso al código, libertad de modificación y personalización, mientras que el software propietario generalmente requiere costosas licencias y limita las modificaciones.</p>
+        </div>
       </div>
     </section>
 
@@ -744,7 +1006,13 @@
   </main>
 
   <footer>
-   
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-discord"></i> Discord</a>
+        <a href="#"><i class="fas fa-book"></i> Documentación</a>
+      </div>
       
       <div class="copyright">
         &copy; 2025 Reinaldo Vaca Martinez - Ingeniería en Sistemas - UPDS
@@ -814,41 +1082,15 @@
     document.querySelectorAll('.section').forEach(section => {
       observer.observe(section);
     });
+    
+    // Animación para las barras de la gráfica
+    document.querySelectorAll('.chart-bar').forEach(bar => {
+      const originalWidth = bar.style.width;
+      bar.style.width = '0';
+      setTimeout(() => {
+        bar.style.width = originalWidth;
+      }, 300);
+    });
   </script>
-  <!-- Botones de navegación -->
-<div class="nav-buttons">
-  <a class="btn-link" href="2.3 Tipos de Software.html">⬅ Anterior</a>
-  <a class="btn-link" href="2.5 Software propietario.html">Siguiente ➡</a>
-</div>
-
-<!-- Estilos CSS -->
-<style>
-  .nav-buttons {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: flex;
-    gap: 15px;
-    z-index: 9999;
-  }
-
-  .btn-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #1c1c1c;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, box-shadow 0.3s;
-  }
-
-  .btn-link:hover {
-    background-color: #ff0000;
-    box-shadow: 0 0 15px 4px rgba(255, 0, 0, 0.6);
-  }
-</style>
-
 </body>
 </html>
