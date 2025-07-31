@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Completa: Instalación Dual Boot Windows 11 y Ubuntu</title>
+    <title>Guía Completa: Dual Boot Windows 11/Ubuntu + Office/Drive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #2563eb;
             --secondary: #8b5cf6;
+            --windows: #0078d7;
+            --ubuntu: #e95420;
+            --office: #d83b01;
+            --drive: #34a853;
             --dark: #1e293b;
             --light: #f8fafc;
             --success: #10b981;
@@ -26,10 +30,10 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f0f5ff;
-            background-image: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+            background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
             padding: 0;
             margin: 0;
+            overflow-x: hidden;
         }
         
         .container {
@@ -39,12 +43,12 @@
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--windows), var(--ubuntu));
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
             border-radius: 0 0 20px 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             margin-bottom: 40px;
             position: relative;
             overflow: hidden;
@@ -57,212 +61,260 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
             transform: rotate(30deg);
         }
         
         .header-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.25);
         }
         
         .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-            max-width: 700px;
+            font-size: 1.4rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
         
         .os-logos {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 25px 0;
+            gap: 40px;
+            margin: 30px 0;
         }
         
         .logo {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             background: white;
-            border-radius: 20px;
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .logo:nth-child(2) {
+            animation-delay: 0.5s;
         }
         
         .logo:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
         
         .logo i {
-            font-size: 4rem;
+            font-size: 5rem;
         }
         
         .windows-logo {
-            color: #0078d7;
+            color: var(--windows);
         }
         
         .ubuntu-logo {
-            color: #e95420;
+            color: var(--ubuntu);
         }
         
         .section {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid var(--primary);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-left: 5px solid var(--primary);
         }
         
         .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
         }
         
         h2 {
             color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e2e8f0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            font-size: 2.2rem;
         }
         
         h2 i {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
         }
         
         h3 {
             color: var(--dark);
-            margin: 25px 0 15px;
+            margin: 30px 0 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            font-size: 1.6rem;
+        }
+        
+        h3 i {
+            color: var(--primary);
+            font-size: 1.8rem;
         }
         
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
         
         .requirements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
         }
         
         .requirement-card {
             background: #f8fafc;
-            border-radius: 10px;
-            padding: 20px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .requirement-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
         }
         
         .requirement-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
         }
         
         .requirement-card h4 {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 20px;
             color: var(--dark);
+            font-size: 1.4rem;
+        }
+        
+        .requirement-card h4 i {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         ul, ol {
-            margin-left: 20px;
-            margin-bottom: 20px;
+            margin-left: 25px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
         }
         
         li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            line-height: 1.7;
         }
         
         .step-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
-            margin: 25px 0;
+            gap: 40px;
+            margin: 35px 0;
+            align-items: center;
         }
         
         .step-content {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
         }
         
         .step-image {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
             background: #f1f5f9;
-            border-radius: 10px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.08);
+            overflow: hidden;
         }
         
         .step-image img {
             max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.4s ease;
+            border: 1px solid #e2e8f0;
         }
         
-        .fake-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(45deg, #dbeafe, #ede9fe);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
+        .step-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        .image-caption {
             text-align: center;
-            padding: 20px;
+            font-style: italic;
+            color: #64748b;
+            margin-top: 15px;
+            font-size: 0.95rem;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 30px 0;
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            font-size: 1.05rem;
         }
         
         th {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--windows), var(--ubuntu));
             color: white;
             text-align: left;
-            padding: 15px;
+            padding: 18px 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         
         td {
-            padding: 12px 15px;
+            padding: 15px 20px;
             border-bottom: 1px solid #e2e8f0;
         }
         
@@ -276,138 +328,324 @@
         
         .note-box {
             background: #dbeafe;
-            border-left: 4px solid var(--primary);
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .note-box::before {
+            content: "!";
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.15;
+            font-weight: bold;
         }
         
         .warning-box {
             background: #fffbeb;
-            border-left: 4px solid var(--warning);
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
+            border-left: 5px solid var(--warning);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 25px 0;
         }
         
         .success-box {
             background: #d1fae5;
-            border-left: 4px solid var(--success);
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
+            border-left: 5px solid var(--success);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 25px 0;
         }
         
         .button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--windows), var(--ubuntu));
             color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
+            padding: 15px 30px;
+            border-radius: 60px;
             text-decoration: none;
             font-weight: bold;
-            margin: 10px 5px;
-            transition: all 0.3s ease;
+            margin: 15px 10px;
+            transition: all 0.4s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+            font-size: 1.1rem;
+            gap: 10px;
         }
         
         .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
-        }
-        
-        .button i {
-            margin-right: 8px;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.45);
         }
         
         .download-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
+            gap: 20px;
+            margin: 40px 0;
         }
         
-        .flow-diagram {
+        .video-container {
             background: white;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 20px;
             margin: 40px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
-        .diagram-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
             margin-top: 30px;
         }
         
-        .diagram-step {
+        .video-card {
             background: #f8fafc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 160px;
-            text-align: center;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .video-thumbnail {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
             position: relative;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
         }
         
-        .diagram-step::after {
-            content: "→";
+        .play-icon {
             position: absolute;
-            right: -25px;
             top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .diagram-step:last-child::after {
-            display: none;
-        }
-        
-        .step-number {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            width: 40px;
-            height: 40px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(0,0,0,0.7);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            font-weight: bold;
+            color: white;
+            font-size: 2rem;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover .play-icon {
+            background: var(--ubuntu);
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .video-info p {
+            font-size: 1rem;
+            color: #64748b;
+        }
+        
+        .boot-menu {
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .boot-menu img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin: 20px 0;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .code {
+            font-family: 'Courier New', monospace;
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: block;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .code i {
+            color: #94a3b8;
+            margin-right: 10px;
+            width: 20px;
+            display: inline-block;
         }
         
         footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--dark), #0f172a);
             color: white;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-            border-radius: 20px 20px 0 0;
+            padding: 50px 20px;
+            margin-top: 70px;
+            border-radius: 30px 30px 0 0;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .app-section {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .app-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .windows-app {
+            background: linear-gradient(135deg, var(--windows), #005a9e);
+        }
+        
+        .ubuntu-app {
+            background: linear-gradient(135deg, var(--ubuntu), #c34113);
+        }
+        
+        .office-app {
+            background: linear-gradient(135deg, var(--office), #a52c00);
+        }
+        
+        .drive-app {
+            background: linear-gradient(135deg, var(--drive), #2e7d32);
+        }
+        
+        .app-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .comparison-table {
+            margin: 40px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
         
         @media (max-width: 768px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .logo i {
+                font-size: 3.5rem;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .step-container {
                 flex-direction: column;
-            }
-            
-            .diagram-step::after {
-                content: "↓";
-                right: 50%;
-                top: auto;
-                bottom: -25px;
-                transform: translateX(50%);
-            }
-            
-            h1 {
-                font-size: 2.2rem;
             }
         }
     </style>
@@ -415,8 +653,8 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>Instalación Dual Boot: Windows 11 & Ubuntu</h1>
-            <p class="subtitle">Guía completa paso a paso con imágenes, tablas detalladas y consejos profesionales para instalar ambos sistemas operativos en una sola laptop</p>
+            <h1>Instalación Dual Boot + Office y Drive</h1>
+            <p class="subtitle">Guía completa para instalar Windows 11/Ubuntu con Microsoft Office, alternativas ofimáticas y Google Drive en ambos sistemas</p>
             
             <div class="os-logos">
                 <div class="logo windows-logo">
@@ -432,47 +670,94 @@
     <div class="container">
         <!-- Introducción -->
         <section class="section">
-            <h2><i class="fas fa-info-circle"></i> Introducción</h2>
-            <p>La instalación dual boot te permite tener dos sistemas operativos en el mismo equipo, eligiendo cuál usar al iniciar. Esta guía cubre la instalación de Windows 11 y Ubuntu 22.04 LTS, el método más estable y compatible para desarrolladores y usuarios avanzados.</p>
+            <h2><i class="fas fa-info-circle"></i> Introducción Completa</h2>
+            <p>Esta guía no solo te enseñará a instalar Windows 11 y Ubuntu en dual boot, sino también a configurar Microsoft Office (o alternativas) y Google Drive en ambos sistemas operativos.</p>
             
             <div class="note-box">
-                <p><strong>Nota importante:</strong> Este proceso eliminará todos los datos de tu disco duro. Realiza una copia de seguridad completa antes de comenzar.</p>
+                <p><strong>¡Importante!</strong> Requisitos adicionales para Office:</p>
+                <ul>
+                    <li>Cuenta de Microsoft para Office 365</li>
+                    <li>Cuenta de Google para Drive</li>
+                    <li>Conexión a internet para descargas</li>
+                    <li>Espacio adicional: 4GB para Office, 500MB para Drive</li>
+                </ul>
+            </div>
+            
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-icon windows-app">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Windows 11</h3>
+                        <p>Sistema principal con Microsoft Office</p>
+                    </div>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-icon ubuntu-app">
+                        <i class="fab fa-ubuntu"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Ubuntu</h3>
+                        <p>Alternativas ofimáticas y Drive</p>
+                    </div>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-icon office-app">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Microsoft Office</h3>
+                        <p>Suite ofimática completa</p>
+                    </div>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-icon drive-app">
+                        <i class="fab fa-google-drive"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Google Drive</h3>
+                        <p>Almacenamiento en la nube</p>
+                    </div>
+                </div>
             </div>
         </section>
         
         <!-- Requisitos -->
         <section class="section">
-            <h2><i class="fas fa-clipboard-check"></i> Requisitos Previos</h2>
+            <h2><i class="fas fa-clipboard-check"></i> Requisitos Técnicos</h2>
             
             <div class="requirements-grid">
                 <div class="requirement-card">
-                    <h4><i class="fas fa-microchip"></i> Hardware</h4>
+                    <h4><i class="fas fa-laptop"></i> Hardware Requerido</h4>
                     <ul>
-                        <li>USB de 8GB mínimo (2 unidades)</li>
-                        <li>Laptop con UEFI (no Legacy BIOS)</li>
-                        <li>Espacio en disco: Mínimo 150GB (recomendado 256GB+)</li>
-                        <li>CPU de 64-bit con 2+ núcleos</li>
-                        <li>4GB RAM (8GB recomendado)</li>
+                        <li><strong>Procesador:</strong> 64-bit con 2 núcleos (1GHz+)</li>
+                        <li><strong>RAM:</strong> 8GB recomendado (4GB mínimo)</li>
+                        <li><strong>Almacenamiento:</strong> 200GB mínimo (SSD recomendado)</li>
+                        <li><strong>USB:</strong> Dos unidades de 8GB+</li>
                     </ul>
                 </div>
                 
                 <div class="requirement-card">
-                    <h4><i class="fas fa-download"></i> Software</h4>
+                    <h4><i class="fas fa-download"></i> Software Necesario</h4>
                     <ul>
-                        <li>Windows 11 ISO: Media Creation Tool</li>
+                        <li>Windows 11 ISO</li>
                         <li>Ubuntu 22.04 LTS ISO</li>
-                        <li>Rufus (grabador USB)</li>
-                        <li>GParted Live ISO (opcional)</li>
+                        <li>Rufus para crear USB</li>
+                        <li>Microsoft Office instalador</li>
+                        <li>Google Drive para escritorio</li>
                     </ul>
                 </div>
                 
                 <div class="requirement-card">
-                    <h4><i class="fas fa-tools"></i> Configuración BIOS/UEFI</h4>
+                    <h4><i class="fas fa-cog"></i> Cuentas Necesarias</h4>
                     <ul>
-                        <li>Secure Boot: Desactivado</li>
-                        <li>Modo de arranque: UEFI (no Legacy)</li>
-                        <li>Fast Boot: Desactivado</li>
-                        <li>TPM: Activado (requerido para Windows 11)</li>
+                        <li>Cuenta Microsoft (para Windows y Office)</li>
+                        <li>Cuenta Google (para Drive)</li>
+                        <li>Cuenta Ubuntu One (opcional)</li>
                     </ul>
                 </div>
             </div>
@@ -484,342 +769,470 @@
                 <a href="https://ubuntu.com/download/desktop" class="button" target="_blank">
                     <i class="fab fa-ubuntu"></i> Descargar Ubuntu
                 </a>
-                <a href="https://rufus.ie/es/" class="button" target="_blank">
-                    <i class="fas fa-download"></i> Descargar Rufus
+                <a href="https://www.microsoft.com/es-es/microsoft-365" class="button" target="_blank">
+                    <i class="fas fa-file-excel"></i> Office 365
+                </a>
+                <a href="https://www.google.com/drive/download/" class="button" target="_blank">
+                    <i class="fab fa-google-drive"></i> Google Drive
                 </a>
             </div>
         </section>
         
-        <!-- Preparación de USB -->
+        <!-- Instalación Dual Boot (Resumido) -->
         <section class="section">
-            <h2><i class="fas fa-usb"></i> Preparar USB de Instalación</h2>
+            <h2><i class="fas fa-compact-disc"></i> Resumen de Instalación Dual Boot</h2>
+            <p>Para instalar Windows 11 y Ubuntu en dual boot, sigue estos pasos esenciales:</p>
             
-            <h3><i class="fab fa-windows"></i> Crear USB de Windows 11</h3>
             <div class="step-container">
                 <div class="step-content">
                     <ol>
-                        <li>Descarga la herramienta Media Creation Tool de Microsoft</li>
-                        <li>Ejecútala y selecciona "Crear medios de instalación"</li>
-                        <li>Elige idioma, edición y arquitectura (64-bit)</li>
-                        <li>Selecciona "Disco USB"</li>
-                        <li>Espera a que finalice el proceso (20-40 minutos)</li>
+                        <li>Prepara USB de instalación con Rufus</li>
+                        <li>Configura BIOS/UEFI (Secure Boot OFF)</li>
+                        <li>Instala Windows 11 primero:
+                            <ul>
+                                <li>Crea partición EFI (500MB)</li>
+                                <li>Particion para Windows (100GB+)</li>
+                            </ul>
+                        </li>
+                        <li>Instala Ubuntu después:
+                            <ul>
+                                <li>Usa "Instalar junto a Windows"</li>
+                                <li>Asigna 50GB+ para Ubuntu</li>
+                            </ul>
+                        </li>
+                        <li>Configura GRUB para seleccionar sistema al inicio</li>
+                    </ol>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/7Jt3k9p.png" alt="Menú Dual Boot">
+                    <div class="image-caption">Menú de selección al iniciar</div>
+                </div>
+            </div>
+            
+            <div class="note-box">
+                <p>Para una guía completa de instalación dual boot, consulta la sección detallada más abajo.</p>
+            </div>
+        </section>
+        
+        <!-- Instalar Office en Windows -->
+        <section class="section">
+            <h2><i class="fas fa-file-word"></i> Paso 1: Instalar Microsoft Office en Windows</h2>
+            
+            <div class="step-container">
+                <div class="step-content">
+                    <h3><i class="fab fa-windows"></i> Método Oficial</h3>
+                    <ol>
+                        <li>Inicia sesión en <a href="https://www.office.com" target="_blank">office.com</a></li>
+                        <li>Haz clic en "Instalar Office"</li>
+                        <li>Descarga el instalador (OfficeSetup.exe)</li>
+                        <li>Ejecuta el instalador y espera la descarga</li>
+                        <li>Inicia sesión con tu cuenta Microsoft</li>
+                        <li>Personaliza la instalación si es necesario</li>
+                        <li>Espera a que se complete la instalación (10-20 min)</li>
                     </ol>
                     
                     <div class="note-box">
-                        <p><strong>Alternativa con Rufus:</strong> Si usas Rufus, configura:
-                        <br>- Esquema: <strong>GPT</strong>
-                        <br>- Sistema destino: <strong>UEFI</strong>
-                        <br>- Sistema de archivos: <strong>NTFS</strong></p>
+                        <p><strong>Versiones disponibles:</strong> Office 365 (suscripción) o Office 2021 (compra única).</p>
                     </div>
                 </div>
                 <div class="step-image">
-                    <div class="fake-image">Imagen: Rufus configurado para Windows 11<br>(GPT/UEFI)</div>
+                    <img src="https://i.imgur.com/8GkzX1P.png" alt="Instalador de Office">
+                    <div class="image-caption">Proceso de instalación de Office</div>
                 </div>
             </div>
             
-            <h3><i class="fab fa-ubuntu"></i> Crear USB de Ubuntu</h3>
             <div class="step-container">
                 <div class="step-content">
+                    <h3><i class="fas fa-cog"></i> Configuración Inicial</h3>
                     <ol>
-                        <li>Descarga la ISO de Ubuntu Desktop</li>
-                        <li>Abre Rufus y selecciona tu USB</li>
-                        <li>Haz clic en "Seleccionar" y busca la ISO de Ubuntu</li>
-                        <li>Configura:
-                            <ul>
-                                <li>Esquema de partición: <strong>GPT</strong></li>
-                                <li>Sistema destino: <strong>UEFI</strong></li>
-                                <li>Sistema de archivos: <strong>FAT32</strong></li>
-                            </ul>
-                        </li>
-                        <li>Haz clic en "Empezar"</li>
-                        <li>Espera a que finalice (10-20 minutos)</li>
-                    </ol>
-                </div>
-                <div class="step-image">
-                    <div class="fake-image">Imagen: Rufus configurado para Ubuntu<br>(GPT/UEFI/FAT32)</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Particionamiento del Disco -->
-        <section class="section">
-            <h2><i class="fas fa-hdd"></i> Particionamiento del Disco</h2>
-            <p>El esquema de particiones recomendado para instalación dual:</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Particion</th>
-                        <th>Tamaño</th>
-                        <th>Tipo</th>
-                        <th>Sistema de Archivos</th>
-                        <th>Notas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>EFI</strong></td>
-                        <td>500 MB</td>
-                        <td>Primaria</td>
-                        <td>FAT32</td>
-                        <td>Obligatoria para UEFI</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Windows</strong></td>
-                        <td>100 GB</td>
-                        <td>Primaria</td>
-                        <td>NTFS</td>
-                        <td>Sistema + programas</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ubuntu /</strong></td>
-                        <td>40 GB</td>
-                        <td>Lógica</td>
-                        <td>EXT4</td>
-                        <td>Sistema Linux</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ubuntu /home</strong></td>
-                        <td>60+ GB</td>
-                        <td>Lógica</td>
-                        <td>EXT4</td>
-                        <td>Datos de usuario</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Swap</strong></td>
-                        <td>= RAM</td>
-                        <td>Lógica</td>
-                        <td>Área de intercambio</td>
-                        <td>Ej: 8 GB (si RAM < 8 GB)</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <h3>Proceso de Particionamiento</h3>
-            <div class="step-container">
-                <div class="step-content">
-                    <ol>
-                        <li>Inicia desde el USB de <strong>Windows</strong></li>
-                        <li>En "¿Dónde desea instalar Windows?" haz clic en "Opciones de unidad"</li>
-                        <li><strong>Elimina todas las particiones existentes</strong> (¡copia de seguridad primero!)</li>
-                        <li>Crea nueva partición:
-                            <ul>
-                                <li>Tamaño: 500 MB → se creará automáticamente como EFI</li>
-                            </ul>
-                        </li>
-                        <li>Crea partición principal para Windows:
-                            <ul>
-                                <li>Tamaño: 100 GB</li>
-                                <li>Sistema de archivos: NTFS</li>
-                            </ul>
-                        </li>
-                        <li><strong>No crees particiones para Ubuntu todavía</strong></li>
-                    </ol>
-                    
-                    <div class="warning-box">
-                        <p><strong>Precaución:</strong> Deja espacio sin asignar para Ubuntu (mínimo 50GB, recomendado 100GB+). Ubuntu creará sus particiones durante su instalación.</p>
-                    </div>
-                </div>
-                <div class="step-image">
-                    <div class="fake-image">Imagen: Menú de particionamiento de Windows<br>mostrando partición EFI y NTFS</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Instalar Windows 11 -->
-        <section class="section">
-            <h2><i class="fab fa-windows"></i> Instalar Windows 11</h2>
-            
-            <div class="step-container">
-                <div class="step-content">
-                    <ol>
-                        <li>Inicia desde el USB de Windows (accede al menú de arranque con F12, F10 o Esc según tu laptop)</li>
-                        <li>Configura idioma, hora y método de entrada</li>
-                        <li>Haz clic en "Instalar ahora"</li>
-                        <li>Introduce tu clave de producto o haz clic en "No tengo clave"</li>
-                        <li>Selecciona la edición de Windows 11 (Home/Pro)</li>
+                        <li>Abre cualquier aplicación de Office (Word, Excel)</li>
                         <li>Acepta los términos de licencia</li>
-                        <li>Elige "Personalizada: Instalar solo Windows"</li>
-                        <li>Selecciona la partición de 100 GB que creaste</li>
-                        <li>Haz clic en "Siguiente" y espera a que termine la instalación</li>
-                        <li>Configura tu usuario y preferencias iniciales</li>
-                    </ol>
-                    
-                    <div class="note-box">
-                        <p>Después de instalar Windows, inícialo completamente al menos una vez para asegurar que todo funciona correctamente antes de instalar Ubuntu.</p>
-                    </div>
-                </div>
-                <div class="step-image">
-                    <div class="fake-image">Imagen: Selección de partición durante<br>instalación de Windows 11</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Instalar Ubuntu -->
-        <section class="section">
-            <h2><i class="fab fa-ubuntu"></i> Instalar Ubuntu</h2>
-            
-            <div class="step-container">
-                <div class="step-content">
-                    <ol>
-                        <li>Inicia desde el USB de Ubuntu (menú de arranque)</li>
-                        <li>Selecciona "Probar Ubuntu" o "Instalar Ubuntu"</li>
-                        <li>Configura tu idioma y distribución de teclado</li>
-                        <li>En "Tipo de instalación":
-                            <ul>
-                                <li><strong>¡Clave!</strong> Elige "Instalar junto a Windows Boot Manager"</li>
-                            </ul>
-                        </li>
-                        <li>El instalador mostrará el espacio libre que dejaste para Ubuntu</li>
-                        <li>Si prefieres control manual:
-                            <ul>
-                                <li>Selecciona "Algo más"</li>
-                                <li>Crea partición raíz (/): 40 GB, EXT4</li>
-                                <li>Crea partición swap: 8 GB, tipo "área de intercambio"</li>
-                                <li>Crea partición /home: resto del espacio, EXT4</li>
-                                <li><strong>Dispositivo para el cargador de arranque:</strong> La partición EFI (ej: /dev/sda1)</li>
-                            </ul>
-                        </li>
-                        <li>Selecciona tu zona horaria</li>
-                        <li>Crea tu usuario y contraseña</li>
-                        <li>Haz clic en "Instalar" y espera 15-30 minutos</li>
-                        <li>Reinicia cuando se complete</li>
+                        <li>Personaliza tu experiencia (opcional)</li>
+                        <li>Conecta OneDrive si lo deseas</li>
+                        <li>¡Listo para usar!</li>
                     </ol>
                     
                     <div class="success-box">
-                        <p>El gestor de arranque GRUB se instalará automáticamente y detectará Windows 11. Al iniciar tu laptop verás un menú para elegir entre Ubuntu y Windows.</p>
+                        <p>Office se integra automáticamente con Windows 11. Puedes abrir documentos desde el Explorador de archivos.</p>
                     </div>
                 </div>
                 <div class="step-image">
-                    <div class="fake-image">Imagen: Instalador de Ubuntu mostrando<br>opción "Instalar junto a Windows"</div>
+                    <img src="https://i.imgur.com/L8WbZQf.png" alt="Word en Windows">
+                    <div class="image-caption">Microsoft Word en Windows 11</div>
                 </div>
             </div>
         </section>
         
-        <!-- Configuración Final -->
+        <!-- Alternativas Office en Ubuntu -->
         <section class="section">
-            <h2><i class="fas fa-cogs"></i> Configuración Final</h2>
+            <h2><i class="fas fa-file-alt"></i> Paso 2: Alternativas de Office en Ubuntu</h2>
             
-            <h3><i class="fas fa-desktop"></i> GRUB - Gestor de Arranque</h3>
-            <p>Tras instalar Ubuntu, el gestor de arranque GRUB detectará Windows 11 automáticamente. Al iniciar tu laptop verás:</p>
-            
-            <div class="step-image" style="margin: 20px auto; max-width: 600px;">
-                <div class="fake-image">Imagen: Menú GRUB mostrando opciones<br>para Ubuntu y Windows 11</div>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aplicación</th>
+                            <th>Descripción</th>
+                            <th>Compatibilidad</th>
+                            <th>Método de Instalación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LibreOffice</strong></td>
+                            <td>Suite ofimática gratuita y de código abierto</td>
+                            <td>Excelente con ODF, buena con formatos Microsoft</td>
+                            <td>Preinstalado en Ubuntu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>OnlyOffice</strong></td>
+                            <td>Interfaz similar a MS Office con alta compatibilidad</td>
+                            <td>Muy buena con formatos DOCX, XLSX</td>
+                            <td>Snap Store o descarga directa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WPS Office</strong></td>
+                            <td>Alternativa gratuita con interfaz casi idéntica</td>
+                            <td>Excelente compatibilidad con MS Office</td>
+                            <td>Descarga desde sitio oficial</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             
-            <p>Si Windows no aparece en el menú:</p>
-            <div class="note-box">
-                <p>Abre Terminal en Ubuntu y ejecuta:</p>
-                <p class="code">sudo update-grub</p>
-                <p>Reinicia y Windows debería aparecer en el menú.</p>
+            <h3><i class="fab fa-ubuntu"></i> Instalar OnlyOffice</h3>
+            <div class="step-container">
+                <div class="step-content">
+                    <ol>
+                        <li>Abre la terminal (Ctrl+Alt+T)</li>
+                        <li>Instala mediante Snap:
+                            <div class="code">
+                                <i class="fas fa-terminal"></i>sudo snap install onlyoffice-desktopeditors
+                            </div>
+                        </li>
+                        <li>O descarga desde <a href="https://www.onlyoffice.com" target="_blank">onlyoffice.com</a></li>
+                        <li>Ejecuta el archivo .deb descargado</li>
+                        <li>Instala usando Centro de Software de Ubuntu</li>
+                    </ol>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/9tZ7d2l.png" alt="OnlyOffice en Ubuntu">
+                    <div class="image-caption">OnlyOffice en Ubuntu</div>
+                </div>
             </div>
             
-            <h3><i class="fas fa-sync-alt"></i> Sincronización de Hora</h3>
-            <p>Windows y Linux manejan el hardware clock de forma diferente. Para solucionar diferencias de hora:</p>
-            <div class="note-box">
-                <p>En Ubuntu ejecuta:</p>
-                <p class="code">timedatectl set-local-rtc 1 --adjust-system-clock</p>
+            <h3><i class="fab fa-ubuntu"></i> Instalar WPS Office</h3>
+            <div class="step-container">
+                <div class="step-content">
+                    <ol>
+                        <li>Descarga WPS desde <a href="https://www.wps.com" target="_blank">wps.com</a></li>
+                        <li>Elige la versión para Linux (.deb)</li>
+                        <li>Haz doble clic en el archivo descargado</li>
+                        <li>Instala usando el Centro de Software</li>
+                        <li>Busca WPS Office en el menú de aplicaciones</li>
+                    </ol>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/4z6DvFk.png" alt="WPS Office en Ubuntu">
+                    <div class="image-caption">WPS Office en Ubuntu</div>
+                </div>
             </div>
         </section>
         
-        <!-- Diagrama de Flujo -->
-        <div class="flow-diagram">
-            <h2 style="text-align: center;"><i class="fas fa-project-diagram"></i> Diagrama del Proceso</h2>
+        <!-- Instalar Google Drive en Windows -->
+        <section class="section">
+            <h2><i class="fab fa-google-drive"></i> Paso 3: Google Drive en Windows</h2>
             
-            <div class="diagram-steps">
-                <div class="diagram-step">
-                    <div class="step-number">1</div>
-                    Preparar USB
+            <div class="step-container">
+                <div class="step-content">
+                    <ol>
+                        <li>Descarga "Drive para computadora" desde <a href="https://www.google.com/drive/download/" target="_blank">google.com/drive</a></li>
+                        <li>Ejecuta el instalador</li>
+                        <li>Inicia sesión con tu cuenta de Google</li>
+                        <li>Elige las carpetas a sincronizar</li>
+                        <li>Configura las preferencias de sincronización</li>
+                        <li>Espera a que se complete la sincronización inicial</li>
+                    </ol>
+                    
+                    <div class="note-box">
+                        <p>Google Drive aparecerá como una unidad en el Explorador de archivos, manteniendo todos tus archivos accesibles localmente.</p>
+                    </div>
                 </div>
-                <div class="diagram-step">
-                    <div class="step-number">2</div>
-                    Particionar Disco
-                </div>
-                <div class="diagram-step">
-                    <div class="step-number">3</div>
-                    Instalar Windows
-                </div>
-                <div class="diagram-step">
-                    <div class="step-number">4</div>
-                    Instalar Ubuntu
-                </div>
-                <div class="diagram-step">
-                    <div class="step-number">5</div>
-                    Configurar GRUB
+                <div class="step-image">
+                    <img src="https://i.imgur.com/HjZbT9Q.png" alt="Drive en Windows">
+                    <div class="image-caption">Google Drive en el Explorador de Windows</div>
                 </div>
             </div>
-        </div>
+            
+            <div class="step-container">
+                <div class="step-content">
+                    <h3><i class="fas fa-sync-alt"></i> Configuración Avanzada</h3>
+                    <ul>
+                        <li><strong>Sincronización selectiva:</strong> Elige qué carpetas mantener en tu equipo</li>
+                        <li><strong>Copias de seguridad:</strong> Configura copia de seguridad de carpetas importantes</li>
+                        <li><strong>Acceso sin conexión:</strong> Marca archivos para acceso offline</li>
+                        <li><strong>Ancho de banda:</strong> Limita el uso de red si es necesario</li>
+                    </ul>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/8fDmDv5.png" alt="Configuración Drive">
+                    <div class="image-caption">Preferencias de Google Drive</div>
+                </div>
+            </div>
+        </section>
         
-        <!-- Problemas Comunes -->
+        <!-- Instalar Google Drive en Ubuntu -->
         <section class="section">
-            <h2><i class="fas fa-exclamation-triangle"></i> Problemas Comunes y Soluciones</h2>
+            <h2><i class="fab fa-google-drive"></i> Paso 4: Google Drive en Ubuntu</h2>
             
-            <table>
-                <thead>
-                    <tr>
-                        <th>Problema</th>
-                        <th>Solución</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>No arranca GRUB</strong></td>
-                        <td>Accede a UEFI y cambia el orden de arranque para poner Ubuntu primero. Ejecuta Boot-Repair desde USB Live.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Secure Boot bloquea Ubuntu</strong></td>
-                        <td>Desactívalo en UEFI o instala controladores firmados: <span class="code">sudo apt install shim-signed</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Windows no aparece en GRUB</strong></td>
-                        <td>Ejecuta <span class="code">sudo update-grub</span> en Ubuntu. Si persiste, reinstala GRUB.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Error de espacio en disco</strong></td>
-                        <td>Usa GParted Live USB para redimensionar particiones sin perder datos.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Problemas con WiFi o gráficos</strong></td>
-                        <td>Actualiza drivers: <span class="code">sudo apt update && sudo apt upgrade</span>. Instala drivers propietarios en "Software & Updates".</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3><i class="fab fa-ubuntu"></i> Método 1: Integración con Archivos</h3>
+            <div class="step-container">
+                <div class="step-content">
+                    <ol>
+                        <li>Abre "Configuración del sistema"</li>
+                        <li>Ve a "Cuentas en línea"</li>
+                        <li>Haz clic en "Añadir cuenta" y elige Google</li>
+                        <li>Inicia sesión con tu cuenta de Google</li>
+                        <li>Activa "Archivos" para la integración</li>
+                        <li>Abre el administrador de archivos</li>
+                        <li>Google Drive aparecerá en la barra lateral</li>
+                    </ol>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/5Rk7W0J.png" alt="Drive en Ubuntu">
+                    <div class="image-caption">Google Drive en el administrador de archivos</div>
+                </div>
+            </div>
             
-            <div class="warning-box">
-                <p><strong>Boot-Repair:</strong> Herramienta esencial para resolver problemas de arranque. Instálala en Ubuntu con: <span class="code">sudo apt install boot-repair</span> y ejecútala.</p>
+            <h3><i class="fab fa-ubuntu"></i> Método 2: Aplicación ODrive</h3>
+            <div class="step-container">
+                <div class="step-content">
+                    <ol>
+                        <li>Abre la terminal (Ctrl+Alt+T)</li>
+                        <li>Instala ODrive:
+                            <div class="code">
+                                <i class="fas fa-terminal"></i>sudo snap install odrive
+                            </div>
+                        </li>
+                        <li>Ejecuta ODrive desde el menú de aplicaciones</li>
+                        <li>Haz clic en "Añadir cuenta" y elige Google</li>
+                        <li>Inicia sesión y autoriza el acceso</li>
+                        <li>Selecciona las carpetas a sincronizar</li>
+                    </ol>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/3Xwz9uF.png" alt="ODrive en Ubuntu">
+                    <div class="image-caption">Interfaz de ODrive para Ubuntu</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Comparativa Ofimática -->
+        <section class="section">
+            <h2><i class="fas fa-chart-bar"></i> Comparativa: Soluciones Ofimáticas</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>MS Office (Windows)</th>
+                            <th>LibreOffice (Ubuntu)</th>
+                            <th>OnlyOffice</th>
+                            <th>WPS Office</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Interfaz</strong></td>
+                            <td>Moderno, ribbon</td>
+                            <td>Tradicional, menús</td>
+                            <td>Similar a MS Office</td>
+                            <td>Muy similar a MS Office</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compatibilidad</strong></td>
+                            <td>Excelente (nativo)</td>
+                            <td>Buena con formatos básicos</td>
+                            <td>Muy buena con DOCX/XLSX</td>
+                            <td>Excelente con formatos MS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Costo</strong></td>
+                            <td>Suscripción o pago único</td>
+                            <td>Gratuito</td>
+                            <td>Gratuito</td>
+                            <td>Gratuito (con anuncios)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Requisitos</strong></td>
+                            <td>Moderados-altos</td>
+                            <td>Muy ligeros</td>
+                            <td>Moderados</td>
+                            <td>Moderados</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Integración en la nube</strong></td>
+                            <td>OneDrive (excelente)</td>
+                            <td>Limitada</td>
+                            <td>OwnCloud/NextCloud</td>
+                            <td>WPS Cloud</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note-box">
+                <p><strong>Consejo:</strong> Para máxima compatibilidad entre sistemas, guarda tus documentos en formato DOCX/XLSX incluso cuando trabajes en Ubuntu.</p>
+            </div>
+        </section>
+        
+        <!-- Flujo de Trabajo -->
+        <section class="section">
+            <h2><i class="fas fa-sync-alt"></i> Flujo de Trabajo entre Sistemas</h2>
+            
+            <div class="step-container">
+                <div class="step-content">
+                    <h3><i class="fas fa-random"></i> Trabajar entre Windows y Ubuntu</h3>
+                    <ol>
+                        <li>Crea documentos en Windows con MS Office</li>
+                        <li>Guarda en Google Drive/OneDrive</li>
+                        <li>En Ubuntu, accede a los mismos archivos a través de:
+                            <ul>
+                                <li>Integración de Google Drive</li>
+                                <li>Web Office (office.com) en navegador</li>
+                                <li>Alternativas locales (OnlyOffice, WPS)</li>
+                            </ul>
+                        </li>
+                        <li>Edita los documentos en Ubuntu</li>
+                        <li>Los cambios se sincronizan automáticamente</li>
+                        <li>Vuelve a Windows y continúa trabajando</li>
+                    </ol>
+                    
+                    <div class="success-box">
+                        <p>Usando Google Drive como puente, puedes trabajar en los mismos documentos desde ambos sistemas operativos sin problemas de compatibilidad.</p>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/2KvYQ7c.png" alt="Flujo de trabajo">
+                    <div class="image-caption">Diagrama de flujo de trabajo entre sistemas</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Videos Tutoriales -->
+        <section class="section">
+            <h2><i class="fas fa-video"></i> Videos Tutoriales</h2>
+            
+            <div class="video-container">
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/6L1pI_ZyXI8/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Instalación Dual Boot Completa</h4>
+                            <p>Guía desde cero para principiantes</p>
+                            <a href="https://www.youtube.com/watch?v=6L1pI_ZyXI8" class="button" target="_blank">Ver Video</a>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/7XaXG7i9w0g/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Instalar Office en Windows</h4>
+                            <p>Paso a paso con activación</p>
+                            <a href="https://www.youtube.com/watch?v=7XaXG7i9w0g" class="button" target="_blank">Ver Video</a>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/R7z8kQigAvA/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Google Drive en Ubuntu</h4>
+                            <p>Configuración completa</p>
+                            <a href="https://www.youtube.com/watch?v=R7z8kQigAvA" class="button" target="_blank">Ver Video</a>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/zFdG9kY/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Alternativas Office en Linux</h4>
+                            <p>Comparativa y configuración</p>
+                            <a href="https://www.youtube.com/watch?v=zFdG9kY" class="button" target="_blank">Ver Video</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
         <!-- Conclusión -->
         <section class="section">
-            <h2><i class="fas fa-check-circle"></i> Conclusión</h2>
-            <p>Con esta guía has aprendido a instalar Windows 11 y Ubuntu en la misma laptop en modo dual boot. Ahora puedes disfrutar de lo mejor de ambos sistemas operativos:</p>
+            <h2><i class="fas fa-check-circle"></i> Configuración Final y Consejos</h2>
             
-            <div class="step-container">
-                <div class="step-content">
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <h4><i class="fab fa-windows"></i> Configuración Windows</h4>
                     <ul>
-                        <li><strong>Windows 11:</strong> Para aplicaciones de oficina, juegos y software exclusivo</li>
-                        <li><strong>Ubuntu:</strong> Para desarrollo, servidores, y herramientas de código abierto</li>
+                        <li>Configura OneDrive para sincronización automática</li>
+                        <li>Vincula tu cuenta Microsoft para activar Office</li>
+                        <li>Personaliza la barra de acceso rápido en Office</li>
                     </ul>
-                    
-                    <p>Recuerda mantener ambos sistemas actualizados y realizar copias de seguridad periódicas de tus datos importantes.</p>
-                    
-                    <div class="success-box">
-                        <p>¡Felicidades! Ahora tienes un sistema dual boot completamente funcional. Al iniciar tu laptop podrás elegir entre Windows 11 y Ubuntu según tus necesidades.</p>
-                    </div>
                 </div>
-                <div class="step-image">
-                    <div class="fake-image">Imagen: Pantalla de selección de SO<br>al iniciar la laptop</div>
+                
+                <div class="requirement-card">
+                    <h4><i class="fab fa-ubuntu"></i> Configuración Ubuntu</h4>
+                    <ul>
+                        <li>Establece OnlyOffice como predeterminado para documentos</li>
+                        <li>Configura sincronización selectiva en Google Drive</li>
+                        <li>Instala fuentes Microsoft para mejor compatibilidad</li>
+                    </ul>
                 </div>
+                
+                <div class="requirement-card">
+                    <h4><i class="fas fa-sync"></i> Consejos de Sincronización</h4>
+                    <ul>
+                        <li>Usa nombres de archivo compatibles (sin caracteres especiales)</li>
+                        <li>Evita trabajar en el mismo archivo simultáneamente</li>
+                        <li>Revisa siempre las versiones después de sincronizar</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="success-box">
+                <p><strong>¡Configuración completada!</strong> Ahora tienes un entorno de trabajo completo en ambos sistemas operativos, con acceso a tus documentos desde cualquier lugar gracias a la nube.</p>
             </div>
         </section>
     </div>
     
     <footer>
-        <div class="container">
-            <p>Guía de Instalación Dual Boot: Windows 11 & Ubuntu</p>
-            <p>Creado por GRUPO 6  <i class="fas fa-heart" style="color:#ef4444"></i> para entusiastas de la tecnología</p>
-            <p>© 2025 - Guía Completa de Instalación</p>
+        <div class="footer-content">
+            <h3>Guía Completa: Dual Boot + Office y Drive</h3>
+            <p>Recurso integral para productividad multiplataforma</p>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            
+            <p>© 2023 - Guía Completa de Productividad | Todos los derechos reservados</p>
         </div>
     </footer>
 </body>
