@@ -612,6 +612,105 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
+        .manual-download {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 20px;
+            margin: 50px 0;
+            border: 3px dashed #93c5fd;
+        }
+        
+        .manual-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .manual-icon {
+            font-size: 5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 18px 45px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 25px 0;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+            font-size: 1.2rem;
+            gap: 15px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-7px) scale(1.08);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.5);
+        }
+        
+        .drive-icon {
+            color: var(--drive);
+        }
+        
+        .hardware-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .hardware-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .hardware-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hardware-content {
+            padding: 25px;
+        }
+        
+        .hardware-content h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .driver-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .driver-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .driver-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .driver-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
@@ -647,6 +746,10 @@
             .step-container {
                 flex-direction: column;
             }
+            
+            .hardware-section {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -654,7 +757,7 @@
     <header>
         <div class="header-content">
             <h1>Instalación Dual Boot + Office y Drive</h1>
-            <p class="subtitle">Guía completa para instalar Windows 11/Ubuntu con Microsoft Office, alternativas ofimáticas y Google Drive en ambos sistemas</p>
+            <p class="subtitle">Guía completa para principiantes: Instala Windows 11/Ubuntu, controladores, Office y Google Drive paso a paso</p>
             
             <div class="os-logos">
                 <div class="logo windows-logo">
@@ -668,59 +771,46 @@
     </header>
 
     <div class="container">
+        <!-- Botón de descarga de manual -->
+        <div class="manual-download">
+            <div class="manual-content">
+                <div class="manual-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h2>Descarga el Manual Completo</h2>
+                <p>Todo lo que necesitas saber en un solo documento PDF, con imágenes detalladas y pasos claros</p>
+                <a href="#" class="download-btn" id="downloadManual">
+                    <i class="fas fa-download"></i> Descargar Manual (PDF - 5.2MB)
+                </a>
+                <p class="note-box" style="display: inline-block; padding: 10px 20px; border-radius: 10px;">
+                    <i class="fab fa-google-drive drive-icon"></i> También disponible en <a href="#" style="color: var(--drive); font-weight: bold;">Google Drive</a>
+                </p>
+            </div>
+        </div>
+
         <!-- Introducción -->
         <section class="section">
             <h2><i class="fas fa-info-circle"></i> Introducción Completa</h2>
-            <p>Esta guía no solo te enseñará a instalar Windows 11 y Ubuntu en dual boot, sino también a configurar Microsoft Office (o alternativas) y Google Drive en ambos sistemas operativos.</p>
+            <p>Esta guía paso a paso te enseñará todo lo necesario para instalar Windows 11 y Ubuntu en dual boot, configurar controladores esenciales, instalar Microsoft Office (o alternativas) y Google Drive en ambos sistemas operativos, incluso si nunca has hecho algo similar.</p>
             
             <div class="note-box">
-                <p><strong>¡Importante!</strong> Requisitos adicionales para Office:</p>
-                <ul>
-                    <li>Cuenta de Microsoft para Office 365</li>
-                    <li>Cuenta de Google para Drive</li>
-                    <li>Conexión a internet para descargas</li>
-                    <li>Espacio adicional: 4GB para Office, 500MB para Drive</li>
-                </ul>
+                <p><strong>¡Importante para principiantes!</strong> No necesitas conocimientos previos, solo seguir los pasos cuidadosamente.</p>
             </div>
             
-            <div class="app-grid">
-                <div class="app-card">
-                    <div class="app-icon windows-app">
-                        <i class="fab fa-windows"></i>
-                    </div>
-                    <div class="app-info">
-                        <h3>Windows 11</h3>
-                        <p>Sistema principal con Microsoft Office</p>
-                    </div>
-                </div>
-                
-                <div class="app-card">
-                    <div class="app-icon ubuntu-app">
-                        <i class="fab fa-ubuntu"></i>
-                    </div>
-                    <div class="app-info">
-                        <h3>Ubuntu</h3>
-                        <p>Alternativas ofimáticas y Drive</p>
-                    </div>
-                </div>
-                
-                <div class="app-card">
-                    <div class="app-icon office-app">
-                        <i class="fas fa-file-word"></i>
-                    </div>
-                    <div class="app-info">
-                        <h3>Microsoft Office</h3>
-                        <p>Suite ofimática completa</p>
-                    </div>
-                </div>
-                
-                <div class="app-card">
-                    <div class="app-icon drive-app">
-                        <i class="fab fa-google-drive"></i>
-                    </div>
-                    <div class="app-info">
-                        <h3>Google Drive</h3>
-                        <p>Almacenamiento en la nube</p>
+            <div class="video-container">
+                <h3>Video Introducción para Principiantes</h3>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/4WXL0jyfJQ4/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Guía Dual Boot para Principiantes</h4>
+                            <p>Conceptos básicos explicados desde cero</p>
+                            <a href="https://www.youtube.com/watch?v=4WXL0jyfJQ4" class="button" target="_blank">Ver Video</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -778,45 +868,261 @@
             </div>
         </section>
         
-        <!-- Instalación Dual Boot (Resumido) -->
+        <!-- Verificación del disco duro -->
         <section class="section">
-            <h2><i class="fas fa-compact-disc"></i> Resumen de Instalación Dual Boot</h2>
-            <p>Para instalar Windows 11 y Ubuntu en dual boot, sigue estos pasos esenciales:</p>
+            <h2><i class="fas fa-hard-drive"></i> Paso 0: Verificación del Disco Duro</h2>
+            <p>Antes de instalar cualquier sistema operativo, es esencial verificar el estado de tu disco duro para prevenir problemas futuros.</p>
             
-            <div class="step-container">
-                <div class="step-content">
-                    <ol>
-                        <li>Prepara USB de instalación con Rufus</li>
-                        <li>Configura BIOS/UEFI (Secure Boot OFF)</li>
-                        <li>Instala Windows 11 primero:
-                            <ul>
-                                <li>Crea partición EFI (500MB)</li>
-                                <li>Particion para Windows (100GB+)</li>
-                            </ul>
-                        </li>
-                        <li>Instala Ubuntu después:
-                            <ul>
-                                <li>Usa "Instalar junto a Windows"</li>
-                                <li>Asigna 50GB+ para Ubuntu</li>
-                            </ul>
-                        </li>
-                        <li>Configura GRUB para seleccionar sistema al inicio</li>
-                    </ol>
+            <div class="hardware-section">
+                <div class="hardware-card">
+                    <div class="hardware-image" style="background-image: url('https://i.imgur.com/9DcG5lI.jpg')"></div>
+                    <div class="hardware-content">
+                        <h3><i class="fab fa-windows"></i> Verificación en Windows</h3>
+                        <ol>
+                            <li>Abre el Explorador de archivos</li>
+                            <li>Haz clic derecho en tu disco principal (C:)</li>
+                            <li>Selecciona "Propiedades" &gt; "Herramientas"</li>
+                            <li>En "Comprobación de errores", haz clic en "Comprobar"</li>
+                            <li>Selecciona "Examinar unidad"</li>
+                            <li>Espera a que se complete el análisis</li>
+                        </ol>
+                        <div class="code">
+                            <i class="fas fa-terminal"></i>chkdsk C: /f /r /x
+                        </div>
+                    </div>
                 </div>
-                <div class="step-image">
-                    <img src="https://i.sstatic.net/eE3Dg.jpg" alt="Menú Dual Boot">
-                    <div class="image-caption">Menú de selección al iniciar</div>
+                
+                <div class="hardware-card">
+                    <div class="hardware-image" style="background-image: url('https://i.imgur.com/sjM4GtR.jpg')"></div>
+                    <div class="hardware-content">
+                        <h3><i class="fab fa-ubuntu"></i> Verificación en Linux</h3>
+                        <ol>
+                            <li>Abre la Terminal (Ctrl+Alt+T)</li>
+                            <li>Instala smartmontools:
+                                <div class="code">
+                                    <i class="fas fa-terminal"></i>sudo apt install smartmontools
+                                </div>
+                            </li>
+                            <li>Verifica el estado del disco:
+                                <div class="code">
+                                    <i class="fas fa-terminal"></i>sudo smartctl -a /dev/sda
+                                </div>
+                            </li>
+                            <li>Busca la línea "SMART overall-health self-assessment test result"</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
             
-            <div class="note-box">
-                <p>Para una guía completa de instalación dual boot, consulta la sección detallada más abajo.</p>
+            <div class="warning-box">
+                <p><strong>¡Atención!</strong> Si tu disco muestra errores o advertencias, considera reemplazarlo antes de continuar con la instalación.</p>
+            </div>
+        </section>
+        
+        <!-- Instalación Dual Boot -->
+        <section class="section">
+            <h2><i class="fas fa-compact-disc"></i> Paso 1: Instalación Dual Boot</h2>
+            <p>Instalación detallada paso a paso para principiantes con imágenes de referencia:</p>
+            
+            <div class="step-container">
+                <div class="step-content">
+                    <h3><i class="fas fa-cogs"></i> Preparación</h3>
+                    <ol>
+                        <li>Haz copia de seguridad de todos tus datos importantes</li>
+                        <li>Descarga las ISO de Windows 11 y Ubuntu</li>
+                        <li>Crea USBs de instalación con Rufus (selecciona GPT para UEFI)</li>
+                        <li>Accede a la BIOS (generalmente pulsando F2, F10 o DEL al iniciar)</li>
+                        <li>Desactiva Secure Boot</li>
+                        <li>Configura el orden de arranque para que USB sea primero</li>
+                    </ol>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/kjWnRc7.jpg" alt="Configuración BIOS">
+                    <div class="image-caption">Configuración de la BIOS para desactivar Secure Boot</div>
+                </div>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-content">
+                    <h3><i class="fab fa-windows"></i> Instalación de Windows 11</h3>
+                    <ol>
+                        <li>Arranca desde el USB de Windows</li>
+                        <li>Selecciona idioma y distribución de teclado</li>
+                        <li>En "Tipo de instalación", elige "Personalizada"</li>
+                        <li>Elimina todas las particiones existentes</li>
+                        <li>Crea nuevas particiones:
+                            <ul>
+                                <li>EFI (500MB)</li>
+                                <li>Particion para Windows (100GB+)</li>
+                            </ul>
+                        </li>
+                        <li>Selecciona la partición principal y haz clic en "Siguiente"</li>
+                        <li>Sigue las instrucciones para completar la instalación</li>
+                    </ol>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/8B0tUoF.jpg" alt="Instalación Windows">
+                    <div class="image-caption">Creación de particiones durante la instalación de Windows</div>
+                </div>
+            </div>
+            
+            <div class="step-container">
+                <div class="step-content">
+                    <h3><i class="fab fa-ubuntu"></i> Instalación de Ubuntu</h3>
+                    <ol>
+                        <li>Arranca desde el USB de Ubuntu</li>
+                        <li>Selecciona "Instalar Ubuntu"</li>
+                        <li>Elige tu idioma y distribución de teclado</li>
+                        <li>En "Tipo de instalación", selecciona "Instalar junto a Windows Boot Manager"</li>
+                        <li>Asigna espacio para Ubuntu (50GB+)</li>
+                        <li>Crea usuario y contraseña</li>
+                        <li>Espera a que se complete la instalación</li>
+                        <li>Reinicia el sistema</li>
+                    </ol>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.imgur.com/7r1Hm0w.jpg" alt="Instalación Ubuntu">
+                    <div class="image-caption">Seleccionar "Instalar junto a Windows"</div>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <h3>Video Tutorial Completo de Instalación</h3>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/6L1pI_ZyXI8/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Instalación Dual Boot Completa</h4>
+                            <p>Guía desde cero para principiantes</p>
+                            <a href="https://www.youtube.com/watch?v=6L1pI_ZyXI8" class="button" target="_blank">Ver Video</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Instalación de controladores -->
+        <section class="section">
+            <h2><i class="fas fa-microchip"></i> Paso 2: Instalación de Controladores</h2>
+            <p>Los controladores son esenciales para que todo el hardware funcione correctamente en ambos sistemas operativos.</p>
+            
+            <div class="hardware-section">
+                <div class="hardware-card">
+                    <div class="hardware-image" style="background-image: url('https://i.imgur.com/5y0T5lJ.jpg')"></div>
+                    <div class="hardware-content">
+                        <h3><i class="fab fa-windows"></i> Controladores en Windows 11</h3>
+                        <ol>
+                            <li>Actualiza Windows a través de Windows Update</li>
+                            <li>Verifica el Administrador de dispositivos para dispositivos sin controlador</li>
+                            <li>Visita el sitio web del fabricante para descargar controladores específicos:
+                                <ul>
+                                    <li>Tarjeta gráfica (NVIDIA/AMD/Intel)</li>
+                                    <li>Tarjeta de red (WiFi/Ethernet)</li>
+                                    <li>Audio</li>
+                                </ul>
+                            </li>
+                            <li>Instala los controladores descargados</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="hardware-card">
+                    <div class="hardware-image" style="background-image: url('https://i.imgur.com/1vQcJ9H.jpg')"></div>
+                    <div class="hardware-content">
+                        <h3><i class="fab fa-ubuntu"></i> Controladores en Ubuntu</h3>
+                        <ol>
+                            <li>Abre "Software y Actualizaciones"</li>
+                            <li>Ve a la pestaña "Controladores Adicionales"</li>
+                            <li>Selecciona los controladores recomendados para tu hardware</li>
+                            <li>Haz clic en "Aplicar cambios"</li>
+                            <li>Para controladores NVIDIA:
+                                <div class="code">
+                                    <i class="fas fa-terminal"></i>sudo ubuntu-drivers autoinstall
+                                </div>
+                            </li>
+                            <li>Reinicia el sistema después de instalar</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-table"></i> Controladores Esenciales</h3>
+            <table class="driver-table">
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Windows</th>
+                        <th>Ubuntu</th>
+                        <th>Importancia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gráficos</td>
+                        <td>Controlador del fabricante</td>
+                        <td>Controlador propietario o Nouveau</td>
+                        <td>Crítica</td>
+                    </tr>
+                    <tr>
+                        <td>Red</td>
+                        <td>Actualización automática</td>
+                        <td>Generalmente incluido</td>
+                        <td>Alta</td>
+                    </tr>
+                    <tr>
+                        <td>Audio</td>
+                        <td>Realtek/Intel HD Audio</td>
+                        <td>ALSA/PulseAudio</td>
+                        <td>Alta</td>
+                    </tr>
+                    <tr>
+                        <td>Impresora</td>
+                        <td>Controlador específico</td>
+                        <td>CUPS + controlador</td>
+                        <td>Media</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="video-container">
+                <h3>Video: Instalación de Controladores</h3>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/8Wn4Z1gv3pI/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Instalar Controladores en Windows 11</h4>
+                            <p>Guía completa paso a paso</p>
+                            <a href="https://www.youtube.com/watch?v=8Wn4Z1gv3pI" class="button" target="_blank">Ver Video</a>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/sdYkUfJ5eWY/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Controladores en Ubuntu</h4>
+                            <p>Soluciona problemas de hardware</p>
+                            <a href="https://www.youtube.com/watch?v=sdYkUfJ5eWY" class="button" target="_blank">Ver Video</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
         <!-- Instalar Office en Windows -->
         <section class="section">
-            <h2><i class="fas fa-file-word"></i> Paso 1: Instalar Microsoft Office en Windows</h2>
+            <h2><i class="fas fa-file-word"></i> Paso 3: Instalar Microsoft Office en Windows</h2>
             
             <div class="step-container">
                 <div class="step-content">
@@ -865,7 +1171,7 @@
         
         <!-- Alternativas Office en Ubuntu -->
         <section class="section">
-            <h2><i class="fas fa-file-alt"></i> Paso 2: Alternativas de Office en Ubuntu</h2>
+            <h2><i class="fas fa-file-alt"></i> Paso 4: Alternativas de Office en Ubuntu</h2>
             
             <div class="comparison-table">
                 <table>
@@ -921,27 +1227,28 @@
                 </div>
             </div>
             
-            <h3><i class="fab fa-ubuntu"></i> Instalar WPS Office</h3>
-            <div class="step-container">
-                <div class="step-content">
-                    <ol>
-                        <li>Descarga WPS desde <a href="https://www.wps.com" target="_blank">wps.com</a></li>
-                        <li>Elige la versión para Linux (.deb)</li>
-                        <li>Haz doble clic en el archivo descargado</li>
-                        <li>Instala usando el Centro de Software</li>
-                        <li>Busca WPS Office en el menú de aplicaciones</li>
-                    </ol>
-                </div>
-                <div class="step-image">
-                    <img src="https://store-images.s-microsoft.com/image/apps.62910.14368399110871650.697743a6-f402-4bc1-a9e4-646acf1213a8.cf5400b3-0f34-442e-9640-0e78e245c757" alt="WPS Office en Ubuntu">
-                    <div class="image-caption">WPS Office en Ubuntu</div>
+            <div class="video-container">
+                <h3>Video: Alternativas Office en Ubuntu</h3>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/zFdG9kY/maxresdefault.jpg')">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Alternativas Office en Linux</h4>
+                            <p>Comparativa y configuración</p>
+                            <a href="https://www.youtube.com/watch?v=zFdG9kY" class="button" target="_blank">Ver Video</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
         
         <!-- Instalar Google Drive en Windows -->
         <section class="section">
-            <h2><i class="fab fa-google-drive"></i> Paso 3: Google Drive en Windows</h2>
+            <h2><i class="fab fa-google-drive"></i> Paso 5: Google Drive en Windows</h2>
             
             <div class="step-container">
                 <div class="step-content">
@@ -983,7 +1290,7 @@
         
         <!-- Instalar Google Drive en Ubuntu -->
         <section class="section">
-            <h2><i class="fab fa-google-drive"></i> Paso 4: Google Drive en Ubuntu</h2>
+            <h2><i class="fab fa-google-drive"></i> Paso 6: Google Drive en Ubuntu</h2>
             
             <h3><i class="fab fa-ubuntu"></i> Método 1: Integración con Archivos</h3>
             <div class="step-container">
@@ -1025,133 +1332,10 @@
                     <div class="image-caption">Interfaz de ODrive para Ubuntu</div>
                 </div>
             </div>
-        </section>
-        
-        <!-- Comparativa Ofimática -->
-        <section class="section">
-            <h2><i class="fas fa-chart-bar"></i> Comparativa: Soluciones Ofimáticas</h2>
-            
-            <div class="comparison-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Característica</th>
-                            <th>MS Office (Windows)</th>
-                            <th>LibreOffice (Ubuntu)</th>
-                            <th>OnlyOffice</th>
-                            <th>WPS Office</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Interfaz</strong></td>
-                            <td>Moderno, ribbon</td>
-                            <td>Tradicional, menús</td>
-                            <td>Similar a MS Office</td>
-                            <td>Muy similar a MS Office</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Compatibilidad</strong></td>
-                            <td>Excelente (nativo)</td>
-                            <td>Buena con formatos básicos</td>
-                            <td>Muy buena con DOCX/XLSX</td>
-                            <td>Excelente con formatos MS</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Costo</strong></td>
-                            <td>Suscripción o pago único</td>
-                            <td>Gratuito</td>
-                            <td>Gratuito</td>
-                            <td>Gratuito (con anuncios)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Requisitos</strong></td>
-                            <td>Moderados-altos</td>
-                            <td>Muy ligeros</td>
-                            <td>Moderados</td>
-                            <td>Moderados</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Integración en la nube</strong></td>
-                            <td>OneDrive (excelente)</td>
-                            <td>Limitada</td>
-                            <td>OwnCloud/NextCloud</td>
-                            <td>WPS Cloud</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="note-box">
-                <p><strong>Consejo:</strong> Para máxima compatibilidad entre sistemas, guarda tus documentos en formato DOCX/XLSX incluso cuando trabajes en Ubuntu.</p>
-            </div>
-        </section>
-        
-        <!-- Flujo de Trabajo -->
-        <section class="section">
-            <h2><i class="fas fa-sync-alt"></i> Flujo de Trabajo entre Sistemas</h2>
-            
-            <div class="step-container">
-                <div class="step-content">
-                    <h3><i class="fas fa-random"></i> Trabajar entre Windows y Ubuntu</h3>
-                    <ol>
-                        <li>Crea documentos en Windows con MS Office</li>
-                        <li>Guarda en Google Drive/OneDrive</li>
-                        <li>En Ubuntu, accede a los mismos archivos a través de:
-                            <ul>
-                                <li>Integración de Google Drive</li>
-                                <li>Web Office (office.com) en navegador</li>
-                                <li>Alternativas locales (OnlyOffice, WPS)</li>
-                            </ul>
-                        </li>
-                        <li>Edita los documentos en Ubuntu</li>
-                        <li>Los cambios se sincronizan automáticamente</li>
-                        <li>Vuelve a Windows y continúa trabajando</li>
-                    </ol>
-                    
-                    <div class="success-box">
-                        <p>Usando Google Drive como puente, puedes trabajar en los mismos documentos desde ambos sistemas operativos sin problemas de compatibilidad.</p>
-                    </div>
-                </div>
-                <div class="step-image">
-                    <img src="https://i.imgur.com/2KvYQ7c.png" alt="Flujo de trabajo">
-                    <div class="image-caption">Diagrama de flujo de trabajo entre sistemas</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Videos Tutoriales -->
-        <section class="section">
-            <h2><i class="fas fa-video"></i> Videos Tutoriales</h2>
             
             <div class="video-container">
+                <h3>Video: Google Drive en Ubuntu</h3>
                 <div class="video-grid">
-                    <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/6L1pI_ZyXI8/maxresdefault.jpg')">
-                            <div class="play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Instalación Dual Boot Completa</h4>
-                            <p>Guía desde cero para principiantes</p>
-                            <a href="https://www.youtube.com/watch?v=6L1pI_ZyXI8" class="button" target="_blank">Ver Video</a>
-                        </div>
-                    </div>
-                    
-                    <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/7XaXG7i9w0g/maxresdefault.jpg')">
-                            <div class="play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Instalar Office en Windows</h4>
-                            <p>Paso a paso con activación</p>
-                            <a href="https://www.youtube.com/watch?v=7XaXG7i9w0g" class="button" target="_blank">Ver Video</a>
-                        </div>
-                    </div>
-                    
                     <div class="video-card">
                         <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/R7z8kQigAvA/maxresdefault.jpg')">
                             <div class="play-icon">
@@ -1162,19 +1346,6 @@
                             <h4>Google Drive en Ubuntu</h4>
                             <p>Configuración completa</p>
                             <a href="https://www.youtube.com/watch?v=R7z8kQigAvA" class="button" target="_blank">Ver Video</a>
-                        </div>
-                    </div>
-                    
-                    <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/zFdG9kY/maxresdefault.jpg')">
-                            <div class="play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Alternativas Office en Linux</h4>
-                            <p>Comparativa y configuración</p>
-                            <a href="https://www.youtube.com/watch?v=zFdG9kY" class="button" target="_blank">Ver Video</a>
                         </div>
                     </div>
                 </div>
@@ -1200,7 +1371,11 @@
                     <ul>
                         <li>Establece OnlyOffice como predeterminado para documentos</li>
                         <li>Configura sincronización selectiva en Google Drive</li>
-                        <li>Instala fuentes Microsoft para mejor compatibilidad</li>
+                        <li>Instala fuentes Microsoft para mejor compatibilidad:
+                            <div class="code">
+                                <i class="fas fa-terminal"></i>sudo apt install ttf-mscorefonts-installer
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 
@@ -1216,6 +1391,17 @@
             
             <div class="success-box">
                 <p><strong>¡Configuración completada!</strong> Ahora tienes un entorno de trabajo completo en ambos sistemas operativos, con acceso a tus documentos desde cualquier lugar gracias a la nube.</p>
+            </div>
+            
+            <!-- Segundo botón de descarga al final -->
+            <div class="manual-download" style="margin-top: 40px;">
+                <div class="manual-content">
+                    <h3>¿Necesitas el manual completo?</h3>
+                    <p>Descarga la guía en PDF para consultarla sin conexión o compartirla con amigos</p>
+                    <a href="#" class="download-btn" id="downloadManualBottom">
+                        <i class="fas fa-download"></i> Descargar Manual Completo
+                    </a>
+                </div>
             </div>
         </section>
     </div>
@@ -1235,5 +1421,18 @@
             <p>© 2023 - Guía Completa de Productividad | Todos los derechos reservados</p>
         </div>
     </footer>
+    
+    <script>
+        // Función para simular la descarga del manual
+        function downloadManual() {
+            alert('¡Descarga iniciada! En una implementación real, esto descargaría el manual en PDF.');
+            // Aquí iría el código real para descargar el archivo
+            // window.location.href = 'ruta/al/manual.pdf';
+        }
+        
+        // Asignar la función a los botones de descarga
+        document.getElementById('downloadManual').addEventListener('click', downloadManual);
+        document.getElementById('downloadManualBottom').addEventListener('click', downloadManual);
+    </script>
 </body>
 </html>
