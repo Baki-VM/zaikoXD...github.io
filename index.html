@@ -195,6 +195,32 @@
       border: 1px solid rgba(0, 227, 174, 0.3);
     }
 
+    /* Estilos específicos para cada botón */
+    .menu-btn:nth-child(1) {
+      background: linear-gradient(145deg, rgba(25, 35, 60, 0.9), rgba(15, 25, 40, 0.9));
+      border: 1px solid rgba(0, 227, 174, 0.4);
+    }
+    
+    .menu-btn:nth-child(2) {
+      background: linear-gradient(145deg, rgba(40, 25, 60, 0.9), rgba(25, 15, 40, 0.9));
+      border: 1px solid rgba(168, 0, 227, 0.4);
+    }
+    
+    .menu-btn:nth-child(3) {
+      background: linear-gradient(145deg, rgba(60, 25, 40, 0.9), rgba(40, 15, 25, 0.9));
+      border: 1px solid rgba(227, 0, 113, 0.4);
+    }
+    
+    .menu-btn:nth-child(4) {
+      background: linear-gradient(145deg, rgba(60, 40, 25, 0.9), rgba(40, 25, 15, 0.9));
+      border: 1px solid rgba(227, 113, 0, 0.4);
+    }
+    
+    .menu-btn:nth-child(5) {
+      background: linear-gradient(145deg, rgba(25, 60, 40, 0.9), rgba(15, 40, 25, 0.9));
+      border: 1px solid rgba(0, 227, 113, 0.4);
+    }
+
     .menu-btn::before {
       content: "";
       position: absolute;
@@ -217,24 +243,49 @@
       opacity: 1;
     }
 
-    .menu-btn i {
-      font-size: 3.2rem;
+    .menu-btn .symbol {
+      font-size: 3.8rem;
       margin-bottom: 20px;
       transition: all 0.4s ease;
       text-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
-      background: linear-gradient(to right, #00e3ae, #00c6ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
-    .menu-btn:hover i {
-      transform: scale(1.2) rotate(8deg);
-      text-shadow: 0 0 25px rgba(0, 198, 255, 0.9);
+    /* Colores únicos para cada símbolo */
+    .menu-btn:nth-child(1) .symbol {
+      color: #00e3ae;
+      animation: pulse 2s infinite;
+    }
+    
+    .menu-btn:nth-child(2) .symbol {
+      color: #a800e3;
+      animation: rotate 6s infinite linear;
+    }
+    
+    .menu-btn:nth-child(3) .symbol {
+      color: #e30071;
+      animation: floatSymbol 4s infinite ease-in-out;
+    }
+    
+    .menu-btn:nth-child(4) .symbol {
+      color: #e37100;
+      animation: pulseColor 3s infinite alternate;
+    }
+    
+    .menu-btn:nth-child(5) .symbol {
+      color: #00e371;
+      animation: bounce 2s infinite;
+    }
+
+    .menu-btn:hover .symbol {
+      transform: scale(1.2);
+      text-shadow: 0 0 25px currentColor;
     }
 
     .btn-text {
       position: relative;
       z-index: 2;
+      text-align: center;
+      line-height: 1.4;
     }
 
     /* Efecto de luz en los botones */
@@ -405,18 +456,53 @@
 
     @keyframes pulse {
       0% {
-        box-shadow: 0 0 0 0 rgba(0, 227, 174, 0.4);
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(0, 227, 174, 0.6);
       }
-      70% {
-        box-shadow: 0 0 0 20px rgba(0, 227, 174, 0);
+      50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 15px rgba(0, 227, 174, 0.9);
       }
       100% {
-        box-shadow: 0 0 0 0 rgba(0, 227, 174, 0);
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(0, 227, 174, 0.6);
       }
     }
-
-    .pulse {
-      animation: pulse 3s infinite;
+    
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes floatSymbol {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    @keyframes pulseColor {
+      0% {
+        color: #e37100;
+      }
+      100% {
+        color: #ff9d2e;
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
     }
 
     /* Responsive */
@@ -436,6 +522,10 @@
       
       .subtitle {
         font-size: 1.4rem;
+      }
+      
+      .menu-btn .symbol {
+        font-size: 3.5rem;
       }
     }
 
@@ -474,8 +564,8 @@
         font-size: 1.1rem;
       }
       
-      .menu-btn i {
-        font-size: 2.8rem;
+      .menu-btn .symbol {
+        font-size: 3rem;
       }
       
       .info-group {
@@ -506,8 +596,8 @@
         font-size: 1.1rem;
       }
       
-      .menu-btn i {
-        font-size: 2.5rem;
+      .menu-btn .symbol {
+        font-size: 2.8rem;
       }
       
       .manual-btn {
@@ -541,25 +631,25 @@
     </div>
 
     <div class="menu-grid">
-      <a class="menu-btn pulse" href="HARDWARE I .html">
-        <i class="fas fa-microchip"></i>
-        <span class="btn-text">Hardware 1</span>
+      <a class="menu-btn" href="HARDWARE I .html">
+        <div class="symbol">🔧</div>
+        <span class="btn-text">Hardware 1<br><small>Componentes físicos</small></span>
       </a>
-      <a class="menu-btn pulse" href="HARDWARE 2.html">
-        <i class="fas fa-memory"></i>
-        <span class="btn-text">Hardware 2</span>
+      <a class="menu-btn" href="HARDWARE 2.html">
+        <div class="symbol">💻</div>
+        <span class="btn-text">Hardware 2<br><small>Periféricos y dispositivos</small></span>
       </a>
-      <a class="menu-btn pulse" href="software 1.html">
-        <i class="fas fa-laptop-code"></i>
-        <span class="btn-text">Software 1</span>
+      <a class="menu-btn" href="software 1.html">
+        <div class="symbol">📱</div>
+        <span class="btn-text">Software 1<br><small>Aplicaciones y sistemas</small></span>
       </a>
-      <a class="menu-btn pulse" href="software 2.html">
-        <i class="fas fa-cogs"></i>
-        <span class="btn-text">Software 2</span>
+      <a class="menu-btn" href="software 2.html">
+        <div class="symbol">⚙️</div>
+        <span class="btn-text">Software 2<br><small>Configuración y mantenimiento</small></span>
       </a>
-       <a class="menu-btn pulse" href="instalacion.html">
-        <i class="fas fa-laptop-code"></i>
-        <span class="btn-text">Efectuar la instalación de un sistema operativo e instalación</span>
+      <a class="menu-btn" href="instalacion.html">
+        <div class="symbol">💾</div>
+        <span class="btn-text">Instalación de SO<br><small>Proceso completo</small></span>
       </a>
     </div>
 
