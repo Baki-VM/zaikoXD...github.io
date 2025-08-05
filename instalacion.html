@@ -796,23 +796,120 @@
                 <p><strong>¡Importante para principiantes!</strong> No necesitas conocimientos previos, solo seguir los pasos cuidadosamente.</p>
             </div>
             
-            <div class="video-container">
-                <h3>Video Introducción para Principiantes</h3>
-                <div class="video-grid">
-                    <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/4WXL0jyfJQ4/maxresdefault.jpg')">
-                            <div class="play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Guía Dual Boot para Principiantes</h4>
-                            <p>Conceptos básicos explicados desde cero</p>
-                            <a href="https://youtu.be/qypfkDx_Qnc?si=569nWYjjTQBSdNJE" class="button" target="_blank">Ver Video</a>
-                        </div>
+<!-- Font Awesome CDN para los íconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<!-- VIDEO CARD ESTILOSA -->
+<div class="video-container">
+    <h3>🎥 Video Introducción para Principiantes</h3>
+    <div class="video-grid">
+        <div class="video-card">
+            <a href="https://youtu.be/qypfkDx_Qnc" target="_blank">
+                <div class="video-thumbnail">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
                     </div>
                 </div>
+            </a>
+            <div class="video-info">
+                <h4>Guía Dual Boot para Principiantes</h4>
+                <p>Conceptos básicos explicados desde cero</p>
+                <a href="https://youtu.be/qypfkDx_Qnc" target="_blank" class="btn">▶ Ver Video</a>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- ESTILO CSS 🔥 -->
+<style>
+    .video-container {
+        text-align: center;
+        padding: 2rem;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .video-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .video-card {
+        background-color: #1a1a1a;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        width: 300px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    }
+
+    .video-thumbnail {
+        background-image: url('https://img.youtube.com/vi/qypfkDx_Qnc/hqdefault.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 180px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        padding: 20px;
+        color: #fff;
+        font-size: 28px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .video-thumbnail:hover .play-icon {
+        background-color: #ff0000;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    .video-info {
+        padding: 1rem;
+        color: #fff;
+    }
+
+    .video-info h4 {
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
+        color: #ffdd57;
+    }
+
+    .video-info p {
+        font-size: 0.9rem;
+        color: #ccc;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.6rem 1.2rem;
+        background-color: #ff0000;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        background-color: #e60000;
+    }
+</style>
+
         </section>
         
         <!-- Requisitos -->
@@ -874,7 +971,7 @@
             
             <div class="hardware-section">
                 <div class="hardware-card">
-                    <div class="hardware-image" style="https://www.lifewire.com/thmb/HdBq5Mc10P62G7WvkToTPbc7ZVM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/disk-management-windows-10-1d7428f0186748d39666876e4c5d5cf4.png"></div>
+                    <div class="hardware-image" style="background-image: url('https://softwareg.com.au/cdn/shop/articles/check-disk-size.png?v=1707864996');"></div>
                     <div class="hardware-content">
                         <h3><i class="fab fa-windows"></i> Verificación en Windows</h3>
                         <ol>
@@ -890,28 +987,32 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="hardware-card">
-                    <div class="hardware-image" style="background-image: url('https://i.imgur.com/sjM4GtR.jpg')"></div>
-                    <div class="hardware-content">
-                        <h3><i class="fab fa-ubuntu"></i> Verificación en Linux</h3>
-                        <ol>
-                            <li>Abre la Terminal (Ctrl+Alt+T)</li>
-                            <li>Instala smartmontools:
-                                <div class="code">
-                                    <i class="fas fa-terminal"></i>sudo apt install smartmontools
-                                </div>
-                            </li>
-                            <li>Verifica el estado del disco:
-                                <div class="code">
-                                    <i class="fas fa-terminal"></i>sudo smartctl -a /dev/sda
-                                </div>
-                            </li>
-                            <li>Busca la línea "SMART overall-health self-assessment test result"</li>
-                        </ol>
-                    </div>
+    <div class="hardware-image" style="background-image: url('https://lh4.googleusercontent.com/_bvsk5Y9JRzg/Ta78iKN1NxI/AAAAAAAAFko/tqI38AkBSAQ/0061_Disco%20duro%20de%20500%20GB%20%28ATA%20ST3500320AS%29%20%5B-dev-sdb%5D%3A%20utilidad%20de%20discos.png');"></div>
+    <div class="hardware-content">
+        <h3><i class="fab fa-ubuntu"></i> Verificación en Linux</h3>
+        <ol>
+            <li>Abre la Terminal (Ctrl+Alt+T)</li>
+            <li>Instala smartmontools:
+                <div class="code">
+                    <i class="fas fa-terminal"></i> sudo apt install smartmontools
                 </div>
-            </div>
+            </li>
+            <li>Verifica el estado del disco:
+                <div class="code">
+                    <i class="fas fa-terminal"></i> sudo smartctl -a /dev/sda
+                </div>
+            </li>
+            <li>Busca la línea "SMART overall-health self-assessment test result"</li>
+        </ol>
+    </div>
+</div>
+
+
+
+                
+                
             
             <div class="warning-box">
                 <p><strong>¡Atención!</strong> Si tu disco muestra errores o advertencias, considera reemplazarlo antes de continuar con la instalación.</p>
@@ -936,8 +1037,8 @@
                     </ol>
                 </div>
                 <div class="step-image">
-                    <img src="https://i.imgur.com/kjWnRc7.jpg" alt="Configuración BIOS">
-                    <div class="image-caption">Configuración de la BIOS para desactivar Secure Boot</div>
+                    <img src="https://i.blogs.es/021e34/secure-boot/650_1200.jpg" alt="Configuración BIOS">
+                    <div class="image-caption"></div>
                 </div>
             </div>
             
@@ -960,8 +1061,8 @@
                     </ol>
                 </div>
                 <div class="step-image">
-                    <img src="https://i.imgur.com/8B0tUoF.jpg" alt="Instalación Windows">
-                    <div class="image-caption">Creación de particiones durante la instalación de Windows</div>
+                    <img src="https://i.ytimg.com/vi/WN1bNE9e9zw/hqdefault.jpg" alt="Instalación Windows">
+                    <div class="image-caption"></div>
                 </div>
             </div>
             
@@ -980,7 +1081,7 @@
                     </ol>
                 </div>
                 <div class="step-image">
-                    <img src="https://i.imgur.com/7r1Hm0w.jpg" alt="Instalación Ubuntu">
+                    <img src="https://i2.wp.com/www.manusoft.es/wp-content/uploads/2018/02/WinDualUbuntu_Img22-InstalandoUbuntu.png?ssl=1" alt="Instalación Ubuntu">
                     <div class="image-caption">Seleccionar "Instalar junto a Windows"</div>
                 </div>
             </div>
@@ -989,7 +1090,7 @@
                 <h3>Video Tutorial Completo de Instalación</h3>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/6L1pI_ZyXI8/maxresdefault.jpg')">
+                        <div class="video-thumbnail" style="background-image: url('https://youtu.be/wIj7sHK0SkQ?si=nsdB0ehI4O2NgA1M.jpg')">
                             <div class="play-icon">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -997,7 +1098,7 @@
                         <div class="video-info">
                             <h4>Instalación Dual Boot Completa</h4>
                             <p>Guía desde cero para principiantes</p>
-                            <a href="https://www.youtube.com/watch?v=6L1pI_ZyXI8" class="button" target="_blank">Ver Video</a>
+                            <a href="https://youtu.be/wIj7sHK0SkQ?si=nsdB0ehI4O2NgA1M" class="button" target="_blank">Ver Video</a>
                         </div>
                     </div>
                 </div>
@@ -1011,7 +1112,7 @@
             
             <div class="hardware-section">
                 <div class="hardware-card">
-                    <div class="hardware-image" style="background-image: url('https://i.imgur.com/5y0T5lJ.jpg')"></div>
+                    <div class="hardware-image" style="background-image: url('https://i.blogs.es/2198ba/opciones-avanzadas/450_1000.jpg')"></div>
                     <div class="hardware-content">
                         <h3><i class="fab fa-windows"></i> Controladores en Windows 11</h3>
                         <ol>
@@ -1030,7 +1131,7 @@
                 </div>
                 
                 <div class="hardware-card">
-                    <div class="hardware-image" style="background-image: url('https://i.imgur.com/1vQcJ9H.jpg')"></div>
+                    <div class="hardware-image" style="background-image: url('https://youtu.be/0JdvhC_5jrw?si=X3a80MIJyxgySrKh.jpg')"></div>
                     <div class="hardware-content">
                         <h3><i class="fab fa-ubuntu"></i> Controladores en Ubuntu</h3>
                         <ol>
@@ -1091,7 +1192,7 @@
                 <h3>Video: Instalación de Controladores</h3>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/8Wn4Z1gv3pI/maxresdefault.jpg')">
+                        <div class="video-thumbnail" style="background-image: url('https://youtu.be/a6VABkVBDhI?si=31KxCKJ8ySV5axUW')">
                             <div class="play-icon">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -1099,12 +1200,12 @@
                         <div class="video-info">
                             <h4>Instalar Controladores en Windows 11</h4>
                             <p>Guía completa paso a paso</p>
-                            <a href="https://www.youtube.com/watch?v=8Wn4Z1gv3pI" class="button" target="_blank">Ver Video</a>
+                            <a href="https://youtu.be/a6VABkVBDhI?si=31KxCKJ8ySV5axUW" class="button" target="_blank">Ver Video</a>
                         </div>
                     </div>
                     
                     <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/sdYkUfJ5eWY/maxresdefault.jpg')">
+                        <div class="video-thumbnail" style="background-image: url('https://youtu.be/0JdvhC_5jrw?si=X3a80MIJyxgySrKh.jpg')">
                             <div class="play-icon">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -1112,7 +1213,7 @@
                         <div class="video-info">
                             <h4>Controladores en Ubuntu</h4>
                             <p>Soluciona problemas de hardware</p>
-                            <a href="https://www.youtube.com/watch?v=sdYkUfJ5eWY" class="button" target="_blank">Ver Video</a>
+                            <a href="https://youtu.be/0JdvhC_5jrw?si=X3a80MIJyxgySrKh" class="button" target="_blank">Ver Video</a>
                         </div>
                     </div>
                 </div>
@@ -1230,7 +1331,7 @@
                 <h3>Video: Alternativas Office en Ubuntu</h3>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/zFdG9kY/maxresdefault.jpg')">
+                        <div class="video-thumbnail" style="background-image: url('https://youtu.be/Hv_0fgupHbA?si=zB99t3cmoHAf8GDg')">
                             <div class="play-icon">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -1238,7 +1339,7 @@
                         <div class="video-info">
                             <h4>Alternativas Office en Linux</h4>
                             <p>Comparativa y configuración</p>
-                            <a href="https://www.youtube.com/watch?v=zFdG9kY" class="button" target="_blank">Ver Video</a>
+                            <a href="https://youtu.be/Hv_0fgupHbA?si=zB99t3cmoHAf8GDg" class="button" target="_blank">Ver Video</a>
                         </div>
                     </div>
                 </div>
@@ -1265,8 +1366,8 @@
                     </div>
                 </div>
                 <div class="step-image">
-                    <img src="https://i.imgur.com/HjZbT9Q.png" alt="Drive en Windows">
-                    <div class="image-caption">Google Drive en el Explorador de Windows</div>
+                    <img src="https://microsofters.com/wp-content/uploads/2024/11/Drive.jpg.webp" alt="Drive en Windows">
+                    <div class="image-caption"></div>
                 </div>
             </div>
             
@@ -1281,8 +1382,8 @@
                     </ul>
                 </div>
                 <div class="step-image">
-                    <img src="https://i.imgur.com/8fDmDv5.png" alt="Configuración Drive">
-                    <div class="image-caption">Preferencias de Google Drive</div>
+                    <img src="https://storage.googleapis.com/support-forums-api/attachment/thread-45394050-14577060588789381553.JPG" alt="Configuración Drive">
+                    <div class="image-caption"></div>
                 </div>
             </div>
         </section>
@@ -1305,8 +1406,8 @@
                     </ol>
                 </div>
                 <div class="step-image">
-                    <img src="https://i.imgur.com/5Rk7W0J.png" alt="Drive en Ubuntu">
-                    <div class="image-caption">Google Drive en el administrador de archivos</div>
+                    <img src="https://www.solvetic.com/uploads/tutorials/monthly_04_2017/88acc4909848a0dcd20c568d39de4bf7.png" alt="Drive en Ubuntu">
+                    <div class="image-caption"></div>
                 </div>
             </div>
             
@@ -1327,8 +1428,8 @@
                     </ol>
                 </div>
                 <div class="step-image">
-                    <img src="https://i.imgur.com/3Xwz9uF.png" alt="ODrive en Ubuntu">
-                    <div class="image-caption">Interfaz de ODrive para Ubuntu</div>
+                    <img src="https://raw.githubusercontent.com/liberodark/Odrive/master/public/images/logo.png" alt="ODrive en Ubuntu">
+                    <div class="image-caption"></div>
                 </div>
             </div>
             
@@ -1336,7 +1437,7 @@
                 <h3>Video: Google Drive en Ubuntu</h3>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/R7z8kQigAvA/maxresdefault.jpg')">
+                        <div class="video-thumbnail" style="background-image: url('https://youtu.be/ZfiktzlOjF0?si=LW8wgH5MGRCP05vE')">
                             <div class="play-icon">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -1344,7 +1445,7 @@
                         <div class="video-info">
                             <h4>Google Drive en Ubuntu</h4>
                             <p>Configuración completa</p>
-                            <a href="https://www.youtube.com/watch?v=R7z8kQigAvA" class="button" target="_blank">Ver Video</a>
+                            <a href="https://youtu.be/ZfiktzlOjF0?si=LW8wgH5MGRCP05vE" class="button" target="_blank">Ver Video</a>
                         </div>
                     </div>
                 </div>
@@ -1393,15 +1494,7 @@
             </div>
             
             <!-- Segundo botón de descarga al final -->
-            <div class="manual-download" style="margin-top: 40px;">
-                <div class="manual-content">
-                    <h3>¿Necesitas el manual completo?</h3>
-                    <p>Descarga la guía en PDF para consultarla sin conexión o compartirla con amigos</p>
-                    <a href="#" class="download-btn" id="downloadManualBottom">
-                        <i class="fas fa-download"></i> Descargar Manual Completo
-                    </a>
-                </div>
-            </div>
+           
         </section>
     </div>
     
@@ -1410,14 +1503,8 @@
             <h3>Guía Completa: Dual Boot + Office y Drive</h3>
             <p>Recurso integral para productividad multiplataforma</p>
             
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-            </div>
-            
-            <p>© 2023 - Guía Completa de Productividad | Todos los derechos reservados</p>
+          
+            <p>© 2025 - Guía Completa de Productividad | Todos los derechos reservados REINALDO VACA</p>
         </div>
     </footer>
     
@@ -1435,5 +1522,3 @@
     </script>
 </body>
 </html>
-
-
